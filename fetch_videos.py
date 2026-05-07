@@ -1,7 +1,7 @@
 import json
 from datetime import datetime
-import yt_dlp
-import traceback
+import requests
+import re
 
 # Correct channels requested by user
 CHANNELS = [
@@ -10,81 +10,57 @@ CHANNELS = [
     "https://rumble.com/c/WarningTVJonathanHansen/livestreams",
 ]
 
-print("🚀 Fetching videos from WMI WarningTV sections...")
+print("🚀 Fetching videos from WMI WarningTV sections (using direct HTML parsing)...")
 
 all_videos = []
 
-# Try multiple header sets to bypass 403
-header_sets = [
-    # Set 1: Standard Chrome on Windows
-    {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
-        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8',
-        'Accept-Language': 'en-US,en;q=0.9',
-        'Referer': 'https://rumble.com/',
-        'DNT': '1',
-    },
-    # Set 2: Firefox on Windows
-    {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:125.0) Gecko/20100101 Firefox/125.0',
-        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8',
-        'Accept-Language': 'en-US,en;q=0.5',
-        'Referer': 'https://rumble.com/',
-    },
-]
+headers = {
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
+    'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+    'Accept-Language': 'en-US,en;q=0.9',
+    'Referer': 'https://rumble.com/',
+}
 
 for url in CHANNELS:
     section = url.split('/')[-1].capitalize()
     print(f"   → Fetching {section}...")
-    
-    success = False
-    for i, headers in enumerate(header_sets):
-        ydl_opts = {
-            'extract_flat': True,
-            'quiet': True,
-            'ignoreerrors': True,
-            'playlistend': 500,
-            'http_headers': headers,
-            'extractor_args': {'rumble': {'force': True}},
-            'sleep_interval': 2,
-            'max_sleep_interval': 5,
-        }
+    try:
+        resp = requests.get(url, headers=headers, timeout=30)
+        if resp.status_code != 200:
+            print(f"     HTTP {resp.status_code} - skipping")
+            continue
         
-        try:
-            with yt_dlp.YoutubeDL(ydl_opts) as ydl:
-                info = ydl.extract_info(url, download=False)
+        html = resp.text
+        
+        # Rumble often puts video data in a JSON blob in a script tag
+        # Look for common patterns like window.__INITIAL_STATE__ or video list JSON
+        videos_found = []
+        
+        # Try to find video entries in the HTML (common patterns)
+        # Pattern 1: data-video-id or rumble video links
+        video_links = re.findall(r'href="(/v/[^"]+)"', html)
+        titles = re.findall(r'<h3[^>]*class="[^"]*video-item--title[^"]*"[^>]*>([^<]+)</h3>', html, re.IGNORECASE)
+        
+        print(f"     Found {len(video_links)} video links in HTML")
+        
+        for i, link in enumerate(video_links[:50]):  # Limit to first 50
+            video_url = f"https://rumble.com{link}"
+            title = titles[i] if i < len(titles) else f"Video {i+1}"
+            videos_found.append({
+                'title': title.strip(),
+                'url': video_url,
+                'id': link.split('/')[-1].split('-')[0] if '-' in link else link,
+                'type': url.split('/')[-1],
+            })
+        
+        print(f"     Extracted {len(videos_found)} videos")
+        all_videos.extend(videos_found)
+        
+    except Exception as e:
+        print(f"   ⚠️ Error on {url}: {type(e).__name__}: {e}")
 
-            entries = info.get('entries', []) if info else []
-            print(f"     Found {len(entries)} items (using header set {i+1})")
-
-            for entry in entries:
-                if not entry:
-                    continue
-                if not entry.get('title') or not entry.get('url'):
-                    continue
-                video = {
-                    'title': entry.get('title'),
-                    'url': entry.get('url') if entry.get('url', '').startswith('http') else f"https://rumble.com{entry.get('url')}",
-                    'id': entry.get('id'),
-                    'duration': entry.get('duration'),
-                    'upload_date': entry.get('upload_date'),
-                    'view_count': entry.get('view_count'),
-                    'type': url.split('/')[-1],
-                }
-                all_videos.append(video)
-            success = True
-            break  # If successful, move to next URL
-        except Exception as e:
-            print(f"   ⚠️ Error with header set {i+1} on {url}: {type(e).__name__}: {e}")
-            if i == len(header_sets) - 1:  # Last header set failed
-                print(f"   Full traceback for last attempt:")
-                traceback.print_exc()
-
-if not success:
-    print("   ⚠️ All header sets failed for this section")
-
-# Sort newest first
-all_videos.sort(key=lambda x: x.get('upload_date') or '19000101', reverse=True)
+# Sort newest first (by position for now, since we don't have dates)
+all_videos = all_videos[:200]  # Limit total
 
 output = {
     "last_updated": datetime.now().isoformat(),
