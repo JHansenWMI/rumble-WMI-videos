@@ -3,6 +3,9 @@ name: Update WMI Rumble Video List
 on:
   workflow_dispatch:           # Manual trigger only
 
+permissions:
+  contents: write
+
 jobs:
   update-videos:
     runs-on: ubuntu-latest
@@ -14,11 +17,10 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
+          python-version: '3.12'
 
       - name: Install dependencies
-        run: |
-          pip install yt-dlp pandas
+        run: pip install yt-dlp pandas
 
       - name: Fetch latest videos
         run: python fetch_videos.py
@@ -27,10 +29,11 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add videos.json
+          
           if git diff --staged --quiet; then
             echo "No changes to commit"
           else
+            git add videos.json
             git commit -m "Update videos.json - $(date +'%Y-%m-%d %H:%M UTC')"
             git push
           fi
