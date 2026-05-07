@@ -1,0 +1,351 @@
+<p><a href="https://www.vsmtools.com/U/566/ReviewFiles/reading.aspx?cat=492">See a list of past TV Guests</a></p>
+<div id="rumbleGridWidget" class="rw-root">
+<div class="rw-status" id="rwStatus">Loading videos&hellip;</div>
+<div class="rw-grid" id="rwGrid" style="display: none;"></div>
+</div>
+<style><!--
+  /* Scope all styles to the widget root to avoid messing with your CMS */
+  .rw-root { width: 100%; }
+
+  .rw-status {
+    font: 14px/1.4 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    opacity: 0.8;
+    padding: 8px 0;
+  }
+
+  /* Responsive grid that naturally reflows with available content width */
+  .rw-grid {
+    display: grid;
+    gap: 14px;
+    /* 3->2->1 automatically based on actual available width */
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    align-items: stretch;
+  }
+
+  .rw-card {
+    position: relative; /* needed for overlay link */
+    border-radius: 10px;
+    overflow: hidden;
+    background: rgba(0,0,0,0.03);
+  }
+
+  .rw-thumbWrap {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: rgba(0,0,0,0.08);
+    overflow: hidden;
+  }
+
+  .rw-thumb {
+    width: 100%;
+    height: 100%;
+    display: block;
+    /* Crop shorts/thumbnails to 16:9 without distortion */
+    object-fit: cover;
+  }
+
+  .rw-meta {
+    padding: 10px 10px 12px 10px;
+    font: 14px/1.35 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  }
+
+  .rw-title {
+    font-weight: 650;
+    margin: 0 0 6px 0;
+    /* avoid huge cards when title is long */
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .rw-date {
+    opacity: 0.75;
+    font-size: 13px;
+  }
+
+  /* Full-card link overlay */
+  .rw-linkOverlay {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    text-decoration: none;
+    color: inherit;
+    /* ensure it’s clickable even on whitespace */
+    background: transparent;
+  }
+
+  /* Optional hover affordance */
+  .rw-card:hover { filter: brightness(0.98); }
+  .rw-card:active { filter: brightness(0.96); }
+
+  /* If you want slightly smaller minimum cards on tiny layouts */
+  @media (max-width: 380px) {
+    .rw-grid { grid-template-columns: 1fr; }
+  }
+--></style>
+<script type="text/javascript">// <![CDATA[
+(async function () {
+//const FEEDS = [
+//  "https://raw.githubusercontent.com/JHansenWMI/rumble-WMI-videos/main/rumble-feed.json"
+//];
+const FEEDS = [
+  "https://jhansenwmi.github.io/rumble-WMI-videos/rumble-feed.json"
+];
+
+  const statusEl = document.getElementById("rwStatus");
+  const gridEl = document.getElementById("rwGrid");
+
+  // --- helpers ---
+  function escapeHtml(str) {
+    return String(str).replace(/[&<>"']/g, m => ({
+      "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+    }[m]));
+  }
+
+function normalizeTitle(t) {
+  const s = String(t || "").replace(/\s+/g, " ").trim(); // collapses newlines too
+  return stripTrailingDate(s);
+}
+
+function stripTrailingDate(title) {
+  // Removes only if the date is at the very end of the title.
+  // Supports:
+  //  - " - Feb 16, 2026"
+  //  - " - Jan 29th 2026"
+  //  - (and handles odd whitespace/newlines because we normalized first)
+  const re = /\s*-\s*(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s+\d{1,2}(?:st|nd|rd|th)?(?:,)?\s+\d{4}\s*$/i;
+  return title.replace(re, "").trim();
+}
+  // Use LA time zone for date display regardless of client time zone
+  const dateFmt = new Intl.DateTimeFormat("en-US", {
+    timeZone: "America/Los_Angeles",
+    month: "short",
+    day: "2-digit",
+    year: "numeric"
+  });
+
+  function formatDateLA(pubDateStr) {
+    const d = new Date(pubDateStr);
+    if (isNaN(d.getTime())) return "";
+    // "Feb 18, 2026"
+    return dateFmt.format(d);
+  }
+
+  function getThumb(item) {
+    // Your feed uses "media:content" for the thumbnail URL
+    return item && item["media:content"] ? String(item["media:content"]) : "";
+  }
+
+  function getLink(item) {
+    return item && item.link ? String(item.link) : "#";
+  }
+
+  function getPubDate(item) {
+    return item && item.pubDate ? String(item.pubDate) : "";
+  }
+
+  function sortByDateDesc(a, b) {
+    const da = new Date(getPubDate(a)).getTime();
+    const db = new Date(getPubDate(b)).getTime();
+    // If parse fails, treat as older
+    return (isNaN(db) ? -Infinity : db) - (isNaN(da) ? -Infinity : da);
+  }
+
+  async function fetchFeed(url) {
+    const res = await fetch(url, { cache: "no-store" });
+    if (!res.ok) throw new Error("HTTP " + res.status + " for " + url);
+    return res.json();
+  }
+
+  // --- main ---
+  try {
+    const results = await Promise.allSettled(FEEDS.map(fetchFeed));
+
+    var items = [];
+    const errors = [];
+
+    for (const r of results) {
+      if (r.status === "fulfilled") {
+        const data = r.value;
+        if (data && Array.isArray(data.items)) items.push(...data.items);
+      } else {
+        errors.push(r.reason);
+      }
+    }
+
+    if (items.length === 0) {
+      statusEl.textContent =
+        "No items loaded. If you just enabled CORS in FetchRSS, wait for the next feed update, then refresh.";
+      console.error("Feed load errors:", errors);
+      return;
+    }
+
+    items.sort(sortByDateDesc);
+
+	// Only show newest 30
+	items = items.slice(0, 30);
+	
+    // Render ALL items (per your spec)
+    const html = items.map(item => {
+      const title = normalizeTitle(item.title);
+      const link = getLink(item);
+      const thumb = getThumb(item);
+      const date = formatDateLA(getPubDate(item));
+
+      return `
+        <div class="rw-card">
+          <div class="rw-thumbWrap">
+            ${thumb ? `<img class="rw-thumb" src="${escapeHtml(thumb)}" >` : ""}
+          </div>
+
+          <div class="rw-meta">
+            <div class="rw-title">${escapeHtml(title || "Untitled")}</div>
+            <div class="rw-date">${escapeHtml(date)}</div>
+          </div>
+
+          <a class="rw-linkOverlay" href="${escapeHtml(link)}" aria-label="${escapeHtml(title || "Open video")}"></a>
+        </div>
+      `;
+    }).join("");
+
+    gridEl.innerHTML = html;
+    gridEl.style.display = "grid";
+
+    if (errors.length) {
+      // Still show videos if at least one feed worked
+      statusEl.textContent = "Loaded videos (one or more feeds failed).";
+      console.warn("Some feeds failed:", errors);
+    } else {
+      statusEl.style.display = "none";
+    }
+  } catch (err) {
+    statusEl.textContent =
+      "Failed to load feeds (likely CORS until FetchRSS updates). Check console for details.";
+    console.error(err);
+  }
+})();
+// ]]></script>
+<p style="text-align: center;"></p>
+<p style="text-align: center;"><a href="https://rumble.com/c/WarningTVJonathanHansen" target="_blank" class="button">See More Videos</a></p>
+<div id="counterBox" style="color: #ccc; font-size: 12px; text-align: center; margin-top: 40px; cursor: pointer;">Loading stats...</div>
+<div id="statsModalOverlay" style="position: fixed; inset: 0; background: rgba(0,0,0,0.6); display: none; align-items: center; justify-content: center; z-index: 999999;">
+<div id="statsModal" style="background: #fff; border-radius: 10px; width: min(900px, 92vw); max-height: 85vh; box-shadow: 0 10px 30px rgba(0,0,0,0.35); display: flex; flex-direction: column; overflow: hidden;">
+<div style="display: flex; align-items: center; justify-content: space-between; padding: 12px 14px; border-bottom: 1px solid #e6e6e6;">
+<div style="font: 600 14px/1.2 system-ui, -apple-system, Segoe UI, Arial;">Page stats (last 60 days)</div>
+<button id="statsModalCloseBtn" type="button" style="border: 0; background: transparent; font-size: 22px; line-height: 1; cursor: pointer; padding: 2px 6px;" aria-label="Close">&times;</button></div>
+<div style="padding: 12px 14px;">
+<div id="statsModalContent" style="white-space: pre; overflow: auto; font: 12px/1.35 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; max-height: 65vh;"></div>
+</div>
+<div style="display: flex; justify-content: flex-end; gap: 10px; padding: 12px 14px; border-top: 1px solid #e6e6e6;"><button id="statsModalCopyBtn" type="button" style="border: 1px solid #ccc; background: #f7f7f7; border-radius: 6px; padding: 8px 10px; cursor: pointer; font: 600 12px system-ui;"> Copy </button> <button id="statsModalOkBtn" type="button" style="border: 1px solid #999; background: #eee; border-radius: 6px; padding: 8px 12px; cursor: pointer; font: 700 12px system-ui;"> OK </button></div>
+</div>
+</div>
+<script type="text/javascript">// <![CDATA[
+(function () {
+  const WORKER_BASE = "https://divine-dew-3ed7.jonathan-hansen-ministries.workers.dev";
+  const PAGE_ID = "watch-warning"; // CHANGE PER PAGE: watch-warning | reading | donate
+
+  const overlay = document.getElementById("statsModalOverlay");
+  const content = document.getElementById("statsModalContent");
+  const btnClose = document.getElementById("statsModalCloseBtn");
+  const btnOk = document.getElementById("statsModalOkBtn");
+  const btnCopy = document.getElementById("statsModalCopyBtn");
+  const counterBox = document.getElementById("counterBox");
+
+  if (!overlay || !content || !btnClose || !btnOk || !btnCopy || !counterBox) return;
+
+  let busy = false;
+  let lastDay = null;
+  let lastMonth = null;
+
+  function setCounterText(extra) {
+    const day = (lastDay ?? "?");
+    const month = (lastMonth ?? "?");
+    counterBox.innerText = `Day: ${day} | Month: ${month}` + (extra ? ` ${extra}` : "");
+  }
+
+  function setBusy(on) {
+    busy = on;
+    counterBox.style.pointerEvents = on ? "none" : "auto";
+    setCounterText(on ? "(checking)" : "");
+  }
+
+  function closeModal() {
+    overlay.style.display = "none";
+    if (busy) setBusy(false);
+  }
+
+  function openModal(text) {
+    content.textContent = text || "";
+    overlay.style.display = "flex";
+  }
+
+  btnClose.addEventListener("click", closeModal);
+  btnOk.addEventListener("click", closeModal);
+  overlay.addEventListener("click", (e) => { if (e.target === overlay) closeModal(); });
+  document.addEventListener("keydown", (e) => { if (overlay.style.display === "flex" && e.key === "Escape") closeModal(); });
+
+  btnCopy.addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText(content.textContent || "");
+      btnCopy.textContent = "Copied";
+      setTimeout(() => (btnCopy.textContent = "Copy"), 1200);
+    } catch {
+      const ta = document.createElement("textarea");
+      ta.value = content.textContent || "";
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand("copy");
+      document.body.removeChild(ta);
+      btnCopy.textContent = "Copied";
+      setTimeout(() => (btnCopy.textContent = "Copy"), 1200);
+    }
+  });
+
+  // ---- session gating (no cookies) ----
+  const sessionKey = "wm_counted:" + PAGE_ID;
+
+  // If not yet counted this tab-session -> /count (writes once). Otherwise /peek (read-only).
+  const endpoint = sessionStorage.getItem(sessionKey) ? "/peek" : "/count";
+
+  fetch(WORKER_BASE + endpoint + "?page=" + encodeURIComponent(PAGE_ID))
+    .then(r => r.json())
+    .then(data => {
+      if (!sessionStorage.getItem(sessionKey) && !data.skipped) {
+        sessionStorage.setItem(sessionKey, "1");
+      }
+      lastDay = data.day;
+      lastMonth = data.month;
+      setCounterText("");
+    })
+    .catch(() => setCounterText("(counts unavailable)"));
+
+  // Details click
+  counterBox.addEventListener("click", () => {
+    if (busy) return;
+    setBusy(true);
+
+    fetch(WORKER_BASE + "/stats?page=" + encodeURIComponent(PAGE_ID))
+      .then(r => r.json())
+      .then(data => {
+        const days = data.last60days || [];
+        const top = data.topIPsToday || [];
+
+        let text = "Last 60 Days:\n";
+        days.forEach(d => {
+          const adj = (d.countMinusTopIps ?? "(n/a)");
+          text += `${d.date}: ${d.count} (minus top IPs: ${adj})\n`;
+        });
+
+        text += "\nTop 3 IP hashes today:\n";
+        top.forEach(x => {
+          text += `${String(x.ipHash).slice(0,12)}... : ${x.count}\n`;
+        });
+
+        openModal(text);
+      })
+      .catch(err => openModal("Could not load stats:\n" + err));
+  });
+
+})();
+// ]]></script>
