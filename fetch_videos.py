@@ -2,23 +2,14 @@ import json
 from datetime import datetime
 import yt_dlp
 
-# List of Rumble pages to fetch from
+# Correct channels requested by user
 CHANNELS = [
-    {
-        "url": "https://rumble.com/user/DrJonathanHansenWMI/videos",
-        "type": "videos"
-    },
-    {
-        "url": "https://rumble.com/user/DrJonathanHansenWMI/shorts",
-        "type": "shorts"
-    },
-    {
-        "url": "https://rumble.com/user/DrJonathanHansenWMI/livestreams",
-        "type": "livestreams"
-    }
+    "https://rumble.com/c/WarningTVJonathanHansen/videos",
+    "https://rumble.com/c/WarningTVJonathanHansen/shorts",
+    "https://rumble.com/c/WarningTVJonathanHansen/livestreams",
 ]
 
-print("🚀 Fetching videos from 3 WMI Rumble sections...")
+print("🚀 Fetching videos from WMI WarningTV sections...")
 
 all_videos = []
 
@@ -26,16 +17,21 @@ ydl_opts = {
     'extract_flat': True,
     'quiet': True,
     'ignoreerrors': True,
-    'playlistend': 500,   # Increase if you need more videos per section
+    'playlistend': 500,
+    'extractor_args': {'rumble': {'force': True}},
 }
 
-for channel in CHANNELS:
-    print(f"   → Fetching {channel['type'].upper()}...")
+for url in CHANNELS:
+    section = url.split('/')[-1].capitalize()
+    print(f"   → Fetching {section}...")
     try:
         with yt_dlp.YoutubeDL(ydl_opts) as ydl:
-            info = ydl.extract_info(channel['url'], download=False)
+            info = ydl.extract_info(url, download=False)
 
-        for entry in info.get('entries', []):
+        entries = info.get('entries', []) if info else []
+        print(f"     Found {len(entries)} items")
+
+        for entry in entries:
             if not entry:
                 continue
             video = {
@@ -43,27 +39,25 @@ for channel in CHANNELS:
                 'url': entry.get('url') if entry.get('url', '').startswith('http') else f"https://rumble.com{entry.get('url')}",
                 'id': entry.get('id'),
                 'duration': entry.get('duration'),
-                'upload_date': entry.get('upload_date'),  # Format: YYYYMMDD
+                'upload_date': entry.get('upload_date'),
                 'view_count': entry.get('view_count'),
-                'source': channel['type'],
+                'type': url.split('/')[-1],
             }
             all_videos.append(video)
     except Exception as e:
-        print(f"   ⚠️ Error fetching {channel['type']}: {e}")
+        print(f"   ⚠️ Error on {url}: {e}")
 
-# Sort by upload_date (newest first)
+# Sort newest first
 all_videos.sort(key=lambda x: x.get('upload_date') or '19000101', reverse=True)
 
-# Create final JSON with metadata
 output = {
     "last_updated": datetime.now().isoformat(),
     "total_videos": len(all_videos),
-    "sources": ["videos", "shorts", "livestreams"],
+    "sources_checked": len(CHANNELS),
     "videos": all_videos
 }
 
 with open('videos.json', 'w', encoding='utf-8') as f:
     json.dump(output, f, indent=2, ensure_ascii=False)
 
-print(f"\n✅ Success! Fetched {len(all_videos)} videos total")
-print("   → videos.json created")
+print(f"\n✅ Done! Total videos saved: {len(all_videos)}")
