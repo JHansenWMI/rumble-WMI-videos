@@ -13,12 +13,24 @@ print("🚀 Fetching videos from WMI WarningTV sections...")
 
 all_videos = []
 
+# Enhanced options to avoid 403 blocking
 ydl_opts = {
     'extract_flat': True,
     'quiet': True,
     'ignoreerrors': True,
     'playlistend': 500,
+    'http_headers': {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
+        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8',
+        'Accept-Language': 'en-US,en;q=0.9',
+        'Referer': 'https://rumble.com/',
+        'DNT': '1',
+        'Connection': 'keep-alive',
+        'Upgrade-Insecure-Requests': '1',
+    },
     'extractor_args': {'rumble': {'force': True}},
+    'sleep_interval': 1,
+    'max_sleep_interval': 3,
 }
 
 for url in CHANNELS:
@@ -33,6 +45,9 @@ for url in CHANNELS:
 
         for entry in entries:
             if not entry:
+                continue
+            # Skip entries without proper title or url
+            if not entry.get('title') or not entry.get('url'):
                 continue
             video = {
                 'title': entry.get('title'),
