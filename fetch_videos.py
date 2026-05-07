@@ -1,3 +1,5 @@
+__version__ = "2026.05.07-v2"
+
 import json
 from datetime import datetime
 import yt_dlp
@@ -9,11 +11,11 @@ CHANNELS = [
     "https://rumble.com/c/WarningTVJonathanHansen/livestreams",
 ]
 
-print("🚀 Fetching videos from WMI WarningTV sections...")
+print(f"v{__version__} - Fetching videos from WMI WarningTV sections...")
 
 all_videos = []
 
-# Headers that work well on Mac
+# Headers that work well
 ydl_opts = {
     'extract_flat': True,
     'quiet': True,
@@ -41,33 +43,29 @@ for url in CHANNELS:
         entries = info.get('entries', []) if info else []
         print(f"     Found {len(entries)} items")
 
-        # Debug: show sample entry structure
-        if entries:
-            print(f"     Sample entry keys: {list(entries[0].keys())}")
-            print(f"     Sample entry: {entries[0]}")
-
         for entry in entries:
             if not entry:
                 continue
-            title = entry.get('title')
-            url_val = entry.get('url')
-            if not title or not url_val:
+            raw_url = entry.get('url', '')
+            if not raw_url:
                 continue
+            
+            # Generate a readable title from the URL slug
+            slug = raw_url.split('/')[-1].split('?')[0].replace('.html', '')
+            title = slug.replace('-', ' ').replace('_', ' ').title()
+            
             video = {
                 'title': title,
-                'url': url_val if url_val.startswith('http') else f"https://rumble.com{url_val}",
+                'url': raw_url if raw_url.startswith('http') else f"https://rumble.com{raw_url}",
                 'id': entry.get('id'),
-                'duration': entry.get('duration'),
-                'upload_date': entry.get('upload_date'),
-                'view_count': entry.get('view_count'),
                 'type': url.split('/')[-1],
             }
             all_videos.append(video)
     except Exception as e:
         print(f"   ⚠️ Error on {url}: {type(e).__name__}: {e}")
 
-# Sort newest first
-all_videos.sort(key=lambda x: x.get('upload_date') or '19000101', reverse=True)
+# Sort newest first (by position since we don't have dates from flat extraction)
+all_videos = all_videos[:300]  # Reasonable limit
 
 output = {
     "last_updated": datetime.now().isoformat(),
