@@ -18,6 +18,7 @@ The CMS snippet currently expects:
 from __future__ import annotations
 
 import argparse
+import importlib.util
 import json
 import re
 import sys
@@ -40,18 +41,6 @@ DEFAULT_URLS = [
     "https://rumble.com/c/WarningTVJonathanHansen/shorts",
     "https://rumble.com/c/WarningTVJonathanHansen/livestreams",
 ]
-REMOVE_GUIDS = {
-    "434910718",  # Duplicate part listing
-    "434910604",  # Duplicate part listing
-}
-OVERRIDES_BY_GUID = {
-    "435104480": {
-        "pub_date": "Thu, 29 Apr 2026 22:07:53 -0400",
-    },
-    "434910266": {
-        "title": "Reverends Dr. Jonathan Hansen & Dr Adalia Hansen - Deliverance Church Kitengala Kenya",
-    },
-}
 
 
 CARD_RE = re.compile(
@@ -232,39 +221,18 @@ def build_feed(urls: list[str], max_pages: int, delay: float, verbose: bool) -> 
     return unique
 
 
-def apply_custom_fixes(items: list[FeedItem]) -> list[FeedItem]:
-    fixed: list[FeedItem] = []
+def load_custom_update_hook():
+    hook_path = Path(__file__).with_name("custom_update.py")
+    if not hook_path.exists():
+        return None
 
-    for item in items:
-        if item.video_id in REMOVE_GUIDS:
-            continue
+    spec = importlib.util.spec_from_file_location("custom_update", hook_path)
+    if spec is None or spec.loader is None:
+        return None
 
-        overrides = OVERRIDES_BY_GUID.get(item.video_id)
-        if not overrides:
-            fixed.append(item)
-            continue
-
-        pub_date = overrides.get("pub_date", item.pub_date)
-        timestamp = item.timestamp
-        if pub_date != item.pub_date:
-            _, parsed_timestamp = parse_datetime(pub_date)
-            if parsed_timestamp != float("-inf"):
-                timestamp = parsed_timestamp
-
-        fixed.append(
-            FeedItem(
-                title=overrides.get("title", item.title),
-                link=overrides.get("link", item.link),
-                pub_date=pub_date,
-                thumb=overrides.get("thumb", item.thumb),
-                source_page=overrides.get("source_page", item.source_page),
-                video_id=item.video_id,
-                timestamp=timestamp,
-            )
-        )
-
-    fixed.sort(key=lambda item: item.timestamp, reverse=True)
-    return fixed
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return getattr(module, "apply_custom_updates", None)
 
 
 def write_feed(path: Path, items: list[FeedItem], limit: int) -> None:
@@ -312,7 +280,9 @@ def main() -> int:
         print("No Rumble items found. Rumble may have changed its page HTML.", file=sys.stderr)
         return 1
 
-    items = apply_custom_fixes(items)
+    custom_update = load_custom_update_hook()
+    if custom_update:
+        items = custom_update(items, parse_datetime)
 
     write_feed(output_path, items, limit=max(1, args.limit))
     print(f"Wrote {min(len(items), args.limit)} items to {output_path}")
