@@ -260,6 +260,7 @@ def parse_args() -> argparse.Namespace:
 
 def main() -> int:
     args = parse_args()
+    print(f"[{datetime.now().isoformat()}] Starting rumble feed generation")
     output_path = Path(args.output)
 
     if args.input:
