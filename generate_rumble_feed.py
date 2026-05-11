@@ -37,9 +37,9 @@ from urllib.request import Request, urlopen
 RUMBLE_BASE = "https://rumble.com"
 DEFAULT_OUTPUT = "docs/rumble-feed.json"
 DEFAULT_URLS = [
-    "https://rumble.com/c/WarningTVJonathanHansen/videos",
-    "https://rumble.com/c/WarningTVJonathanHansen/shorts",
-    "https://rumble.com/c/WarningTVJonathanHansen/livestreams",
+    "https://rumble.com/user/DrJonathanHansenWMI/videos",
+    "https://rumble.com/user/DrJonathanHansenWMI/shorts",
+    "https://rumble.com/user/DrJonathanHansenWMI/livestreams",
 ]
 
 
