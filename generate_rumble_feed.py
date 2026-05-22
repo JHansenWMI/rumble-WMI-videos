@@ -20,10 +20,12 @@ from __future__ import annotations
 import argparse
 import importlib.util
 import json
+import random
 import re
 import sys
 import time
 from dataclasses import dataclass
+from dataclasses import replace
 from datetime import datetime
 from email.utils import format_datetime
 from html import unescape
@@ -60,9 +62,11 @@ class FeedItem:
     source_page: str
     video_id: str
     timestamp: float
+    channel_name: str = ""
+    channel_url: str = ""
 
     def as_json(self) -> dict[str, str]:
-        return {
+        item = {
             "title": self.title,
             "link": self.link,
             "pubDate": self.pub_date,
@@ -70,6 +74,17 @@ class FeedItem:
             "guid": self.video_id,
             "sourcePage": self.source_page,
         }
+        if self.channel_name:
+            item["channelName"] = self.channel_name
+        if self.channel_url:
+            item["channelUrl"] = self.channel_url
+        return item
+
+
+@dataclass(frozen=True)
+class ChannelInfo:
+    name: str = ""
+    url: str = ""
 
 
 def read_urls(path: Path) -> list[str]:
@@ -80,6 +95,44 @@ def read_urls(path: Path) -> list[str]:
             continue
         urls.append(line)
     return urls
+
+
+def channel_cache_keys(link: str, video_id: str) -> list[str]:
+    keys: list[str] = []
+    if link:
+        keys.append(f"link:{link}")
+    if video_id:
+        keys.append(f"guid:{video_id}")
+    return keys
+
+
+def load_channel_cache(path: Path) -> dict[str, ChannelInfo]:
+    if not path.exists():
+        return {}
+
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError as exc:
+        print(f"Warning: failed to read channel cache from {path}: {exc}", file=sys.stderr)
+        return {}
+
+    cache: dict[str, ChannelInfo] = {}
+    for item in payload.get("items", []):
+        if not isinstance(item, dict):
+            continue
+
+        raw_channel_url = str(item.get("channelUrl") or "")
+        channel = ChannelInfo(
+            name=clean_text(str(item.get("channelName") or "")),
+            url=clean_link(raw_channel_url) if raw_channel_url else "",
+        )
+        if not channel.name and not channel.url:
+            continue
+
+        for key in channel_cache_keys(str(item.get("link") or ""), str(item.get("guid") or "")):
+            cache[key] = channel
+
+    return cache
 
 
 def page_url(base_url: str, page: int) -> str:
@@ -143,6 +196,32 @@ def extract_first(pattern: str, text: str) -> str:
     return match.group(1) if match else ""
 
 
+def polite_sleep(delay: float) -> None:
+    if delay <= 0:
+        return
+
+    time.sleep(delay * random.uniform(0.75, 1.25))
+
+
+def parse_channel_info(html: str) -> ChannelInfo:
+    container = extract_first(
+        r'(<div\b[^>]*\bdata-js="media_channel_container"[^>]*>.*?</a>\s*</div>)',
+        html,
+    )
+    if not container:
+        return ChannelInfo()
+
+    link_tag = extract_first(r'(<a\b[^>]*\bclass="[^"]*\bmedia-by--a\b[^"]*"[^>]*>)', container)
+    name = clean_text(
+        extract_first(
+            r'<div\b[^>]*\bclass="[^"]*\bmedia-heading-name\b[^"]*\btruncate\b[^"]*"[^>]*>(.*?)</div>',
+            container,
+        )
+    )
+    url = clean_link(attr_value(link_tag, "href"))
+    return ChannelInfo(name=name, url=url)
+
+
 def parse_items(html: str, source_page: str) -> list[FeedItem]:
     items: list[FeedItem] = []
 
@@ -190,11 +269,67 @@ def unique_by_link(items: Iterable[FeedItem]) -> list[FeedItem]:
     return unique
 
 
+def cached_channel_info(cache: dict[str, ChannelInfo], item: FeedItem) -> ChannelInfo | None:
+    for key in channel_cache_keys(item.link, item.video_id):
+        channel = cache.get(key)
+        if channel:
+            return channel
+    return None
+
+
+def cache_channel_info(cache: dict[str, ChannelInfo], item: FeedItem, channel: ChannelInfo) -> None:
+    for key in channel_cache_keys(item.link, item.video_id):
+        cache[key] = channel
+
+
+def enrich_channel_details(
+    items: list[FeedItem],
+    limit: int,
+    delay: float,
+    verbose: bool,
+    channel_cache: dict[str, ChannelInfo] | None = None,
+) -> list[FeedItem]:
+    enriched: list[FeedItem] = []
+    channel_cache = dict(channel_cache or {})
+    selected_count = min(len(items), limit)
+
+    for index, item in enumerate(items):
+        if index >= selected_count:
+            enriched.append(item)
+            continue
+
+        cached_channel = cached_channel_info(channel_cache, item)
+        if cached_channel:
+            channel = cached_channel
+            if verbose:
+                print(f"Reusing channel details for {item.link}", file=sys.stderr)
+        else:
+            polite_sleep(delay)
+            if verbose:
+                print(f"Fetching channel details for {item.link}", file=sys.stderr)
+
+            try:
+                channel = parse_channel_info(fetch_html(item.link))
+            except (HTTPError, URLError, TimeoutError) as exc:
+                print(f"Warning: failed to fetch channel details for {item.link}: {exc}", file=sys.stderr)
+                channel = ChannelInfo()
+
+            cache_channel_info(channel_cache, item, channel)
+
+        enriched.append(replace(item, channel_name=channel.name, channel_url=channel.url))
+
+    return enriched
+
+
 def build_feed(urls: list[str], max_pages: int, delay: float, verbose: bool) -> list[FeedItem]:
     all_items: list[FeedItem] = []
+    request_count = 0
 
     for base_url in urls:
         for page in range(1, max_pages + 1):
+            if request_count:
+                polite_sleep(delay)
+
             url = page_url(base_url, page)
             if verbose:
                 print(f"Fetching {url}", file=sys.stderr)
@@ -204,6 +339,7 @@ def build_feed(urls: list[str], max_pages: int, delay: float, verbose: bool) -> 
             except (HTTPError, URLError, TimeoutError) as exc:
                 print(f"Warning: failed to fetch {url}: {exc}", file=sys.stderr)
                 break
+            request_count += 1
 
             items = parse_items(html, base_url)
             if verbose:
@@ -213,8 +349,6 @@ def build_feed(urls: list[str], max_pages: int, delay: float, verbose: bool) -> 
                 break
 
             all_items.extend(items)
-            if delay and page != max_pages:
-                time.sleep(delay)
 
     unique = unique_by_link(all_items)
     unique.sort(key=lambda item: item.timestamp, reverse=True)
@@ -253,7 +387,17 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--output", default=DEFAULT_OUTPUT, help=f"JSON output file. Default: {DEFAULT_OUTPUT!r}")
     parser.add_argument("--limit", type=int, default=30, help="Number of feed items to write. Default: 30")
     parser.add_argument("--pages", type=int, default=2, help="Pages to fetch per Rumble URL. Default: 2")
-    parser.add_argument("--delay", type=float, default=0.5, help="Delay between pages for the same URL. Default: 0.5")
+    parser.add_argument(
+        "--delay",
+        type=float,
+        default=2.0,
+        help="Base delay between Rumble requests, with small jitter. Default: 2.0",
+    )
+    parser.add_argument(
+        "--no-channel-details",
+        action="store_true",
+        help="Skip fetching each selected video page for channelName and channelUrl.",
+    )
     parser.add_argument("--verbose", action="store_true", help="Print fetch progress.")
     return parser.parse_args()
 
@@ -285,7 +429,18 @@ def main() -> int:
     if custom_update:
         items = custom_update(items, parse_datetime)
 
-    write_feed(output_path, items, limit=max(1, args.limit))
+    limit = max(1, args.limit)
+    if not args.no_channel_details:
+        channel_cache = load_channel_cache(output_path)
+        items = enrich_channel_details(
+            items,
+            limit=limit,
+            delay=max(0, args.delay),
+            verbose=args.verbose,
+            channel_cache=channel_cache,
+        )
+
+    write_feed(output_path, items, limit=limit)
     print(f"Wrote {min(len(items), args.limit)} items to {output_path}")
     return 0
 
