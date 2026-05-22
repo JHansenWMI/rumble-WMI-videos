@@ -386,7 +386,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--input", help="Optional URL list file. If omitted, built-in Rumble URLs are used.")
     parser.add_argument("--output", default=DEFAULT_OUTPUT, help=f"JSON output file. Default: {DEFAULT_OUTPUT!r}")
     parser.add_argument("--limit", type=int, default=30, help="Number of feed items to write. Default: 30")
-    parser.add_argument("--pages", type=int, default=2, help="Pages to fetch per Rumble URL. Default: 2")
+    parser.add_argument("--pages", type=int, default=1, help="Pages to fetch per Rumble URL. Default: 1")
     parser.add_argument(
         "--delay",
         type=float,
