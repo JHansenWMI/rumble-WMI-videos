@@ -26,17 +26,20 @@ git pull --ff-only origin main
 
 log "Generating feed"
 python3 "$SCRIPT_DIR/generate_rumble_feed.py"
+python3 "$SCRIPT_DIR/generate_rumble_feed.py" \
+  --input "$SCRIPT_DIR/docs/overcoming-urls.txt" \
+  --output "$SCRIPT_DIR/docs/overcoming-feed.json"
 
-git add docs/rumble-feed.json
+git add docs/rumble-feed.json docs/overcoming-feed.json
 
-if git diff --cached --ignore-matching-lines=generatedAt --quiet -- docs/rumble-feed.json; then
-  git restore --staged docs/rumble-feed.json
-  git restore docs/rumble-feed.json
-  echo "$(date '+%Y-%m-%d %H:%M:%S') docs/rumble-feed.json did not change. Nothing to commit."
+if git diff --cached --ignore-matching-lines=generatedAt --quiet -- docs/rumble-feed.json docs/overcoming-feed.json; then
+  git restore --staged docs/rumble-feed.json docs/overcoming-feed.json
+  git restore docs/rumble-feed.json docs/overcoming-feed.json
+  echo "$(date '+%Y-%m-%d %H:%M:%S') feed files did not change. Nothing to commit."
   exit 0
 fi
 
-git commit -m "Update docs/rumble-feed.json"
+git commit -m "Update Rumble feed JSON files"
 log "Pushing to origin/main"
 git push origin main
 log "Done"
