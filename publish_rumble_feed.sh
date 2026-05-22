@@ -25,7 +25,8 @@ git fetch origin
 git pull --ff-only origin main
 
 log "Generating feed"
-python3 "$SCRIPT_DIR/generate_rumble_feed.py"
+python3 "$SCRIPT_DIR/generate_rumble_feed.py" \
+  --input "$SCRIPT_DIR/docs/rumble-urls.txt"
 python3 "$SCRIPT_DIR/generate_rumble_feed.py" \
   --input "$SCRIPT_DIR/docs/overcoming-urls.txt" \
   --output "$SCRIPT_DIR/docs/overcoming-feed.json"

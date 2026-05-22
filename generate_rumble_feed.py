@@ -87,14 +87,43 @@ class ChannelInfo:
     url: str = ""
 
 
-def read_urls(path: Path) -> list[str]:
-    urls: list[str] = []
-    for raw_line in path.read_text(encoding="utf-8").splitlines():
-        line = raw_line.strip()
-        if not line or line.startswith("#"):
-            continue
-        urls.append(line)
+@dataclass(frozen=True)
+class RumbleSource:
+    url: str
+    pages: int = 1
+
+
+def parse_source_line(line: str, line_number: int) -> RumbleSource | None:
+    content = line.split("#", 1)[0].strip()
+    if not content:
+        return None
+
+    parts = content.split()
+    url = parts[0]
+    pages = 1
+
+    for part in parts[1:]:
+        key, separator, value = part.partition("=")
+        if separator and key.lower() in {"page", "pages"}:
+            try:
+                pages = max(1, int(value))
+            except ValueError:
+                print(f"Warning: invalid pages value on line {line_number}: {part}", file=sys.stderr)
+
+    return RumbleSource(url=url, pages=pages)
+
+
+def read_urls(path: Path) -> list[RumbleSource]:
+    urls: list[RumbleSource] = []
+    for line_number, raw_line in enumerate(path.read_text(encoding="utf-8").splitlines(), start=1):
+        source = parse_source_line(raw_line, line_number)
+        if source:
+            urls.append(source)
     return urls
+
+
+def default_sources() -> list[RumbleSource]:
+    return [RumbleSource(url=url) for url in DEFAULT_URLS]
 
 
 def channel_cache_keys(link: str, video_id: str) -> list[str]:
@@ -321,16 +350,17 @@ def enrich_channel_details(
     return enriched
 
 
-def build_feed(urls: list[str], max_pages: int, delay: float, verbose: bool) -> list[FeedItem]:
+def build_feed(urls: list[RumbleSource], max_pages: int, delay: float, verbose: bool) -> list[FeedItem]:
     all_items: list[FeedItem] = []
     request_count = 0
 
-    for base_url in urls:
-        for page in range(1, max_pages + 1):
+    for source in urls:
+        source_pages = min(max_pages, source.pages)
+        for page in range(1, source_pages + 1):
             if request_count:
                 polite_sleep(delay)
 
-            url = page_url(base_url, page)
+            url = page_url(source.url, page)
             if verbose:
                 print(f"Fetching {url}", file=sys.stderr)
 
@@ -341,7 +371,7 @@ def build_feed(urls: list[str], max_pages: int, delay: float, verbose: bool) -> 
                 break
             request_count += 1
 
-            items = parse_items(html, base_url)
+            items = parse_items(html, source.url)
             if verbose:
                 print(f"  found {len(items)} items", file=sys.stderr)
 
@@ -386,7 +416,12 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--input", help="Optional URL list file. If omitted, built-in Rumble URLs are used.")
     parser.add_argument("--output", default=DEFAULT_OUTPUT, help=f"JSON output file. Default: {DEFAULT_OUTPUT!r}")
     parser.add_argument("--limit", type=int, default=30, help="Number of feed items to write. Default: 30")
-    parser.add_argument("--pages", type=int, default=1, help="Pages to fetch per Rumble URL. Default: 1")
+    parser.add_argument(
+        "--pages",
+        type=int,
+        default=100,
+        help="Safety cap for pages per Rumble URL. URL list lines opt in with pages=N. Default: 100",
+    )
     parser.add_argument(
         "--delay",
         type=float,
@@ -414,7 +449,7 @@ def main() -> int:
             return 2
         urls = read_urls(input_path)
     else:
-        urls = DEFAULT_URLS
+        urls = default_sources()
 
     if not urls:
         print("No Rumble URLs configured.", file=sys.stderr)
