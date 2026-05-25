@@ -4,7 +4,6 @@
 <div class="rw-grid" id="rwGrid" style="display: none;"></div>
 </div>
 <style><!--
-  /* Scope all styles to the widget root to avoid messing with your CMS */
   .rw-root { width: 100%; }
 
   .rw-status {
@@ -13,17 +12,15 @@
     padding: 8px 0;
   }
 
-  /* Responsive grid that naturally reflows with available content width */
   .rw-grid {
     display: grid;
     gap: 14px;
-    /* 3->2->1 automatically based on actual available width */
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     align-items: stretch;
   }
 
   .rw-card {
-    position: relative; /* needed for overlay link */
+    position: relative;
     border-radius: 10px;
     overflow: hidden;
     background: rgba(0,0,0,0.03);
@@ -55,7 +52,6 @@
     width: 100%;
     height: 100%;
     display: block;
-    /* Crop shorts/thumbnails to 16:9 without distortion */
     object-fit: cover;
   }
 
@@ -79,7 +75,6 @@
   .rw-title {
     font-weight: 650;
     margin: 0 0 6px 0;
-    /* avoid huge cards when title is long */
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
@@ -91,31 +86,24 @@
     font-size: 13px;
   }
 
-  /* Full-card link overlay */
   .rw-linkOverlay {
     position: absolute;
     inset: 0;
     z-index: 2;
     text-decoration: none;
     color: inherit;
-    /* ensure it’s clickable even on whitespace */
     background: transparent;
   }
 
-  /* Optional hover affordance */
   .rw-card:hover { filter: brightness(0.98); }
   .rw-card:active { filter: brightness(0.96); }
 
-  /* If you want slightly smaller minimum cards on tiny layouts */
   @media (max-width: 380px) {
     .rw-grid { grid-template-columns: 1fr; }
   }
 --></style>
 <script type="text/javascript">// <![CDATA[
 (async function () {
-//const FEEDS = [
-//  "https://raw.githubusercontent.com/JHansenWMI/rumble-WMI-videos/main/rumble-feed.json"
-//];
 const FEEDS = [
   "https://jhansenwmi.github.io/rumble-WMI-videos/rumble-feed.json"
 ];
@@ -123,28 +111,22 @@ const FEEDS = [
   const statusEl = document.getElementById("rwStatus");
   const gridEl = document.getElementById("rwGrid");
 
-  // --- helpers ---
   function escapeHtml(str) {
-    return String(str).replace(/[&<>"']/g, m => ({
-      "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
-    }[m]));
+    return String(str).replace(/[&<>"']/g, function (m) {
+      return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m];
+    });
   }
 
-function normalizeTitle(t) {
-  const s = String(t || "").replace(/\s+/g, " ").trim(); // collapses newlines too
-  return stripTrailingDate(s);
-}
+  function normalizeTitle(t) {
+    const s = String(t || "").replace(/\s+/g, " ").trim();
+    return stripTrailingDate(s);
+  }
 
-function stripTrailingDate(title) {
-  // Removes only if the date is at the very end of the title.
-  // Supports:
-  //  - " - Feb 16, 2026"
-  //  - " - Jan 29th 2026"
-  //  - (and handles odd whitespace/newlines because we normalized first)
-  const re = /\s*-\s*(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s+\d{1,2}(?:st|nd|rd|th)?(?:,)?\s+\d{4}\s*$/i;
-  return title.replace(re, "").trim();
-}
-  // Use LA time zone for date display regardless of client time zone
+  function stripTrailingDate(title) {
+    const re = /\s*-\s*(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s+\d{1,2}(?:st|nd|rd|th)?(?:,)?\s+\d{4}\s*$/i;
+    return title.replace(re, "").trim();
+  }
+
   const dateFmt = new Intl.DateTimeFormat("en-US", {
     timeZone: "America/Los_Angeles",
     month: "short",
@@ -155,12 +137,10 @@ function stripTrailingDate(title) {
   function formatDateLA(pubDateStr) {
     const d = new Date(pubDateStr);
     if (isNaN(d.getTime())) return "";
-    // "Feb 18, 2026"
     return dateFmt.format(d);
   }
 
   function getThumb(item) {
-    // Your feed uses "media:content" for the thumbnail URL
     return item && item["media:content"] ? String(item["media:content"]) : "";
   }
 
@@ -182,7 +162,6 @@ function stripTrailingDate(title) {
   function sortByDateDesc(a, b) {
     const da = new Date(getPubDate(a)).getTime();
     const db = new Date(getPubDate(b)).getTime();
-    // If parse fails, treat as older
     return (isNaN(db) ? -Infinity : db) - (isNaN(da) ? -Infinity : da);
   }
 
@@ -192,7 +171,6 @@ function stripTrailingDate(title) {
     return res.json();
   }
 
-  // --- main ---
   try {
     const results = await Promise.allSettled(FEEDS.map(fetchFeed));
 
@@ -217,10 +195,8 @@ function stripTrailingDate(title) {
 
     items.sort(sortByDateDesc);
 
-	// Only show newest 30
-	items = items.slice(0, 30);
-	
-    // Render ALL items (per your spec)
+    items = items.slice(0, 30);
+
     const html = items.map(item => {
       const title = normalizeTitle(item.title);
       const link = getLink(item);
@@ -249,7 +225,6 @@ function stripTrailingDate(title) {
     gridEl.style.display = "grid";
 
     if (errors.length) {
-      // Still show videos if at least one feed worked
       statusEl.textContent = "Loaded videos (one or more feeds failed).";
       console.warn("Some feeds failed:", errors);
     } else {
@@ -338,10 +313,7 @@ function stripTrailingDate(title) {
     }
   });
 
-  // ---- session gating (no cookies) ----
   const sessionKey = "wm_counted:" + PAGE_ID;
-
-  // If not yet counted this tab-session -> /count (writes once). Otherwise /peek (read-only).
   const endpoint = sessionStorage.getItem(sessionKey) ? "/peek" : "/count";
 
   fetch(WORKER_BASE + endpoint + "?page=" + encodeURIComponent(PAGE_ID))
@@ -356,7 +328,6 @@ function stripTrailingDate(title) {
     })
     .catch(() => setCounterText("(counts unavailable)"));
 
-  // Details click
   counterBox.addEventListener("click", () => {
     if (busy) return;
     setBusy(true);
