@@ -232,13 +232,38 @@ def polite_sleep(delay: float) -> None:
     time.sleep(delay * random.uniform(0.75, 1.25))
 
 
+def parse_embedded_channel_info(html: str) -> ChannelInfo:
+    decoder = json.JSONDecoder()
+
+    for match in re.finditer(r'"by"\s*:\s*{', html):
+        object_start = html.find("{", match.start())
+        if object_start == -1:
+            continue
+
+        try:
+            payload, _ = decoder.raw_decode(html[object_start:])
+        except json.JSONDecodeError:
+            continue
+
+        if not isinstance(payload, dict) or payload.get("type") != "channel":
+            continue
+
+        name = clean_text(str(payload.get("name") or payload.get("title") or ""))
+        raw_url = str(payload.get("url") or payload.get("relative_url") or "")
+        url = clean_link(raw_url) if raw_url else ""
+        if name or url:
+            return ChannelInfo(name=name, url=url)
+
+    return ChannelInfo()
+
+
 def parse_channel_info(html: str) -> ChannelInfo:
     container = extract_first(
         r'(<div\b[^>]*\bdata-js="media_channel_container"[^>]*>.*?</a>\s*</div>)',
         html,
     )
     if not container:
-        return ChannelInfo()
+        return parse_embedded_channel_info(html)
 
     link_tag = extract_first(r'(<a\b[^>]*\bclass="[^"]*\bmedia-by--a\b[^"]*"[^>]*>)', container)
     name = clean_text(

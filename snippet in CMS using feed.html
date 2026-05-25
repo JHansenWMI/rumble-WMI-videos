@@ -30,18 +30,45 @@
   }
 
   .rw-thumbWrap {
+    position: relative;
     width: 100%;
     aspect-ratio: 16 / 9;
     background: rgba(0,0,0,0.08);
     overflow: hidden;
   }
 
+  .rw-thumbWrap::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: var(--rw-thumb-bg, none);
+    background-position: center;
+    background-size: cover;
+    filter: blur(16px);
+    opacity: 0;
+    transform: scale(1.08);
+  }
+
   .rw-thumb {
+    position: relative;
+    z-index: 1;
     width: 100%;
     height: 100%;
     display: block;
     /* Crop shorts/thumbnails to 16:9 without distortion */
     object-fit: cover;
+  }
+
+  .rw-card--short .rw-thumbWrap {
+    background: #111;
+  }
+
+  .rw-card--short .rw-thumbWrap::before {
+    opacity: 0.55;
+  }
+
+  .rw-card--short .rw-thumb {
+    object-fit: contain;
   }
 
   .rw-meta {
@@ -145,6 +172,13 @@ function stripTrailingDate(title) {
     return item && item.pubDate ? String(item.pubDate) : "";
   }
 
+  function isShort(item) {
+    const link = getLink(item);
+    const source = item && item.sourcePage ? String(item.sourcePage) : "";
+    const title = item && item.title ? String(item.title) : "";
+    return /\/shorts(\/|$)/i.test(link) || /\/shorts(\/|$)/i.test(source) || /#shorts\b/i.test(title);
+  }
+
   function sortByDateDesc(a, b) {
     const da = new Date(getPubDate(a)).getTime();
     const db = new Date(getPubDate(b)).getTime();
@@ -192,10 +226,12 @@ function stripTrailingDate(title) {
       const link = getLink(item);
       const thumb = getThumb(item);
       const date = formatDateLA(getPubDate(item));
+      const shortClass = isShort(item) ? " rw-card--short" : "";
+      const thumbStyle = thumb ? ` style="--rw-thumb-bg: url('${escapeHtml(thumb)}')"` : "";
 
       return `
-        <div class="rw-card">
-          <div class="rw-thumbWrap">
+        <div class="rw-card${shortClass}">
+          <div class="rw-thumbWrap"${thumbStyle}>
             ${thumb ? `<img class="rw-thumb" src="${escapeHtml(thumb)}" >` : ""}
           </div>
 
