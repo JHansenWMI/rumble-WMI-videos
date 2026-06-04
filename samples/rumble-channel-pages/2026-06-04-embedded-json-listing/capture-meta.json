@@ -1,0 +1,13 @@
+{
+  "capturedAt": "2026-06-04T14:03:29.200426+00:00",
+  "sourceUrl": "https://rumble.com/user/DrJonathanHansenWMI/videos",
+  "iteration": "2026-06-04-embedded-json-listing",
+  "htmlBytes": 470250,
+  "markers": {
+    "videostream": 0,
+    "data-video-id": 0,
+    "thumbnail__title": 0,
+    "embeddedItemsJson": true,
+    "embeddedItemCount": 25
+  }
+}
