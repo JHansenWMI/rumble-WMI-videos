@@ -27,8 +27,8 @@ def apply_custom_updates(items, parse_datetime):
 
         pub_date = overrides.get("pub_date", item.pub_date)
         timestamp = item.timestamp
-        if pub_date != item.pub_date:
-            _, parsed_timestamp = parse_datetime(pub_date)
+        if "pub_date" in overrides:
+            pub_date, parsed_timestamp = parse_datetime(pub_date)
             if parsed_timestamp != float("-inf"):
                 timestamp = parsed_timestamp
 

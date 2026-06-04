@@ -26,8 +26,9 @@ import sys
 import time
 from dataclasses import dataclass
 from dataclasses import replace
-from datetime import datetime
-from email.utils import format_datetime
+from datetime import datetime, timezone
+from email.utils import format_datetime, parsedate_to_datetime
+from zoneinfo import ZoneInfo
 from html import unescape
 from pathlib import Path
 from typing import Iterable
@@ -37,6 +38,7 @@ from urllib.request import Request, urlopen
 
 
 RUMBLE_BASE = "https://rumble.com"
+PACIFIC = ZoneInfo("America/Los_Angeles")
 DEFAULT_OUTPUT = "docs/rumble-feed.json"
 DEFAULT_URLS = [
     "https://rumble.com/user/DrJonathanHansenWMI/videos",
@@ -212,12 +214,20 @@ def parse_datetime(value: str) -> tuple[str, float]:
     if not value:
         return "", float("-inf")
 
+    dt: datetime | None = None
     try:
         dt = datetime.fromisoformat(value)
     except ValueError:
-        return value, float("-inf")
+        try:
+            dt = parsedate_to_datetime(value)
+        except (TypeError, ValueError):
+            return value, float("-inf")
 
-    return format_datetime(dt), dt.timestamp()
+    if dt.tzinfo is None:
+        dt = dt.replace(tzinfo=timezone.utc)
+
+    pacific = dt.astimezone(PACIFIC)
+    return format_datetime(pacific), pacific.timestamp()
 
 
 def extract_first(pattern: str, text: str) -> str:
@@ -230,6 +240,66 @@ def polite_sleep(delay: float) -> None:
         return
 
     time.sleep(delay * random.uniform(0.75, 1.25))
+
+
+def parse_embedded_listing_items(html: str, source_page: str) -> list[FeedItem]:
+    """Parse video cards from Rumble's embedded listing JSON (replaces videostream HTML)."""
+    items: list[FeedItem] = []
+    decoder = json.JSONDecoder()
+
+    for match in re.finditer(r'\{"items":\[', html):
+        try:
+            payload, _ = decoder.raw_decode(html[match.start():])
+        except json.JSONDecodeError:
+            continue
+
+        if not isinstance(payload, dict):
+            continue
+
+        for entry in payload.get("items", []):
+            if not isinstance(entry, dict):
+                continue
+
+            object_type = entry.get("object_type")
+            if object_type and object_type != "video":
+                continue
+
+            title = clean_text(str(entry.get("title") or ""))
+            raw_url = str(entry.get("url") or entry.get("relative_url") or "")
+            link = clean_link(raw_url) if raw_url else ""
+            thumb = str(entry.get("thumb") or "")
+            video_id = str(entry.get("id") or "")
+            pub_date, timestamp = parse_datetime(str(entry.get("upload_date") or ""))
+
+            channel_name = ""
+            channel_url = ""
+            by = entry.get("by")
+            if isinstance(by, dict) and by.get("type") == "channel":
+                channel_name = clean_text(str(by.get("name") or by.get("title") or ""))
+                raw_channel_url = str(by.get("url") or by.get("relative_url") or "")
+                channel_url = clean_link(raw_channel_url) if raw_channel_url else ""
+
+            if not title or not link or not pub_date:
+                continue
+
+            items.append(
+                FeedItem(
+                    title=title,
+                    link=link,
+                    pub_date=pub_date,
+                    thumb=thumb,
+                    source_page=source_page,
+                    video_id=video_id,
+                    timestamp=timestamp,
+                    channel_name=channel_name,
+                    channel_url=channel_url,
+                )
+            )
+
+        if items:
+            return items
+
+    return items
 
 
 def parse_embedded_channel_info(html: str) -> ChannelInfo:
@@ -277,6 +347,10 @@ def parse_channel_info(html: str) -> ChannelInfo:
 
 
 def parse_items(html: str, source_page: str) -> list[FeedItem]:
+    embedded = parse_embedded_listing_items(html, source_page)
+    if embedded:
+        return embedded
+
     items: list[FeedItem] = []
 
     for card in CARD_RE.finditer(html):
@@ -352,8 +426,11 @@ def enrich_channel_details(
             enriched.append(item)
             continue
 
-        cached_channel = cached_channel_info(channel_cache, item)
-        if cached_channel:
+        if item.channel_name or item.channel_url:
+            channel = ChannelInfo(name=item.channel_name, url=item.channel_url)
+            if verbose:
+                print(f"Using listing channel details for {item.link}", file=sys.stderr)
+        elif cached_channel := cached_channel_info(channel_cache, item):
             channel = cached_channel
             if verbose:
                 print(f"Reusing channel details for {item.link}", file=sys.stderr)
@@ -428,7 +505,7 @@ def write_feed(path: Path, items: list[FeedItem], limit: int) -> None:
     selected = items[:limit]
     payload = {
         "title": "Rumble videos",
-        "generatedAt": format_datetime(datetime.now().astimezone()),
+        "generatedAt": format_datetime(datetime.now(PACIFIC)),
         "itemCount": len(selected),
         "items": [item.as_json() for item in selected],
     }
