@@ -28,7 +28,6 @@ from dataclasses import dataclass
 from dataclasses import replace
 from datetime import datetime, timezone
 from email.utils import format_datetime, parsedate_to_datetime
-from zoneinfo import ZoneInfo
 from html import unescape
 from pathlib import Path
 from typing import Iterable
@@ -38,7 +37,6 @@ from urllib.request import Request, urlopen
 
 
 RUMBLE_BASE = "https://rumble.com"
-PACIFIC = ZoneInfo("America/Los_Angeles")
 DEFAULT_OUTPUT = "docs/rumble-feed.json"
 DEFAULT_URLS = [
     "https://rumble.com/user/DrJonathanHansenWMI/videos",
@@ -211,6 +209,7 @@ def clean_link(raw_link: str) -> str:
 
 
 def parse_datetime(value: str) -> tuple[str, float]:
+    """Return RFC 2822 pubDate and epoch seconds, always normalized to UTC (+0000)."""
     if not value:
         return "", float("-inf")
 
@@ -226,8 +225,8 @@ def parse_datetime(value: str) -> tuple[str, float]:
     if dt.tzinfo is None:
         dt = dt.replace(tzinfo=timezone.utc)
 
-    pacific = dt.astimezone(PACIFIC)
-    return format_datetime(pacific), pacific.timestamp()
+    utc = dt.astimezone(timezone.utc)
+    return format_datetime(utc), utc.timestamp()
 
 
 def extract_first(pattern: str, text: str) -> str:
@@ -505,7 +504,7 @@ def write_feed(path: Path, items: list[FeedItem], limit: int) -> None:
     selected = items[:limit]
     payload = {
         "title": "Rumble videos",
-        "generatedAt": format_datetime(datetime.now(PACIFIC)),
+        "generatedAt": format_datetime(datetime.now(timezone.utc)),
         "itemCount": len(selected),
         "items": [item.as_json() for item in selected],
     }
