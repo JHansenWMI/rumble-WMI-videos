@@ -659,7 +659,8 @@ To gather evidence + fix:
    (Expect low/zero match count until fixed. Also test against the previous good sample at 2026-06-04-... to ensure no regression.)
 
 4. Trigger Grok to diagnose/fix/test + prepare for review:
-   Run this tool in the /Users/fredchristian/dev/rumble-WMI-videos workspace (or equivalent) and provide:
+   On a dev MacBook (RUMBLE_FEED_MODE=development), the scheduled script also runs a scoped headless Grok attempt automatically (limited tools, max turns, explicit stop conditions). It will either produce a contained fix (left for your review) or a short note in the sample dir.
+   You can also run this tool manually and provide:
    "Rumble parser error triggered again in generate_rumble_feed.py (the 'No Rumble items found. Rumble may have changed...' message).
    New sample captured at samples/rumble-channel-pages/auto-...-rumble-html-change/ (or your dated dir).
    Please:

@@ -24,10 +24,15 @@
     No auto-capture of samples, no git commit/push from this machine,
     no long dev/Grok instructions in the log.
 
-  - "development": rich mode (auto-capture + full instructions).
+  - "development": rich mode.
     Use this on your dev MacBook so that when you (or its launchd) hit a parser
-    failure you get the auto- sample dir + the long prompt telling you how to
-    reproduce with --test-html and ask Grok to fix the parser.
+    failure you get:
+    - auto-captured sample dir (pushed to git)
+    - the full "ACTION REQUIRED" instructions in the log
+    - an automated scoped headless Grok attempt (tight tool limits, max-turns, stop conditions)
+      that tries a contained fix to the parser and verifies with --test-html/--compare-to-items.
+      Edits (if any) and a note are left uncommitted for your manual review.
+    You can resume the named session later with full focus.
 
   After editing the installed plist, remember to unload/reload:
     launchctl unload ~/Library/LaunchAgents/com.jhansenwmi.rumble-feed.plist

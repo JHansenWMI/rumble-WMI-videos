@@ -52,8 +52,13 @@ Optional: `--slug DrJonathanHansenWMI-videos` overrides the output basename (def
 
 **Rich behavior** (set `RUMBLE_FEED_MODE=development` in the launchd plist on your dev MacBook):
 - Auto-captures to `samples/rumble-channel-pages/auto-YYYY-MM-DD-HHMM-rumble-html-change/`
-- Commits + pushes the sample (evidence for the fix).
-- Emits the full "ACTION REQUIRED" instructions (including the prompt you can give the Grok CLI).
+- Commits + pushes the sample.
+- Emits the full "ACTION REQUIRED" instructions.
+- Then runs a **scoped headless Grok attempt** (using `grok -p ... --yolo` with tight tool restrictions, --max-turns, --effort low, and explicit stop conditions).
+  - The agent is limited to reading the new sample + old good sample, running the `--test-html` verification commands, and editing only `generate_rumble_feed.py` (plus writing a note).
+  - Goal: contained diagnosis + small targeted parser fix.
+  - If it cannot produce a clean extraction path quickly, it writes a short `fix-attempt-note.md` describing the new structure, what it tried, and the complication, then stops.
+- Any source edits are left uncommitted for manual review (the run still exits with failure so no feed update occurs). You can resume the named session later with full focus when you have time.
 
 The GH workflow continues to auto-capture for monitoring (it sets development mode explicitly).
 
