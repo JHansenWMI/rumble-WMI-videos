@@ -20,6 +20,7 @@ from __future__ import annotations
 import argparse
 import importlib.util
 import json
+import os
 import random
 import re
 import sys
@@ -535,11 +536,73 @@ def parse_args() -> argparse.Namespace:
         help="Skip fetching each selected video page for channelName and channelUrl.",
     )
     parser.add_argument("--verbose", action="store_true", help="Print fetch progress.")
+    parser.add_argument(
+        "--test-html",
+        metavar="PATH",
+        help="Debug mode: load and parse this local HTML file (from a capture sample) instead of network fetches. Prints parsed count and first few items.",
+    )
+    parser.add_argument(
+        "--test-source",
+        default="https://rumble.com/user/DrJonathanHansenWMI/videos",
+        help="source_page value to associate when using --test-html. Default matches main channel.",
+    )
+    parser.add_argument(
+        "--compare-to-items",
+        metavar="JSONPATH",
+        help="With --test-html, also load this .items.json (from sample) and report how many of the expected items were successfully parsed.",
+    )
+    parser.add_argument(
+        "--production",
+        action="store_true",
+        help="Force safe/production mode (default when RUMBLE_FEED_MODE is unset or 'production'). "
+             "On parser failure, emit only a short message (no long dev/Grok instructions). "
+             "Intended for scheduled runs on the production machine.",
+    )
     return parser.parse_args()
 
 
 def main() -> int:
     args = parse_args()
+
+    if args.test_html:
+        test_path = Path(args.test_html)
+        if not test_path.exists():
+            print(f"Test HTML not found: {test_path}", file=sys.stderr)
+            return 2
+        html = test_path.read_text(encoding="utf-8")
+        source = args.test_source
+        print(f"Testing parse on {test_path} (source={source})")
+        items = parse_items(html, source)
+        print(f"Parsed {len(items)} items")
+        for i, item in enumerate(items[:5]):
+            print(f"  {i+1}. {item.title[:60]}... | {item.pub_date} | {item.link[:50]}")
+        if args.compare_to_items:
+            cmp_path = Path(args.compare_to_items)
+            try:
+                expected = json.loads(cmp_path.read_text(encoding="utf-8"))
+                exp_items = expected.get("items", []) if isinstance(expected, dict) else expected
+                print(f"Sample lists {len(exp_items)} items in JSON")
+                parsed_links = {it.link for it in items}
+                matched = 0
+                sample_titles = []
+                for e in exp_items:
+                    if not isinstance(e, dict):
+                        continue
+                    raw = str(e.get("url") or e.get("relative_url") or "")
+                    elink = clean_link(raw) if raw else ""
+                    etitle = clean_text(str(e.get("title") or ""))
+                    sample_titles.append(etitle)
+                    if elink and elink in parsed_links:
+                        matched += 1
+                    elif etitle and any(etitle[:30] in it.title or it.title[:30] in etitle for it in items):
+                        matched += 1
+                print(f"Matched ~{matched} / {len(exp_items)} expected items by link/title heuristic")
+                if matched == 0 and len(items) > 0:
+                    print("Note: parser found items but no overlap with sample json keys? Check structure.")
+            except Exception as exc:
+                print(f"Could not compare to {cmp_path}: {exc}", file=sys.stderr)
+        return 0
+
     print(f"[{datetime.now().isoformat()}] Starting rumble feed generation")
     output_path = Path(args.output)
 
@@ -559,6 +622,61 @@ def main() -> int:
     items = build_feed(urls, max_pages=max(1, args.pages), delay=max(0, args.delay), verbose=args.verbose)
     if not items:
         print("No Rumble items found. Rumble may have changed its page HTML.", file=sys.stderr)
+
+        is_prod = args.production or (os.environ.get("RUMBLE_FEED_MODE") or "production").lower() == "production"
+        if is_prod:
+            print(
+                "Running in production/safe mode (default when RUMBLE_FEED_MODE is unset or 'production'). "
+                "Auto-capture and full dev/Grok instructions are disabled. "
+                "Perform sample capture + parser fix on your dev MacBook (set RUMBLE_FEED_MODE=development there). "
+                "See samples/rumble-channel-pages/README.md.",
+                file=sys.stderr,
+            )
+        else:
+            print(
+                """
+ACTION REQUIRED: Rumble channel listing HTML appears to have changed.
+The parser in generate_rumble_feed.py (parse_embedded_listing_items + fallback CARD_RE) returned zero items.
+
+To gather evidence + fix:
+
+1. A sample may have been auto-captured (check for new dirs in samples/rumble-channel-pages/auto-*-rumble-html-change/ committed by scheduled run or GH workflow).
+
+   If not present, manually capture for the affected source URLs:
+   python samples/capture_rumble_channel_page.py --iteration "$(date +%Y-%m-%d)-html-change" \
+     --url https://rumble.com/user/DrJonathanHansenWMI/videos
+   (Repeat for /shorts and /livestreams; also for overcoming c-*/videos etc if those feeds are affected.)
+
+2. The new sample dir contains:
+   - *.html (full page response)
+   - capture-meta.json (marker counts e.g. videostream:0, embeddedItemsJson:true/false, item counts)
+   - *.items.json (extracted listing data block, if the {"items": pattern still present)
+
+3. Use the debug CLI (works offline) to confirm current parser behavior against the sample:
+   python generate_rumble_feed.py --test-html samples/rumble-channel-pages/NEW-DIR/DrJonathanHansenWMI-videos.html \
+     --test-source https://rumble.com/user/DrJonathanHansenWMI/videos \
+     --compare-to-items samples/rumble-channel-pages/NEW-DIR/DrJonathanHansenWMI-videos.items.json
+   (Expect low/zero match count until fixed. Also test against the previous good sample at 2026-06-04-... to ensure no regression.)
+
+4. Trigger Grok to diagnose/fix/test + prepare for review:
+   Run this tool in the /Users/fredchristian/dev/rumble-WMI-videos workspace (or equivalent) and provide:
+   "Rumble parser error triggered again in generate_rumble_feed.py (the 'No Rumble items found. Rumble may have changed...' message).
+   New sample captured at samples/rumble-channel-pages/auto-...-rumble-html-change/ (or your dated dir).
+   Please:
+   - Analyze the new .html (via grep with path= to the html file, or read_file + open_page_with_find) to locate the current video listing data (titles, dates, urls, ids, channel 'by' info).
+   - Update parse_embedded_listing_items (primary path) and helpers like parse_embedded_channel_info / parse_items as needed to handle the new Rumble HTML/JSON shape.
+   - Keep the old embedded JSON logic and CARD_RE fallback working for the 2026-06-04 sample (and any older).
+   - Use the --test-html + --compare-to-items commands (for BOTH the new broken sample and the prior good sample) repeatedly to verify during editing that the fix extracts correct items from new format and still works on old.
+   - Optionally improve robustness (e.g. more finditer patterns for json data).
+   - After changes, run the test commands showing success on new sample, run `git diff -- generate_rumble_feed.py samples/capture_rumble_channel_page.py` if touched, and output a clear summary for the user.
+   - End by telling the user the changes are ready for their review (do not auto-push code changes to main; let user decide on commit/PR)."
+
+5. After Grok completes the edits and local verification, you (the user) review the diff and test output. If good, commit the parser fix (typically via PR or direct if small). Once the fixed generate_rumble_feed.py is on main, future scheduled runs (local launchd + GH) will succeed and feeds will update again.
+
+Full context and prior change history is in samples/rumble-channel-pages/README.md and git log.
+""",
+                file=sys.stderr,
+            )
         return 1
 
     custom_update = load_custom_update_hook()

@@ -13,6 +13,34 @@
   <key>WorkingDirectory</key>
   <string>/Users/USERNAME/PATH/TO/rumble-WMI-videos</string>
 
+  <!--
+  Environment variables for the scheduled job.
+
+  RUMBLE_FEED_MODE controls failure behavior for parser changes (Rumble HTML updates):
+
+  - Unset or "production" (the DEFAULT): safe/dumb mode.
+    The production Mac Mini can simply `git pull` with its existing plist.
+    On "No Rumble items found" error: short message only, exit.
+    No auto-capture of samples, no git commit/push from this machine,
+    no long dev/Grok instructions in the log.
+
+  - "development": rich mode (auto-capture + full instructions).
+    Use this on your dev MacBook so that when you (or its launchd) hit a parser
+    failure you get the auto- sample dir + the long prompt telling you how to
+    reproduce with --test-html and ask Grok to fix the parser.
+
+  After editing the installed plist, remember to unload/reload:
+    launchctl unload ~/Library/LaunchAgents/com.jhansenwmi.rumble-feed.plist
+    launchctl load   ~/Library/LaunchAgents/com.jhansenwmi.rumble-feed.plist
+  -->
+  <!--
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>RUMBLE_FEED_MODE</key>
+    <string>development</string>
+  </dict>
+  -->
+
   <key>StandardOutPath</key>
   <string>/Users/USERNAME/Library/Logs/rumble-feed.log</string>
 

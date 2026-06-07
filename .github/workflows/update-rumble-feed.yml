@@ -1,6 +1,10 @@
 name: Update Rumble Feed JSON
 
 on:
+  schedule:
+    # Run periodically so Rumble HTML changes are detected quickly (even if local launchd is down).
+    # Failures will auto-capture a sample and mark the run red (notifications to repo).
+    - cron: "0 */3 * * *" # every 3 hours
   workflow_dispatch:
 
 permissions:
@@ -20,9 +24,44 @@ jobs:
           python-version: "3.12"
 
       - name: Generate feed
+        id: generate
+        continue-on-error: true
+        env:
+          RUMBLE_FEED_MODE: development   # rich error output + consistent with monitoring intent
         run: python generate_rumble_feed.py
 
+      - name: Auto-capture sample on parser failure (for Grok fix)
+        if: steps.generate.outcome == 'failure'
+        run: |
+          echo "Generate failed; auto-capturing current Rumble HTML as sample for diagnosis..."
+          ITERATION="auto-$(date -u +%Y-%m-%d-%H%M)-rumble-html-change"
+          for url in \
+            "https://rumble.com/user/DrJonathanHansenWMI/videos" \
+            "https://rumble.com/user/DrJonathanHansenWMI/shorts" \
+            "https://rumble.com/user/DrJonathanHansenWMI/livestreams"; do
+            python samples/capture_rumble_channel_page.py --iteration "$ITERATION" --url "$url" || true
+          done
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "samples/rumble-channel-pages/$ITERATION" || true
+          if git diff --cached --quiet; then
+            echo "No new sample files to commit"
+          else
+            git commit -m "Auto-captured Rumble channel page samples after generate failure.
+Likely 'No Rumble items found. Rumble may have changed its page HTML.' error.
+New sample under samples/rumble-channel-pages/$ITERATION/
+Use this to trigger Grok to update generate_rumble_feed.py parser + test via --test-html."
+            git push
+          fi
+
+      - name: Fail the workflow if generate step failed
+        if: steps.generate.outcome == 'failure'
+        run: |
+          echo "::error::Rumble feed generation failed (see logs above; sample may have been auto-captured). Parser update required before feeds can resume."
+          exit 1
+
       - name: Commit and push changes
+        if: steps.generate.outcome == 'success'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"

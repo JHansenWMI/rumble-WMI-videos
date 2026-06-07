@@ -106,6 +106,16 @@ def main() -> int:
         return 1
 
     print(f"Wrote sample to {out_dir}")
+    slug = args.slug or default_slug(args.url)
+    html_f = out_dir / f"{slug}.html"
+    items_f = out_dir / f"{slug}.items.json"
+    src = args.url
+    print("To test current parser against this sample (use in Grok fix verification):")
+    print(f"  python generate_rumble_feed.py --test-html {html_f} --test-source {src} \\")
+    if items_f.exists():
+        print(f"    --compare-to-items {items_f}")
+    else:
+        print("    # (no .items.json this time)")
     return 0
 
 
