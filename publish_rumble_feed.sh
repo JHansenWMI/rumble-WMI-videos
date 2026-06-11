@@ -160,7 +160,6 @@ if [ $OVER_STATUS -ne 0 ]; then
     if [ "$MODE" = "development" ]; then
       capture_on_parser_failure \
         "https://rumble.com/c/c-7899090/videos" \
-        "https://rumble.com/c/c-7899090/shorts" \
         "https://rumble.com/c/c-7899090/livestreams"
     fi
   fi

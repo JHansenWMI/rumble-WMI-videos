@@ -1,5 +1,4 @@
 # Add pages=2 after a URL only when that source should scrape beyond page 1.
 # Example: https://rumble.com/example/videos pages=2
 https://rumble.com/c/c-7899090/videos
-https://rumble.com/c/c-7899090/shorts
 https://rumble.com/c/c-7899090/livestreams
