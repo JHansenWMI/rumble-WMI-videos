@@ -159,6 +159,13 @@ const FEEDS = [
     return /\/shorts(\/|$)/i.test(link) || /\/shorts(\/|$)/i.test(source) || /#shorts\b/i.test(title);
   }
 
+  function shouldExclude(item) {
+    const source = item && item.sourcePage ? String(item.sourcePage) : "";
+    const ch = item && item.channelName ? String(item.channelName) : "";
+    if (/\/shorts(\/|$)/i.test(source) && /The Overcoming Women$/i.test(ch)) return true;
+    return false;
+  }
+
   function sortByDateDesc(a, b) {
     const da = new Date(getPubDate(a)).getTime();
     const db = new Date(getPubDate(b)).getTime();
@@ -192,6 +199,8 @@ const FEEDS = [
       console.error("Feed load errors:", errors);
       return;
     }
+
+    items = items.filter(item => !shouldExclude(item));
 
     items.sort(sortByDateDesc);
 
