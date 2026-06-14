@@ -640,7 +640,7 @@ The parser in generate_rumble_feed.py (parse_embedded_listing_items + fallback C
 
 To gather evidence + fix:
 
-1. A sample may have been auto-captured (check for new dirs in samples/rumble-channel-pages/auto-*-rumble-html-change/ committed by scheduled run or GH workflow).
+1. A sample may have been auto-captured (check for new dirs in samples/rumble-channel-pages/auto-*-rumble-html-change/ committed by the scheduled run on the dev machine).
 
    If not present, manually capture for the affected source URLs:
    python samples/capture_rumble_channel_page.py --iteration "$(date +%Y-%m-%d)-html-change" \
@@ -672,7 +672,7 @@ To gather evidence + fix:
    - After changes, run the test commands showing success on new sample, run `git diff -- generate_rumble_feed.py samples/capture_rumble_channel_page.py` if touched, and output a clear summary for the user.
    - End by telling the user the changes are ready for their review (do not auto-push code changes to main; let user decide on commit/PR)."
 
-5. After Grok completes the edits and local verification, you (the user) review the diff and test output. If good, commit the parser fix (typically via PR or direct if small). Once the fixed generate_rumble_feed.py is on main, future scheduled runs (local launchd + GH) will succeed and feeds will update again.
+5. After Grok completes the edits and local verification, you (the user) review the diff and test output. If good, commit the parser fix (typically via PR or direct if small). Once the fixed generate_rumble_feed.py is on main, future scheduled runs (local launchd) will succeed and feeds will update again.
 
 Full context and prior change history is in samples/rumble-channel-pages/README.md and git log.
 """,

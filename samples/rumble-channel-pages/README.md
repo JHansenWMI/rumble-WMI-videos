@@ -43,7 +43,7 @@ Optional: `--slug DrJonathanHansenWMI-videos` overrides the output basename (def
 
 ## Auto-captured failure samples
 
-`publish_rumble_feed.sh` (and the GH workflow) detect the "No Rumble items found. Rumble may have changed its page HTML." error.
+`publish_rumble_feed.sh` (when run with `RUMBLE_FEED_MODE=development` on the dev machine) detects the "No Rumble items found. Rumble may have changed its page HTML." error.
 
 **Default behavior (RUMBLE_FEED_MODE unset or "production")** — used by the production Mac Mini after a plain pull:
 - Short error message only.
@@ -60,9 +60,7 @@ Optional: `--slug DrJonathanHansenWMI-videos` overrides the output basename (def
   - If it cannot produce a clean extraction path quickly, it writes a short `fix-attempt-note.md` describing the new structure, what it tried, and the complication, then stops.
 - Any source edits are left uncommitted for manual review (the run still exits with failure so no feed update occurs). You can resume the named session later with full focus when you have time.
 
-The GH workflow continues to auto-capture for monitoring (it sets development mode explicitly).
-
-See the top-level README and the plist.example for setup details.
+See the top-level README and the plist.example for setup details (the dev MacBook's launchd job runs `publish_rumble_feed.sh` in development mode to perform auto-capture and monitoring).
 
 ## Fixing the parser after a change (with Grok)
 

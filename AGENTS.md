@@ -7,3 +7,6 @@ When entering plan mode or writing a plan.md:
 - Do not add lengthy Context, Trade-offs, Verification, Best Practices, or "Execution Order" sections unless the task has genuine architectural ambiguity.
 - Details (exact files, function names, steps) belong only in the implementation sections when they are actually required to code.
 - The user explicitly prefers concise plans over comprehensive ones.
+
+## Project notes
+- Do not create GitHub Actions workflows (`.yml` files in `.github/workflows`). Rumble's bot protection blocks scrapers running from GitHub; scheduled automation is handled locally via launchd + `publish_rumble_feed.sh` on the Macs.
