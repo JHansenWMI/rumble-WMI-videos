@@ -118,13 +118,19 @@ const FEEDS = [
   }
 
   function normalizeTitle(t) {
-    const s = String(t || "").replace(/\s+/g, " ").trim();
-    return stripTrailingDate(s);
+    let s = String(t || "").replace(/\s+/g, " ").trim();
+    s = stripTVSuffix(s);
+    s = stripTrailingDate(s);
+    return s;
   }
 
   function stripTrailingDate(title) {
     const re = /\s*-\s*(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s+\d{1,2}(?:st|nd|rd|th)?(?:,)?\s+\d{4}\s*$/i;
     return title.replace(re, "").trim();
+  }
+
+  function stripTVSuffix(title) {
+    return title.replace(/\s*TV\d{8}\s*$/i, "").trim();
   }
 
   const dateFmt = new Intl.DateTimeFormat("en-US", {
@@ -166,6 +172,11 @@ const FEEDS = [
     return false;
   }
 
+  function isTVShowItem(item) {
+    const title = item && item.title ? String(item.title) : "";
+    return /TV\d{8}\s*$/i.test(title);
+  }
+
   function sortByDateDesc(a, b) {
     const da = new Date(getPubDate(a)).getTime();
     const db = new Date(getPubDate(b)).getTime();
@@ -200,7 +211,7 @@ const FEEDS = [
       return;
     }
 
-    items = items.filter(item => !shouldExclude(item));
+    items = items.filter(item => !shouldExclude(item) && !isTVShowItem(item));
 
     items.sort(sortByDateDesc);
 

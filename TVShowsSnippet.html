@@ -1,0 +1,253 @@
+<div id="tvRumbleGridWidget" class="rw-root">
+<div class="rw-status" id="tvRwStatus">Loading videos&hellip;</div>
+<div class="rw-grid" id="tvRwGrid" style="display: none;"></div>
+</div>
+<style><!--
+  .rw-root { width: 100%; }
+
+  .rw-status {
+    font: 14px/1.4 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    opacity: 0.8;
+    padding: 8px 0;
+  }
+
+  .rw-grid {
+    display: grid;
+    gap: 14px;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    align-items: stretch;
+  }
+
+  .rw-card {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    background: rgba(0,0,0,0.03);
+  }
+
+  .rw-thumbWrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: rgba(0,0,0,0.08);
+    overflow: hidden;
+  }
+
+  .rw-thumbWrap::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: var(--rw-thumb-bg, none);
+    background-position: center;
+    background-size: cover;
+    filter: blur(16px);
+    opacity: 0;
+    transform: scale(1.08);
+  }
+
+  .rw-thumb {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+  }
+
+  .rw-card--short .rw-thumbWrap {
+    background: #111;
+  }
+
+  .rw-card--short .rw-thumbWrap::before {
+    opacity: 0.55;
+  }
+
+  .rw-card--short .rw-thumb {
+    object-fit: contain;
+  }
+
+  .rw-meta {
+    padding: 10px 10px 12px 10px;
+    font: 14px/1.35 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  }
+
+  .rw-title {
+    font-weight: 650;
+    margin: 0 0 6px 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .rw-date {
+    opacity: 0.75;
+    font-size: 13px;
+  }
+
+  .rw-linkOverlay {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    text-decoration: none;
+    color: inherit;
+    background: transparent;
+  }
+
+  .rw-card:hover { filter: brightness(0.98); }
+  .rw-card:active { filter: brightness(0.96); }
+
+  @media (max-width: 380px) {
+    .rw-grid { grid-template-columns: 1fr; }
+  }
+--></style>
+<script type="text/javascript">// <![CDATA[
+(async function () {
+  const FEEDS = [
+    "https://jhansenwmi.github.io/rumble-WMI-videos/rumble-feed.json"
+  ];
+
+  const statusEl = document.getElementById("tvRwStatus");
+  const gridEl = document.getElementById("tvRwGrid");
+
+  function escapeHtml(str) {
+    return String(str).replace(/[&<>"']/g, function (m) {
+      return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m];
+    });
+  }
+
+  function normalizeTitle(t) {
+    let s = String(t || "").replace(/\s+/g, " ").trim();
+    s = stripTVSuffix(s);
+    s = stripTrailingDate(s);
+    return s;
+  }
+
+  function stripTrailingDate(title) {
+    const re = /\s*-\s*(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s+\d{1,2}(?:st|nd|rd|th)?(?:,)?\s+\d{4}\s*$/i;
+    return title.replace(re, "").trim();
+  }
+
+  function stripTVSuffix(title) {
+    return title.replace(/\s*TV\d{8}\s*$/i, "").trim();
+  }
+
+  const dateFmt = new Intl.DateTimeFormat("en-US", {
+    timeZone: "America/Los_Angeles",
+    month: "short",
+    day: "2-digit",
+    year: "numeric"
+  });
+
+  function formatDateLA(pubDateStr) {
+    const d = new Date(pubDateStr);
+    if (isNaN(d.getTime())) return "";
+    return dateFmt.format(d);
+  }
+
+  function getThumb(item) {
+    return item && item["media:content"] ? String(item["media:content"]) : "";
+  }
+
+  function getLink(item) {
+    return item && item.link ? String(item.link) : "#";
+  }
+
+  function getPubDate(item) {
+    return item && item.pubDate ? String(item.pubDate) : "";
+  }
+
+  function isShort(item) {
+    const link = getLink(item);
+    const source = item && item.sourcePage ? String(item.sourcePage) : "";
+    const title = item && item.title ? String(item.title) : "";
+    return /\/shorts(\/|$)/i.test(link) || /\/shorts(\/|$)/i.test(source) || /#shorts\b/i.test(title);
+  }
+
+  function isTVShowItem(item) {
+    const title = item && item.title ? String(item.title) : "";
+    return /TV\d{8}\s*$/i.test(title);
+  }
+
+  function sortByDateDesc(a, b) {
+    const da = new Date(getPubDate(a)).getTime();
+    const db = new Date(getPubDate(b)).getTime();
+    return (isNaN(db) ? -Infinity : db) - (isNaN(da) ? -Infinity : da);
+  }
+
+  async function fetchFeed(url) {
+    const res = await fetch(url, { cache: "no-store" });
+    if (!res.ok) throw new Error("HTTP " + res.status + " for " + url);
+    return res.json();
+  }
+
+  try {
+    const results = await Promise.allSettled(FEEDS.map(fetchFeed));
+    var items = [];
+    const errors = [];
+
+    for (const r of results) {
+      if (r.status === "fulfilled") {
+        const data = r.value;
+        if (data && Array.isArray(data.items)) items.push(...data.items);
+      } else {
+        errors.push(r.reason);
+      }
+    }
+
+    if (items.length === 0) {
+      statusEl.textContent = "No videos loaded.";
+      console.error("Feed load errors:", errors);
+      return;
+    }
+
+    items = items.filter(isTVShowItem);
+
+    if (items.length === 0) {
+      statusEl.textContent = "No TV shows found.";
+      return;
+    }
+
+    items.sort(sortByDateDesc);
+    items = items.slice(0, 30);
+
+    const html = items.map(item => {
+      const title = normalizeTitle(item.title);
+      const link = getLink(item);
+      const thumb = getThumb(item);
+      const date = formatDateLA(getPubDate(item));
+      const shortClass = isShort(item) ? " rw-card--short" : "";
+      const thumbStyle = thumb ? ` style="--rw-thumb-bg: url('${escapeHtml(thumb)}')"` : "";
+
+      return `
+        <div class="rw-card${shortClass}">
+          <div class="rw-thumbWrap"${thumbStyle}>
+            ${thumb ? `<img class="rw-thumb" src="${escapeHtml(thumb)}" >` : ""}
+          </div>
+
+          <div class="rw-meta">
+            <div class="rw-title">${escapeHtml(title || "Untitled")}</div>
+            <div class="rw-date">${escapeHtml(date)}</div>
+          </div>
+
+          <a class="rw-linkOverlay" href="${escapeHtml(link)}" aria-label="${escapeHtml(title || "Open video")}"></a>
+        </div>
+      `;
+    }).join("");
+
+    gridEl.innerHTML = html;
+    gridEl.style.display = "grid";
+    if (errors.length) {
+      statusEl.textContent = "Loaded videos, but one or more feeds failed.";
+      console.warn("Some feeds failed:", errors);
+    } else {
+      statusEl.style.display = "none";
+    }
+  } catch (err) {
+    statusEl.textContent = "Failed to load videos. Check console for details.";
+    console.error(err);
+  }
+})();
+// ]]></script>
+<p style="text-align: center;"></p>
+<p style="text-align: center;"><a href="https://rumble.com/c/WarningTVJonathanHansen" target="_blank" class="button">See More Videos</a></p>
