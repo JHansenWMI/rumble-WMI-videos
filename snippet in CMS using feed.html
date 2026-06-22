@@ -205,8 +205,7 @@ const FEEDS = [
     }
 
     if (items.length === 0) {
-      statusEl.textContent =
-        "No items loaded. If you just enabled CORS in FetchRSS, wait for the next feed update, then refresh.";
+      statusEl.textContent = "No items loaded.";
       console.error("Feed load errors:", errors);
       return;
     }
@@ -252,7 +251,7 @@ const FEEDS = [
     }
   } catch (err) {
     statusEl.textContent =
-      "Failed to load feeds (likely CORS until FetchRSS updates). Check console for details.";
+      "Failed to load videos. Check console for details.";
     console.error(err);
   }
 })();
