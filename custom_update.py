@@ -41,6 +41,8 @@ def apply_custom_updates(items, parse_datetime):
                 source_page=overrides.get("source_page", item.source_page),
                 video_id=item.video_id,
                 timestamp=timestamp,
+                video_code=overrides.get("video_code", item.video_code),
+                video_embed_id=overrides.get("video_embed_id", item.video_embed_id),
             )
         )
 

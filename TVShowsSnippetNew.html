@@ -1,0 +1,486 @@
+<style><!--
+#content li {
+  padding-left: 80px;
+  text-indent: -80px;
+  margin-bottom: 6px;
+}
+#content li.highlight { background-color: #DCD4E6; }
+#content li.has-video {
+  padding-left: 0;
+  text-indent: 0;
+  list-style: none;
+}
+#content li.highlight.has-video {
+  background-color: transparent;
+}
+#content li.highlight.has-video .rw-card {
+  background-color: #DCD4E6;
+}
+
+/* Video card styles (adapted for list use) */
+.rw-card {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  background: rgba(0,0,0,0.03);
+  display: flex;
+  gap: 10px;
+  align-items: stretch;
+  margin-bottom: 4px;
+}
+.rw-thumbWrap {
+  position: relative;
+  width: 120px;
+  min-width: 120px;
+  flex-shrink: 0;
+  aspect-ratio: 16 / 9;
+  background: rgba(0,0,0,0.08);
+  overflow: hidden;
+}
+.rw-thumbWrap::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: var(--rw-thumb-bg, none);
+  background-position: center;
+  background-size: cover;
+  filter: blur(12px);
+  opacity: 0;
+  transform: scale(1.06);
+}
+.rw-thumb {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+.rw-card--short .rw-thumbWrap {
+  background: #111;
+}
+.rw-card--short .rw-thumbWrap::before {
+  opacity: 0.55;
+}
+.rw-card--short .rw-thumb {
+  object-fit: contain;
+}
+.rw-meta {
+  flex: 1;
+  padding: 6px 8px 6px 4px;
+  font: 13px/1.3 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.rw-title {
+  font-weight: 600;
+  margin: 0 0 2px 0;
+  font-size: 13px;
+  line-height: 1.25;
+}
+.rw-title a {
+  color: inherit;
+  text-decoration: none;
+}
+.rw-title a:hover {
+  text-decoration: underline;
+}
+.rw-date {
+  opacity: 0.7;
+  font-size: 11px;
+}
+.rw-card:hover { filter: brightness(0.98); }
+.rw-card:active { filter: brightness(0.96); }
+
+@media (max-width: 420px) {
+  .rw-card { flex-direction: column; }
+  .rw-thumbWrap { width: 100%; min-width: 0; }
+}
+
+/* Rumble overlay player styles */
+#rumbleModal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.88);
+  z-index: 999999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+#rumbleModal .rumbleModalContent {
+  background: #0b0b0b;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 960px;
+  max-height: 92vh;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+}
+#rumbleModalClose {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: rgba(0,0,0,0.7);
+  color: #fff;
+  border: none;
+  font-size: 22px;
+  line-height: 1;
+  padding: 4px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  z-index: 10;
+}
+#rumblePlayerWrap {
+  width: 100%;
+  background: #000;
+  min-height: 420px;
+}
+@media (max-width: 600px) {
+  #rumblePlayerWrap { min-height: 280px; }
+}
+--></style>
+<script type="text/javascript">// <![CDATA[
+const SCHEDULE = [
+  "Jul 03, 2026: The Heart of God Part 2 - The Overcoming Women - Drs. Adalia & Jonathan Hansen",
+  "Jun 26, 2026: The Heart of God Part 1 - The Overcoming Women - Drs. Adalia & Jonathan Hansen",
+  "Jun 19, 2026: Kenya's Prophecy & 2027 Election",
+  "Jun 12, 2026: Apostle Joe Mwaniki & Bishop Dr. Geoffrey Njuguna - Kenya Needs Repentance",
+  "Jun 05, 2026: The War with Iran and Hamas - Gideon Behar, Israel Ambassador to Kenya",
+  "May 29, 2026: Prophecy - Ukraine & Russia - America and Nuclear War",
+  "May 22, 2026: Grace - Vision & Revelation Work Together",
+  "May 15, 2026: The Forgotten Faces",
+  "May 08, 2026: Fear Doesn't Stand a Chance Part 2",
+  "May 01, 2026: Fear Doesn't Stand a Chance Part 1",
+  "Apr 24, 2026: Spiritual Warfare 2 - Three Bible Verses that Terrify Demons",
+  "Apr 17, 2026: Spiritual Warfare - How Demons Enter You!",
+  "Apr 10, 2026: Marxist - Islamic - Attack on America Part 4 - Seattle",
+  "Apr 05, 2026: Marxist - Islamic - Attack on America Part 3 - Churchill & Jefferson",
+  "Mar 27, 2026: Marxist - Islamic - Attack on America Part 2",
+  "Mar 20, 2026: Marxist - Islamic - Attack on America",
+  "Mar 6, 2026: Unholy Alliances",
+  "Feb 27, 2026: Germany in Prophecy",
+  "Feb 20, 2026: Covenant Breaking Spirits Part 12 - Renewing the Covenant",
+  "Feb 13, 2026: Covenant Breaking Spirits Part 11 - Restoration and Reconciliation",
+  "Feb 6, 2026: Covenant Breaking Spirits Part 10 - Breaking Free",
+  "Jan 30, 2026: Renee Good & Alex Pretti - Federal Crimes",
+  "Jan 23, 2026: Covenant Breaking Spirits Part 8 - Harm to the Vulnerable",
+  "Jan 16, 2026: Covenant Breaking Spirits Part 7 - Emotional & Legal Consequences",
+  "Jan 9, 2026: Covenant Breaking Spirits Part 6 - Consequences",
+  "Jan 2, 2026: Covenant Breaking Spirits Part 5 - Spiritual Life & Consequences",
+  "Dec 26, 2025: Covenant Breaking Spirits Part 4 - Divine Judgment",
+  "Dec 19, 2025: We Are Ambassadors",
+  "Dec 12, 2025: Unholy Alliances Part 2",
+  "Dec 5, 2025: Rejection Due to False Thoughts (Based on Mark 6:1-29)",
+  "Nov 28, 2025: Flawless Covering",
+  "Nov 21, 2025: Covering in Prophetic Times - Racism/Tribalism is Evil",
+  "Nov 14, 2025: When Fear is Sinful & When Fear is Healthy ",
+  "Nov 7, 2025: The Science of Judgment Part 13",
+  "Oct 31, 2025: The Vatican & Protestants (The Day of Worship)",
+  "Oct 24, 2025: The Church has Divorced Itself from Its Roots",
+  "Oct 17, 2025: The Dualistic Nature of God",
+  "Oct 10, 2025: Crisis in Kenya - Bishop Dr. Stanley Michuki - Pastor Titus Njuguna",
+  "Oct 3, 2025: Iran-Israel Ceasefire Mistake - Nuclear War Instead",
+  "Sep 26, 2025: Iran-Israel War, Ceasefire a Mistake",
+  "Sep 19, 2025: Dr. Apostle Vee Sitoh & Rev. Janice Tan - The Apostolic Responsibility Worldwide",
+  "Sep 12, 2025: Covenant Breaking Spirits Part 3 - Kenya Pres. Jomo Kenyatta and Moi",
+  "Sep 5, 2025: Covenant Breaking Spirits Part 2",
+  "Aug 29, 2025: Rev. Dr. Adalia Hansen & Rev. Elizabeth Kamau - Breaking Spiritual Barriers & Reclaiming Generational Blessings Part 2",
+  "Aug 22, 2025: Rev. Dr. Adalia Hansen & Rev. Elizabeth Kamau - Breaking Spiritual Barriers & Reclaiming Generational Blessings Part 1",
+  "Aug 15, 2025: Covenant Breaking Spirits Part 1",
+  "Aug 8, 2025: Prophecy & The Science of Judgment",
+  "Aug 1, 2025: World Control vs the Power of God (Prophetic Times)"
+];
+
+const FEED_URL = "https://jhansenwmi.github.io/rumble-WMI-videos/rumble-feed.json";
+
+function escapeHtml(str) {
+  return String(str).replace(/[&<>"']/g, function (m) {
+    return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m];
+  });
+}
+
+function normalizeTitle(t) {
+  let s = String(t || "").replace(/\s+/g, " ").trim();
+  s = stripTVSuffix(s);
+  s = stripTrailingDate(s);
+  return s;
+}
+
+function stripTrailingDate(title) {
+  const re = /\s*-\s*(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s+\d{1,2}(?:st|nd|rd|th)?(?:,)?\s+\d{4}\s*$/i;
+  return title.replace(re, "").trim();
+}
+
+function stripTVSuffix(title) {
+  return title.replace(/\s*TV\d{8}\s*$/i, "").trim();
+}
+
+const dateFmt = new Intl.DateTimeFormat("en-US", {
+  timeZone: "America/Los_Angeles",
+  month: "short",
+  day: "2-digit",
+  year: "numeric"
+});
+
+function getTVDateMatch(item) {
+  let text = item && item.title ? String(item.title) : "";
+  let m = text.match(/TV(\d{4})(\d{2})(\d{2})\s*$/i);
+  if (!m && item && item.link) {
+    text = String(item.link);
+    m = text.match(/tv(\d{4})(\d{2})(\d{2})\b/i);
+  }
+  return m;
+}
+
+function getTVAirDate(item) {
+  const m = getTVDateMatch(item);
+  if (!m) return null;
+  const y = +m[1];
+  const mo = +m[2];
+  const d = +m[3];
+  let dt = new Date(Date.UTC(y, mo - 1, d, 12, 0, 0));
+  const dow = dt.getUTCDay();
+  if (dow === 5) return dt;
+  const toPrev = (dow - 5 + 7) % 7;
+  const toNext = (5 - dow + 7) % 7;
+  let delta = (toPrev <= toNext) ? -toPrev : toNext;
+  dt.setUTCDate(dt.getUTCDate() + delta);
+  return dt;
+}
+
+function getTVAirDateStr(item) {
+  const dt = getTVAirDate(item);
+  if (!dt) return "";
+  return dateFmt.format(dt);
+}
+
+function getThumb(item) {
+  return item && item["media:content"] ? String(item["media:content"]) : "";
+}
+
+function getLink(item) {
+  return item && item.link ? String(item.link) : "#";
+}
+
+function getVideoId(item) {
+  if (item && item.videoId) return String(item.videoId);
+  const link = item && item.link ? String(item.link) : "";
+  const m = link.match(/\/(v[a-z0-9]+)-/);
+  return m ? m[1] : "";
+}
+
+function attachCardClicks() {
+  const root = document.getElementById('content') || document;
+  root.querySelectorAll('.rw-card[data-video-id]').forEach(card => {
+    const videoId = card.getAttribute('data-video-id');
+    if (!videoId) return;
+    const thumbWrap = card.querySelector('.rw-thumbWrap');
+    const titleWrap = card.querySelector('.rw-title');
+    const openPlayer = (e) => {
+      if (e && (e.metaKey || e.ctrlKey || e.shiftKey)) {
+        const lnk = card.getAttribute('data-link');
+        if (lnk) window.open(lnk, '_blank');
+        return;
+      }
+      e && e.preventDefault();
+      showRumbleOverlay(videoId);
+    };
+    if (thumbWrap) thumbWrap.style.cursor = 'pointer';
+    if (titleWrap) titleWrap.style.cursor = 'pointer';
+    if (thumbWrap) thumbWrap.addEventListener('click', openPlayer);
+    if (titleWrap) titleWrap.addEventListener('click', openPlayer);
+    card.style.cursor = 'pointer';
+    card.addEventListener('click', (e) => {
+      if (e.target.closest('.rw-thumbWrap') || e.target.closest('.rw-title')) return;
+      openPlayer(e);
+    });
+  });
+}
+
+function showRumbleOverlay(videoCode) {
+  if (!videoCode) return;
+  let modal = document.getElementById('rumbleModal');
+  if (!modal) return;
+  const wrap = document.getElementById('rumblePlayerWrap');
+  if (!wrap) return;
+  const playerId = 'rumble_embed_' + videoCode.replace(/[^a-z0-9]/gi, '');
+  wrap.innerHTML = `<div id="${playerId}" style="width:100%; aspect-ratio:16/9; min-height: 300px;"></div>`;
+  modal.style.display = 'flex';
+  const doPlay = () => {
+    if (window.Rumble && typeof window.Rumble === 'function') {
+      try { window.Rumble("play", { video: videoCode, div: playerId }); }
+      catch (err) { console.warn('Rumble play error', err); }
+    } else {
+      setTimeout(doPlay, 250);
+    }
+  };
+  setTimeout(doPlay, 60);
+}
+
+function closeRumbleOverlay() {
+  const modal = document.getElementById('rumbleModal');
+  const wrap = document.getElementById('rumblePlayerWrap');
+  if (modal) modal.style.display = 'none';
+  if (wrap) wrap.innerHTML = '';
+}
+
+function isShort(item) {
+  const link = getLink(item);
+  const source = item && item.sourcePage ? String(item.sourcePage) : "";
+  const title = item && item.title ? String(item.title) : "";
+  return /\/shorts(\/|$)/i.test(link) || /\/shorts(\/|$)/i.test(source) || /#shorts\b/i.test(title);
+}
+
+function isTVShowItem(item) {
+  const title = item && item.title ? String(item.title) : "";
+  return /TV\d{8}\s*$/i.test(title);
+}
+
+function parseScheduleEntry(entry) {
+  const m = entry.match(/^(.*?):\s*(.*)$/);
+  if (!m) return { displayDate: entry, title: entry };
+  return { displayDate: m[1].trim(), title: m[2].trim() };
+}
+
+function getDateKey(displayDateStr) {
+  // Parse "Jun 19, 2026" or "Mar 6, 2026" etc. and format consistently using the same formatter
+  const match = displayDateStr.match(/([A-Za-z]+)\s+(\d{1,2}),\s+(\d{4})/);
+  if (!match) return null;
+  const month = match[1];
+  const day = parseInt(match[2], 10);
+  const year = parseInt(match[3], 10);
+  const d = new Date(`${month} ${day}, ${year}`);
+  if (isNaN(d.getTime())) return null;
+  return dateFmt.format(d);
+}
+
+function renderVideoCard(video, scheduleDisplayDate) {
+  const title = normalizeTitle(video.title) || scheduleDisplayDate;
+  const link = getLink(video);
+  const thumb = getThumb(video);
+  const date = scheduleDisplayDate || getTVAirDateStr(video);
+  const videoId = getVideoId ? getVideoId(video) : (video && video.videoId ? video.videoId : '');
+  const shortClass = isShort(video) ? " rw-card--short" : "";
+  const thumbStyle = thumb ? ` style="--rw-thumb-bg: url('${escapeHtml(thumb)}')"` : "";
+
+  return `
+    <div class="rw-card${shortClass}" data-video-id="${escapeHtml(videoId)}" data-link="${escapeHtml(link)}">
+      <div class="rw-thumbWrap"${thumbStyle}>
+        ${thumb ? `<img class="rw-thumb" src="${escapeHtml(thumb)}" alt="">` : ""}
+      </div>
+      <div class="rw-meta">
+        <div class="rw-title"><a href="${escapeHtml(link)}" target="_blank" rel="noopener" onclick="event.stopImmediatePropagation();">${escapeHtml(title)}</a></div>
+        <div class="rw-date">${escapeHtml(date)}</div>
+      </div>
+    </div>
+  `;
+}
+
+async function loadAndRenderSchedule() {
+  const container = document.querySelector('#content');
+  if (!container) return;
+
+  let ul = container.querySelector('ul');
+  if (!ul) {
+    ul = document.createElement('ul');
+    container.appendChild(ul);
+  }
+  ul.innerHTML = '';
+
+  // Fetch feed
+  let videoMap = new Map();
+  try {
+    const res = await fetch(FEED_URL, { cache: "no-store" });
+    if (res.ok) {
+      const data = await res.json();
+      let items = (data && Array.isArray(data.items)) ? data.items : [];
+      items = items.filter(isTVShowItem);
+      items.forEach(item => {
+        const key = getTVAirDateStr(item);
+        if (key) videoMap.set(key, item);
+      });
+    }
+  } catch (e) {
+    console.warn("Could not load video feed:", e);
+  }
+
+  // Regular expression for highlighting
+  const dateRegex = /^(?:[A-Za-z]+,\s)?([A-Za-z]+)\s(\d{1,2}),\s(\d{4})/;
+
+  const today = new Date();
+  let closestDate = null;
+  let closestLi = null;
+  let minDiff = Infinity;
+
+  SCHEDULE.forEach(entry => {
+    const parsed = parseScheduleEntry(entry);
+    const key = getDateKey(parsed.displayDate);
+    const video = key ? videoMap.get(key) : null;
+
+    const li = document.createElement('li');
+
+    if (video) {
+      li.classList.add('has-video');
+      li.dataset.date = parsed.displayDate;
+      li.innerHTML = renderVideoCard(video, parsed.displayDate);
+    } else {
+      li.textContent = entry;
+      const match = entry.match(dateRegex);
+      if (match) {
+        li.dataset.date = `${match[1]} ${match[2]}, ${match[3]}`;
+      }
+    }
+
+    ul.appendChild(li);
+
+    // Highlight calculation (for both types)
+    const dateStr = li.dataset.date || li.textContent;
+    const match = dateStr.match(dateRegex);
+    if (match) {
+      const month = match[1];
+      const day = parseInt(match[2], 10);
+      const year = parseInt(match[3], 10);
+      const liDate = new Date(`${month} ${day}, ${year}`);
+      const diff = liDate - today;
+      if (diff >= 0 && diff < minDiff) {
+        minDiff = diff;
+        closestDate = liDate;
+        closestLi = li;
+      }
+    }
+  });
+
+  if (closestLi) {
+    closestLi.classList.add('highlight');
+  }
+
+  attachCardClicks();
+
+  // Wire modal close
+  const modal = document.getElementById('rumbleModal');
+  if (modal) {
+    const closeBtn = document.getElementById('rumbleModalClose');
+    if (closeBtn) closeBtn.onclick = closeRumbleOverlay;
+    modal.onclick = (e) => { if (e.target === modal) closeRumbleOverlay(); };
+  }
+}
+
+document.addEventListener('DOMContentLoaded', loadAndRenderSchedule);
+// ]]></script>
+<script>!function(r,u,m,b,l,e){r._Rumble=b,r[b]||(r[b]=function(){(r[b]._=r[b]._||[]).push(arguments);if(r[b]._.length==1){l=u.createElement(m),e=u.getElementsByTagName(m)[0],l.async=1,l.src="https://rumble.com/embedJS/uhau7j"+(arguments[1].video?'.'+arguments[1].video:'')+"/?url="+encodeURIComponent(location.href)+"&args="+encodeURIComponent(JSON.stringify([].slice.apply(arguments))),e.parentNode.insertBefore(l,e)}})}(window, document, "script", "Rumble");</script>
+<h4>TV Broadcast</h4>
+<p><a href="https://www.vsmtools.com/U/566/ReviewFiles/tv-channels.aspx" target="_blank">KAZQ-TV32</a>, Friday 6:30 PM (MT)</p>
+<div id="content">
+  <ul></ul>
+</div>
+
+<!-- Rumble overlay player modal -->
+<div id="rumbleModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.88); z-index:999999; align-items:center; justify-content:center; padding:20px;">
+  <div class="rumbleModalContent" style="background:#0b0b0b; border-radius:10px; width:100%; max-width:960px; max-height:92vh; overflow:hidden; position:relative; box-shadow:0 10px 40px rgba(0,0,0,0.6);">
+    <button id="rumbleModalClose" aria-label="Close" style="position:absolute; top:8px; right:8px; background:rgba(0,0,0,0.7); color:#fff; border:none; font-size:22px; line-height:1; padding:4px 10px; border-radius:4px; cursor:pointer; z-index:10;">&times;</button>
+    <div id="rumblePlayerWrap" style="width:100%; background:#000; min-height:420px;"></div>
+  </div>
+</div>

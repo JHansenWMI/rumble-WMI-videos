@@ -1,4 +1,6 @@
-<p>place holder</p>
+<script>!function(r,u,m,b,l,e){r._Rumble=b,r[b]||(r[b]=function(){(r[b]._=r[b]._||[]).push(arguments);if(r[b]._.length==1){l=u.createElement(m),e=u.getElementsByTagName(m)[0],l.async=1,l.src="https://rumble.com/embedJS/uhau7j"+(arguments[1].video?'.'+arguments[1].video:'')+"/?url="+encodeURIComponent(location.href)+"&args="+encodeURIComponent(JSON.stringify([].slice.apply(arguments))),e.parentNode.insertBefore(l,e)}})}(window, document, "script", "Rumble");</script>
+<h4>TV Broadcast</h4>
+<p><a href="https://www.vsmtools.com/U/566/ReviewFiles/tv-channels.aspx" target="_blank">KAZQ-TV32</a>, Friday 6:30 PM (MT)</p>
 <div id="tvRumbleGridWidget" class="rw-root">
 <div class="rw-status" id="tvRwStatus">Loading videos&hellip;</div>
 <div class="rw-grid" id="tvRwGrid" style="display: none;"></div>
@@ -101,6 +103,50 @@
   @media (max-width: 380px) {
     .rw-grid { grid-template-columns: 1fr; }
   }
+
+  /* Rumble overlay player styles */
+  #rumbleModal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.88);
+    z-index: 999999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  #rumbleModal .rumbleModalContent {
+    background: #0b0b0b;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 960px;
+    max-height: 92vh;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+  }
+  #rumbleModalClose {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: rgba(0,0,0,0.7);
+    color: #fff;
+    border: none;
+    font-size: 22px;
+    line-height: 1;
+    padding: 4px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    z-index: 10;
+  }
+  #rumblePlayerWrap {
+    width: 100%;
+    background: #000;
+    min-height: 420px;
+  }
+  @media (max-width: 600px) {
+    #rumblePlayerWrap { min-height: 280px; }
+  }
 --></style>
 <script type="text/javascript">// <![CDATA[
 (async function () {
@@ -140,10 +186,58 @@
     year: "numeric"
   });
 
-  function formatDateLA(pubDateStr) {
-    const d = new Date(pubDateStr);
-    if (isNaN(d.getTime())) return "";
-    return dateFmt.format(d);
+  function getTVDateMatch(item) {
+    // Check title first (e.g. "... TV20260621"), then link / file name (e.g. ...-tv20260621.html)
+    let text = item && item.title ? String(item.title) : "";
+    let m = text.match(/TV(\d{4})(\d{2})(\d{2})\s*$/i);
+    if (!m && item && item.link) {
+      text = String(item.link);
+      m = text.match(/tv(\d{4})(\d{2})(\d{2})\b/i);
+    }
+    return m;
+  }
+
+  function getTVAirDate(item) {
+    const m = getTVDateMatch(item);
+    if (!m) return null;
+
+    const y = +m[1];
+    const mo = +m[2];
+    const d = +m[3];
+
+    // Nominal indicated date at noon UTC (stable for day math and LA formatting)
+    let dt = new Date(Date.UTC(y, mo - 1, d, 12, 0, 0));
+    const dow = dt.getUTCDay(); // 0=Sun, 1=Mon, 2=Tue, 3=Wed, 4=Thu, 5=Fri, 6=Sat
+
+    if (dow === 5) {
+      return dt;
+    }
+
+    const toPrev = (dow - 5 + 7) % 7;
+    const toNext = (5 - dow + 7) % 7;
+
+    let delta;
+    if (toPrev <= toNext) {
+      // nearer to (or tied with) previous Friday → pick earlier Friday
+      delta = -toPrev;
+    } else {
+      delta = toNext;
+    }
+
+    dt.setUTCDate(dt.getUTCDate() + delta);
+    return dt;
+  }
+
+  function getTVAirDateStr(item) {
+    const dt = getTVAirDate(item);
+    if (!dt) return "";
+    return dateFmt.format(dt);
+  }
+
+  function getTVAirTimestamp(item) {
+    const dt = getTVAirDate(item);
+    if (!dt) return -Infinity;
+    return dt.getTime();
   }
 
   function getThumb(item) {
@@ -154,8 +248,12 @@
     return item && item.link ? String(item.link) : "#";
   }
 
-  function getPubDate(item) {
-    return item && item.pubDate ? String(item.pubDate) : "";
+  function getVideoId(item) {
+    if (item && item.videoId) return String(item.videoId);
+    // fallback: parse from link e.g. /v7bokoc-...
+    const link = item && item.link ? String(item.link) : "";
+    const m = link.match(/\/(v[a-z0-9]+)-/);
+    return m ? m[1] : "";
   }
 
   function isShort(item) {
@@ -171,9 +269,79 @@
   }
 
   function sortByDateDesc(a, b) {
-    const da = new Date(getPubDate(a)).getTime();
-    const db = new Date(getPubDate(b)).getTime();
+    const da = getTVAirTimestamp(a);
+    const db = getTVAirTimestamp(b);
     return (isNaN(db) ? -Infinity : db) - (isNaN(da) ? -Infinity : da);
+  }
+
+  function attachCardClicks() {
+    const grid = document.getElementById('tvRwGrid') || document.querySelector('.rw-grid');
+    if (!grid) return;
+    grid.querySelectorAll('.rw-card[data-video-id]').forEach(card => {
+      const videoId = card.getAttribute('data-video-id');
+      if (!videoId) return;
+
+      const thumbWrap = card.querySelector('.rw-thumbWrap');
+      const titleWrap = card.querySelector('.rw-title');
+
+      const openPlayer = (e) => {
+        // allow modifier keys to open direct link
+        if (e && (e.metaKey || e.ctrlKey || e.shiftKey)) {
+          const lnk = card.getAttribute('data-link');
+          if (lnk) window.open(lnk, '_blank');
+          return;
+        }
+        e && e.preventDefault();
+        showRumbleOverlay(videoId);
+      };
+
+      if (thumbWrap) thumbWrap.style.cursor = 'pointer';
+      if (titleWrap) titleWrap.style.cursor = 'pointer';
+
+      if (thumbWrap) thumbWrap.addEventListener('click', openPlayer);
+      if (titleWrap) titleWrap.addEventListener('click', openPlayer);
+
+      // also allow whole card as fallback
+      card.style.cursor = 'pointer';
+      card.addEventListener('click', (e) => {
+        // if clicked on the title area already handled, or thumb
+        if (e.target.closest('.rw-thumbWrap') || e.target.closest('.rw-title')) return;
+        openPlayer(e);
+      });
+    });
+  }
+
+  function showRumbleOverlay(videoCode) {
+    if (!videoCode) return;
+    let modal = document.getElementById('rumbleModal');
+    if (!modal) {
+      // in case not yet in DOM, but should be
+      return;
+    }
+    const wrap = document.getElementById('rumblePlayerWrap');
+    if (!wrap) return;
+
+    const playerId = 'rumble_embed_' + videoCode.replace(/[^a-z0-9]/gi, '');
+    wrap.innerHTML = `<div id="${playerId}" style="width:100%; aspect-ratio:16/9; min-height: 300px;"></div>`;
+
+    modal.style.display = 'flex';
+
+    const doPlay = () => {
+      if (window.Rumble && typeof window.Rumble === 'function') {
+        try { window.Rumble("play", { video: videoCode, div: playerId }); }
+        catch (err) { console.warn('Rumble play error', err); }
+      } else {
+        setTimeout(doPlay, 250);
+      }
+    };
+    setTimeout(doPlay, 60);
+  }
+
+  function closeRumbleOverlay() {
+    const modal = document.getElementById('rumbleModal');
+    const wrap = document.getElementById('rumblePlayerWrap');
+    if (modal) modal.style.display = 'none';
+    if (wrap) wrap.innerHTML = '';
   }
 
   async function fetchFeed(url) {
@@ -216,12 +384,13 @@
       const title = normalizeTitle(item.title);
       const link = getLink(item);
       const thumb = getThumb(item);
-      const date = formatDateLA(getPubDate(item));
+      const date = getTVAirDateStr(item);
+      const videoId = getVideoId(item);
       const shortClass = isShort(item) ? " rw-card--short" : "";
       const thumbStyle = thumb ? ` style="--rw-thumb-bg: url('${escapeHtml(thumb)}')"` : "";
 
       return `
-        <div class="rw-card${shortClass}">
+        <div class="rw-card${shortClass}" data-video-id="${escapeHtml(videoId)}" data-link="${escapeHtml(link)}">
           <div class="rw-thumbWrap"${thumbStyle}>
             ${thumb ? `<img class="rw-thumb" src="${escapeHtml(thumb)}" >` : ""}
           </div>
@@ -230,14 +399,23 @@
             <div class="rw-title">${escapeHtml(title || "Untitled")}</div>
             <div class="rw-date">${escapeHtml(date)}</div>
           </div>
-
-          <a class="rw-linkOverlay" href="${escapeHtml(link)}" aria-label="${escapeHtml(title || "Open video")}"></a>
         </div>
       `;
     }).join("");
 
     gridEl.innerHTML = html;
     gridEl.style.display = "grid";
+
+    attachCardClicks();
+
+    // Wire modal close handlers
+    const modal = document.getElementById('rumbleModal');
+    if (modal) {
+      const closeBtn = document.getElementById('rumbleModalClose');
+      if (closeBtn) closeBtn.onclick = closeRumbleOverlay;
+      modal.onclick = (e) => { if (e.target === modal) closeRumbleOverlay(); };
+    }
+
     if (errors.length) {
       statusEl.textContent = "Loaded videos, but one or more feeds failed.";
       console.warn("Some feeds failed:", errors);
@@ -252,3 +430,11 @@
 // ]]></script>
 <p style="text-align: center;"></p>
 <p style="text-align: center;"><a href="https://rumble.com/c/WarningTVJonathanHansen" target="_blank" class="button">See More Videos</a></p>
+
+<!-- Rumble overlay player modal -->
+<div id="rumbleModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.88); z-index:999999; align-items:center; justify-content:center; padding:20px;">
+  <div class="rumbleModalContent" style="background:#0b0b0b; border-radius:10px; width:100%; max-width:960px; max-height:92vh; overflow:hidden; position:relative; box-shadow:0 10px 40px rgba(0,0,0,0.6);">
+    <button id="rumbleModalClose" aria-label="Close" style="position:absolute; top:8px; right:8px; background:rgba(0,0,0,0.7); color:#fff; border:none; font-size:22px; line-height:1; padding:4px 10px; border-radius:4px; cursor:pointer; z-index:10;">&times;</button>
+    <div id="rumblePlayerWrap" style="width:100%; background:#000; min-height:420px;"></div>
+  </div>
+</div>

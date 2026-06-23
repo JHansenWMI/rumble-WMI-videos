@@ -65,6 +65,8 @@ class FeedItem:
     timestamp: float
     channel_name: str = ""
     channel_url: str = ""
+    video_code: str = ""  # slug from list page (e.g. v7bokoc in URL)
+    video_embed_id: str = ""  # embed player id (e.g. v79hwo4) from detail page only
 
     def as_json(self) -> dict[str, str]:
         item = {
@@ -79,6 +81,10 @@ class FeedItem:
             item["channelName"] = self.channel_name
         if self.channel_url:
             item["channelUrl"] = self.channel_url
+        if self.video_embed_id:
+            item["videoId"] = self.video_embed_id
+        elif self.video_code:
+            item["videoId"] = self.video_code  # fallback during transition
         return item
 
 
@@ -163,6 +169,44 @@ def load_channel_cache(path: Path) -> dict[str, ChannelInfo]:
             cache[key] = channel
 
     return cache
+
+
+def load_existing_items(path: Path) -> list[dict]:
+    """Load items from prior feed JSON for additive merge (carry video_embed_id etc)."""
+    if not path.exists():
+        return []
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+        items = payload.get("items", []) if isinstance(payload, dict) else []
+        return [i for i in items if isinstance(i, dict)]
+    except Exception as exc:
+        print(f"Warning: failed to read existing feed from {path}: {exc}", file=sys.stderr)
+        return []
+
+
+def merge_scraped_with_existing(scraped: list[FeedItem], existing: list[dict]) -> list[FeedItem]:
+    """Merge: prefer fresh list data; carry video_embed_id (embed player id) from prior run."""
+    prev_by_link: dict[str, dict] = {}
+    for e in existing:
+        lnk = e.get("link")
+        if lnk:
+            prev_by_link[lnk] = e
+    result: list[FeedItem] = []
+    for s in scraped:
+        e = prev_by_link.get(s.link)
+        embed_id = s.video_embed_id
+        slug = s.video_code
+        if e:
+            # carry prior embed id if current scrape didn't provide one
+            if not embed_id:
+                embed_id = e.get("videoId") or ""
+            # bootstrap fix: if carried value == the list slug, it was the old non-embed id; clear to force detail fetch
+            if embed_id and slug and embed_id == slug:
+                embed_id = ""
+        result.append(
+            replace(s, video_embed_id=embed_id) if embed_id else s
+        )
+    return result
 
 
 def page_url(base_url: str, page: int) -> str:
@@ -269,6 +313,13 @@ def parse_embedded_listing_items(html: str, source_page: str) -> list[FeedItem]:
             link = clean_link(raw_url) if raw_url else ""
             thumb = str(entry.get("thumb") or "")
             video_id = str(entry.get("id") or "")
+            video_code = str(entry.get("permalink_id") or "")
+            if not video_code and link:
+                m = re.search(r'/(v[a-z0-9]+)-', link)
+                if m:
+                    video_code = m.group(1)
+            # video_embed_id (for player) is populated later from detail page only
+            video_embed_id = ""
             pub_date, timestamp = parse_datetime(str(entry.get("upload_date") or ""))
 
             channel_name = ""
@@ -293,6 +344,8 @@ def parse_embedded_listing_items(html: str, source_page: str) -> list[FeedItem]:
                     timestamp=timestamp,
                     channel_name=channel_name,
                     channel_url=channel_url,
+                    video_code=video_code,
+                    video_embed_id=video_embed_id,
                 )
             )
 
@@ -346,6 +399,33 @@ def parse_channel_info(html: str) -> ChannelInfo:
     return ChannelInfo(name=name, url=url)
 
 
+def parse_video_embed_id(html: str) -> str:
+    """Extract the Rumble JS embed 'video' id (e.g. 'v79hwo4') from a *video detail page*.
+
+    This is often different from the list-page slug (v... in the URL).
+    Looks in common locations on the detail page.
+    """
+    if not html:
+        return ""
+    # 1. Rumble("play", {"video": "v79hwo4", ...})
+    m = re.search(r'Rumble\s*\(\s*["\']play["\']\s*,\s*\{\s*["\']video["\']\s*:\s*["\'](v[0-9a-z]+)["\']', html, re.I)
+    if m:
+        return m.group(1)
+    # 2. data or json "video": "v79hwo4"
+    m = re.search(r'["\']video["\']\s*:\s*["\'](v[0-9a-z]+)["\']', html, re.I)
+    if m:
+        return m.group(1)
+    # 3. rumble_XXXXX div id used by embed
+    m = re.search(r'id=["\']rumble_(v[0-9a-z]+)["\']', html, re.I)
+    if m:
+        return m.group(1)
+    # 4. embedJS/... .v79hwo4
+    m = re.search(r'embedJS/[^"\']*\.(v[0-9a-z]+)', html, re.I)
+    if m:
+        return m.group(1)
+    return ""
+
+
 def parse_items(html: str, source_page: str) -> list[FeedItem]:
     embedded = parse_embedded_listing_items(html, source_page)
     if embedded:
@@ -367,6 +447,13 @@ def parse_items(html: str, source_page: str) -> list[FeedItem]:
         thumb = attr_value(img_tag, "src")
         pub_date, timestamp = parse_datetime(attr_value(time_tag, "datetime"))
 
+        video_code = ""
+        if link:
+            m = re.search(r'/(v[a-z0-9]+)-', link)
+            if m:
+                video_code = m.group(1)
+        video_embed_id = ""  # only from detail page
+
         if not title or not link or not pub_date:
             continue
 
@@ -379,6 +466,8 @@ def parse_items(html: str, source_page: str) -> list[FeedItem]:
                 source_page=source_page,
                 video_id=video_id,
                 timestamp=timestamp,
+                video_code=video_code,
+                video_embed_id=video_embed_id,
             )
         )
 
@@ -426,28 +515,51 @@ def enrich_channel_details(
             enriched.append(item)
             continue
 
-        if item.channel_name or item.channel_url:
-            channel = ChannelInfo(name=item.channel_name, url=item.channel_url)
-            if verbose:
-                print(f"Using listing channel details for {item.link}", file=sys.stderr)
-        elif cached_channel := cached_channel_info(channel_cache, item):
-            channel = cached_channel
-            if verbose:
-                print(f"Reusing channel details for {item.link}", file=sys.stderr)
-        else:
-            polite_sleep(delay)
-            if verbose:
-                print(f"Fetching channel details for {item.link}", file=sys.stderr)
+        need_channel = not (item.channel_name or item.channel_url)
+        need_embed = not item.video_embed_id
+        do_fetch = need_channel or need_embed
 
-            try:
-                channel = parse_channel_info(fetch_html(item.link))
-            except (HTTPError, URLError, TimeoutError) as exc:
-                print(f"Warning: failed to fetch channel details for {item.link}: {exc}", file=sys.stderr)
+        channel = None
+        embed_id = item.video_embed_id
+
+        if not do_fetch:
+            if item.channel_name or item.channel_url:
+                channel = ChannelInfo(name=item.channel_name, url=item.channel_url)
+            else:
                 channel = ChannelInfo()
+            if verbose:
+                print(f"Reusing cached details for {item.link}", file=sys.stderr)
+        else:
+            # need more info (channel or embed). Use channel cache only if we don't need embed (no html)
+            if need_channel and not need_embed and (cached_channel := cached_channel_info(channel_cache, item)):
+                channel = cached_channel
+                if verbose:
+                    print(f"Reusing channel details for {item.link}", file=sys.stderr)
+            else:
+                polite_sleep(delay)
+                if verbose:
+                    print(f"Fetching details for {item.link} (need channel={need_channel}, embed={need_embed})", file=sys.stderr)
 
-            cache_channel_info(channel_cache, item, channel)
+                try:
+                    detail_html = fetch_html(item.link)
+                    channel = parse_channel_info(detail_html)
+                    if need_embed:
+                        parsed_embed = parse_video_embed_id(detail_html)
+                        if parsed_embed:
+                            embed_id = parsed_embed
+                except (HTTPError, URLError, TimeoutError) as exc:
+                    print(f"Warning: failed to fetch details for {item.link}: {exc}", file=sys.stderr)
+                    channel = ChannelInfo()
 
-        enriched.append(replace(item, channel_name=channel.name, channel_url=channel.url))
+                if channel and need_channel:
+                    cache_channel_info(channel_cache, item, channel)
+
+        if not channel:
+            channel = ChannelInfo(name=item.channel_name, url=item.channel_url)
+
+        enriched.append(
+            replace(item, channel_name=channel.name, channel_url=channel.url, video_embed_id=embed_id)
+        )
 
     return enriched
 
@@ -620,6 +732,12 @@ def main() -> int:
         return 2
 
     items = build_feed(urls, max_pages=max(1, args.pages), delay=max(0, args.delay), verbose=args.verbose)
+
+    # Additive: open existing JSON and merge (carry video_embed_id etc from prior runs)
+    existing = load_existing_items(output_path)
+    if existing:
+        items = merge_scraped_with_existing(items, existing)
+
     if not items:
         print("No Rumble items found. Rumble may have changed its page HTML.", file=sys.stderr)
 
