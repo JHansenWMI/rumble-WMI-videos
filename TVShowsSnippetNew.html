@@ -79,12 +79,10 @@
   font-weight: 600;
   margin: 0 0 2px 0;
   line-height: 1.25;
-}
-.rw-title a {
   color: inherit;
   text-decoration: none;
 }
-.rw-title a:hover {
+.rw-title:hover {
   text-decoration: underline;
 }
 .rw-date {
@@ -322,7 +320,7 @@ function renderVideoCard(video, scheduleDisplayDate) {
         ${thumb ? `<img class="rw-thumb" src="${escapeHtml(thumb)}" alt="">` : ""}
       </div>
       <div class="rw-meta">
-        <div class="rw-title"><a href="${escapeHtml(link)}" target="_blank" rel="noopener" onclick="event.stopImmediatePropagation();">${escapeHtml(title)}</a></div>
+        <div class="rw-title">${escapeHtml(title)}</div>
         <div class="rw-date">${escapeHtml(date)}</div>
       </div>
     </div>
