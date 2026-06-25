@@ -1,8 +1,19 @@
 {
   "title": "Rumble videos",
-  "generatedAt": "Thu, 25 Jun 2026 03:00:11 +0000",
+  "generatedAt": "Thu, 25 Jun 2026 15:00:13 +0000",
   "itemCount": 30,
   "items": [
+    {
+      "title": "Saving the Nations",
+      "link": "https://rumble.com/v7bt1vm-saving-the-nations.html",
+      "pubDate": "Thu, 25 Jun 2026 13:42:12 +0000",
+      "media:content": "https://hugh.cdn.rumble.cloud/video/fww1/80/s8/1/c/x/r/A/cxrAA.OvCc-small-Saving-the-Nations..jpg",
+      "guid": "439424186",
+      "sourcePage": "https://rumble.com/user/DrJonathanHansenWMI/livestreams",
+      "channelName": "WARNING TV - Jonathan Hansen",
+      "channelUrl": "https://rumble.com/c/WarningTVJonathanHansen",
+      "videoId": "v79mdve"
+    },
     {
       "title": "The Sacrifice God Desires",
       "link": "https://rumble.com/v7bs9aa-the-sacrifice-god-desires.html",
@@ -321,17 +332,6 @@
       "channelName": "WARNING TV - Jonathan Hansen",
       "channelUrl": "https://rumble.com/c/WarningTVJonathanHansen",
       "videoId": "v78eu9s"
-    },
-    {
-      "title": "Warning - 25 Prophetic Dreams",
-      "link": "https://rumble.com/v7ajlzk-warning-25-prophetic-dreams.html",
-      "pubDate": "Fri, 29 May 2026 13:57:28 +0000",
-      "media:content": "https://hugh.cdn.rumble.cloud/video/fwe2/8f/s8/1/q/W/l/s/qWlsA.OvCc.1-small-Warning-25-Prophetic-Dreams..jpg",
-      "guid": "437304072",
-      "sourcePage": "https://rumble.com/user/DrJonathanHansenWMI/livestreams",
-      "channelName": "WARNING TV - Jonathan Hansen",
-      "channelUrl": "https://rumble.com/c/WarningTVJonathanHansen",
-      "videoId": "v78cxzc"
     }
   ]
 }
