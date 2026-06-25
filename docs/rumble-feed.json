@@ -1,8 +1,19 @@
 {
   "title": "Rumble videos",
-  "generatedAt": "Tue, 23 Jun 2026 09:00:19 +0000",
+  "generatedAt": "Thu, 25 Jun 2026 01:00:15 +0000",
   "itemCount": 30,
   "items": [
+    {
+      "title": "The Sacrifice God Desires",
+      "link": "https://rumble.com/v7bs9aa-the-sacrifice-god-desires.html",
+      "pubDate": "Thu, 25 Jun 2026 00:13:20 +0000",
+      "media:content": "https://hugh.cdn.rumble.cloud/video/fww1/dd/s8/1/c/u/i/A/cuiAA.OvCc-small-The-Sacrifice-God-Desires..jpg",
+      "guid": "439387130",
+      "sourcePage": "https://rumble.com/user/DrJonathanHansenWMI/livestreams",
+      "channelName": "WARNING TV - Jonathan Hansen",
+      "channelUrl": "https://rumble.com/c/WarningTVJonathanHansen",
+      "videoId": "v79lla2"
+    },
     {
       "title": "Dr. Bill Henderson, an original member of John Jacob's Power Team",
       "link": "https://rumble.com/v7bov78-dr.-bill-henderson-an-original-member-of-john-jacobs-power-team.html",
@@ -321,17 +332,6 @@
       "channelName": "WARNING TV - Jonathan Hansen",
       "channelUrl": "https://rumble.com/c/WarningTVJonathanHansen",
       "videoId": "v78cxzc"
-    },
-    {
-      "title": "Pursue Your Life Purpose - Bishop Dr. Geoffrey Njuguna",
-      "link": "https://rumble.com/v7aix9c-bishop-dr.-geoffrey-njuguna-speaks-in-our-thursday-prayer-meeting.html",
-      "pubDate": "Fri, 29 May 2026 01:16:22 +0000",
-      "media:content": "https://hugh.cdn.rumble.cloud/video/fww1/9f/s8/1/G/7/d/s/G7dsA.OvCc-small-Bishop-Dr.-Geoffrey-Njuguna..jpg",
-      "guid": "437272024",
-      "sourcePage": "https://rumble.com/user/DrJonathanHansenWMI/livestreams",
-      "channelName": "WARNING TV - Jonathan Hansen",
-      "channelUrl": "https://rumble.com/c/WarningTVJonathanHansen",
-      "videoId": "v78c994"
     }
   ]
 }
