@@ -293,6 +293,66 @@ def merge_fresh_into_accumulated(fresh: list[FeedItem], previous: list[dict]) ->
     return result
 
 
+def get_archive_path(path: Path) -> Path:
+    if path.stem.endswith("-archive"):
+        return path
+    return path.with_name(f"{path.stem}-archive{path.suffix}")
+
+
+def load_archive(path: Path) -> list[dict]:
+    if not path.exists():
+        return []
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+        return data.get("items", []) if isinstance(data, dict) else []
+    except Exception as exc:
+        print(f"Warning: failed to load archive {path}: {exc}", file=sys.stderr)
+        return []
+
+
+def save_archive(path: Path, items: list[dict]) -> None:
+    payload = {
+        "title": "Rumble videos (archive)",
+        "generatedAt": format_datetime(datetime.now(timezone.utc)),
+        "itemCount": len(items),
+        "items": items,
+    }
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+
+
+def archive_excess(items: list[FeedItem], output_path: Path, limit: int) -> list[FeedItem]:
+    """If the accumulated list exceeds the active limit, move the excess older items
+    (the tail) into the corresponding archive JSON. Returns the capped active list.
+    This is the archive feature to prevent the main feed JSONs from growing unbounded.
+    """
+    if len(items) <= limit:
+        return items
+
+    main_items = items[:limit]
+    excess = items[limit:]
+
+    arch_path = get_archive_path(output_path)
+    existing = load_archive(arch_path)
+    seen = {it.get("link") for it in existing if it.get("link")}
+
+    to_add: list[dict] = []
+    for it in excess:
+        d = it.as_json()
+        lnk = d.get("link")
+        if lnk and lnk not in seen:
+            to_add.append(d)
+            seen.add(lnk)
+
+    if to_add:
+        combined = existing + to_add
+        combined.sort(key=lambda x: x.get("pubDate", ""), reverse=True)
+        save_archive(arch_path, combined)
+        print(f"Archived {len(to_add)} older items to {arch_path.name} (archive now {len(combined)})")
+
+    return main_items
+
+
 def page_url(base_url: str, page: int) -> str:
     if page <= 1:
         return base_url
@@ -895,6 +955,12 @@ Full context and prior change history is in samples/rumble-channel-pages/README.
         items = custom_update(items, parse_datetime)
 
     limit = max(1, args.limit)
+
+    # Archive feature: cap the active feed at --limit (default 90) and move
+    # excess older items into the *-archive.json. This runs automatically
+    # so the main feed JSONs used by the website stay at the target size.
+    items = archive_excess(items, output_path, limit)
+
     if not args.no_channel_details:
         channel_cache = load_channel_cache(output_path)
         items = enrich_channel_details(

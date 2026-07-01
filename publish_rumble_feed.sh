@@ -167,11 +167,11 @@ if [ $OVER_STATUS -ne 0 ]; then
   exit $OVER_STATUS
 fi
 
-git add docs/rumble-feed.json docs/overcoming-feed.json
+git add docs/rumble-feed.json docs/rumble-feed-archive.json docs/overcoming-feed.json docs/overcoming-feed-archive.json 2>/dev/null || true
 
-if git diff --cached --ignore-matching-lines=generatedAt --quiet -- docs/rumble-feed.json docs/overcoming-feed.json; then
-  git restore --staged docs/rumble-feed.json docs/overcoming-feed.json
-  git restore docs/rumble-feed.json docs/overcoming-feed.json
+if git diff --cached --ignore-matching-lines=generatedAt --quiet -- docs/rumble-feed.json docs/rumble-feed-archive.json docs/overcoming-feed.json docs/overcoming-feed-archive.json; then
+  git restore --staged docs/rumble-feed.json docs/rumble-feed-archive.json docs/overcoming-feed.json docs/overcoming-feed-archive.json 2>/dev/null || true
+  git restore docs/rumble-feed.json docs/rumble-feed-archive.json docs/overcoming-feed.json docs/overcoming-feed-archive.json 2>/dev/null || true
   echo "$(date '+%Y-%m-%d %H:%M:%S') feed files did not change. Nothing to commit."
   exit 0
 fi
