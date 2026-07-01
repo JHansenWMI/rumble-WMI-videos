@@ -956,20 +956,22 @@ Full context and prior change history is in samples/rumble-channel-pages/README.
 
     limit = max(1, args.limit)
 
-    # Archive feature: cap the active feed at --limit (default 90) and move
-    # excess older items into the *-archive.json. This runs automatically
-    # so the main feed JSONs used by the website stay at the target size.
-    items = archive_excess(items, output_path, limit)
-
+    # Scrape + accumulation + enrichment have no limit.
+    # We just scrape the configured first page(s), accumulate via merge,
+    # and enrich what needs it from the full current set.
     if not args.no_channel_details:
         channel_cache = load_channel_cache(output_path)
         items = enrich_channel_details(
             items,
-            limit=limit,
+            limit=100000,  # effectively no limit on enrichment for the current set
             delay=max(0, args.delay),
             verbose=args.verbose,
             channel_cache=channel_cache,
         )
+
+    # Final step after all scraping and enrichment: archive excess older
+    # videos so the main feed stays at the target size (default 90).
+    items = archive_excess(items, output_path, limit)
 
     write_feed(output_path, items, limit=limit)
     print(f"Wrote {min(len(items), args.limit)} items to {output_path}")
