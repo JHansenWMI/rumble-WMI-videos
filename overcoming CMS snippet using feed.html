@@ -118,8 +118,14 @@
   }
 
   function normalizeTitle(t) {
-    const s = String(t || "").replace(/\s+/g, " ").trim();
-    return stripTrailingDate(s);
+    let s = String(t || "").replace(/\s+/g, " ").trim();
+    s = stripTVSuffix(s);
+    s = stripTrailingDate(s);
+    return s;
+  }
+
+  function stripTVSuffix(title) {
+    return title.replace(/\s*TV\d{8}\s*$/i, "").trim();
   }
 
   function stripTrailingDate(title) {
@@ -138,6 +144,59 @@
     const d = new Date(pubDateStr);
     if (isNaN(d.getTime())) return "";
     return dateFmt.format(d);
+  }
+
+  function getTVDateMatch(item) {
+    // Check title first (e.g. "... TV20260705"), then link / file name
+    let text = item && item.title ? String(item.title) : "";
+    let m = text.match(/TV(\d{4})(\d{2})(\d{2})\s*$/i);
+    if (!m && item && item.link) {
+      text = String(item.link);
+      m = text.match(/tv(\d{4})(\d{2})(\d{2})\b/i);
+    }
+    return m;
+  }
+
+  function getTVAirDate(item) {
+    const m = getTVDateMatch(item);
+    if (!m) return null;
+
+    const y = +m[1];
+    const mo = +m[2];
+    const d = +m[3];
+
+    // Nominal indicated date at noon UTC
+    let dt = new Date(Date.UTC(y, mo - 1, d, 12, 0, 0));
+    const dow = dt.getUTCDay(); // 0=Sun ... 5=Fri
+
+    if (dow === 5) {
+      return dt;
+    }
+
+    const toPrev = (dow - 5 + 7) % 7;
+    const toNext = (5 - dow + 7) % 7;
+
+    let delta;
+    if (toPrev <= toNext) {
+      delta = -toPrev;
+    } else {
+      delta = toNext;
+    }
+
+    dt.setUTCDate(dt.getUTCDate() + delta);
+    return dt;
+  }
+
+  function getTVAirDateStr(item) {
+    const dt = getTVAirDate(item);
+    if (!dt) return formatDateLA(getPubDate(item));
+    return dateFmt.format(dt);
+  }
+
+  function getTVAirTimestamp(item) {
+    const dt = getTVAirDate(item);
+    if (!dt) return new Date(getPubDate(item)).getTime();
+    return dt.getTime();
   }
 
   function getThumb(item) {
@@ -160,8 +219,8 @@
   }
 
   function sortByDateDesc(a, b) {
-    const da = new Date(getPubDate(a)).getTime();
-    const db = new Date(getPubDate(b)).getTime();
+    const da = getTVAirTimestamp(a);
+    const db = getTVAirTimestamp(b);
     return (isNaN(db) ? -Infinity : db) - (isNaN(da) ? -Infinity : da);
   }
 
@@ -198,7 +257,7 @@
       const title = normalizeTitle(item.title);
       const link = getLink(item);
       const thumb = getThumb(item);
-      const date = formatDateLA(getPubDate(item));
+      const date = getTVAirDateStr(item);
       const shortClass = isShort(item) ? " rw-card--short" : "";
       const thumbStyle = thumb ? ` style="--rw-thumb-bg: url('${escapeHtml(thumb)}')"` : "";
 
