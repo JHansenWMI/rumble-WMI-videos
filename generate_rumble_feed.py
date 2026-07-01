@@ -172,7 +172,12 @@ def load_channel_cache(path: Path) -> dict[str, ChannelInfo]:
 
 
 def load_existing_items(path: Path) -> list[dict]:
-    """Load items from prior feed JSON for additive merge (carry video_embed_id etc)."""
+    """Load items from prior feed JSON.
+
+    Used for:
+    - Carrying video_embed_id (and similar) into freshly scraped items.
+    - Accumulating historical items so past data is not discarded on periodic runs.
+    """
     if not path.exists():
         return []
     try:
@@ -185,7 +190,9 @@ def load_existing_items(path: Path) -> list[dict]:
 
 
 def merge_scraped_with_existing(scraped: list[FeedItem], existing: list[dict]) -> list[FeedItem]:
-    """Merge: prefer fresh list data; carry video_embed_id (embed player id) from prior run."""
+    """Carry forward embed ids etc from prior run into the current fresh scrape results.
+    (Used as part of the accumulation flow for periodic scrapers.)
+    """
     prev_by_link: dict[str, dict] = {}
     for e in existing:
         lnk = e.get("link")
@@ -206,6 +213,83 @@ def merge_scraped_with_existing(scraped: list[FeedItem], existing: list[dict]) -
         result.append(
             replace(s, video_embed_id=embed_id) if embed_id else s
         )
+    return result
+
+
+def _dict_to_feeditem(d: dict) -> FeedItem | None:
+    """Reconstruct a minimal FeedItem from a previously written JSON item dict.
+    Used when accumulating older history items that are no longer on the current page 1.
+    """
+    try:
+        link = clean_link(str(d.get("link") or ""))
+        pub_date = str(d.get("pubDate") or "")
+        _, timestamp = parse_datetime(pub_date)
+        if timestamp == float("-inf"):
+            timestamp = 0.0
+
+        video_code = ""
+        if link:
+            m = re.search(r"/(v[a-z0-9]+)-", link)
+            if m:
+                video_code = m.group(1)
+
+        channel_url = ""
+        raw_ch_url = d.get("channelUrl")
+        if raw_ch_url:
+            channel_url = clean_link(str(raw_ch_url))
+
+        return FeedItem(
+            title=clean_text(str(d.get("title") or "")),
+            link=link,
+            pub_date=pub_date,
+            thumb=str(d.get("media:content") or ""),
+            source_page=str(d.get("sourcePage") or ""),
+            video_id=str(d.get("guid") or ""),
+            timestamp=timestamp,
+            channel_name=clean_text(str(d.get("channelName") or "")),
+            channel_url=channel_url,
+            video_code=video_code,
+            video_embed_id=str(d.get("videoId") or ""),
+        )
+    except Exception as exc:
+        print(f"Warning: failed to reconstruct item from previous JSON: {exc}", file=sys.stderr)
+        return None
+
+
+def merge_fresh_into_accumulated(fresh: list[FeedItem], previous: list[dict]) -> list[FeedItem]:
+    """Accumulate history for the feed JSONs.
+
+    - Keep all previous items (history).
+    - Add any newly discovered items from the current scrape.
+    - Prefer data from the fresh scrape for any overlapping items.
+    - Re-sort by timestamp desc (newest first).
+    This is used by periodic runs so we don't discard older videos.
+    """
+    prev_by_link: dict[str, dict] = {}
+    for e in previous:
+        lnk = e.get("link")
+        if lnk:
+            prev_by_link[lnk] = e
+
+    seen: set[str] = set()
+    result: list[FeedItem] = []
+
+    # Fresh items first (these are the current newest from page 1)
+    for item in fresh:
+        if item.link and item.link not in seen:
+            seen.add(item.link)
+            result.append(item)
+
+    # Add older history items that are no longer present in the latest scrape
+    for e in previous:
+        link = e.get("link")
+        if link and link not in seen:
+            seen.add(link)
+            reconstructed = _dict_to_feeditem(e)
+            if reconstructed:
+                result.append(reconstructed)
+
+    result.sort(key=lambda x: x.timestamp, reverse=True)
     return result
 
 
@@ -629,7 +713,7 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Generate JSON from Rumble channel pages.")
     parser.add_argument("--input", help="Optional URL list file. If omitted, built-in Rumble URLs are used.")
     parser.add_argument("--output", default=DEFAULT_OUTPUT, help=f"JSON output file. Default: {DEFAULT_OUTPUT!r}")
-    parser.add_argument("--limit", type=int, default=30, help="Number of feed items to write. Default: 30")
+    parser.add_argument("--limit", type=int, default=90, help="Number of feed items to write for the active feed. Default: 90 (main feeds accumulate up to ~90 before archiving)")
     parser.add_argument(
         "--pages",
         type=int,
@@ -731,12 +815,20 @@ def main() -> int:
         print("No Rumble URLs configured.", file=sys.stderr)
         return 2
 
-    items = build_feed(urls, max_pages=max(1, args.pages), delay=max(0, args.delay), verbose=args.verbose)
+    scraped = build_feed(urls, max_pages=max(1, args.pages), delay=max(0, args.delay), verbose=args.verbose)
 
-    # Additive: open existing JSON and merge (carry video_embed_id etc from prior runs)
+    # Accumulation (change for TV channel rules reorg):
+    # Scrape only the first page (periodic behavior). Merge any new items into
+    # the history from the previous JSON. Do not discard past data.
+    # Fresh data is preferred for overlapping recent items.
     existing = load_existing_items(output_path)
-    if existing:
-        items = merge_scraped_with_existing(items, existing)
+    if not scraped:
+        items = []
+    elif existing:
+        scraped = merge_scraped_with_existing(scraped, existing)
+        items = merge_fresh_into_accumulated(scraped, existing)
+    else:
+        items = scraped
 
     if not items:
         print("No Rumble items found. Rumble may have changed its page HTML.", file=sys.stderr)
