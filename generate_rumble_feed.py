@@ -23,6 +23,7 @@ import json
 import os
 import random
 import re
+import subprocess
 import sys
 import time
 from dataclasses import dataclass
@@ -409,6 +410,67 @@ def format_pacific_updated(dt: datetime | None = None) -> str:
     elif dt.tzinfo is None:
         dt = dt.replace(tzinfo=timezone.utc)
     return dt.astimezone(PACIFIC).strftime("%Y-%m-%d %H:%M:%S %Z")
+
+
+def parse_pacific_updated(s: str) -> datetime:
+    """Parse strings produced by format_pacific_updated, e.g. '2026-07-02 08:56:36 PDT'."""
+    if not s:
+        raise ValueError("empty pacific updated string")
+    s = s.strip()
+    if s.endswith(" PDT") or s.endswith(" PST"):
+        core = s[:-4].strip()
+    else:
+        core = s
+    dt_naive = datetime.strptime(core, "%Y-%m-%d %H:%M:%S")
+    return dt_naive.replace(tzinfo=PACIFIC)
+
+
+def feed_has_meaningful_change(path: str | Path) -> bool:
+    """True if any per-item 'updated' timestamp is newer than the file's last git commit.
+
+    Used by publish_rumble_feed.sh to decide whether generated feed content
+    (beyond top-level timestamps) warrants a commit + push.
+    """
+    p = Path(path)
+    if not p.exists():
+        return False
+
+    # Last commit time for this specific path (committer date, ISO).
+    try:
+        out = subprocess.check_output(
+            ["git", "log", "-1", "--format=%cI", "--", str(p)],
+            text=True,
+            stderr=subprocess.DEVNULL,
+        ).strip()
+        if out:
+            last_commit = datetime.fromisoformat(out.replace("Z", "+00:00"))
+        else:
+            last_commit = datetime.min.replace(tzinfo=timezone.utc)
+    except Exception:
+        return True  # untracked / git error → treat as worth committing
+
+    # Inspect current (generated) JSON for item updated times.
+    try:
+        data = json.loads(p.read_text(encoding="utf-8"))
+    except Exception:
+        return True
+
+    items = data.get("items", []) if isinstance(data, dict) else []
+    for it in items:
+        if not isinstance(it, dict):
+            continue
+        u = it.get("updated")
+        if not u:
+            continue
+        try:
+            item_dt = parse_pacific_updated(u)
+            if item_dt.timestamp() > last_commit.timestamp():
+                return True
+        except Exception:
+            # Unparseable updated on an item → conservative
+            return True
+
+    return False
 
 
 def feed_timestamps() -> dict[str, str]:

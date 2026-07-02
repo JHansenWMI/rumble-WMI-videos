@@ -169,7 +169,24 @@ fi
 
 git add docs/rumble-feed.json docs/rumble-feed-archive.json docs/overcoming-feed.json docs/overcoming-feed-archive.json 2>/dev/null || true
 
-if git diff --cached --ignore-matching-lines=generatedAt --ignore-matching-lines=updated --quiet -- docs/rumble-feed.json docs/rumble-feed-archive.json docs/overcoming-feed.json docs/overcoming-feed-archive.json; then
+# Use per-item "updated" timestamps vs the file's last commit time.
+# A record only gets a fresh updated (in stamp_item_json) when its content actually changed.
+# This replaces the old --ignore-matching-lines git-diff heuristic.
+if python3 -c '
+import sys
+from pathlib import Path
+sys.path.insert(0, ".")
+from generate_rumble_feed import feed_has_meaningful_change
+paths = [
+    "docs/rumble-feed.json",
+    "docs/rumble-feed-archive.json",
+    "docs/overcoming-feed.json",
+    "docs/overcoming-feed-archive.json",
+]
+if any(feed_has_meaningful_change(p) for p in paths):
+    sys.exit(1)  # at least one file has a meaningfully newer record
+sys.exit(0)
+'; then
   git restore --staged docs/rumble-feed.json docs/rumble-feed-archive.json docs/overcoming-feed.json docs/overcoming-feed-archive.json 2>/dev/null || true
   git restore docs/rumble-feed.json docs/rumble-feed-archive.json docs/overcoming-feed.json docs/overcoming-feed-archive.json 2>/dev/null || true
   echo "$(date '+%Y-%m-%d %H:%M:%S') feed files did not change. Nothing to commit."
