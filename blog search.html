@@ -1,18 +1,14 @@
-<input type="text" id="txtSearch"><input type="button" onclick="searchBlog()" value="Search"><script type="text/javascript">// <![CDATA[
-function searchBlog() {
-  var textBox = document.getElementById('txtSearch');
-  if (!textBox) return;
-  var url = 'reading.aspx?srch=' + encodeURIComponent(textBox.value);
-  window.location = url;
-}
-(function () {
-  var textBox = document.getElementById('txtSearch');
-  if (!textBox) return;
-  textBox.addEventListener('keydown', function (e) {
-    if (e.key === 'Enter') {
+// Paste at the end of /asp/site.js (after the closing }); of the main ready handler).
+// Uses jQ, which site.js already defines via jQuery.noConflict().
+
+function wireBlogSearchEnter() {
+  jQ('#txtSearch').on('keydown', function (e) {
+    if (e.which === 13 || e.key === 'Enter') {
       e.preventDefault();
-      searchBlog();
+      if (typeof searchBlog === 'function') {
+        searchBlog();
+      }
     }
   });
-})();
-// ]]></script>
+}
+jQ(document).ready(wireBlogSearchEnter);
