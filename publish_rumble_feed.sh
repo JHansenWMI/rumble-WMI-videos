@@ -167,28 +167,57 @@ if [ $OVER_STATUS -ne 0 ]; then
   exit $OVER_STATUS
 fi
 
-git add docs/rumble-feed.json docs/rumble-feed-archive.json docs/overcoming-feed.json docs/overcoming-feed-archive.json 2>/dev/null || true
+# Determine which feed JSON files (and their archives) to manage for this run.
+# We load the list of *primary* feeds from Python (single source of truth)
+# and only include the corresponding archive if it actually exists on disk
+# (using the same get_archive_path logic the generator uses).
+# This avoids hardcoding non-existent files such as docs/overcoming-feed-archive.json.
+PRIMARY_FEEDS=()
+while IFS= read -r line; do
+    [[ -n $line ]] && PRIMARY_FEEDS+=("$line")
+done < <(python3 -c '
+from generate_rumble_feed import PRIMARY_FEED_FILES
+for p in PRIMARY_FEED_FILES:
+    print(p)
+' )
+
+# Build the actual list of files to manage for this run.
+# Always include primaries. Include an archive only if it was created on disk
+# (using the exact same get_archive_path logic the generator uses).
+FEED_FILES=()
+for primary in "${PRIMARY_FEEDS[@]}"; do
+    FEED_FILES+=("$primary")
+    archive=$(python3 -c '
+from pathlib import Path
+from generate_rumble_feed import get_archive_path
+import sys
+print(get_archive_path(Path(sys.argv[1])))
+' "$primary" 2>/dev/null || true)
+    if [[ -f $archive ]]; then
+        FEED_FILES+=("$archive")
+    fi
+done
+
+git add "${FEED_FILES[@]}" 2>/dev/null || true
 
 # Use per-item "updated" timestamps vs the file's last commit time.
 # A record only gets a fresh updated (in stamp_item_json) when its content actually changed.
 # This replaces the old --ignore-matching-lines git-diff heuristic.
-if python3 -c '
+# The list of files is built dynamically above (primaries + archives that exist).
+paths_py=$(printf '"%s",' "${FEED_FILES[@]}")
+paths_py="[${paths_py%,}]"
+
+if python3 -c "
 import sys
-from pathlib import Path
-sys.path.insert(0, ".")
+sys.path.insert(0, '.')
 from generate_rumble_feed import feed_has_meaningful_change
-paths = [
-    "docs/rumble-feed.json",
-    "docs/rumble-feed-archive.json",
-    "docs/overcoming-feed.json",
-    "docs/overcoming-feed-archive.json",
-]
+paths = $paths_py
 if any(feed_has_meaningful_change(p) for p in paths):
     sys.exit(1)  # at least one file has a meaningfully newer record
 sys.exit(0)
-'; then
-  git restore --staged docs/rumble-feed.json docs/rumble-feed-archive.json docs/overcoming-feed.json docs/overcoming-feed-archive.json 2>/dev/null || true
-  git restore docs/rumble-feed.json docs/rumble-feed-archive.json docs/overcoming-feed.json docs/overcoming-feed-archive.json 2>/dev/null || true
+"; then
+  git restore --staged "${FEED_FILES[@]}" 2>/dev/null || true
+  git restore "${FEED_FILES[@]}" 2>/dev/null || true
   echo "$(date '+%Y-%m-%d %H:%M:%S') feed files did not change. Nothing to commit."
   exit 0
 fi

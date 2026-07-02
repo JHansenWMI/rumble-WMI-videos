@@ -48,6 +48,11 @@ DEFAULT_URLS = [
     "https://rumble.com/user/DrJonathanHansenWMI/livestreams",
 ]
 
+PRIMARY_FEED_FILES = [
+    "docs/rumble-feed.json",
+    "docs/overcoming-feed.json",
+]
+
 
 CARD_RE = re.compile(
     r'<div\s+[^>]*class="[^"]*\bvideostream\b[^"]*"[^>]*data-video-id="(?P<id>\d+)"[^>]*>'
