@@ -86,20 +86,59 @@
     font-size: 13px;
   }
 
-  .rw-linkOverlay {
-    position: absolute;
-    inset: 0;
-    z-index: 2;
-    text-decoration: none;
-    color: inherit;
-    background: transparent;
-  }
-
   .rw-card:hover { filter: brightness(0.98); }
   .rw-card:active { filter: brightness(0.96); }
 
   @media (max-width: 380px) {
     .rw-grid { grid-template-columns: 1fr; }
+  }
+
+  /* Rumble overlay player — portal to document.body (above site .fixed-top z-index: 2300) */
+  #rumbleModal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.88);
+    z-index: 10000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  #rumbleModal .rumbleModalContent {
+    background: #0b0b0b;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 960px;
+    max-height: 92vh;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+  }
+  .rumbleModalBar {
+    display: flex;
+    justify-content: flex-end;
+    padding: 6px 8px;
+    background: #0b0b0b;
+    position: relative;
+    z-index: 2;
+  }
+  #rumbleModalClose {
+    background: rgba(255,255,255,0.12);
+    color: #fff;
+    border: none;
+    font-size: 22px;
+    line-height: 1;
+    padding: 4px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  #rumblePlayerWrap {
+    width: 100%;
+    background: #000;
+    min-height: 420px;
+  }
+  @media (max-width: 600px) {
+    #rumblePlayerWrap { min-height: 280px; }
   }
 --></style>
 <script type="text/javascript">// <![CDATA[
@@ -207,6 +246,93 @@
     return item && item.link ? String(item.link) : "#";
   }
 
+  function getVideoId(item) {
+    if (item && item.videoId) return String(item.videoId);
+    const link = item && item.link ? String(item.link) : "";
+    const m = link.match(/\/(v[a-z0-9]+)-/);
+    return m ? m[1] : "";
+  }
+
+  const RUMBLE_MODAL_Z_INDEX = 10000;
+
+  function ensureRumbleModalPortal() {
+    const modal = document.getElementById('rumbleModal');
+    if (!modal) return null;
+    if (modal.parentNode !== document.body) {
+      document.body.appendChild(modal);
+    }
+    modal.style.zIndex = String(RUMBLE_MODAL_Z_INDEX);
+    return modal;
+  }
+
+  function showRumbleOverlay(videoCode) {
+    if (!videoCode) return;
+    wireRumbleModalHandlers();
+    const modal = ensureRumbleModalPortal();
+    if (!modal) return;
+    const wrap = document.getElementById('rumblePlayerWrap');
+    if (!wrap) return;
+    const playerId = 'rumble_embed_' + videoCode.replace(/[^a-z0-9]/gi, '');
+    wrap.innerHTML = `<div id="${playerId}" style="width:100%; aspect-ratio:16/9; min-height: 300px;"></div>`;
+    modal.style.display = 'flex';
+    const doPlay = () => {
+      if (window.Rumble && typeof window.Rumble === 'function') {
+        try { window.Rumble("play", { video: videoCode, div: playerId }); }
+        catch (err) { console.warn('Rumble play error', err); }
+      } else {
+        setTimeout(doPlay, 250);
+      }
+    };
+    setTimeout(doPlay, 60);
+  }
+
+  function closeRumbleOverlay() {
+    const modal = document.getElementById('rumbleModal');
+    const wrap = document.getElementById('rumblePlayerWrap');
+    if (modal) modal.style.display = 'none';
+    if (wrap) wrap.innerHTML = '';
+  }
+
+  let rumbleModalHandlersWired = false;
+  function wireRumbleModalHandlers() {
+    if (rumbleModalHandlersWired) return;
+    const modal = ensureRumbleModalPortal();
+    const closeBtn = document.getElementById('rumbleModalClose');
+    if (!modal || !closeBtn) return;
+    rumbleModalHandlersWired = true;
+    closeBtn.addEventListener('click', function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      closeRumbleOverlay();
+    });
+    modal.addEventListener('click', function (e) {
+      if (e.target === modal) closeRumbleOverlay();
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key !== 'Escape') return;
+      const m = document.getElementById('rumbleModal');
+      if (m && m.style.display === 'flex') closeRumbleOverlay();
+    });
+  }
+
+  function attachCardClicks() {
+    gridEl.querySelectorAll('.rw-card[data-video-id]').forEach(card => {
+      const videoId = card.getAttribute('data-video-id');
+      if (!videoId) return;
+      const openPlayer = (e) => {
+        if (e && (e.metaKey || e.ctrlKey || e.shiftKey)) {
+          const lnk = card.getAttribute('data-link');
+          if (lnk) window.open(lnk, '_blank');
+          return;
+        }
+        e && e.preventDefault();
+        showRumbleOverlay(videoId);
+      };
+      card.style.cursor = 'pointer';
+      card.addEventListener('click', openPlayer);
+    });
+  }
+
   function getPubDate(item) {
     return item && item.pubDate ? String(item.pubDate) : "";
   }
@@ -258,11 +384,12 @@
       const link = getLink(item);
       const thumb = getThumb(item);
       const date = getTVAirDateStr(item);
+      const videoId = getVideoId(item);
       const shortClass = isShort(item) ? " rw-card--short" : "";
       const thumbStyle = thumb ? ` style="--rw-thumb-bg: url('${escapeHtml(thumb)}')"` : "";
 
       return `
-        <div class="rw-card${shortClass}">
+        <div class="rw-card${shortClass}" data-video-id="${escapeHtml(videoId)}" data-link="${escapeHtml(link)}">
           <div class="rw-thumbWrap"${thumbStyle}>
             ${thumb ? `<img class="rw-thumb" src="${escapeHtml(thumb)}" >` : ""}
           </div>
@@ -271,14 +398,14 @@
             <div class="rw-title">${escapeHtml(title || "Untitled")}</div>
             <div class="rw-date">${escapeHtml(date)}</div>
           </div>
-
-          <a class="rw-linkOverlay" href="${escapeHtml(link)}" aria-label="${escapeHtml(title || "Open video")}"></a>
         </div>
       `;
     }).join("");
 
     gridEl.innerHTML = html;
     gridEl.style.display = "grid";
+    attachCardClicks();
+    wireRumbleModalHandlers();
     if (errors.length) {
       statusEl.textContent = "Loaded videos, but one or more feeds failed.";
       console.warn("Some feeds failed:", errors);
@@ -291,5 +418,15 @@
   }
 })();
 // ]]></script>
+<script type="text/javascript">// <![CDATA[
+!function(r,u,m,b,l,e){r._Rumble=b,r[b]||(r[b]=function(){(r[b]._=r[b]._||[]).push(arguments);if(r[b]._.length==1){l=u.createElement(m),e=u.getElementsByTagName(m)[0],l.async=1,l.src="https://rumble.com/embedJS/uhau7j"+(arguments[1].video?'.'+arguments[1].video:'')+"/?url="+encodeURIComponent(location.href)+"&args="+encodeURIComponent(JSON.stringify([].slice.apply(arguments))),e.parentNode.insertBefore(l,e)}})}(window, document, "script", "Rumble");
+// ]]></script>
 <p style="text-align: center;"></p>
 <p style="text-align: center;"><a href="https://rumble.com/c/c-7899090" target="_blank" class="button">See More Videos</a></p>
+<!-- Rumble overlay player modal -->
+<div id="rumbleModal" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.88); z-index: 10000; align-items: center; justify-content: center; padding: 20px;">
+<div class="rumbleModalContent" style="background: #0b0b0b; border-radius: 10px; width: 100%; max-width: 960px; max-height: 92vh; overflow: hidden; position: relative; box-shadow: 0 10px 40px rgba(0,0,0,0.6);">
+<div class="rumbleModalBar"><button type="button" id="rumbleModalClose" aria-label="Close">&times;</button></div>
+<div id="rumblePlayerWrap" style="width: 100%; background: #000; min-height: 420px;"></div>
+</div>
+</div>

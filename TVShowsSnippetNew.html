@@ -97,11 +97,12 @@
 }
 
 /* Rumble overlay player styles */
+/* Site header (.fixed-top) uses z-index: 2300; modal must live on document.body to sit above it. */
 #rumbleModal {
   position: fixed;
   inset: 0;
   background: rgba(0,0,0,0.88);
-  z-index: 999999;
+  z-index: 10000;
   display: none;
   align-items: center;
   justify-content: center;
@@ -117,19 +118,23 @@
   position: relative;
   box-shadow: 0 10px 40px rgba(0,0,0,0.6);
 }
+.rumbleModalBar {
+  display: flex;
+  justify-content: flex-end;
+  padding: 6px 8px;
+  background: #0b0b0b;
+  position: relative;
+  z-index: 2;
+}
 #rumbleModalClose {
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  background: rgba(0,0,0,0.7);
+  background: rgba(255,255,255,0.12);
   color: #fff;
   border: none;
   font-size: 22px;
   line-height: 1;
-  padding: 4px 10px;
+  padding: 4px 12px;
   border-radius: 4px;
   cursor: pointer;
-  z-index: 10;
 }
 #rumblePlayerWrap {
   width: 100%;
@@ -248,9 +253,22 @@ function attachCardClicks() {
   });
 }
 
+const RUMBLE_MODAL_Z_INDEX = 10000;
+
+function ensureRumbleModalPortal() {
+  const modal = document.getElementById('rumbleModal');
+  if (!modal) return null;
+  if (modal.parentNode !== document.body) {
+    document.body.appendChild(modal);
+  }
+  modal.style.zIndex = String(RUMBLE_MODAL_Z_INDEX);
+  return modal;
+}
+
 function showRumbleOverlay(videoCode) {
   if (!videoCode) return;
-  let modal = document.getElementById('rumbleModal');
+  wireRumbleModalHandlers();
+  let modal = ensureRumbleModalPortal();
   if (!modal) return;
   const wrap = document.getElementById('rumblePlayerWrap');
   if (!wrap) return;
@@ -273,6 +291,28 @@ function closeRumbleOverlay() {
   const wrap = document.getElementById('rumblePlayerWrap');
   if (modal) modal.style.display = 'none';
   if (wrap) wrap.innerHTML = '';
+}
+
+let rumbleModalHandlersWired = false;
+function wireRumbleModalHandlers() {
+  if (rumbleModalHandlersWired) return;
+  const modal = ensureRumbleModalPortal();
+  const closeBtn = document.getElementById('rumbleModalClose');
+  if (!modal || !closeBtn) return;
+  rumbleModalHandlersWired = true;
+  closeBtn.addEventListener('click', function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+    closeRumbleOverlay();
+  });
+  modal.addEventListener('click', function (e) {
+    if (e.target === modal) closeRumbleOverlay();
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key !== 'Escape') return;
+    const m = document.getElementById('rumbleModal');
+    if (m && m.style.display === 'flex') closeRumbleOverlay();
+  });
 }
 
 function isShort(item) {
@@ -317,7 +357,7 @@ function renderVideoCard(video, scheduleDisplayDate) {
   return `
     <div class="rw-card${shortClass}" data-video-id="${escapeHtml(videoId)}" data-link="${escapeHtml(link)}">
       <div class="rw-thumbWrap"${thumbStyle}>
-        ${thumb ? `<img class="rw-thumb" src="${escapeHtml(thumb)}" alt="">` : ""}
+        ${thumb ? `<img class="rw-thumb" src="${escapeHtml(thumb)}" >` : ""}
       </div>
       <div class="rw-meta">
         <div class="rw-title">${escapeHtml(title)}</div>
@@ -420,29 +460,29 @@ async function loadAndRenderSchedule() {
   }
 
   attachCardClicks();
-
-  // Wire modal close
-  const modal = document.getElementById('rumbleModal');
-  if (modal) {
-    const closeBtn = document.getElementById('rumbleModalClose');
-    if (closeBtn) closeBtn.onclick = closeRumbleOverlay;
-    modal.onclick = (e) => { if (e.target === modal) closeRumbleOverlay(); };
-  }
 }
 
-document.addEventListener('DOMContentLoaded', loadAndRenderSchedule);
+function initTVShowsSnippet() {
+  wireRumbleModalHandlers();
+  loadAndRenderSchedule();
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initTVShowsSnippet);
+} else {
+  initTVShowsSnippet();
+}
 // ]]></script>
-<script>!function(r,u,m,b,l,e){r._Rumble=b,r[b]||(r[b]=function(){(r[b]._=r[b]._||[]).push(arguments);if(r[b]._.length==1){l=u.createElement(m),e=u.getElementsByTagName(m)[0],l.async=1,l.src="https://rumble.com/embedJS/uhau7j"+(arguments[1].video?'.'+arguments[1].video:'')+"/?url="+encodeURIComponent(location.href)+"&args="+encodeURIComponent(JSON.stringify([].slice.apply(arguments))),e.parentNode.insertBefore(l,e)}})}(window, document, "script", "Rumble");</script>
+<script type="text/javascript">// <![CDATA[
+!function(r,u,m,b,l,e){r._Rumble=b,r[b]||(r[b]=function(){(r[b]._=r[b]._||[]).push(arguments);if(r[b]._.length==1){l=u.createElement(m),e=u.getElementsByTagName(m)[0],l.async=1,l.src="https://rumble.com/embedJS/uhau7j"+(arguments[1].video?'.'+arguments[1].video:'')+"/?url="+encodeURIComponent(location.href)+"&args="+encodeURIComponent(JSON.stringify([].slice.apply(arguments))),e.parentNode.insertBefore(l,e)}})}(window, document, "script", "Rumble");
+// ]]></script>
 <h4>TV Broadcast</h4>
 <p><a href="https://www.vsmtools.com/U/566/ReviewFiles/tv-channels.aspx" target="_blank">KAZQ-TV32</a>, Friday 6:30 PM (MT)</p>
-<div id="content">
-  <ul></ul>
-</div>
-
+<div id="content"></div>
 <!-- Rumble overlay player modal -->
-<div id="rumbleModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.88); z-index:999999; align-items:center; justify-content:center; padding:20px;">
-  <div class="rumbleModalContent" style="background:#0b0b0b; border-radius:10px; width:100%; max-width:960px; max-height:92vh; overflow:hidden; position:relative; box-shadow:0 10px 40px rgba(0,0,0,0.6);">
-    <button id="rumbleModalClose" aria-label="Close" style="position:absolute; top:8px; right:8px; background:rgba(0,0,0,0.7); color:#fff; border:none; font-size:22px; line-height:1; padding:4px 10px; border-radius:4px; cursor:pointer; z-index:10;">&times;</button>
-    <div id="rumblePlayerWrap" style="width:100%; background:#000; min-height:420px;"></div>
-  </div>
+<div id="rumbleModal" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.88); z-index: 10000; align-items: center; justify-content: center; padding: 20px;">
+<div class="rumbleModalContent" style="background: #0b0b0b; border-radius: 10px; width: 100%; max-width: 960px; max-height: 92vh; overflow: hidden; position: relative; box-shadow: 0 10px 40px rgba(0,0,0,0.6);">
+<div class="rumbleModalBar"><button type="button" id="rumbleModalClose" aria-label="Close">&times;</button></div>
+<div id="rumblePlayerWrap" style="width: 100%; background: #000; min-height: 420px;"></div>
+</div>
 </div>
