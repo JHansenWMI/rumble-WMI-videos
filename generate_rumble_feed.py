@@ -29,6 +29,7 @@ from dataclasses import dataclass
 from dataclasses import replace
 from datetime import datetime, timezone
 from email.utils import format_datetime, parsedate_to_datetime
+from zoneinfo import ZoneInfo
 from html import unescape
 from pathlib import Path
 from typing import Iterable
@@ -38,6 +39,7 @@ from urllib.request import Request, urlopen
 
 
 RUMBLE_BASE = "https://rumble.com"
+PACIFIC = ZoneInfo("America/Los_Angeles")
 DEFAULT_OUTPUT = "docs/rumble-feed.json"
 DEFAULT_URLS = [
     "https://rumble.com/user/DrJonathanHansenWMI/videos",
@@ -313,7 +315,7 @@ def load_archive(path: Path) -> list[dict]:
 def save_archive(path: Path, items: list[dict]) -> None:
     payload = {
         "title": "Rumble videos (archive)",
-        "generatedAt": format_datetime(datetime.now(timezone.utc)),
+        **feed_timestamps(),
         "itemCount": len(items),
         "items": items,
     }
@@ -336,9 +338,12 @@ def archive_excess(items: list[FeedItem], output_path: Path, limit: int) -> list
     existing = load_archive(arch_path)
     seen = {it.get("link") for it in existing if it.get("link")}
 
+    previous_by_link = previous_items_by_link(output_path)
+    now_utc = datetime.now(timezone.utc)
+
     to_add: list[dict] = []
     for it in excess:
-        d = it.as_json()
+        d = stamp_item_json(it, previous_by_link.get(it.link), now_utc)
         lnk = d.get("link")
         if lnk and lnk not in seen:
             to_add.append(d)
@@ -395,6 +400,51 @@ def clean_link(raw_link: str) -> str:
     parsed = urlparse(absolute)
     # Rumble appends tracking query params such as e9s. The plain URL is cleaner for a public feed.
     return urlunparse(parsed._replace(query="", fragment=""))
+
+
+def format_pacific_updated(dt: datetime | None = None) -> str:
+    """Human-readable Pacific time with PDT or PST."""
+    if dt is None:
+        dt = datetime.now(timezone.utc)
+    elif dt.tzinfo is None:
+        dt = dt.replace(tzinfo=timezone.utc)
+    return dt.astimezone(PACIFIC).strftime("%Y-%m-%d %H:%M:%S %Z")
+
+
+def feed_timestamps() -> dict[str, str]:
+    now_utc = datetime.now(timezone.utc)
+    return {
+        "generatedAt": format_datetime(now_utc),
+        "updated": format_pacific_updated(now_utc),
+    }
+
+
+def previous_items_by_link(path: Path) -> dict[str, dict]:
+    return {
+        link: item
+        for item in load_existing_items(path)
+        if (link := item.get("link"))
+    }
+
+
+def stamp_item_json(item: FeedItem, previous: dict | None, now_utc: datetime) -> dict[str, str]:
+    """Attach per-item updated timestamp in Pacific time.
+
+    New items and changed items get the current time; unchanged items keep their prior value.
+    """
+    current = item.as_json()
+    if previous is None:
+        current["updated"] = format_pacific_updated(now_utc)
+        return current
+
+    previous_body = {key: value for key, value in previous.items() if key != "updated"}
+    if previous_body == current:
+        if previous.get("updated"):
+            current["updated"] = previous["updated"]
+        return current
+
+    current["updated"] = format_pacific_updated(now_utc)
+    return current
 
 
 def parse_datetime(value: str) -> tuple[str, float]:
@@ -758,12 +808,17 @@ def load_custom_update_hook():
 
 
 def write_feed(path: Path, items: list[FeedItem], limit: int) -> None:
+    previous_by_link = previous_items_by_link(path)
+    now_utc = datetime.now(timezone.utc)
     selected = items[:limit]
     payload = {
         "title": "Rumble videos",
-        "generatedAt": format_datetime(datetime.now(timezone.utc)),
+        **feed_timestamps(),
         "itemCount": len(selected),
-        "items": [item.as_json() for item in selected],
+        "items": [
+            stamp_item_json(item, previous_by_link.get(item.link), now_utc)
+            for item in selected
+        ],
     }
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
