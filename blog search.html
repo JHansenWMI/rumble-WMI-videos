@@ -1,0 +1,18 @@
+<input type="text" id="txtSearch"><input type="button" onclick="searchBlog()" value="Search"><script type="text/javascript">// <![CDATA[
+function searchBlog() {
+  var textBox = document.getElementById('txtSearch');
+  if (!textBox) return;
+  var url = 'reading.aspx?srch=' + encodeURIComponent(textBox.value);
+  window.location = url;
+}
+(function () {
+  var textBox = document.getElementById('txtSearch');
+  if (!textBox) return;
+  textBox.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      searchBlog();
+    }
+  });
+})();
+// ]]></script>
