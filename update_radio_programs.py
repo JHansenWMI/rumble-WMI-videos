@@ -232,8 +232,7 @@ def format_schedule_line(air_date: datetime, title: str) -> str:
     """Format like the website/static list: 'Fri, Jul 3, 2026: Title'."""
     day_abbr = DAY_ABBRS[air_date.weekday()]
     month = MONTHS[air_date.month - 1]
-    safe_title = html.escape(title, quote=False)
-    return f"{day_abbr}, {month} {air_date.day}, {air_date.year}: {safe_title}"
+    return f"{day_abbr}, {month} {air_date.day}, {air_date.year}: {title}"
 
 
 CSV_FIELDNAMES = [
