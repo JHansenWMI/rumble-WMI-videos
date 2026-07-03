@@ -41,6 +41,12 @@ const PAGE_SIZE = 50;
  *   - Format: "Fri, Jul 3, 2026: Title"
  */
 
+function decodeHtmlEntities(str) {
+    const el = document.createElement("textarea");
+    el.innerHTML = str;
+    return el.value;
+}
+
 function getPacificOffset(date) {
     const pacificString = date.toLocaleString('en-US', {
         timeZone: 'America/Los_Angeles',
@@ -184,7 +190,7 @@ function renderRadioPage(page) {
 
     pageLines.forEach(line => {
         const li = document.createElement('li');
-        li.textContent = line;
+        li.textContent = decodeHtmlEntities(line);
         radioUl.appendChild(li);
     });
 
@@ -194,23 +200,19 @@ function renderRadioPage(page) {
     // Re-run highlight on the visible items only
     highlightUpcoming(radioUl);
 
-    if (pagerEl && !wasFirstRender) {
-        if (isLastPage) {
-            // Last page (fewer than 50 items):
-            // - We already removed .last-page min-height so the list is its natural short height.
-            // - The pager will be directly under the last <li> in document flow.
-            // - Only scroll if the pager ended up completely above the current viewport.
-            //   This avoids the "scrolls all the way to the bottom" behavior of scrollIntoView.
-            requestAnimationFrame(() => {
-                const rect = pagerEl.getBoundingClientRect();
-                if (rect.top < 0) {
-                    // Minimal scroll to bring buttons into view (with a little breathing room)
-                    window.scrollBy(0, rect.top - 30);
-                }
-            });
-        } else if (rectBefore) {
-            // Full pages: use delta compensation so buttons stay at the same
-            // place on the screen (prevents jumpy movement when list height is stable).
+    if (pagerEl && !wasFirstRender && rectBefore) {
+        // Keep the pager (Newer / Older buttons) at the same viewport position after
+        // the DOM reflow. rectBefore tells us where the buttons were when the user
+        // clicked; comparing to rectAfter tells us whether to scroll up or down.
+        // This is especially important on the last page: dropping min-height shrinks
+        // the list and moves the pager up in the document — without compensation the
+        // browser can leave the viewport at the page bottom, hiding the Newer button.
+        const settleFrames = isLastPage ? 2 : 1;
+        const step = (remaining) => {
+            if (remaining > 1) {
+                requestAnimationFrame(() => step(remaining - 1));
+                return;
+            }
             requestAnimationFrame(() => {
                 const rectAfter = pagerEl.getBoundingClientRect();
                 const delta = rectAfter.top - rectBefore.top;
@@ -218,7 +220,8 @@ function renderRadioPage(page) {
                     window.scrollBy(0, delta);
                 }
             });
-        }
+        };
+        step(settleFrames);
     }
 }
 

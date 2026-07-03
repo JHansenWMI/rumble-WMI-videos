@@ -1,16 +1,20 @@
 #!/usr/bin/env python3
 """
-Parse the WATV Radio NOTES sheet from the radio spreadsheet and generate a clean CSV.
-
-First step toward producing a text document similar to docs/tv-schedule.txt.
+Parse the WATV Radio NOTES sheet from the radio spreadsheet and generate:
+  - Intra Support Files/radio_programs.csv (full parsed rows)
+  - docs/radio-schedule.txt (mapped from the CSV: slot-1 programs, cleaned titles, newest first)
 
 Usage:
     python update_radio_programs.py \
         --xlsx "/Volumes/Office/Public/01 TV-Radio Spreadsheets/Warning! Radio - Air Date Record.xlsx" \
-        --csv "Intra Support Files/radio_programs.csv"
+        --csv "Intra Support Files/radio_programs.csv" \
+        --schedule docs/radio-schedule.txt
+
+    # Regenerate schedule only from an existing CSV:
+    python update_radio_programs.py --schedule-only
 
     # Preview:
-    python update_radio_programs.py --xlsx ... --csv ... --dry-run
+    python update_radio_programs.py --xlsx ... --dry-run
 
 Output CSV columns (one row per program entry):
     week_start,week_end,day,slot,program_number,title,recorded_date,week_str,source_row
@@ -33,9 +37,12 @@ without any code changes to row limits. Older template data is ignored.
 
 import argparse
 import csv
+import html
+import io
 import re
-from datetime import datetime
+from datetime import datetime, timedelta
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
 try:
     from openpyxl import load_workbook
@@ -45,21 +52,54 @@ except ImportError:
 
 import sys
 
+PACIFIC = ZoneInfo("America/Los_Angeles")
+
 MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+DAY_OFFSETS = {"Monday": 0, "Tuesday": 1, "Wednesday": 2, "Thursday": 3, "Friday": 4}
+DAY_ABBRS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+WEEK_HEADER_PARTS_RE = re.compile(r"^(\d{4}/\d{2}/\d{2})-(\d{4}/\d{2}/\d{2})$")
+
+
+def parse_week_header_parts(week_str: str) -> tuple[str, str] | None:
+    """Parse week header dates after removing all whitespace (handles '05/25- 05/29', etc.)."""
+    compact = re.sub(r"\s+", "", (week_str or "").strip())
+    m = WEEK_HEADER_PARTS_RE.match(compact)
+    if not m:
+        return None
+    return m.group(1), m.group(2)
+
+
+def normalize_week_str(week_str: str) -> str:
+    """Normalize week headers to 'YYYY/MM/DD - YYYY/MM/DD'."""
+    parts = parse_week_header_parts(week_str)
+    if not parts:
+        return (week_str or "").strip()
+    return f"{parts[0]} - {parts[1]}"
+
+
+def is_week_header(col1: str) -> bool:
+    return parse_week_header_parts(col1) is not None
 
 
 def parse_week_range(week_str: str):
     """Parse '2026/06/22 - 2026/06/26' -> (start_date, end_date) as datetime."""
-    if not week_str or " - " not in week_str:
+    parts = parse_week_header_parts(week_str)
+    if not parts:
         return None, None
     try:
-        left, right = week_str.split(" - ", 1)
         def to_dt(s):
-            y, m, d = map(int, s.strip().split("/"))
-            return datetime(y, m, d)
-        return to_dt(left), to_dt(right)
+            y, mo, d = map(int, s.split("/"))
+            return datetime(y, mo, d)
+        return to_dt(parts[0]), to_dt(parts[1])
     except Exception:
         return None, None
+
+
+def week_year(week_header: str) -> int:
+    try:
+        return int((week_header or "").split("/")[0])
+    except Exception:
+        return 0
 
 
 def extract_recorded_date(title: str):
@@ -86,11 +126,17 @@ def clean_title_for_display(title: str) -> str:
     """Remove trailing recorded date and any rerun program number suffix for display use."""
     if not title:
         return ""
-    t = title.strip()
-    # remove trailing date
-    t = re.sub(r"\s+\d{1,2}/\d{1,2}/\d{2,4}\s*$", "", t)
-    # remove trailing rerun prog num like " 1145R1" or " 1145SW" if it appears at very end after cleaning
-    t = re.sub(r"\s+\d+[A-Z]+\s*$", "", t)
+    t = html.unescape(title.strip())
+    # Repeatedly strip trailing recorded dates and rerun program numbers (e.g. 1003R5, 1145SW).
+    # Loop handles combos like "02/06/2026  1129R5" or "1095R5 1096R5 1097R2".
+    prog_suffix = re.compile(r"\s+\d+(?:R[1-5]|SW|Sun)\s*$", re.IGNORECASE)
+    while True:
+        prev = t
+        t = re.sub(r"\s+\d{1,2}/\d{1,2}/\d{2,4}\s+[ap]m\s*$", "", t, flags=re.IGNORECASE)
+        t = re.sub(r"\s+\d{1,2}/\d{1,2}/\d{2,4}\s*$", "", t)
+        t = prog_suffix.sub("", t)
+        if t == prev:
+            break
     return t.strip()
 
 
@@ -98,9 +144,7 @@ def parse_radio_sheet(xlsx_path: Path, start_row: int = 9030, end_row: int = Non
     """Yield dicts for each program entry in the live mini-table region.
 
     Includes weeks from 2023 onward (per the spec in WorkToDo/Radio Program Parsing.MD).
-    Skips any week headers with year < 2023 (older history or the repeated 2020
-    template blocks at the end). This automatically includes any new data
-    added at the end as long as it uses a 2023+ year in the week header.
+    Skips week headers with year < 2023 (older history or template blocks).
     The start_row is stable; we do not rely on a hardcoded end row.
     """
     wb = load_workbook(xlsx_path, data_only=False)
@@ -113,25 +157,19 @@ def parse_radio_sheet(xlsx_path: Path, start_row: int = 9030, end_row: int = Non
     row = start_row
     max_row = end_row or ws.max_row
 
-    def week_year(week_header):
-        try:
-            return int(week_header.split("/")[0])
-        except:
-            return 0
-
     while row <= max_row:
         col1 = ws.cell(row=row, column=1).value
         if col1 and isinstance(col1, str):
             col1 = col1.strip()
 
-            # Detect week header
-            if " - " in col1 and re.match(r"\d{4}/\d{2}/\d{2}", col1):
-                if week_year(col1) < 2023:
-                    # Older data or 2020 template blocks - skip this week entirely
+            # Detect week header (allow flexible spacing around '-'; sheet sometimes has '05/25- 05/29')
+            if is_week_header(col1):
+                normalized_week = normalize_week_str(col1)
+                if week_year(normalized_week) < 2023:
                     row += 1
                     continue
-                current_week = col1
-                current_week_dates = parse_week_range(col1)
+                current_week = normalized_week
+                current_week_dates = parse_week_range(normalized_week)
                 row += 1
                 continue
 
@@ -177,6 +215,99 @@ def parse_radio_sheet(xlsx_path: Path, start_row: int = 9030, end_row: int = Non
         row += 1
 
 
+def air_date_for_entry(entry: dict) -> datetime | None:
+    """Compute the calendar air date from week_start + weekday offset."""
+    week_start = entry.get("week_start") or ""
+    day = entry.get("day") or ""
+    if not week_start or day not in DAY_OFFSETS:
+        return None
+    try:
+        start = datetime.strptime(week_start, "%Y-%m-%d")
+        return start + timedelta(days=DAY_OFFSETS[day])
+    except Exception:
+        return None
+
+
+def format_schedule_line(air_date: datetime, title: str) -> str:
+    """Format like the website/static list: 'Fri, Jul 3, 2026: Title'."""
+    day_abbr = DAY_ABBRS[air_date.weekday()]
+    month = MONTHS[air_date.month - 1]
+    safe_title = html.escape(title, quote=False)
+    return f"{day_abbr}, {month} {air_date.day}, {air_date.year}: {safe_title}"
+
+
+CSV_FIELDNAMES = [
+    "week_start", "week_end", "day", "slot", "program_number",
+    "title", "recorded_date", "week_str", "source_row",
+]
+
+
+def load_radio_programs_csv(csv_path: Path) -> list[dict]:
+    """Load program rows from radio_programs.csv."""
+    with open(csv_path, newline="", encoding="utf-8") as f:
+        return list(csv.DictReader(f))
+
+
+def write_radio_programs_csv(csv_path: Path, entries: list[dict]) -> None:
+    csv_path.parent.mkdir(parents=True, exist_ok=True)
+    with open(csv_path, "w", newline="", encoding="utf-8") as f:
+        writer = csv.DictWriter(f, fieldnames=CSV_FIELDNAMES)
+        writer.writeheader()
+        writer.writerows(entries)
+
+
+def schedule_cutoff_date(max_future_days: int) -> datetime:
+    """Last air date to include: today (Pacific) + max_future_days."""
+    today = datetime.now(PACIFIC).date()
+    cutoff = today + timedelta(days=max_future_days)
+    return datetime(cutoff.year, cutoff.month, cutoff.day)
+
+
+def entries_to_schedule_lines(entries: list[dict], max_future_days: int = 10) -> list[str]:
+    """Build schedule lines from CSV rows (slot 1 only, newest first)."""
+    cutoff = schedule_cutoff_date(max_future_days)
+    candidates: list[tuple[datetime, str]] = []
+
+    for entry in entries:
+        if entry.get("slot") != "1":
+            continue
+        air_date = air_date_for_entry(entry)
+        if not air_date:
+            continue
+        if air_date > cutoff:
+            continue
+        title = clean_title_for_display(entry.get("title") or "")
+        if not title:
+            continue
+        candidates.append((air_date, format_schedule_line(air_date, title)))
+
+    candidates.sort(key=lambda x: x[0], reverse=True)
+    return [line for _, line in candidates]
+
+
+def write_schedule(path: Path, lines: list[str]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    tmp = path.with_suffix(path.suffix + ".tmp")
+    tmp.write_text("\n".join(lines) + "\n", encoding="utf-8")
+    tmp.replace(path)
+
+
+def generate_schedule_from_csv(csv_path: Path, max_future_days: int = 10) -> list[str]:
+    """Map radio_programs.csv rows into schedule text lines."""
+    rows = load_radio_programs_csv(csv_path)
+    return entries_to_schedule_lines(rows, max_future_days=max_future_days)
+
+
+def preview_schedule_from_entries(entries: list[dict], max_future_days: int = 10) -> list[str]:
+    """Dry-run helper: round-trip entries through an in-memory CSV before mapping."""
+    buf = io.StringIO()
+    writer = csv.DictWriter(buf, fieldnames=CSV_FIELDNAMES)
+    writer.writeheader()
+    writer.writerows(entries)
+    buf.seek(0)
+    return entries_to_schedule_lines(list(csv.DictReader(buf)), max_future_days=max_future_days)
+
+
 def main():
     parser = argparse.ArgumentParser(description="Parse WATV Radio NOTES sheet to clean CSV.")
     parser.add_argument(
@@ -189,48 +320,95 @@ def main():
         default="Intra Support Files/radio_programs.csv",
         help="Output CSV path (relative to project or absolute)",
     )
+    parser.add_argument(
+        "--schedule",
+        default="docs/radio-schedule.txt",
+        help="Output schedule text path (slot-1 programs, newest first)",
+    )
     parser.add_argument("--dry-run", action="store_true", help="Parse and print sample rows only, no file written.")
+    parser.add_argument(
+        "--schedule-only",
+        action="store_true",
+        help="Skip spreadsheet parse; regenerate schedule from existing --csv only",
+    )
     parser.add_argument("--start-row", type=int, default=9030, help="Approx start row for live data (stable per spec)")
     parser.add_argument("--end-row", type=int, default=None, help="Optional hard max row (for debugging); normally we stop dynamically on first 2020/ week header")
+    parser.add_argument(
+        "--max-future-days",
+        type=int,
+        default=10,
+        help="Include schedule entries at most this many days beyond today (Pacific)",
+    )
     args = parser.parse_args()
 
+    project_root = Path(__file__).parent
     xlsx_path = Path(args.xlsx)
     csv_path = Path(args.csv)
+    schedule_path = Path(args.schedule)
     if not csv_path.is_absolute():
-        # assume relative to script dir (project root)
-        csv_path = Path(__file__).parent / csv_path
+        csv_path = project_root / csv_path
+    if not schedule_path.is_absolute():
+        schedule_path = project_root / schedule_path
+
+    print(f"CSV path: {csv_path}")
+    print(f"Schedule target: {schedule_path}")
+    cutoff = schedule_cutoff_date(args.max_future_days)
+    print(f"Schedule air-date cutoff: {cutoff.strftime('%Y-%m-%d')} (today PT + {args.max_future_days} days)")
+
+    if args.schedule_only:
+        if not csv_path.exists():
+            print(f"ERROR: CSV not found: {csv_path}", file=sys.stderr)
+            sys.exit(1)
+        print(f"Mapping schedule from {csv_path}")
+        schedule_lines = generate_schedule_from_csv(csv_path, max_future_days=args.max_future_days)
+        print(f"Generated {len(schedule_lines)} schedule lines (slot 1).")
+        if args.dry_run:
+            print("\nSchedule sample (newest 8):")
+            for line in schedule_lines[:8]:
+                print(" ", line)
+            print("\nSchedule sample (oldest 3):")
+            for line in schedule_lines[-3:]:
+                print(" ", line)
+            return
+        write_schedule(schedule_path, schedule_lines)
+        print(f"Wrote {len(schedule_lines)} lines to {schedule_path}")
+        print("\nNewest schedule entries:")
+        for line in schedule_lines[:5]:
+            print(" ", line)
+        return
 
     print(f"Parsing {xlsx_path}")
-    print(f"Output target: {csv_path}")
-
     entries = list(parse_radio_sheet(xlsx_path, args.start_row, args.end_row))
     print(f"Parsed {len(entries)} program entries.")
 
     if args.dry_run:
-        print("\nSample (first 5):")
+        schedule_lines = preview_schedule_from_entries(entries, max_future_days=args.max_future_days)
+        print(f"Would generate {len(schedule_lines)} schedule lines from CSV mapping (slot 1).")
+        print("\nCSV sample (first 5):")
         for e in entries[:5]:
             print(e)
-        print("\nSample (last 3):")
+        print("\nCSV sample (last 3):")
         for e in entries[-3:]:
             print(e)
+        print("\nSchedule sample (newest 8):")
+        for line in schedule_lines[:8]:
+            print(" ", line)
+        print("\nSchedule sample (oldest 3):")
+        for line in schedule_lines[-3:]:
+            print(" ", line)
         return
 
-    csv_path.parent.mkdir(parents=True, exist_ok=True)
-    with open(csv_path, "w", newline="", encoding="utf-8") as f:
-        writer = csv.DictWriter(
-            f,
-            fieldnames=["week_start", "week_end", "day", "slot", "program_number", "title", "recorded_date", "week_str", "source_row"],
-        )
-        writer.writeheader()
-        writer.writerows(entries)
-
+    write_radio_programs_csv(csv_path, entries)
     print(f"Wrote {len(entries)} rows to {csv_path}")
-    print("First few lines:")
-    with open(csv_path, encoding="utf-8") as f:
-        for i, line in enumerate(f):
-            print(line.rstrip())
-            if i >= 6:
-                break
+
+    print(f"Mapping schedule from {csv_path}")
+    schedule_lines = generate_schedule_from_csv(csv_path, max_future_days=args.max_future_days)
+    write_schedule(schedule_path, schedule_lines)
+
+    print(f"Wrote {len(schedule_lines)} lines to {schedule_path}")
+    print("\nNewest schedule entries:")
+    for line in schedule_lines[:5]:
+        print(" ", line)
 
 
 if __name__ == "__main__":
