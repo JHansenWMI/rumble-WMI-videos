@@ -1,0 +1,922 @@
+# Generated from radio_programs.csv (slot=1 primary programs)
+# Using same cleaning as TV + radio parser
+
+Nov 28, 2026: Israel Trip 2025
+Nov 27, 2026: Dr. Jae Won-Kim, Founder World Holy Spirit Ministries International - Korea
+Nov 26, 2026: Fear Doesn't Stand a Chance Part 2
+Nov 25, 2026: Fear Doesn't Stand a Chance Part 1
+Nov 24, 2026: Where is the God of Elijah - Dr. Hansen for Pastor Mike Adipo, Breakout Session - 9th World Holy Spirit Ministries International Conference, Seoul, South Korea
+Jul 10, 2026: God Created Fathers to Save the Nations Part 2
+Jul 09, 2026: God Created Fathers to Save the Nations Part 1
+Jul 08, 2026: Saving the Nations
+Jul 07, 2026: The Sacrifice God Desires
+Jul 06, 2026: Racism - Tribalism & The Holy Spirit
+Jul 03, 2026: Does God CELEBRATE Diversity in Marriage?
+Jul 02, 2026: Overcoming Tribalism - Bishop Dr. Geoffrey Njuguna
+Jul 01, 2026: Women in Ministry Part 2 - The Overcoming Women - Rev. Elizabeth Kamau of Deliverance Church Lang'Ata, Nairobi Kenya - Pastor Carol Muthiora of Joy Bringers International, Everett WA
+Jun 30, 2026: Women in Ministry Part 1 - The Overcoming Women - Rev. Elizabeth Kamau of Deliverance Church Lang'Ata, Nairobi Kenya - Pastor Carol Muthiora of Joy Bringers International, Everett WA
+Jun 29, 2026: A Balanced Christian Life - Bishop Geoffrey Njuguna
+Jun 26, 2026: God's Unconditional Love - Pastor Elizabeth Kamau Njuguna
+Jun 25, 2026: Warning - 25 Prophetic Dreams Part 4
+Jun 24, 2026: Warning - 25 Prophetic Dreams Part 3
+Jun 23, 2026: The Heart of God Part 2 - The Overcoming Women - Drs. Adalia & Jonathan Hansen
+Jun 22, 2026: The Heart of God Part 1 - The Overcoming Women - Drs. Adalia & Jonathan Hansen
+Jun 19, 2026: How Can We Live in the Glory of God and His Presence Part 3 - Apostle Joe Mwaniki
+Jun 18, 2026: How Can We Live in the Glory of God and His Presence Part 2 - Apostle Joe Mwaniki
+Jun 17, 2026: How Can We Live in the Glory of God and His Presence Part 1 - Apostle Joe Mwaniki
+Jun 16, 2026: Warning - 25 Prophetic Dreams Part 2
+Jun 15, 2026: The Bilding Blocks of Harmony in the Family - Bishop Dr. Geoffrey Njuguna
+Jun 12, 2026: His Divine Nature Part 3 - Apostle Joe Mwaniki
+Jun 11, 2026: His Divine Nature Part 2 - Apostle Joe Mwaniki
+Jun 10, 2026: His Divine Nature Part 1 - Apostle Joe Mwaniki
+Jun 09, 2026: Warning - 25 Prophetic Dreams
+Jun 08, 2026: Pursue Your Life Purpose - Bishop Dr. Geoffrey Njuguna
+Jun 05, 2026: Apostle Joe Mwaniki & Bishop Dr. Geoffrey Njuguna - Kenya Needs Repentance
+Jun 04, 2026: Grace - Gods Unspeakable Gift Part 4 - Bishop Dr. Geoffrey Njuguna
+Jun 03, 2026: Grace - Gods Unspeakable Gift Part 3 - Bishop Dr. Geoffrey Njuguna
+Jun 02, 2026: Redigging the Wells of Faith - Bishop Dr. Geoffrey Njuguna
+Jun 01, 2026: Church Leaders in Kenya
+May 22, 2026: The War with Iran and Hamas - Gideon Behar, Israel Ambassador to Kenya
+May 22, 2026: Governmental Intercessor - The Overcoming Women - Drs. Adalia & Jonathan Hansen
+May 21, 2026: Queen Esther Part 2
+May 21, 2026: Grace - Gods Unspeakable Gift Part 2 - Bishop Dr. Geoffrey Njuguna
+May 20, 2026: Queen Esther Part 1
+May 20, 2026: Grace - Gods Unspeakable Gift Part 1 - Bishop Dr. Geoffrey Njuguna
+May 19, 2026: Nuclear Conflict - Iran in the Bible
+May 19, 2026: Kenya's Prophecy & 2027 Election
+May 18, 2026: The Fall of Fauci & Spiritual Entities
+May 18, 2026: Kenya 2027 Elections - Bishop Geoffrey Njuguna
+May 15, 2026: Eagles Saving the Nations
+May 14, 2026: Bishop Geoffrey Njuguna & Dr. Jonathan Hansen - Kenya 2026
+May 13, 2026: The Image of God
+May 12, 2026: Let the Weight of Your Glory Fall Part 2 - Rev. Dr. Adalia Hansen - Rebecca Arise Ladies Conference, Word of Faith Church Kiambu, Kenya
+May 11, 2026: Let the Weight of Your Glory Fall Part 1 - Rev. Dr. Adalia Hansen - Rebecca Arise Ladies Conference, Word of Faith Church Kiambu, Kenya
+May 08, 2026: The Supernatural - Egypt's War Against God's People Part 2 - Rev. Dr. Adalia Hansen - Rebecca Arise Ladies Conference, Word of Faith Church Kiambu, Kenya
+May 07, 2026: The Supernatural - Egypt's War Against God's People Part 1 - Rev. Dr. Adalia Hansen - Rebecca Arise Ladies Conference, Word of Faith Church Kiambu, Kenya
+May 06, 2026: Dr. EJ Buckardt - If - Then
+May 05, 2026: The Well of Refreshing Part 2 - Bishop Dr. Thomas Muthee, Rebecca Arise Ladies Conference, Word of Faith Church, Kiambu, Kenya
+May 04, 2026: The Well of Refreshing Part 1 - Bishop Dr. Thomas Muthee, Rebecca Arise Ladies Conference, Word of Faith Church, Kiambu, Kenya
+Apr 24, 2026: Moses' Rod & Eagles Saving Nations Part 3 - 10:30am service for Bishop Thomas Muthee, Word of Faith Church in Kiambu Kenya
+Apr 24, 2026: I Am a Debtor Part 2 - 8am Service for Bishop Thomas Muthee, Word of Faith Church in Kiambu Kenya
+Apr 23, 2026: Moses' Rod & Eagles Saving Nations Part 2 - 10:30am service for Bishop Thomas Muthee, Word of Faith Church in Kiambu Kenya
+Apr 23, 2026: I Am a Debtor Part 1 - 8am Service for Bishop Thomas Muthee, Word of Faith Church in Kiambu Kenya
+Apr 22, 2026: Moses' Rod & Eagles Saving Nations Part 1 - 10:30am service for Bishop Thomas Muthee, Word of Faith Church in Kiambu Kenya
+Apr 22, 2026: Dr. EJ Buckardt - Bible - Israel - America - Last Days Part 2
+Apr 21, 2026: Dr. EJ Buckardt - Bible - Israel - America - Last Days Part 1
+Apr 21, 2026: Dr. EJ Buckardt - Bible - Israel - America - Last Days - Part 3
+Apr 20, 2026: Why Did God Raise Up Adversaries Against King Solomon?
+Apr 20, 2026: Marxist - Islamic - Attack on America 02/06/2026  1129R5
+Apr 17, 2026: Resurrection Day and Your DNA Part 3 - Deliverance Church Lang'ata by invitation of Bishop Geoffrey Njuguna, Nairobi, Kenya
+Apr 16, 2026: Resurrection Day and Your DNA Part 2 - Deliverance Church Lang'ata by invitation of Bishop Geoffrey Njuguna, Nairobi, Kenya
+Apr 15, 2026: Resurrection Day and Your DNA Part 1 - Deliverance Church Lang'ata by invitation of Bishop Geoffrey Njuguna, Nairobi, Kenya
+Apr 14, 2026: The Power of a Name - Ministers Fred Christian & Vance Miller
+Apr 13, 2026: Today's Unholy Alliances
+Apr 11, 2026: Covering Part 2
+Apr 10, 2026: The Passover Season Part 3
+Apr 10, 2026: Covering Part 1
+Apr 09, 2026: The Passover Season Part 2
+Apr 09, 2026: Part 3 The New World Order & Judgment - There is Hope - Deliverance Church Langata, Nairobi, Kenya, for Bishop Geoffrey Njuguna
+Apr 08, 2026: The Passover Season Part 1
+Apr 08, 2026: Part 2 The New World Order & Judgment - There is Hope - Deliverance Church Langata, Nairobi, Kenya, for Bishop Geoffrey Njuguna
+Apr 07, 2026: Prayer Warriors & Senior Pastors Part 4
+Apr 07, 2026: Part 1 The New World Order & Judgment - There is Hope - Deliverance Church Langata, Nairobi, Kenya, for Bishop Geoffrey Njuguna
+Apr 06, 2026: Warning - Prophetic Dreams - Guatamalan Illegal Kills American - Part 4
+Apr 03, 2026: Prayer Warriors & Senior Pastors Part 3
+Apr 02, 2026: Pastor Tory Grayson - Liberia & Lawlessness
+Apr 01, 2026: Moses' Rod Part 6
+Mar 31, 2026: Moses' Rod Part 5
+Mar 30, 2026: Warning - Prophetic Dreams - Seattle - Part 3
+Mar 27, 2026: Warning - Prophetic Dreams
+Mar 26, 2026: Prayer Warriors
+Mar 25, 2026: Moses' Rod Part 4
+Mar 24, 2026: Moses' Rod Part 3
+Mar 23, 2026: Pastor Tory Grayson - Tanzania
+Mar 20, 2026: Moses' Rod Part 2
+Mar 19, 2026: Moses' Rod Part 1
+Mar 18, 2026: Pastor Shaun Esterbrook - Make No Room for Sin Part 2
+Mar 17, 2026: Pastor Shaun Esterbrook - Make No Room for Sin Part 1
+Mar 16, 2026: Pastor Tory Grayson - Uganda - Jamaica - USA
+Mar 13, 2026: What is Your DNA? Part 2
+Mar 12, 2026: What is Your DNA? Part 1
+Mar 11, 2026: Spiritual Warfare 2 - Three Bible Verses that Terrify Demons
+Mar 10, 2026: Spiritual Warfare - How Demons Enter You!
+Mar 09, 2026: Pastor Tory Grayson - Kenya-Uganda April-May 2025
+Mar 06, 2026: King David's Mighty Men Part 2
+Mar 05, 2026: King David's Mighty Men Part 1
+Mar 04, 2026: Marxist - Islamic - Attack on America Part 4 - Seattle
+Mar 03, 2026: Marxist - Islamic - Attack on America Part 3 - Churchill & Jefferson
+Mar 02, 2026: Nelson Sua, Former Convicted Felon, Candidate for Governor Hawaii 2026
+Feb 27, 2026: Broken Dreams - Do You Know Yourself? Part 2
+Feb 26, 2026: Broken Dreams - Do You Know Yourself? Part 1
+Feb 25, 2026: Wealthiest Families & The N.W.O.
+Feb 24, 2026: Marxist - Islamic - Attack on America Part 2
+Feb 23, 2026: When I am Weak, Then I am Strong - Bishop Israel Sanoy
+Feb 20, 2026: Marxist - Islamic - Attack on America
+Feb 19, 2026: Sodom and Gomorrah & 25 Prophetic Dreams Part 2 - 02/05/2026 - OMR - Shannon Davis
+Feb 18, 2026: Sodom and Gomorrah & 25 Prophetic Dreams Part 1 - 02/05/2026 - OMR - Shannon Davis
+Feb 17, 2026: General Michael Flynn - American Police Officers Alliance Save Our Sheriffs Rally Part 2 - 01/09/2026 Puyallup, WA
+Feb 16, 2026: General Michael Flynn - American Police Officers Alliance Save Our Sheriffs Rally Part 1 - 01/09/2026 Puyallup, WA
+Feb 13, 2026: There is Hope in the Dark Part 2
+Feb 12, 2026: There is Hope in the Dark Part 1
+Feb 11, 2026: Renee Good & Alex Pretti - Federal Crimes
+Feb 10, 2026: The Real Story - Minnesota - Corruption - The Governor and Mayor Criminals - Part 2 01/29/2026 - OMR - Shannon Davis
+Feb 09, 2026: The Real Story - Minnesota - Corruption - The Governor and Mayor Criminals - Part 1 01/29/2026 - OMR - Shannon Davis
+Feb 06, 2026: Anointing Power of the Holy Spirit - Dr. Michael McKinney, President, Promise Christian University, CA - 9th World Holy Spirit Ministry International Conference in Korea
+Feb 05, 2026: The Spirit of Sodom in America - Holy Hill of Zion, Thy Dwelling Place - Hawaii
+Feb 04, 2026: America & Sodom and Gomorrah - Paradise Chapel - Hawaii Part 2 (Dr Adalia closes in prayer)
+Feb 03, 2026: America & Sodom and Gomorrah - Paradise Chapel - Hawaii Part 1
+Feb 02, 2026: Israel / America - Dr. EJ Buckardt
+Jan 30, 2026: The Spirit of Sodom & Gomorrah in America Part 2 01/16/26 pm
+Jan 29, 2026: The Spirit of Sodom & Gomorrah in America Part 1 01/16/26 pm
+Jan 28, 2026: Constitutional Sheriffs 01/16/26 am
+Jan 27, 2026: Don't Give Up & Don't Look Back
+Jan 26, 2026: Covenant Breaking Spirits Part 12 - Renewing the Covenant
+Jan 23, 2026: Do You Know Yourself? Part 2
+Jan 22, 2026: Do You Know Yourself? Part 1
+Jan 21, 2026: Spiritual Warfare - We will Save Our Nation through the Holy Spirit Part 2 - Philippine church service
+Jan 20, 2026: Spiritual Warfare - We will Save Our Nation through the Holy Spirit Part 1 - Philippine church service
+Jan 19, 2026: Covenant Breaking Spirits Part 11 - Restoration and Reconciliation
+Jan 16, 2026: 2026 Breakthroughs - In His Glory Part 2
+Jan 15, 2026: 2026 Breakthroughs - In His Glory Part 1
+Jan 14, 2026: Covenant Breaking Spirits Part 10 - Breaking Free
+Jan 13, 2026: Covenant Breaking Spirits Part 9 - God's Faithfulness
+Jan 12, 2026: "All the Heroes of the Bible Made Mistakes - God Can Use You - You Have a Desiny" Philippine Maximum Security Prison with Bishop Israel Sanoy
+Jan 09, 2026: Philippine Leaders Meeting - Dr. Adalia Hansen
+Jan 08, 2026: Broken Dreams is the Beginning of Real Living
+Jan 07, 2026: Christmas and Hanukkah
+Jan 06, 2026: Covenant Breaking Spirits Part 8 - Harm to the Vulnerable
+Jan 05, 2026: Covenant Breaking Spirits Part 7 - Emotional & Legal Consequences
+Jan 02, 2026: "We Serve a Living God" - Flood Victims, the Philippines Church Service
+Jan 01, 2026: Philippine Interview, Engineer Edwin Canlas, Bishop Israel Sanoy's Friend
+Dec 31, 2025: Grace - Vision & Revelation Work Together
+Dec 30, 2025: Covenant Breaking Spirits Part 6 - Consequences
+Dec 29, 2025: Covenant Breaking Spirits Part 5 - Spiritual Life & Consequences
+Dec 26, 2025: Minister Fred Christian - Sharing the Full Gospel - We Need Your Help
+Dec 25, 2025: Give to the Forgotten Faces
+Dec 24, 2025: Steve Buckardt - Helping to Reach the Nations
+Dec 23, 2025: Minister Fred Christian - Tremendous Year, Help Us Save the Nations
+Dec 22, 2025: Dr. EJ Buckardt - Tremendous Year, an Opportunity
+Dec 19, 2025: Only the Holy Spirit Led Church Can Save the Philippines Part 2
+Dec 18, 2025: Only the Holy Spirit Led Church Can Save the Philippines Part 1
+Dec 17, 2025: Covenant Breaking Spirits (Part 4) - Broken Political Promises, Treaties & Moral Values
+Dec 16, 2025: Covenant Breaking Spirits (Part 3) - Pres. Kibaki, Uhuru Kenyatta & Ruto
+Dec 15, 2025: Covenant Breaking Spirits (Part 2) - Pres. Jomo Kenyatta & Daniel Arap Moi
+Dec 12, 2025: It's Supernatural - God is Real - Philippines Crusade
+Dec 11, 2025: Extending the Kingdom of God Through Relationship Part 2 - Global Ministries Network International Congress 2025, Baltmore, MD
+Dec 10, 2025: Extending the Kingdom of God Through Relationship Part 1 - Global Ministries Network International Congress 2025, Baltmore, MD
+Dec 09, 2025: The Nature of Covenant Breaking Spirits Part 1
+Dec 08, 2025: Respect Part 2 - Dr. EJ Buckardt
+Dec 05, 2025: Are You Earnestly Contending for the Faith? Part 2 - Bishop Geoffrey Njuguna (Kenya National Congress of Pentecostal Churches) - Subject: How to Conquer Falsehood Against the Church - Text: Jude 1-3
+Dec 04, 2025: Are You Earnestly Contending for the Faith? Part 1 - Bishop Geoffrey Njuguna (Kenya National Congress of Pentecostal Churches) - Subject: How to Conquer Falsehood Against the Church - Text: Jude 1-3
+Dec 03, 2025: Respect - Rev. Dr. EJ Buckardt
+Dec 02, 2025: Rescuing Lives
+Dec 01, 2025: The Forgotten Faces
+Nov 21, 2025: The Prophetic Shift - Minister Fred Chritian 10/03/2025, World Holy Spirit Ministry International, Korea
+Nov 20, 2025: When the Spirit Comes Upon the Wounded - Dr. Adalia Hansen 10/01/2025, World Holy Spirit Ministry International, Korea
+Nov 19, 2025: Don't Let the Fire Go Out - Dr. Michael Hyodo 10/03/2025, World Holy Spirit Ministry International, Korea
+Nov 18, 2025: Are You Prepared? - Dr. EJ Buckardt 10/03/2025, World Holy Spirit Ministry International, Korea
+Nov 17, 2025: Having a Closer Walk with The Lord - Dr. EJ Buckardt 10/01/2025, World Holy Spirit Ministry International, Korea
+Nov 14, 2025: The Holy Spirit Makes War in Korea, LIVE in Seoul South Korea 10/05/2025 Part 2
+Nov 13, 2025: The Holy Spirit Makes War in Korea, LIVE in Seoul South Korea 10/05/2025 Part 1
+Nov 12, 2025: Germany in Prophecy
+Nov 11, 2025: We Are Ambassadors
+Nov 10, 2025: Spiritual Warfare
+Nov 07, 2025: Who is The Holy Spirit? Part 2 - 9th World Holy Spirit Ministries International Conference, Seoul, South Korea
+Nov 06, 2025: Who is The Holy Spirit? Part 1 - 9th World Holy Spirit Ministries International Conference, Seoul, South Korea
+Nov 05, 2025: When Fear is Sinful & When Fear is Healthy
+Nov 04, 2025: Unity/Disunity & Where is the Church At Today? - Dr. EJ Buckardt
+Nov 03, 2025: Prophecy - Ukraine & Russia - America and Nuclear War
+Oct 31, 2025: The World Holy Spirit Conference Korea 2025 - OMR with Shannon Davis (LIVE) Part 2
+Oct 30, 2025: The World Holy Spirit Conference Korea 2025 - OMR with Shannon Davis (LIVE) Part 1
+Oct 29, 2025: Finding Peace in Times of Trouble - Bishop Tobias Nyamwaya
+Oct 28, 2025: The Holy Spirit Makes War in Canada Part 2
+Oct 27, 2025: The Holy Spirit Makes War in Canada Part 1
+Oct 24, 2025: The Wrong Belief System - Bishop Tobias Nyamwaya
+Oct 23, 2025: The Beloved of The Father - Bishop Tobias Nyamwaya
+Oct 22, 2025: I Am a Debtor - Hand of God Church International, Lilongwe, Malawi Sept. 14, 2025
+Oct 21, 2025: Where are the Elijah's of God? - Church Leaders Conference, Lilongwe, Malawi Sept. 13, 2025 Part 2
+Oct 20, 2025: Where are the Elijah's of God? - Church Leaders Conference, Lilongwe, Malawi Sept. 13, 2025 Part 1
+Oct 17, 2025: True Ambassadors Use Nuclear Weapons - Joy Bringers Church, Everett, WA Part 2
+Oct 16, 2025: True Ambassadors Use Nuclear Weapons - Joy Bringers Church, Everett, WA Part 1
+Oct 15, 2025: God 's Enemies Reject Prophecy
+Oct 14, 2025: Called to Add Value - Bishop Tobias Nyamwaya
+Oct 13, 2025: Prayers - Bishop Tobias Nyamwaya
+Oct 10, 2025: Malawi Presidential Election
+Oct 09, 2025: Kenya / Malawi, Presidential Visit - Live with Shannon Davis (Eagles Saving Nations: Election Fraud, Spiritual Warfare & The Mark of the Beast) Part 3
+Oct 08, 2025: Kenya / Malawi, Presidential Visit - Live with Shannon Davis (Eagles Saving Nations: Election Fraud, Spiritual Warfare & The Mark of the Beast) Part 2
+Oct 07, 2025: Kenya / Malawi, Presidential Visit - Live with Shannon Davis (Eagles Saving Nations: Election Fraud, Spiritual Warfare & The Mark of the Beast) Part 1
+Oct 06, 2025: Does God Dictate a President?
+Oct 03, 2025: Elijah's Mantle - Word of Faith Church in Kiambu, Kenya with Bishop Thomas Muthee, Sept. 7, 2025 Part 2
+Oct 02, 2025: Elijah's Mantle - Word of Faith Church in Kiambu, Kenya with Bishop Thomas Muthee, Sept. 7, 2025 Part 1
+Oct 01, 2025: Principles of Love - Forgiveness Part 2 - Bishop Tobias Nyamwaya
+Sep 30, 2025: The Dead Still Speaks - Bishop Tobias Nyamwaya
+Sep 29, 2025: God's Redirection or the Blessing of Obedience - Bishop Tobias Nyamwaya
+Sep 26, 2025: Where's the God of Elijah?
+Sep 25, 2025: An Agent of Transformation - Bishop Dr. Stanley Michuki  09/02/2025 am
+Sep 24, 2025: A Dangerous World - Bishop Dr. Stanley Michuki  09/02/2025 pm
+Sep 23, 2025: The Church's Responsibility in the Nations - Bishop Dr. Stanley Michuki, Pastor Peter Muthiora
+Sep 22, 2025: Principles of Love - Forgiveness: Older Brother Syndrome - Bishop Tobias Nyamwaya
+Sep 19, 2025: Apostolic Leader Dennis Moore - Spirit of Deceit in the Nations 1003R5
+Sep 18, 2025: Bishop Tobias Nyamwaya, Bishop with International Pentecostal Holiness - Dorcas Fund - Widows & Orphans - Kenya   1003R4
+Sep 17, 2025: Bishop Tobias Nyamwaya, Bishop with International Pentecostal Holiness - Prophecy to Kenya & Eagles Saving Nations  1003R3
+Sep 16, 2025: Bishop Tobias Nyamwaya, Bishop with International Pentecostal Holiness - Return to The Father   1003R2
+Sep 15, 2025: The Law of the Spirit 1003R1
+Sep 12, 2025: Turning Point - Dr. Emmanuel Ziga Part 3  08/30/2025 (S of J closing)
+Sep 11, 2025: Turning Point - Dr. Emmanuel Ziga Part 2
+Sep 10, 2025: Turning Point - Dr. Emmanuel Ziga Part 1
+Sep 09, 2025: Altars, Piercings & Tattoos - Minister Fred Christian
+Sep 08, 2025: Unholy Alliances Part 2
+Sep 05, 2025: Rejection Due to False Thoughts (Based on Mark 6:1-29)
+Sep 04, 2025: Obama, Gaddafi & the Democrats - Dr EJ Buckardt, OmegaManRadio with Shannon Davis pt2
+Sep 03, 2025: Hitler, Blocked Prayers and the Unpardonable Sin - Dr EJ Buckardt, OmegaManRadio with Shannon Davis pt1
+Sep 02, 2025: Unholy Alliances
+Sep 01, 2025: Bishop Tobias Nyamwaya - Principles of Love
+Aug 29, 2025: OMR - Bishop Tobias Nyamwaya - Tyranny in the Nations - Tattoos - False Apostles/Prophets Part 2
+Aug 28, 2025: OMR - Bishop Tobias Nyamwaya - Tyranny in the Nations - Tattoos - False Apostles/Prophets Part 1
+Aug 27, 2025: Enemies of Focus - Bishop Tobias Nyamwaya
+Aug 26, 2025: Dealing with Strongholds - Bishop Tobias Nyamwaya
+Aug 25, 2025: Love Proves Covenant & Christianity - Bishop Dr. Stanley Michuki
+Aug 22, 2025: Science of Judgment, Covenant Breaking Spirits - Bishop Dr. Stanley Michuki
+Aug 21, 2025: Crisis in Kenya - Bishop Dr. Stanley Michuki - Pastor Titus Njuguna (Joy Bringers Ministries International, 14550 Westminster Way, Shoreline, WA 98133  joybringersministries.com/)
+Aug 20, 2025: Demons in the Church Today - Bishop Tobias Nyamwaya, Shannon Davis, Dr. Hansen
+Aug 19, 2025: Church Racism - Bishop Tobias Nyamwaya, Shannon Davis, Dr. Hansen
+Aug 18, 2025: Israel-Iran Trump Mistake - Shannon Davis, Dr. Hansen
+Aug 15, 2025: Covering in Prophetic Times - Racism/Tribalism is Evil 1099R1
+Aug 14, 2025: Bishop Tobias Nyamwaya - Faith, Not Tears
+Aug 13, 2025: Covenant Breaking Spirits Part 4 - Divine Judgment
+Aug 12, 2025: Bishop Tobias Nyamwaya - Overcoming Fear Part 1
+Aug 11, 2025: Bishop Tobias Nyamwaya - Overcoming Fear Part 1
+Aug 08, 2025: Covenant Breaking Spirits Part 3 - Kenya Pres. Jomo Kenyatta and Moi  07/19/2025 1100R2
+Aug 07, 2025: Bishop Dr. Stanley Michuki (Kenya National Congress of Pentecostal Churches) - Bishop J.M. Ole Kahara (Lead Pastor, Fireflow Ministries Intl., PO Box 60074, Renton, WA 98058, (425) 633-6335, fireflow.season@yahoo.com, www.fireflowmintl.org) Kenya 06/30/2025 1097R3
+Aug 06, 2025: Dr. Hansen, Bishop Geoffrey Njuguna - Kenya 06/17/2025 1095R5 1096R5 1097R2
+Aug 05, 2025: Iran-Israel Ceasefire Mistake - Nuclear War Instead
+Aug 04, 2025: Iran-Israel War, Ceasefire a Mistake
+Aug 01, 2025: Bishop Geoffrey Njuguna - Fathers as God's Image Bearers Part 3
+Jul 31, 2025: Bishop Geoffrey Njuguna - Fathers as God's Image Bearers Part 2
+Jul 30, 2025: Bishop Geoffrey Njuguna - Fathers as God's Image Bearers Part 1
+Jul 29, 2025: Covenant Breaking Spirits part 3 - Kenya Pres. Jomo Kenyatta and Moi
+Jul 28, 2025: Flawless Covering
+Jul 25, 2025: Radio Part 4 Dr. EJ Buckardt - Critical Time for the Christian Church in America (We Need to WAKE Up not be Woke Up)
+Jul 24, 2025: Radio Part 3 Dr. EJ Buckardt - Critical Time for the Christian Church in America (We Need to WAKE Up not be Woke Up)
+Jul 23, 2025: Dr. Apostle Vee Sitoh (Apostolic Founder of Evangelical Christian Assembly International) & Rev. Janice Tan (Campus Pastor of Evangelical Assembly International - Australia) The Apostolic Responsibility Worldwide
+Jul 22, 2025: Covenant Breaking Spirits Part 2
+Jul 21, 2025: Covering in Prophetic Times - Racism/Tribalism is Evil
+Jul 18, 2025: Rev. Dr. Adalia Hansen & Rev. Elizabeth Kamau - Breaking Spiritual Barriers & Reclaiming Generational Blessings Part 2
+Jul 17, 2025: Rev. Dr. Adalia Hansen & Rev. Elizabeth Kamau - Breaking Spiritual Barriers & Reclaiming Generational Blessings Part 1
+Jul 16, 2025: Bishop Geoffrey Njuguna - The Demonic Spirits that Target the Five-Fold Ministries 06/27/2025 (Men's 6:00 am Bible & Prayer)
+Jul 15, 2025: Covenant Breaking Spirits
+Jul 14, 2025: Prophecy The Science of Judgment
+Jul 11, 2025: World Control vs the Power of God (Prophetic Times)
+Jul 10, 2025: Bishop Geoffrey Njuguna - Tanzania - Bishop Gwajima 06/17/2025 1095R4 1096R4
+Jul 09, 2025: Bishop Dr. Stanley Michuki (Kenya National Congress of Pentecostal Churches) - Bishop J.M. Ole Kahara (Lead Pastor, Fireflow Ministries Intl., PO Box 60074, Renton, WA 98058, (425) 633-6335, fireflow.season@yahoo.com, www.fireflowmintl.org) Kenya
+Jul 08, 2025: Dr. Hansen, Bishop Geoffrey Njuguna - Kenya 06/17/2025 1095R5 1096R5
+Jul 07, 2025: Prophetic Times (Facebook Live Streamed)
+Jul 04, 2025: Dr. Hansen, Bishop Geoffrey Njuguna - Kenya 06/17/2025 1095R5
+Jul 03, 2025: Bishop Geoffrey Njuguna - Tanzania - Bishop Gwajima 06/17/2025 1095R4
+Jul 02, 2025: Dr. EJ Buckardt - Tanzania Bishop Joshephat Gwajima Persecuted 06/11/2025  1094R2 1095R3
+Jul 01, 2025: Dr. EJ Buckardt - Illegal Aliens Riot in LA June 2025 06/11/2025  1094R1 1095R2
+Jun 27, 2025: Dr. Hansen, Bishop Geoffrey Njuguna - Kenya
+Jun 26, 2025: Bishop Geoffrey Njuguna - Tanzania - Bishop Gwajima
+Jun 25, 2025: Dr. EJ Buckardt - Tanzania Bishop Joshephat Gwajima Persecuted 06/11/2025  1094R2
+Jun 24, 2025: Dr. EJ Buckardt - Illegal Aliens Riot in LA June 2025 06/11/2025  1094R1
+Jun 23, 2025: Dr. EJ Buckardt - Israel Attacks Iran's Nuclear Facilities
+Jun 20, 2025: Issachar & War  969R2
+Jun 19, 2025: Defeating Temptation  968R1
+Jun 18, 2025: Grace for Each Other 967R2
+Jun 17, 2025: Dr. EJ Buckardt - Tanzania Bishop Joshephat Gwajima Persecuted
+Jun 16, 2025: Dr. EJ Buckardt - Illegal Aliens Riot in LA June 2025
+Jun 13, 2025: Dr. Bill Henderson, Remnant Gathering Church - It's Time to Break the Back of Shipwreck Faith Part 3  967R1
+Jun 12, 2025: Dr. Bill Henderson, Remnant Gathering Church - It's Time to Break the Back of Shipwreck Faith Part 2  966R5
+Jun 11, 2025: Dr. Bill Henderson, Remnant Gathering Church - It's Time to Break the Back of Shipwreck Faith  966R4
+Jun 10, 2025: Tony Bonnallie, Owner of Mission Motors, Stanwood, WA - Cocaine & Grace  966R3
+Jun 09, 2025: Satisfied Tenacious Eagles 966R1
+Jun 06, 2025: The Consequences for Rejecting Israel - Jerusalem Prayer Breakfast, Oslo, Norway 04/03/2025  1087R3, 1090R5
+Jun 05, 2025: Michael Lotem, Israel Ambassador to Kenya, at the Israel Embassy in Nairobi, Kenya 02/27/2025  1082R1, 1090R4
+Jun 04, 2025: Michael Lotem, Israel Ambassador to Kenya, at the Israel Embassy in Nairobi, Kenya 01/25/2024  1024R3, 1032R1, 1033R5, 1040R5, 1045R4, 1046R2, 1046R5, 1047R5, 1048R4, 1049R2, 1050R5, 1051R1, 1052R4, 1053R2, 1054R5, 1057R5, 1060R5, 1062R5, 1065R5, 1066R3, 1077R3, 1090R3
+Jun 03, 2025: Radio Part 2 Dr. EJ Buckardt - Critical Time for the Christian Church in America (We Need to WAKE Up not be Woke Up)
+Jun 02, 2025: Radio Part 1 Dr. EJ Buckardt - Critical Time for the Christian Church in America (We Need to WAKE Up not be Woke Up)
+May 30, 2025: Minister Fred Christian - Dr. EJ Buckardt - Trusting God when You Feel Forgotten 2
+May 29, 2025: Minister Fred Christian - Trusting God when You Feel Forgotten 1
+May 28, 2025: Bishop Paye Bagnon - Liberia
+May 27, 2025: The Vatican & Protestants (The Day of Worship)
+May 26, 2025: The Science of Judgment Part 16
+May 23, 2025: The Consequences for Rejecting Israel - Jerusalem Prayer Breakfast, Oslo, Norway 04/03/2025  1087R3
+May 22, 2025: Michael Lotem, Israel Ambassador to Kenya, at the Israel Embassy in Nairobi, Kenya 02/27/2025  1082R1
+May 21, 2025: Michael Lotem, Israel Ambassador to Kenya, at the Israel Embassy in Nairobi, Kenya 01/25/2024  1024R3, 1032R1, 1033R5, 1040R5, 1045R4, 1046R2, 1046R5, 1047R5, 1048R4, 1049R2, 1050R5, 1051R1, 1052R4, 1053R2, 1054R5, 1057R5, 1060R5, 1062R5, 1065R5, 1066R3, 1077R3
+May 20, 2025: Pope - Vatican & Lies
+May 19, 2025: The Science of Judgment Part 15
+May 16, 2025: Without the Baptism, Power of the Holy Spirit, America & the Nations will Fall (Dr. Emmanuel Ziga's 2025 Holy Ghost Conference) 02/08/2025  1077R4
+May 15, 2025: Part 2 The Church's Responsibility Through the Power of God - Naalehu Assembly of God
+May 14, 2025: Part 1 The Church's Responsibility Through the Power of God - Naalehu Assembly of God
+May 13, 2025: The Church has Divorced Itself from Its Roots
+May 12, 2025: The Science of Judgment Part 14
+May 09, 2025: Haakon Sengsvoll; Norway Administrator of the Jerusalem Prayer Breakfast, also a program host on TV Visjon Norway with The Israel Channel in Oslo, Norway
+May 08, 2025: Eliezer Sandberg, former Israeli MK - Selje Udjus and Lilly Kristin Langnes, Head Oslo Christian Democrats - MP Humanshu Gilati, Norwegian Parliament - Parliament Commentary (SHORT clip) Oslo, Norway
+May 07, 2025: Hananya Naftali, Digital Aid to Israeli Prime Minister, Benjamin Netanyahu, Oslo, Norway
+May 06, 2025: The Dualistic Nature of God
+May 05, 2025: The Science of Judgment Part 13
+May 02, 2025: Robert Ilatov, Co-Chairman of Jerusalem Prayer Breakfast and former Knesset Member, Oslo, Norway
+May 01, 2025: Erik Selle, Leader of the Norwegian Conservative Party-Partileder Konservative, Oslo, Norway
+Apr 30, 2025: The Consequences for Rejecting Israel - Jerusalem Prayer Breakfast, Oslo, Norway
+Apr 29, 2025: The Passover Feasts / Resurrection Day
+Apr 28, 2025: The Science of Judgment Part 12
+Apr 25, 2025: Albert Veksler - President of the Jerusalem Prayer Breakfast in Oslo, Norway
+Apr 24, 2025: Part 2 Drs. Jonathan & Adalia Hansen lead intercessory prayer for Norway - Visjonskirken in Drammen, Norway, Sunday Evening
+Apr 23, 2025: Part 1 Drs. Jonathan & Adalia Hansen lead intercessory prayer for Norway - Visjonskirken in Drammen, Norway, Sunday Evening
+Apr 22, 2025: The Science of Judgment Part 11
+Apr 21, 2025: Dr. EJ Buckardt - Prepare
+Apr 18, 2025: Part 3 Great Awakening/National Repentance or Judgment - Hope - Majestic City Church, Kenya, hosted by Rev Dan Jr. Kariuki, for Arch Bishop Mark Kariuki
+Apr 17, 2025: Part 2 Great Awakening/National Repentance or Judgment - Hope - Majestic City Church, Kenya, hosted by Rev Dan Jr. Kariuki, for Arch Bishop Mark Kariuki
+Apr 16, 2025: Part 1 Great Awakening/National Repentance or Judgment - Hope - Majestic City Church, Kenya, hosted by Rev Dan Jr. Kariuki, for Arch Bishop Mark Kariuki
+Apr 15, 2025: NWO Wants to Control the World - Loyalty - Dr Hansen teaches devotions Kenya Bible School office, Nairobi, Kenya
+Apr 14, 2025: The Science of Judgment Part 10
+Apr 04, 2025: Part 2 Loyalty - Kenya Bible College Graduation
+Apr 03, 2025: Part 1 Loyalty - Kenya Bible College Graduation
+Apr 02, 2025: Is Your Belief System Bad?
+Apr 01, 2025: The Science of Judgment Part 9
+Mar 31, 2025: The Science of Judgment Part 8
+Mar 28, 2025: Part 2 The Need for a National Repentance - Christian Foundation Fellowship, Nairobi, Kenya, for Archbishop Harrison Ng’anga, with the former VP the Honorable Stephen Kolonzo Musyoka in attendance
+Mar 27, 2025: Part 1 The Need for a National Repentance - Christian Foundation Fellowship, Nairobi, Kenya, for Archbishop Harrison Ng’anga, with the former VP the Honorable Stephen Kolonzo Musyoka in attendance
+Mar 26, 2025: Apostle Williams Thumba, Malawi - Rebuilding the Broken Walls in Life Part 2
+Mar 25, 2025: Apostle Williams Thumba, Malawi - Rebuilding the Broken Walls in Life Part 1
+Mar 24, 2025: Michael Lotem, Israel Ambassador to Kenya, at the Israel Embassy in Nairobi, Kenya
+Mar 21, 2025: Dr. EJ Buckardt - Spiritual Food & Physical Food Part 3
+Mar 20, 2025: Dr. EJ Buckardt - Spiritual Food & Physical Food Part 2
+Mar 19, 2025: Dr. EJ Buckardt - Spiritual Food & Physical Food Part 1
+Mar 18, 2025: Dr. EJ Buckardt - Repent: Why?
+Mar 17, 2025: Dr. EJ Buckardt & Minister Fred Christian - Protestants & the Pope part 3
+Mar 14, 2025: Dr. EJ Buckardt & Minister Fred Christian - Protestants & the Pope part 2
+Mar 13, 2025: Dr. EJ Buckardt & Minister Fred Christian - Protestants & the Pope Part 1
+Mar 12, 2025: Minister Fred Christian - This Means War Part 2
+Mar 11, 2025: Minister Fred Christian - This Means War Part 1
+Mar 10, 2025: Apostolic Leader Eric Hurd - The Humble of Heart
+Mar 07, 2025: Part 3 California Fires - Corruption - Sin (LIVE) - Dr. EJ Buckardt & Minister Fred Christian (OmegaManRadio with Shannon Davis 02/12/25)
+Mar 06, 2025: Part 2 California Fires - Corruption - Sin (LIVE) - Dr. EJ Buckardt & Minister Fred Christian (OmegaManRadio with Shannon Davis 02/12/25)
+Mar 05, 2025: Part 1 California Fires - Corruption - Sin (LIVE) - Dr. EJ Buckardt & Minister Fred Christian (OmegaManRadio with Shannon Davis 02/12/25)
+Mar 04, 2025: Shannon Davis - The Baptism of the Holy Spirit
+Mar 03, 2025: Shannon Davis - The Science of Judgment
+Feb 28, 2025: The Science of Judgment Part 7
+Feb 27, 2025: Pastor Matt Shea - Status of America
+Feb 26, 2025: Missionary Dr. Bree Keyton - Pygmies
+Feb 25, 2025: Apostolic Leader Eric Hurd - Without Holy Spirit, the Nations will Fall
+Feb 24, 2025: Apostolic Leader Eric Hurd - The Foot of Pride
+Feb 21, 2025: Minister Fred Christian - President Trump's Policies & Strategies Part 2
+Feb 20, 2025: Without the Baptism, Power of the Holy Spirit, America & the Nations will Fall (Dr. Emmanuel Ziga's 2025 Holy Ghost Conference)
+Feb 19, 2025: Michael Lotem, Israel Ambassador to Kenya, at the Israel Embassy in Nairobi, Kenya 01/25/2024  1024R3, 1032R1, 1033R5, 1040R5, 1045R4, 1046R2, 1046R5, 1047R5, 1048R4, 1049R2, 1050R5, 1051R1, 1052R4, 1053R2, 1054R5, 1057R5, 1060R5, 1062R5, 1065R5, 1066R3
+Feb 18, 2025: Be Patient & Don't Give Up
+Feb 17, 2025: The Science of Judgment Part 6
+Feb 14, 2025: Rev. Anthony Githui, Missionary from Kenya - No Tribalism
+Feb 13, 2025: Minister Fred Christian - President Trump's Policies & Strategies
+Feb 12, 2025: Drs. Drake & Serena Travis, Drake Travis Global Ministries
+Feb 11, 2025: The Fight to the Death
+Feb 10, 2025: The Science of Judgment Part 5
+Feb 07, 2025: The Science of Judgment Part 4
+Feb 06, 2025: The Science of Judgment Part 3
+Feb 05, 2025: Dr. Augustine (Augie) David, GLA Connection (Global Leadership Alignment)
+Feb 04, 2025: Thomas Moltu, Vice Chair, Christian Conservative Party, Norway
+Feb 03, 2025: God Warns & Tests Our Prayers
+Jan 31, 2025: Jan-Aage Torp, President, European Apostolic Leaders, Norway
+Jan 30, 2025: Rosemarie Fenchel, Babies Survive Abortion
+Jan 29, 2025: Roy Kendall - God Wants Us to Do the Impossible  01/13/2025 (YouTube: Roy Kendall - The Piano)
+Jan 28, 2025: Rev. Gary Cristofaro, Vice President, Ezra International
+Jan 27, 2025: God Blows Out the Threat
+Jan 24, 2025: Eric England, Sales/Marketing - Mission Coordinator, Smokey Mountain Coffee
+Jan 23, 2025: 2025 - A Very Prophetic Year - Breaking the Barriers Prophetic Conference 2025, Out of the Valley Church with Apostle Ken Flynn in Everett, WA Part 3
+Jan 22, 2025: 2025 - A Very Prophetic Year - Breaking the Barriers Prophetic Conference 2025, Out of the Valley Church with Apostle Ken Flynn in Everett, WA Part 2
+Jan 21, 2025: 2025 - A Very Prophetic Year - Breaking the Barriers Prophetic Conference 2025, Out of the Valley Church with Apostle Ken Flynn in Everett, WA Part 1
+Jan 20, 2025: God is Able
+Jan 17, 2025: The Science of Judgment Part 2
+Jan 16, 2025: The Science of Judgment Part 1
+Jan 15, 2025: Arise and Shine for Thy Light has Come
+Jan 14, 2025: Hanukkah 2024
+Jan 13, 2025: Who are the Greatest in the Kingdom of God?
+Jan 10, 2025: Trump - Prophetically it is Not Over
+Jan 09, 2025: Steve Smith - Personal Testimony
+Jan 08, 2025: Apostolic Leader Eric Hurd - Trauma is Drama Part 2
+Jan 07, 2025: Apostolic Leader Eric Hurd - Trauma is Drama Part 1
+Jan 06, 2025: Pastor Matt Shea - Reasons for Concern Before Trump Takes Office in 2025
+Jan 03, 2025: Apostle T. Garreston Saydee, Liberia - Church Corruption in Liberia
+Jan 02, 2025: Are You an Instrument of Death or Life?
+Jan 01, 2025: Minister Fred Christian - Dr. Hansen Needs Intercessors
+Dec 31, 2024: Matching Funds - Minister Fred Christian - Rev. Dr. EJ Buckardt - Dr. Hansen
+Dec 30, 2024: Minister Fred Christian - 2024 End Well Campaign - Eagles Saving Nations
+Dec 27, 2024: Minister Fred Christian - 2024 End Well Campaign
+Dec 26, 2024: Minister Fred Christian - Dear Friends, End of the Year Campaign 2024
+Dec 25, 2024: Matching Funds - Minister Fred Christian - Rev. Dr. EJ Buckardt - Dr. Hansen
+Dec 24, 2024: Minister Fred Christian - 2024 End Well Campaign - Eagles Saving Nations
+Dec 23, 2024: Minister Fred Christian - 2024 End Well Campaign
+Dec 13, 2024: Apostolic Leader Eric Hurd - The Art of Forgiveness
+Dec 13, 2024: America in Crisis - Waianae Assembly of God, for Pastor Abigail Eli-Arthur Part 3
+Dec 12, 2024: Minister Fred Christian - Christians Rise Up Part 2  12/11/2024  TV
+Dec 12, 2024: America in Crisis - Waianae Assembly of God, for Pastor Abigail Eli-Arthur Part 2
+Dec 11, 2024: Minister Fred Christian - Christians Rise Up Part 1 12/11/2024  TV
+Dec 11, 2024: America in Crisis - Waianae Assembly of God, for Pastor Abigail Eli-Arthur Part 1
+Dec 10, 2024: Minister Fred Christian - Power Corrupts Part 2
+Dec 10, 2024: Minister Fred Christian - Power Corrupts
+Dec 09, 2024: Ways to Protect Yourself - Spiritual Warfare & Don't Look Back Part 2
+Dec 09, 2024: Spiritual Warfare & Don't Look Back
+Dec 06, 2024: The Church's Responsibility through the Power of God - Naalehu Assembly of God - Naalehu, HI
+Dec 05, 2024: Current Crisis in America - Holy Hill of Zion Thy Dwelling Place, Waianae, HI
+Dec 04, 2024: Michael Lotem, Israel Ambassador to Kenya, at the Israel Embassy in Nairobi, Kenya 01/25/2024  1024R3, 1032R1, 1033R5, 1040R5, 1045R4, 1046R2, 1046R5, 1047R5, 1048R4, 1049R2, 1050R5, 1051R1, 1052R4, 1053R2, 1054R5, 1057R5, 1060R5, 1062R5, 1065R5
+Dec 03, 2024: Dr. Michael Hyodo - Encouregent Amidst Discouragment
+Dec 02, 2024: Rev. Dr. EJ Buckardt - The Ordination of Man to Serve the Lord
+Nov 29, 2024: Michael Lotem, Israel Ambassador to Kenya, at the Israel Embassy in Nairobi, Kenya 01/25/2024  1024R3, 1032R1, 1033R5, 1040R5, 1045R4, 1046R2, 1046R5, 1047R5, 1048R4, 1049R2, 1050R5, 1051R1, 1052R4, 1053R2, 1054R5, 1057R5, 1060R5, 1062R5
+Nov 28, 2024: Minister Fred Christian - The Science of Judgment  10/28/2024 - 2
+Nov 27, 2024: Minister Fred Christian - The Word vs. Our Flesh  10/28/2024 - 1
+Nov 26, 2024: Rev. Dr. EJ Buckardt - America's Future is at Stake Part 2
+Nov 25, 2024: Rev. Dr. EJ Buckardt - America's Future is at Stake Part 1
+Nov 22, 2024: Apostolic Leader Eric Hurd - Prophecies for America Part 3
+Nov 21, 2024: Apostolic Leader Eric Hurd - Prophecies for America Part 2
+Nov 20, 2024: Apostolic Leader Eric Hurd - Prophecies for America Part 1
+Nov 19, 2024: Apostolic Leader Leo Bogee - Crisis 2024 Part 4
+Nov 18, 2024: Apostolic Leader Leo Bogee - Crisis 2024 Part 3
+Nov 15, 2024: Apostolic Leader Leo Bogee - Crisis 2024 Part 2
+Nov 14, 2024: Apostolic Leader Leo Bogee - Crisis 2024 Part 1
+Nov 13, 2024: Tracy Abuhl - An Election Observer Removed
+Nov 12, 2024: Apostolic Leader Eric Hurd - How to Please God Part 2
+Nov 11, 2024: Rev. Dr. EJ Buckardt - Inventions and the Heart
+Nov 08, 2024: Michael Lotem, Israel Ambassador to Kenya, at the Israel Embassy in Nairobi, Kenya 01/25/2024  1024R3, 1032R1, 1033R5, 1040R5, 1045R4, 1046R2, 1046R5, 1047R5, 1048R4, 1049R2, 1050R5, 1051R1, 1052R4, 1053R2, 1054R5, 1057R5, 1060R5
+Nov 07, 2024: American Prophecies - November 1, 2024
+Nov 06, 2024: Apostolic Leader Eric Hurd - How to Please God Part 1
+Nov 05, 2024: Apostolic Leader Leo Bogee - America, The Church in Heresy
+Nov 04, 2024: Apostolic Leader Eric Hurd - Quantum Life Part 4
+Nov 01, 2024: Apostolic Leader Eric Hurd - Quantum Life Part 3
+Oct 31, 2024: Apostolic Leader Eric Hurd - Quantum Life Part 2
+Oct 30, 2024: Apostolic Leader Eric Hurd - Quantum Life Part 1
+Oct 29, 2024: Rev. Adalia Hansen - The Heart Posture Part 2
+Oct 28, 2024: Rev. Adalia Hansen - The Heart Posture Part 1
+Oct 25, 2024: Michael Lotem, Israel Ambassador to Kenya, at the Israel Embassy in Nairobi, Kenya 01/25/2024  1024R3, 1032R1, 1033R5, 1040R5, 1045R4, 1046R2, 1046R5, 1047R5, 1048R4, 1049R2, 1050R5, 1051R1, 1052R4, 1053R2, 1054R5, 1057R5
+Oct 24, 2024: Rev. Jesse Lee Peterson - God, Let Me See Myself Part 2 10/19/2013 (Founder/President of BOND, Brotherhood Organization Of A New Destiny)
+Oct 23, 2024: Rev. Jesse Lee Peterson - God, Let Me See Myself Part 1 10/19/2013 (Founder/President of BOND, Brotherhood Organization Of A New Destiny)
+Oct 22, 2024: Minister Fred Christian - The Spirit of Hawaii
+Oct 21, 2024: We Are Born into Warfare
+Oct 18, 2024: Part 3 Prosper Ndabishuriye - Big Vision Requires a Big Dream / Dr. Hansen - America's History relating to 9/11 & Israel's History in Judgment
+Oct 17, 2024: Part 2 Prosper Ndabishuriye - Big Vision Requires a Big Dream / Dr. Hansen - America's History relating to 9/11 & Israel's History in Judgment
+Oct 16, 2024: Part 1 Prosper Ndabishuriye - Big Vision Requires a Big Dream / Dr. Hansen - America's History relating to 9/11 & Israel's History in Judgment
+Oct 15, 2024: Rev. Dr. EJ Buckardt - Presidential Election Crisis 2024
+Oct 14, 2024: Darkness and a New Day of Hope!
+Oct 11, 2024: Freedom Is At Stake - Global Church, Puyallup, WA 8/25/24 for Apostle Joceley Silveira Part 2
+Oct 10, 2024: Freedom Is At Stake - Global Church, Puyallup, WA 8/25/24 for Apostle Joceley Silveira Part 1
+Oct 09, 2024: Rev. Dr. EJ Buckardt - Being Led by The Holy Spirit (OmegaManRadio with Shannon Davis 09/26/24) Part 2
+Oct 08, 2024: Rev. Dr. EJ Buckardt - Being Led by The Holy Spirit (OmegaManRadio with Shannon Davis 09/26/24) Part 1
+Oct 07, 2024: I Am Nobody (I Am Nameless, I Am Faceless)
+Oct 04, 2024: Michael Lotem, Israel Ambassador to Kenya, at the Israel Embassy in Nairobi, Kenya 01/25/2024  1024R3, 1032R1, 1033R5, 1040R5, 1045R4, 1046R2, 1046R5, 1047R5, 1048R4, 1049R2, 1050R5, 1051R1, 1052R4, 1053R2, 1054R5
+Oct 03, 2024: The Crisis of November 2024
+Oct 02, 2024: Rev. Marya Moore - The River of God in You
+Oct 01, 2024: We Must Trust the Lord - And Be Patient Part 2
+Sep 30, 2024: We Must Trust the Lord - And Be Patient Part 1
+Sep 27, 2024: Attorney Stephen Pidgeon - The Common Man & Todays Insanity (OmegaManRadio with Shannon Davis 09/13/24-2) Part 3
+Sep 26, 2024: Attorney Stephen Pidgeon - The Common Man & Todays Insanity (OmegaManRadio with Shannon Davis 09/13/24-2) Part 2
+Sep 25, 2024: Attorney Stephen Pidgeon - The Common Man & Todays Insanity (OmegaManRadio with Shannon Davis 09/13/24-2) Part 1
+Sep 24, 2024: Apostolic Leader Eric Hurd - For Men Only
+Sep 23, 2024: Apostolic Leader Eric Hurd - Marriage God's Way Part 2
+Sep 20, 2024: Apostolic Leader Eric Hurd - Marriage God's Way Part 1
+Sep 19, 2024: America's Last Years (OmegaManRadio with Shannon Davis 08/30/24) Part 2
+Sep 18, 2024: America's Last Years (OmegaManRadio with Shannon Davis 08/30/24) Part 1
+Sep 17, 2024: Apostolic Leader Rev. Daniel Ong - Holy Spirit strengthen our innermost being Part 2 (International Christian Center, Renton, WA)
+Sep 16, 2024: Apostolic Leader Rev. Daniel Ong - Holy Spirit strengthen our innermost being Part 1 (International Christian Center, Renton, WA)
+Sep 13, 2024: Michael Lotem, Israel Ambassador to Kenya, at the Israel Embassy in Nairobi, Kenya 01/25/2024  1024R3, 1032R1, 1033R5, 1040R5, 1045R4, 1046R2, 1046R5, 1047R5, 1048R4, 1049R2, 1050R5, 1051R1, 1052R4, 1053R2, 1054R5
+Sep 12, 2024: Apostle Joceley Silveira - The Scriptures are Enough Part 2 Global Church, Pyuallup, WA  08/17/2024 SS  (14422 Meridian Ave, Puyalup, WA - weareglobalchurch.com)
+Sep 11, 2024: Apostle Joceley Silveira - The Scriptures are Enough Part 1 Global Church, Pyuallup, WA  08/17/2024 SS  (14422 Meridian Ave, Puyalup, WA - weareglobalchurch.com)
+Sep 10, 2024: Pastor Matt Shea - A Future of Evil or a Future of God (Radio studio 3)
+Sep 09, 2024: Jim Barfield & Pastor Matt Shea - The Copper Scroll Project Part 5 (Radio studio 4)
+Sep 06, 2024: Jim Barfield & Pastor Matt Shea - The Copper Scroll Project Part 4 (Radio studio 2)
+Sep 05, 2024: Jim Barfield & Pastor Matt Shea - The Copper Scroll Project Part 3 (TV studio 2)
+Sep 04, 2024: Jim Barfield & Pastor Matt Shea - The Copper Scroll Project Part 2 (TV studio 1)
+Sep 03, 2024: Michael Lotem, Israel Ambassador to Kenya, at the Israel Embassy in Nairobi, Kenya 01/25/2024  1024R3, 1032R1, 1033R5, 1040R5, 1045R4, 1046R2, 1046R5, 1047R5, 1048R4, 1049R2, 1050R5, 1051R1, 1052R4
+Sep 02, 2024: Jim Barfield & Pastor Matt Shea - The Copper Scroll Project Part 1 (Radio studio 1)
+Aug 30, 2024: Pastor Jacquie Kirkwood - The Glory of God
+Aug 29, 2024: Michael Lotem, Israel Ambassador to Kenya, at the Israel Embassy in Nairobi, Kenya 01/25/2024  1024R3, 1032R1, 1033R5, 1040R5, 1045R4, 1046R2, 1046R5, 1047R5, 1048R4, 1049R2, 1050R5, 1051R1
+Aug 28, 2024: Minister Fred Christian - Predestination vs. Free Will
+Aug 27, 2024: Minister Fred Christian - Liberalism and the Destruction of America
+Aug 26, 2024: Jessica Munoz - Child Sex Trafficking
+Aug 23, 2024: Bishop Geoffrey Njuguna - The True Path to Spiritual Growth
+Aug 22, 2024: Rev. Elizabeth Njuguna - Keep a Humble Attitude, Always Acknowledging Your Need for God's Word
+Aug 21, 2024: Dr. Hansen & Dr. EJ Buckardt - Heresy in the Church (OmegaManRadio with Shannon Davis 08/09/24) Part 2
+Aug 20, 2024: Dr. Hansen & Dr. EJ Buckardt - Heresy in the Church (OmegaManRadio with Shannon Davis 08/09/24) Part 1
+Aug 19, 2024: Michael Lotem, Israel Ambassador to Kenya, at the Israel Embassy in Nairobi, Kenya 01/25/2024  1024R3, 1032R1, 1033R5, 1040R5, 1045R4, 1046R2, 1046R5, 1047R5, 1048R4, 1049R2, 1050R5
+Aug 16, 2024: Michael Lotem, Israel Ambassador to Kenya, at the Israel Embassy in Nairobi, Kenya 01/25/2024  1024R3, 1032R1, 1033R5, 1040R5, 1045R4, 1046R2, 1046R5, 1047R5, 1048R4, 1049R2
+Aug 15, 2024: Pastor Leo Bogee - Heresy - Olympics - Lesbian Bishop
+Aug 14, 2024: Minister Fred Christian - The Difference Between Conviction & Condemnation
+Aug 13, 2024: Bishop Geoffrey Njuguna - Focusing on God's Kingdom Purpose (OmegaManRadio with Shannon Davis 08/02/24) Part 2
+Aug 12, 2024: Bishop Geoffrey Njuguna - Focusing on God's Kingdom Purpose (OmegaManRadio with Shannon Davis 08/02/24) Part 1
+Aug 09, 2024: Apostle Joceley Silveira - Global Church, Puyallup, WA
+Aug 08, 2024: Apostolic Leader Eric Hurd - Mind Control Part 2 (Hitler - Biden - COVID)
+Aug 07, 2024: Pastor Mike Unverzagt, The House NW, Vancouver, WA - Miracles
+Aug 06, 2024: Michael Lotem, Israel Ambassador to Kenya, at the Israel Embassy in Nairobi, Kenya 01/25/2024  1024R3, 1032R1, 1033R5, 1040R5, 1045R4, 1046R2, 1046R5, 1047R5, 1048R4
+Aug 05, 2024: Dr. EJ Buckardt - Decernment: Seeing Through Satan's Deception
+Aug 02, 2024: Sidney Hemmingmoore - Prime Minister Netanyahu
+Aug 01, 2024: Michael Lotem, Israel Ambassador to Kenya, at the Israel Embassy in Nairobi, Kenya 01/25/2024  1024R3, 1032R1, 1033R5, 1040R5, 1045R4, 1046R2, 1046R5, 1047R5
+Jul 31, 2024: Minister Fred Christian - The Importance of Prayer Part 2 - Some Things Christians Should Pray For
+Jul 30, 2024: Dr. Andy Nazario, Ret. Capt. Bernalillo County Sheriff's Dept., NM - Russia, China, N. Korea, Iran - Are We Going to War?
+Jul 29, 2024: Dr. EJ Buckardt - Return to the Lord - "Before it's too late" Part 2
+Jul 26, 2024: Michael Lotem, Israel Ambassador to Kenya, at the Israel Embassy in Nairobi, Kenya 01/25/2024  1024R3, 1032R1, 1033R5, 1040R5, 1045R4, 1046R2, 1046R5
+Jul 25, 2024: Apostolic Leader Dennis Moore - Living a Life that Empowers Your Spouse Part 3 (Vision International Support Ministries)
+Jul 24, 2024: Apostolic Leader Dennis Moore - Living a Life that Empowers Your Spouse Part 2 (Vision International Support Ministries)
+Jul 23, 2024: Apostolic Leader Dennis Moore - Living a Life that Empowers Your Spouse Part 1 (Vision International Support Ministries)
+Jul 22, 2024: Dr. EJ Buckardt - Return to the Lord - "Before it's too late"
+Jul 19, 2024: Michael Lotem, Israel Ambassador to Kenya, at the Israel Embassy in Nairobi, Kenya 01/25/2024  1024R3, 1032R1, 1033R5, 1040R5, 1045R4, 1046R2
+Jul 18, 2024: Corey Fischer - Flatlined - Demonics
+Jul 17, 2024: Captain Milton Alvarez - United Arab Emirates - God's Treasure Chest
+Jul 16, 2024: Michael Lotem, Israel Ambassador to Kenya, at the Israel Embassy in Nairobi, Kenya 01/25/2024  1024R3, 1032R1, 1033R5, 1040R5, 1045R4
+Jul 15, 2024: Being with Christ
+Jul 12, 2024: Apostolic Leader Eric Hurd - Mind Control - Biden - COVID
+Jul 11, 2024: Michael Lotem, Israel Ambassador to Kenya, at the Israel Embassy in Nairobi, Kenya 01/25/2024  1024R3, 1032R1, 1033R5, 1040R5
+Jul 10, 2024: Ben (Benancio) Garcia - Candidate U.S. Congress, WA State 4th Dist.
+Jul 09, 2024: Bishop Israel Sanoy - Our food in our spiritual lives is to do the will of God Part 2
+Jul 08, 2024: Bishop Israel Sanoy - Our food in our spiritual lives is to do the will of God Part 1
+Jul 05, 2024: Sidney Hemmingmoore - Warning for Netanyahu & Germany's Betrayal
+Jul 04, 2024: Minister Fred Christian - The Importance of Prayer / Frank Sinatra & Elvis Presley
+Jul 03, 2024: Dr. Andy Nazario, Ret. Capt. Bernalillo County Sheriff's Dept., NM - Critical Race Theory
+Jul 02, 2024: Pastor David Manila - Former Philadelphia Mobster, Now Evangelist & Pastor part 2
+Jul 01, 2024: The Consequences of Disbelief in the Warnings of Visions and Dreams
+Jun 28, 2024: Apostolic Leader Eric Hurd - The Divine Nature Part 2
+Jun 27, 2024: Minister Fred Christian - A Double Dose of the Holy Ghost Part 2
+Jun 26, 2024: Dr. Andy Nazario, Ret. Capt. Bernalillo County Sheriff's Dept., NM - MS13 & the Russians
+Jun 25, 2024: Dr. EJ Buckardt - Toppling of Constitution & Treason
+Jun 24, 2024: Warnings in Dreams
+Jun 21, 2024: Pastor David Manila - The Philadelphia Mob
+Jun 20, 2024: Dr. Andy Nazario, Ret. Capt. Bernalillo County Sheriff's Dept., NM - Pride Month
+Jun 19, 2024: Apostolic Leader Eric Hurd - The Divine Nature Part 1
+Jun 18, 2024: Minister Fred Christian - A Double Dose of the Holy Ghost
+Jun 17, 2024: We Have to Receive Elijah's Mantle
+Jun 14, 2024: Scott Nazarino - Candidate US Senate, WA State 2024
+Jun 13, 2024: Dr. Andy Nazario, Ret. Capt. Bernalillo County Sheriff's Dept., NM - Pres. Trump Kangaroo Court & Verdict
+Jun 12, 2024: Captain Milton Alvarez - Japan Mafia
+Jun 11, 2024: Minister Fred Christian - The Holy Spirit
+Jun 10, 2024: Pentecost
+Jun 07, 2024: Michael Lotem, Israel Ambassador to Kenya, at the Israel Embassy in Nairobi, Kenya 01/25/2024  1024R3, 1032R1, 1033R5
+Jun 06, 2024: Captain Milton Alvarez - Former Mafia - God Moving in Pakistan
+Jun 05, 2024: Dr. Andy Nazario, Ret. Capt. Bernalillo County Sheriff's Dept., NM - Former Law Enforcement - Communist Takeover - Hamas Invasion
+Jun 04, 2024: Dominic Imperato - Drugs - Died 3 Times
+Jun 03, 2024: Minister Fred Christian - Communism & the New World Order
+May 31, 2024: How to Use Our Spiritual Nuclear Weapons to Stop the Tyranny Sweeping America and the Nations Part 3 - with Bishop Israel Sanoy, Love Fellowship Church International, Renton, WA
+May 30, 2024: How to Use Our Spiritual Nuclear Weapons to Stop the Tyranny Sweeping America and the Nations Part 2 - with Bishop Israel Sanoy, Love Fellowship Church International, Renton, WA
+May 29, 2024: How to Use Our Spiritual Nuclear Weapons to Stop the Tyranny Sweeping America and the Nations Part 1 - with Bishop Israel Sanoy, Love Fellowship Church International, Renton, WA
+May 28, 2024: Dr. Emanuel Ziga - Pillars of the House of God Part 2
+May 27, 2024: Dr. Emanuel Ziga - Pillars of the House of God Part 1
+May 24, 2024: Pastor Joe Kirkwood - Miracles - Pakistan - Uganda - Ethiopia
+May 23, 2024: Apostle Dennis Moore - Holy Ghost Essential  (Vision International Support Ministries)
+May 22, 2024: Bishop Israel Sanoy - The Church's Mandate (from the Philippines, Pastor of Love Fellowship Church International, 140 Lake Ave. S., Renton, WA 98057)
+May 21, 2024: Bishop Rick Callahan - America's Church
+May 20, 2024: Resurrection Day - First Fruits
+May 17, 2024: Lena Beach - Breaking Addictions Part 2
+May 16, 2024: Pastor Cynthia Eggers - Is Repentance & Holy Spirit Necessary? (Faith Tabernacle Pentecostal Church of God, Albuquerque, NM)
+May 15, 2024: Sandra Martinez - Actress - Dying of Cancer - Healed
+May 14, 2024: Rev. Adalia Hansen - Out of Darkness - with Pastor Cynthia Eggers, Faith Tabernacle Pentecostal Church of God, Albuquerque, NM
+May 13, 2024: Unleavened Bread
+May 10, 2024: Attack on Our Free Speech & Freedom Part 2 - with Pastor Cynthia Eggers, Faith Tabernacle Pentecostal Church of God, Albuquerque, NM
+May 09, 2024: Attack on Our Free Speech & Freedom Part 1 - with Pastor Cynthia Eggers, Faith Tabernacle Pentecostal Church of God, Albuquerque, NM
+May 08, 2024: Rev. Dr. EJ Buckardt, Pastor Vance Miller - European Union & America's Attack on Speech
+May 07, 2024: Rev. Dr. EJ Buckardt - Bio
+May 06, 2024: Rev. Dr. EJ Buckardt - Standing on the Promises of God, Trust and Obey 04/27/2024 SS
+May 03, 2024: Fred Christian - Need to Evangelize - Study & Repent
+May 02, 2024: Pastor Ron Dimaline - Church & WA. D.C. (Founder of New Mount Zion Ministries)
+May 01, 2024: Apostolic Leader Eric Hurd - Mental Illness Part 2
+Apr 30, 2024: Apostolic Leader Eric Hurd - Mental Illness
+Apr 29, 2024: Passover
+Apr 26, 2024: Dr. EJ Buckardt - Absolute Truth
+Apr 25, 2024: Gov. of God vs. Moloch Ruling Colombia & World Part 2 - Bogota, Colombia
+Apr 24, 2024: Gov. of God vs. Moloch Ruling Colombia & World Part 1 - Bogota, Colombia
+Apr 23, 2024: Lena Beach - Breaking Addictions
+Apr 22, 2024: The Way for Unity & Peace
+Apr 19, 2024: Michael Lotem, Israel Ambassador to Kenya, at the Israel Embassy in Nairobi, Kenya 01/25/2024  1024R3, 1032R1
+Apr 18, 2024: Apostle Dennis Moore - Repentance or Judgment  (Vision International Support Ministries)
+Apr 17, 2024: Dr. Edward Baleke, Uganda - Church's Responsibility  04/10/2024  Senior Pastor Shekinah Worship Center, Kampala, Uganda - Regional Director (East & Central Africa) Wise Intentional Leadership Development (WILD) Kampala, Uganda
+Apr 16, 2024: George Bates - Died - Paralyzed & Healed
+Apr 15, 2024: Total Peace
+Apr 12, 2024: Dr. Hansen - Daily Pentecost - Bogota, Colombia 3/17/24 am Meeting Part 2
+Apr 11, 2024: Dr. Hansen - Daily Pentecost - Bogota, Colombia 3/17/24 am Meeting Part 1
+Apr 10, 2024: Rev. Adalia Hansen - Who is the Holy Spirit? - Bogota, Colombia 3/17/24 am Meeting Part 2
+Apr 09, 2024: Rev. Adalia Hansen - Who is the Holy Spirit? - Bogota, Colombia 3/17/24 am Meeting Part 1
+Apr 08, 2024: Michael Lotem, Israel Ambassador to Kenya, at the Israel Embassy in Nairobi, Kenya 01/25/2024  1024R3
+Apr 05, 2024: How to Move Mountains with Our Nuclear Weapons - Bogota, Colombia 3/16/24 am Meeting Part 2
+Apr 04, 2024: How to Move Mountains with Our Nuclear Weapons - Bogota, Colombia 3/16/24 am Meeting Part 1
+Apr 03, 2024: Pastor Vance Miller - Bogota, Colombia, March 12-19, 2024
+Apr 02, 2024: The Foundations Destroyed - Bogota, Colombia 3/15/24 am Meeting
+Apr 01, 2024: Purim
+Mar 29, 2024: Apostle David Bohorquez & Evangelist Alvaro Luna, Interpreter Angel Diaz, Bogota, Colombia
+Mar 28, 2024: Entrepreneur & Driver Camilo Quiroga, Interpreter Angel Diaz, Bogota, Colombia
+Mar 27, 2024: Pastor, Journalist, Director of the newspaper The Word, Arnaldo Araque, Apostle David Bohorquez, Interpreter Angel Diaz, Bogota, Colombia
+Mar 26, 2024: Apostle David Bohorquez, Interpreter Angel Diaz, Bogota, Colombia
+Mar 25, 2024: Dr. EJ Buckardt - Understanding the Israel & Hamas Situation
+Mar 22, 2024: Philip Renner, The Holy Ghost Conference 2/24/24 - Catching the Wind  (2024 HGC 5a-Renner.mov)
+Mar 21, 2024: Apostle Don Beasley - Who Is Holy Ghost?  continued, Gives direction
+Mar 20, 2024: Mark Doolittle "Preparing for End Times" - The Ministry of Dr. Jonathan Hansen
+Mar 19, 2024: Philip Renner, The Holy Ghost Conference 2/23/24 - How to Catch the Wind  030424Conf (2024 HGC 3b-Renner.mov)
+Mar 18, 2024: Who is The Holy Ghost?
+Mar 15, 2024: Prophet Duncan Wyllie, The Holy Ghost Conference 2/23/24 - Sin dis-positions us from God  030324Conf  (2024 HGC 3a-Wyllie.mov)
+Mar 14, 2024: Apostle Don Beasley - Who Is Holy Ghost?
+Mar 13, 2024: Apostle Don Beasley - The Great Deception/Falling Away
+Mar 12, 2024: Apostolic Leader Eric Hurd - The Great Deception - Who Is The Holy Spirit?
+Mar 11, 2024: Daily Pentecost
+Mar 08, 2024: Dr. Emmanuel Ziga, The Holy Ghost Conference 2/22/24 - The Three Witnesses  (2024 HGC 1-Ziga.mov)
+Mar 07, 2024: Dr. Emmanuel Ziga, The Holy Ghost Conference 2/21/24 - Who Is The Holy Spirit? Part 3
+Mar 06, 2024: Dr. Emmanuel Ziga, The Holy Ghost Conference 2/21/24 - Who Is The Holy Spirit? Part 2
+Mar 05, 2024: Dr. Emmanuel Ziga, The Holy Ghost Conference 2/21/24 - Who Is The Holy Spirit? Part 1
+Mar 04, 2024: How to Defeat Our Destructive Emotions and Evil Thoughts
+Mar 01, 2024: 25 Prophetic Dreams  1024R2
+Feb 29, 2024: The Plumb Line  1018R1
+Feb 28, 2024: People with Animal Minds and the Worst is Yet to Come  1016R2
+Feb 27, 2024: The Real Palestinians  1016R1
+Feb 26, 2024: Who Is The Holy Spirit?
+Feb 16, 2024: Victors Chapel International with Bishop William Wachira, Karatina, Kenya, January, 14, 2024 Part 3
+Feb 16, 2024: Deliverance Church Lang'ata by invitation of Bishop Geoffrey Njuguna, Nairobi, Kenya Jan. 24, 2024
+Feb 15, 2024: Victors Chapel International with Bishop William Wachira, Karatina, Kenya, January, 14, 2024 Part 2
+Feb 15, 2024: Orphans & Widows, Adalia's Dorcas Fund - Bumamu Village  01/20&24/2024
+Feb 14, 2024: Victors Chapel International with Bishop William Wachira, Karatina, Kenya, January, 14, 2024 Part 1
+Feb 14, 2024: Michael Lotem, Israel Ambassador to Kenya, at the Israel Embassy in Nairobi, Kenya
+Feb 13, 2024: Apostolic Leader Dennis Moore - Lift Up the Gates (Vision International Support Ministries)
+Feb 13, 2024: 25 Prophetic Dreams
+Feb 12, 2024: Rev. Marya Moore - Recover, Restore - Open the Door of Promise (Vision International Support Ministries)
+Feb 12, 2024: Rev. Dr. EJ Buckardt - How do the Seven Churches of Revelation Compare to the Church Today? Part 3
+Feb 09, 2024: Share the Love Centre, with Teacher John CW, Kenol, Kenya January 28, 2024 Part 5
+Feb 08, 2024: Share the Love Centre, with Teacher John CW, Kenol, Kenya January 28, 2024 Part 4
+Feb 07, 2024: Share the Love Centre, with Teacher John CW, Kenol, Kenya January 28, 2024 Part 3
+Feb 06, 2024: Share the Love Centre, with Teacher John CW, Kenol, Kenya January 28, 2024 Part 2
+Feb 05, 2024: Share the Love Centre, with Teacher John CW, Kenol, Kenya January 28, 2024 Part 1
+Feb 02, 2024: Apostolic Leader Eric Hurd - Communism - Pope - Vaccines
+Feb 01, 2024: People with Animal Minds & the Worst is Yet to Come - Holy Hill of Zion - Thy Dwelling Place, with Pastor Annette L. Tapua, Waianae, HI, December 10, 2023 Part 2
+Jan 31, 2024: People with Animal Minds & the Worst is Yet to Come - Holy Hill of Zion - Thy Dwelling Place, with Pastor Annette L. Tapua, Waianae, HI, December 10, 2023 Part 1
+Jan 30, 2024: Pastor Nathan Gaub - Salvation - Food - Deliverance
+Jan 29, 2024: Rev. Dr. EJ Buckardt - How do the Seven Churches of Revelation Compare to the Church Today? Part 2
+Jan 26, 2024: Fred Christian - Public Schools are the Enemy
+Jan 25, 2024: Rev. Dr. EJ Buckardt - Palestine, Beast, Israel Betrayed (OmegaManRadio with Shannon Davis 01/05/24) Part 3 of 3
+Jan 24, 2024: Rev. Dr. EJ Buckardt - Palestine, Beast, Israel Betrayed (OmegaManRadio with Shannon Davis 01/05/24) Part 2 of 3
+Jan 23, 2024: Rev. Dr. EJ Buckardt - Palestine, Beast, Israel Betrayed (OmegaManRadio with Shannon Davis 01/05/24) Part 1 of 3
+Jan 22, 2024: Rev. Dr. EJ Buckardt - How do the Seven Churches of Revelation Compare to the Church Today? Part 1
+Jan 19, 2024: Steven Lambert - Saving Faith
+Jan 18, 2024: Real Palestinians - People with Animal Minds & the Worst is Yet to Come - Paradise Chapel, Waianae, HI 12/17/23, with Chaplain Ronaldo Pascua Part 2
+Jan 17, 2024: Real Palestinians - People with Animal Minds & the Worst is Yet to Come - Paradise Chapel, Waianae, HI 12/17/23, with Chaplain Ronaldo Pascua Part 1
+Jan 16, 2024: Evangelist Paulette Williams - Atmosphere for Change Part 2
+Jan 15, 2024: Evangelist Paulette Williams - Atmosphere for Change Part 1
+Jan 12, 2024: Rev. Dr. EJ Buckardt - Truth & Lies about the Israel-Hamas War
+Jan 11, 2024: Dr. Steven Lambert - Died Six Times
+Jan 10, 2024: Rev. Debbie Morris - Jesus is Coming Soon Part 2
+Jan 09, 2024: Rev. Debbie Morris - Jesus is Coming Soon Part 1
+Jan 08, 2024: Come Boldly into His Presence
+Jan 05, 2024: The Plumb Line
+Jan 04, 2024: People with Animal Minds and the Worst is Yet to Come  12/02/2023  1016R2
+Jan 03, 2024: The Real Palestinians  12/01/2023  1016R1
+Jan 02, 2024: Rev. Dr. EJ Buckardt - The Scripture in Hymns, Do You Trust and Obey?
+Jan 01, 2024: The Plumb Line
+Dec 29, 2023: Rev. Dr. EJ Buckardt - Jesus' Call to the Disciples
+Dec 28, 2023: Bishop Rick Callahan - The Responsibility of the Church
+Dec 27, 2023: Sidney Hemmingmoore - North Korea
+Dec 26, 2023: Sidney Hemmingmoore - Hamas/Gaza Destroyed
+Dec 25, 2023: Sidney Hemmingmoore - Sweden's Muslim Revolution
+Dec 22, 2023: Sidney Hemmingmoore - Terminal Illness - Spirit of Death
+Dec 21, 2023: Rev. Dr. EJ Buckardt  & Fred Christian - Lives Destroyed in Israel
+Dec 20, 2023: Dr. Bill Henderson - Power Team - Died Twice  12/04/2023  (Photoshop Pic)
+Dec 19, 2023: People with Animal Minds and the Worst is Yet to Come
+Dec 18, 2023: The Real Palestinians
+Dec 15, 2023: Apostolic Leader Eric Hurd - Man Becoming an Animal, The Vatican
+Dec 14, 2023: Fred Christian & Vance Miller - Men & Governments Becoming Animals
+Dec 13, 2023: Fred Christian - Time to Fight Back - Eagles Saving Nations
+Dec 12, 2023: Apostolic Leader Eric Hurd - Men Becoming Animals - Hamas
+Dec 11, 2023: Rev. Dr. EJ Buckardt - People with Animal Minds and the Worst is Yet to Come, continuation
+Dec 08, 2023: Rev. Dr. EJ Buckardt - People with Animal Minds and the Worst is Yet to Come
+Dec 07, 2023: Dr. Willibroad Ticha, President Gospel Heroes World Missions - Government Persecution - Church Failure
+Dec 06, 2023: Incredible Love, Impossible Love, The Most Excellent Way
+Dec 05, 2023: Tracy Abuhl, Pres. Camano Is. Rep. Women's Club - letsgowa.com - Initiatives
+Dec 04, 2023: Rev. Dr. EJ Buckardt - Rebuild Israeli Lives
+Dec 01, 2023: Rev. Dr. EJ Buckardt - Haggai - Comfort, Hope & Holiness Part 2
+Nov 30, 2023: Rev. Dr. EJ Buckardt - Haggai - Comfort, Hope & Holiness Part 1
+Nov 29, 2023: Apostolic Leader Eric Hurd - Hamas and the Vatican
+Nov 28, 2023: Mark Doolittle - "2030 Apocalypse - Time is Running Out"  (Photoshop Pic)
+Nov 27, 2023: The Real Palestinians
+Nov 24, 2023: Evangelist Paulette Williams - Be Strong in the Lord and in the Power of His Might Part 3
+Nov 23, 2023: Evangelist Paulette Williams - Be Strong in the Lord and in the Power of His Might Part 2
+Nov 22, 2023: Evangelist Paulette Williams - Be Strong in the Lord and in the Power of His Might Part 1
+Nov 21, 2023: Evangelist Paulette Williams - The Goodness of God, God is so Good Part 2
+Nov 20, 2023: Evangelist Paulette Williams - The Goodness of God, God is so Good Part 1
+Nov 17, 2023: Captain Milton Alvarez - Former Mafia - Japan
+Nov 16, 2023: Fred Christian - Wife Died - New Ministry
+Nov 15, 2023: Pastor Ronald Dimaline - U.S. Congress - Hamas (Founder of New Mount Zion Ministries)
+Nov 14, 2023: Apostolic Leader Eric Hurd - Islam - Current Events - Russia/China
+Nov 13, 2023: Pastor Mike Unverzagt, The House NW, Vancouver, WA - South Africa Miracles  (Dated Event 11/19/23 speaking at church)
+Nov 10, 2023: Roy Kendall - Hamas Propaganda
+Nov 09, 2023: Nathan Gaub - Asst. Pastor Praise Chapel, Bullhead City, AZ
+Nov 08, 2023: Roy Kendall - Jerusalem - War
+Nov 07, 2023: Apostolic Leader Eric Hurd - Halloween Day 2
+Nov 06, 2023: It's Time to Fully Trust the Lord
+Nov 03, 2023: Apostle Don Beasley, Turning Point Citi Church - American Hamas Demonstrations
+Nov 02, 2023: Shannon Davis, OmegaManRadio from Bali, Indonesia - Allah is not the Christian God  (Photoshop Pic)
+Nov 01, 2023: Sharon Dodge - Testimony of being in Jerusalem when Hamas war broke out October 7, 2023
+Oct 31, 2023: Trust
+Oct 30, 2023: Apostolic Leader Eric Hurd - Halloween - Witch's #1 Holiday
+Oct 27, 2023: Rev. Dr. EJ Buckardt - Hamas - COVID - Mohammed & War
+Oct 26, 2023: George Carneal - "From Queer to Christ" Part 2  (GeorgeCarneal.com)
+Oct 25, 2023: Shannon Davis, OmegaManRadio from Bali, Indonesia - NYC Muslim teacher supports Hamas & Rep. Ilhan Omar
+Oct 24, 2023: Fred Christian - Loss of Spouse - Grief
+Oct 23, 2023: Tabernacles
+Oct 20, 2023: Rev. Dr. EJ Buckardt, Vance Miller - Hamas War
+Oct 19, 2023: Rev. Dr. EJ Buckardt - Israel at War 2023
+Oct 18, 2023: Shannon Davis, OmegaManRadio from Bali, Indonesia - War in Israel 2023
+Oct 17, 2023: Apostolic Leader Eric Hurd - Tyranny in the U.S.A.
+Oct 16, 2023: Atonement
+Oct 13, 2023: Apostle Don Beasley, Turning Point Citi Church - America's Pastoral Decline
+Oct 12, 2023: George Carneal - "From Queer to Christ" (GeorgeCarneal.com)
+Oct 11, 2023: Shannon Davis, OmegaManRadio from Bali, Indonesia - Trumpets 2
+Oct 10, 2023: Shannon Davis, OmegaManRadio from Bali, Indonesia - Trumpets
+Oct 09, 2023: Trumpets
+Oct 06, 2023: Rev. Dr. EJ Buckardt - Pastors Lead the Cause for Freedom
+Oct 05, 2023: Ray Gebauer, Unlicensed Holistic Health Doctor - Better Health through Better Connecting
+Oct 04, 2023: Rev. Dr. EJ Buckardt, Vance Miller - Homosexual Pastors and Churches
+Oct 03, 2023: Apostolic Leader Eric Hurd - Abortionists & Lesbian Pastors & Priests
+Oct 02, 2023: Tattoos and the Pagan Nations
+Sep 29, 2023: Apostolic Leader Dennis Moore - Decline of the American Culture (OmegaManRadio with Shannon Davis 09/15/23) Part 2
+Sep 28, 2023: Apostolic Leader Dennis Moore - Decline of the American Culture (OmegaManRadio with Shannon Davis 09/15/23) Part 1
+Sep 27, 2023: Apostolic Leader Dennis Moore - Covenant Love   SS
+Sep 26, 2023: Rev. Marya Moore - Restorative Fire in Ruth   SS
+Sep 25, 2023: Apostolic Leader Dennis Moore - Lawlessness - Are You Ready?
+Sep 22, 2023: Apostolic Leader Dennis Moore - Spirit of Deceit in the Nations
+Sep 21, 2023: Bishop Tobias Nyamwaya, Bishop with International Pentecostal Holiness - Dorcas Fund - Widows & Orphans - Kenya   radio
+Sep 20, 2023: Bishop Tobias Nyamwaya, Bishop with International Pentecostal Holiness - Prophecy to Kenya & Eagles Saving Nations  radio
+Sep 19, 2023: Bishop Tobias Nyamwaya, Bishop with International Pentecostal Holiness - Return to The Father  SS
+Sep 18, 2023: The Law of the Spirit
+Sep 15, 2023: Apostolic Leader Eric Hurd (The Sons of Issachar), Bishop Tobias Nyamwaya (Bishop with International Pentecostal Holiness) - Maui - Obama - Moloch
+Sep 14, 2023: Pastor Leo Bogee (World Christian Leadership Training Ministries, Oklahoma City. OK), Bishop Tobias Nyamwaya, Bishop with International Pentecostal Holiness - LaHanai Maui - Communist Takeover
+Sep 13, 2023: Bishop Tobias Nyamwaya, Bishop with International Pentecostal Holiness - Re-education - False Doctrine
+Sep 12, 2023: Bishop Tobias Nyamwaya, Bishop with International Pentecostal Holiness - Earrings & Tattoos - Men   radio
+Sep 11, 2023: Bishop Tobias Nyamwaya, Bishop with International Pentecostal Holiness - God's Tough Training    SS
+Sep 08, 2023: Bishop Tobias Nyamwaya, Bishop with International Pentecostal Holiness - Homosexuality
+Sep 07, 2023: Kenyan Bishop Geoffrey Njuguna - Responsibility of the Church  (Senior Pastor Deliverence Lang'ata Nairobi, Kenya) radio
+Sep 06, 2023: Kenyan Bishop Geoffrey Njuguna - The Moral Compass of a Nation  (Senior Pastor Deliverence Lang'ata Nairobi, Kenya) radio
+Sep 05, 2023: Apostolic Leader Eric Hurd, The Sons of Issachar - Lahaina Maui - COVID Cancer Death
+Sep 04, 2023: Kenyan Bishop Geoffrey Njuguna - The Most Important Thing is to Pursue God's Purpose for Us  (Senior Pastor Deliverence Lang'ata Nairobi, Kenya) SS
+Sep 01, 2023: Bishop Tobias Nyamwaya, Bishop with International Pentecostal Holiness - Altars & Demons
+Aug 31, 2023: Bishop Tobias Nyamwaya, Bishop with International Pentecostal Holiness - Tattoos
+Aug 30, 2023: Apostle Dennis Moore - Light the Candles...
+Aug 29, 2023: Rev. Marya Moore - Recovering Revival Fire
+Aug 28, 2023: Apostle Dennis Moore - God is at War with Satan
+Aug 25, 2023: Apostolic Leader Dennis Moore, Apostolic Leader Joe Mwaniki, Bishop Tobias Nyamwaya - Church Problems in Kenya/America
+Aug 24, 2023: Kenyan Apostolic Leader Joe Mwaniki - Need for Revival - Holy Spirit
+Aug 23, 2023: Bishop Tobias Nyamwaya, Bishop with International Pentecostal Holiness - 10-40 Window, Great Commission, True Apostles
+Aug 22, 2023: Bishop Tobias Nyamwaya, Bishop with International Pentecostal Holiness - The Value and the Power of Anointing
+Aug 21, 2023: Altars
+Aug 18, 2023: Apostolic Leader Eric Hurd, The Sons of Issachar - Bishop Tobias Nyamwaya, Bishop with International Pentecostal Holiness - Father, Forgive Them - Authorities Killing Us
+Aug 17, 2023: Bishop Tobias Nyamwaya, Bishop with International Pentecostal Holiness; Dr. EJ Buckardt, Dean of WMI School of Theology - God is at War with Satan - Eagles Saving Nations
+Aug 16, 2023: Bishop Tobias Nyamwaya, Bishop with International Pentecostal Holiness; Dr. EJ Buckardt, Dean of WMI School of Theology - Mercy, Grace & Love
+Aug 15, 2023: Bishop Tobias Nyamwaya, Bishop with International Pentecostal Holiness - Forgetting Our Mission
+Aug 14, 2023: Father, Forgive Them
+Aug 11, 2023: Bishop Tobias Nyamwaya, Bishop with International Pentecostal Holiness - The Tree of Hope
+Aug 10, 2023: Bishop Tobias Nyamwaya, Bishop with International Pentecostal Holiness - Kenya's Supreme Court - Homosexuality
+Aug 09, 2023: Bishop Tobias Nyamwaya, Bishop with International Pentecostal Holiness - The Church & Racism
+Aug 08, 2023: Bishop Tobias Nyamwaya, Bishop with International Pentecostal Holiness - The Church's Responsibility
+Aug 07, 2023: The Tree of Hope
+Aug 04, 2023: Molech Ruling America - for Apostle Reuben Esh, Beacon of Truth Ministries, Garnett, KS 7/16/23 Part 2
+Aug 03, 2023: Molech Ruling America - for Apostle Reuben Esh, Beacon of Truth Ministries, Garnett, KS 7/16/23 Part 1
+Aug 02, 2023: Bishop Tobias Nyamwaya, Bishop with International Pentecostal Holiness - The Generals Who Forgot Their Mission and Vision
+Aug 01, 2023: Dr. EJ Buckardt - If, Then
+Jul 31, 2023: Dr. EJ Buckardt - Unity
+Jul 28, 2023: Sidney Hemmingmoore - The Prophecy for Finland & its Fulfillment
+Jul 27, 2023: Ray Gebauer, Unlicensed Holistic Health Doctor - Getting Off the Freeway of Slow Suicide Part 4
+Jul 26, 2023: Apostolic Leader Eric Hurd - Pedophile Disney Employee Raped Babies
+Jul 25, 2023: Pastor Joe Kirkwood - Miracles - Eye Ball Created
+Jul 24, 2023: Sidney Hemmingmoore - Europe & the Prophecy for Germany
+Jul 21, 2023: Apostolic Leader Dennis Moore - Cultural Wars - The Dream
+Jul 20, 2023: Vitaliy Musiyenko - Needs of Ukraine & War Victims
+Jul 19, 2023: Apostolic Leader Eric Hurd - Great Awakening & Nations against the COVID Vaccination
+Jul 18, 2023: Apostolic Leader Eric Hurd - N.W.O. & Weapons targeting brain function - Neurological Damage
+Jul 17, 2023: Sidney Hemmingmoore - The Dechristianization of Sweden and Finland
+Jul 14, 2023: Sidney Hemmingmoore - Prophecy USA - Sweden  2023-06-28  (Scott Farah ad & Gebauer Outro)
+Jul 13, 2023: Anna Kane, Co-Founder, CEO & Nicole Orozco, Co-Founder, CSO, The Flame Newspaper – Flame Newspaper and Censorship      (Spreading Truth Like Wildfire! *Print Newspapers *Podcasts *Media)  (theflameusa.com - info@theflameusa.com)  TV
+Jul 12, 2023: Anna Kane, Co-Founder, CEO & Nicole Orozco, Co-Founder, CSO, The Flame Newspaper - Flame Newspaper       (Spreading Truth Like Wildfire! *Print Newspapers *Podcasts *Media)  (theflameusa.com - info@theflameusa.com)  Radio
+Jul 11, 2023: Marine Spirits - The Movie Avatar - Hinduism
+Jul 10, 2023: Leviathan & Marine Spirits
+Jul 07, 2023: Scott Farah - Banker - Business Opportunities
+Jul 06, 2023: Mediums, Charms, Fortune Telling
+Jul 05, 2023: The Etiology of Demons in People
+Jul 04, 2023: Georgene Faries - WA State Ref. 5599 Part 2 (Snohomish County State Republican Committee Woman)
+Jul 03, 2023: Israeli Parliament, MK Sharren Haskel, etc.
+Jun 30, 2023: Israeli Parliament, MK Tatiana Mazarsky, etc.
+Jun 29, 2023: Israeli Parliament, MK Dan Ilouz, etc.
+Jun 28, 2023: Knesset Christian Allies Caucus, MK Yuli Edelstein, etc.
+Jun 27, 2023: Can Christians Have Demons?
+Jun 26, 2023: Demons are Organized
+Jun 23, 2023: Dr. Hansen addresses God, Government & Goodness political rally Marysville, WA
+Jun 22, 2023: Joan Hunter - Miracles - Kenya - Procrastination on Steroids (Joan Hunter Ministries) Radio
+Jun 21, 2023: Joan Hunter - Joan's Breast Cancer - Worry & Fear (Joan Hunter Ministries) TV
+Jun 20, 2023: Demons
+Jun 19, 2023: The Laws of Judgment Part 3
+Jun 16, 2023: Rev. David Welch, President U.S. Pastor Council
+Jun 15, 2023: Apostolic Leader Eric Hurd - Elites want pedophilia legal - Child sex trafficking surpassing drug trafficking - Gov't trying to coverup COVID vax deaths
+Jun 14, 2023: Mary Salamon, PCO Republican Party - The Proverbs 31 Woman
+Jun 13, 2023: God's Relationship to Time
+Jun 12, 2023: The Laws of Judgment Part 2
+Jun 09, 2023: Pastor Ronald Dimaline - What's wrong with the church and pastors? (Founder of New Mount Zion Ministries)
+Jun 08, 2023: Pastor Leo Bogee - Foundations - Marriages - Germany Similarities (World Christian Leadership Training Ministries, Oklahoma City. OK)
+Jun 07, 2023: Robert Brownell, DivineRevelations.info - Testimonies - Muslims Seeing Jesus - Arising from the Dead - Heaven
+Jun 06, 2023: Ray Gebauer, Unlicensed Holistic Health Doctor - Getting Off the Freeway of Slow Suicide Part 3
+Jun 05, 2023: The Laws of Judgment Part 1
+Jun 02, 2023: Apostolic Leader Eric Hurd - America & Judgment - WHO Supersedes Constitution
+Jun 01, 2023: Dr. Bree Keyton, the Pygmy Lady - Jihad against Pygmies - America Falling - U.S. Kenyan President
+May 31, 2023: Dr. Michael Hyodo - Situation on Kenya. America & Israel
+May 30, 2023: Kenyan Apostolic Leader Joe Mwaniki - To Be Born in The Spirit
+May 29, 2023: Georgene Faries - WA State Ref. 5599, Evil bill, Sex Mutilation (Snohomish County State Committee Woman, Evergreen Republican Women's Legislative Chair, Washington Federation of Republican Women and G3 - God, Government and the Good News)
+May 26, 2023: Apostolic Leader Eric Hurd - Foundations - Illegal Aliens - Ukraine Bio-weapons - Depopulation
+May 25, 2023: Semi Bird - Republican Candidate for Governor, Washington State 2024
+May 24, 2023: Ray Gebauer, Unlicensed Holistic Health Doctor - Getting Off the Freeway of Slow Suicide Part 2 (OFFER: FREE stethoscope with a donation of $50 or more, shipping included)
+May 23, 2023: Dr. Hansen's Calling
+May 22, 2023: Rev. Adalia Hansen - Foundations
+May 19, 2023: Stephen & Linda Short, His Majesty's Ministries
+May 18, 2023: Rabbi Yehuda Glick, Former Member of Knesset, Shalom Jerusalem Foundation, Global Zionist Movement - Freedom to Pray on Temple Mount
+May 17, 2023: Rabbi Yehuda & Hadass Dissen Glick - amitsim.com, Ministering to young widows and orphans
+May 16, 2023: Josh Reinstein, Director of the Knesset Christian Allies Caucus; Brigadier General, Ret. Amir Avivi; Jurgen Buhler, Director of the International Christian Embassy Jerusalem; Dr. Hansen's address from the Knesset observation chamber
+May 15, 2023: Ray Gebauer, Unlicensed Holistic Health Doctor - Getting Off the Freeway of Slow Suicide (OFFER: FREE stethoscope with a donation of $50 or more, shipping included)
+May 12, 2023: Rev. Adalia Hansen - Know Your Purpose (Sunday Service, Anointed One's Church of Deliverance International, Ayden, NC with Apostle Ruth Peterson 4-23-23)
+May 11, 2023: Dr. Bree Keyton, The Pygmy Lady - Revival Now Part 2
+May 10, 2023: Dr. Bree Keyton, The Pygmy Lady - Revival Now Part 1
+May 09, 2023: Ray Gebauer, Unlicensed Holistic Health Doctor - Path of Life Prayer Formula Part 5
+May 08, 2023: Apostolic Leader Dennis Moore - Lack of Passion with Most Pastors
+May 05, 2023: Apostolic Leader Eric Hurd - China- Sudan - America - Persecution
+May 04, 2023: Apostle John Polis - Will I Find Faith When I Return? (ICAL Board Member, Faith Church International in WV)
+May 03, 2023: Apostle Reuben Esh - Demons in Christians Part 2 (Beacon of Truth Ministries International, Garnett, KS)
+May 02, 2023: Dr. EJ Buckardt - Deception: Satan is Deceiving the Church Part 2
+May 01, 2023: Dr. EJ Buckardt - Deception: Satan is Deceiving the Church Part 1
+Apr 28, 2023: Ray Gebauer, Unlicensed Holistic Health Doctor - Path of Life Prayer Formula Part 4
+Apr 27, 2023: Apostolic Leader Eric Hurd - God's Peace - Sexual Decriminalization Between Adults & Children
+Apr 26, 2023: Pastor Leo Bogee, Jr. - Problems with the Church - Demons - Compromise (World Christian Leadership Training Ministries, Oklahoma City. OK)
+Apr 25, 2023: Pastor Leo Bogee, Jr. - The Problem in the Church (World Christian Leadership Training Ministries, Oklahoma City. OK)
+Apr 24, 2023: Peace in The Storm
+Apr 21, 2023: Apostle Reuben Esh - Demons Influencing Christians Part 1 (Beacon of Truth Ministries International, Garnett, KS)
+Apr 20, 2023: Isaac Hurd - The Journey to Pro Ball Part 2
+Apr 19, 2023: Isaac Hurd - The Journey to Pro Ball Part 1
+Apr 18, 2023: Ray Gebauer, Unlicensed Holistic Health Doctor - Path of Life Prayer Formula Part 3
+Apr 17, 2023: Total Generosity is God's Heart
+Apr 14, 2023: Apostolic Leader Eric Hurd - Gender Laws - Protection of Youth - Vaxxed Deaths
+Apr 13, 2023: Apostolic Leader Eric Hurd - Honorable Michelle Bachman - Uganda Sex Laws
+Apr 12, 2023: Ray Gebauer, Unlicensed Holistic Health Doctor - Path of Life Prayer Formula Part 2
+Apr 11, 2023: The Champion's Heart
+Apr 10, 2023: God’s Spring Holidays  052722
+Apr 07, 2023: Dr. EJ Buckardt - Knowing Him Personally and God Honors Faithfulness
+Apr 06, 2023: Ray Gebauer, Investor Strategist, Unlicensed Holistic Health Doctor - Path of Life Prayer Formula Part 1
+Apr 05, 2023: Pastor Ken Flynn & Elder Michael Pearson - Revival Continues (Out of the Valley Church, Everett, WA.)
+Apr 04, 2023: Apostolic Leader Eric Hurd - UK & Wales Death by COVID Vaccines - Russia Threatens Nuclear War
+Apr 03, 2023: The Fight for the Protection of Family
+Mar 31, 2023: Pastor Ken Flynn - Revival  (Out of the Valley Church, 4601 Elm St., Everett, WA.)
+Mar 30, 2023: Andrea Walters - Victim / Walking through Fear
+Mar 29, 2023: Ray Gebauer, Investor Strategist, Unlicensed Holistic Health Doctor - Gateway to Love Part 3 (Triple-A Formula for a Better Life)
+Mar 28, 2023: We Must Fight for the Truth
+Mar 27, 2023: Kenyan Missionary John Bulinda to America - Eagles Arise
+Mar 24, 2023: Godly Parenting, Depictions of God
+Mar 23, 2023: Pastor Jeff Hastings - Dysfunctional, Compromised Church (Senior Pastor Reset Church, Marysville, WA)
+Mar 22, 2023: Pastor Joe Kirkwood - Miracles in Africa & Pygmies (Corner Stone Outreach Ministries, Amarillo, TX)
+Mar 21, 2023: Anna Kane, CEO & Nicole Orozco, Editor-In-Chief, The Flame Newspaper - America's Condition (Spreading Truth Like Wildfire! *Print Newspapers *Podcasts *Media)  (theflameusa.com - info@theflameusa.com)
+Mar 20, 2023: The Reckoning
+Mar 17, 2023: Apostolic Leader Eric Hurd - Dr. Ben Carson, "Many died needlessly" & Heresy
+Mar 16, 2023: Pastor Joe Kirkwood - Miracles in Togo, Africa (Corner Stone Outreach Ministries, Amarillo, TX)
+Mar 15, 2023: Why God Delays Answering Our Prayers
+Mar 14, 2023: Apostolic Leader Eric Hurd - Over 500,000 C-19 Vaccine Deaths & the Church's Compromise
+Mar 13, 2023: Apostolic Leader Eric Hurd - Complacent Christians Leave the Christian View Behind
+Mar 10, 2023: Apostolic Leader Eric Hurd - Chicago Mayor Crushing Election Loss - COVID Lies, Deaths, etc.
+Mar 09, 2023: Kenyan Missionaries to America John & Mary Bulinda - America & Kenya Facing Judgment
+Mar 08, 2023: Wayne Morrow, Vice President, The John Birch Society - Keeping America Free  (P.O. Box 8040, Appleton, WI 54912 - Tel: (470) 597-6362 - Email: wmorrow@jbs.org - JBS.org - "Less government, more responsibility, and … with God's help … a better world."
+Mar 07, 2023: Andrea Walters, Amos Moses Ministries - From Victim to Survivor (From Surviving to Thriving)
+Mar 06, 2023: Ray Gebauer, Investor Strategist, Unlicensed Holistic Health Doctor - Gateway to Love Part 2 of 3 (Triple-A Formula for a Better Life)
+Mar 03, 2023: Ray Gebauer, Investor Strategist, Unlicensed Holistic Health Doctor - Gateway to Love Part 1 of 3 (Triple-A Formula for a Better Life)
+Mar 02, 2023: Andrea Walters, Amos Moses Ministries - A Child Sexual Victim Helping Other Victims
+Mar 01, 2023: Kenyan Apostolic Leader Joe Mwaniki - Repentance or Judgment
+Feb 28, 2023: Kenyan Missionary John Bulinda to America - The Backslidden Church
+Feb 27, 2023: Ray Gebauer, Investor Strategist, Unlicensed Holistic Health Doctor - Single Cause & Cure for Every Health Condition
+Feb 24, 2023: Ray Gebauer, Investor Strategist, Unlicensed Holistic Health Doctor - Strategy for Transformation
+Feb 23, 2023: Kenyan Missionary John Bulinda to America - The Reason God Sent Bulinda to America
+Feb 22, 2023: Apostolic Leader Eric Hurd - COVID Digital Currency - COVID Cancer
+Feb 21, 2023: Dr. Willibroad Ticha, Political Refugee from Cameroon - Cameroon, America, Tyranny & Judgment
+Feb 20, 2023: LIFE IS A VAPOR
+Feb 17, 2023: Apostolic Leader Dennis Moore - Spirits Identified in the House, Senate, Supreme Court and White House
+Feb 16, 2023: Evangelist Dr. Bill Henderson, Pastor of Disaster, Power Team - Miracles
+Feb 15, 2023: Guard Sheep from Wolves
+Feb 14, 2023: Pastor Ty Gulstrom - Nehemiah Part 3
+Feb 13, 2023: Pastor Ty Gulstrom - Nehemiah Part 2
+Feb 10, 2023: Pastor Ty Gulstrom - Nehemiah Part 1
+Feb 09, 2023: Apostolic Leader Eric Hurd - Proven Facts of COVID Harm Caused by Vaccines - ICD-10 Billing Codes for Unvaccinated
+Feb 08, 2023: Apostolic Leader Eric Hurd - Russia Recruits Americans - Porno Destroys Society - CIA Funds Wooley Mammoths
+Feb 07, 2023: Apostolic Leader Dennis Moore - Intimacy with God the Father
+Feb 06, 2023: Dr. EJ Buckardt - We Have Been Warned: Now What Do We Do?
+Feb 03, 2023: The Blood and Communion, July 30, 2005
+Feb 02, 2023: Apostolic Leader Eric Hurd, The Sons of Issachar; Dr. Hansen's grandson Jeremiah Gulstrom - Attack on America to Depopulate
+Feb 01, 2023: Dr. Willibroad Ticha, Political Refugee from Cameroon; Dr. Hansen's grandson Jeremiah Gulstrom - Tyranny & A Dysfunctional Church
+Jan 31, 2023: The Unfailing Love of God
+Jan 30, 2023: Apostolic Leader Eric Hurd, The Sons of Issachar - New York, No More Migrants
+Jan 27, 2023: Apostolic Leader Dennis Moore - The Throne Room Authority
+Jan 26, 2023: Apostolic Leader Eric Hurd, The Sons of Issachar - COVID Vaccine Caused Deaths
+Jan 25, 2023: Former WA St. House of Reps. & Pastor Matt Shea - Is Biden Compromised?
+Jan 24, 2023: Issachar & War
+Jan 23, 2023: Richard Simmons - Men for Nations & 500,000 Men Part 3  051710
+Jan 20, 2023: Richard Simmons - Men for Nations & 500,000 Men Part 2  051010
+Jan 19, 2023: Richard Simmons - Men for Nations & 500,000 Men Part 1  050310
+Jan 18, 2023: Robert Gelt - Michigan Election Fraud
+Jan 17, 2023: Former WA St. House of Reps. & Pastor Matt Shea - Biden, Illegal Classified Documents & War
+Jan 16, 2023: Defeating Temptation
+Jan 13, 2023: Mary Salamon, PCO Republican Party - Civic Responsibility and the Church
+Jan 12, 2023: Mary Salamon, Regional Director, National Day of Prayer - Slavery & Sex Trafficking
+Jan 11, 2023: Tamara Hansen-Gulstrom - Hidden with Christ in Glory; Dr. Hansen's daughters, Tamara, Talitha & Kareen sing "O Sifuni Mungu"
+Jan 10, 2023: Grace for Each Other
+Jan 09, 2023: Dr. Bill Henderson, Remnant Gathering Church - It's Time to Break the Back of Shipwreck Faith Part 3
+Jan 06, 2023: Dr. Bill Henderson, Remnant Gathering Church - It's Time to Break the Back of Shipwreck Faith Part 2
+Jan 05, 2023: Dr. Bill Henderson, Remnant Gathering Church - It's Time to Break the Back of Shipwreck Faith
+Jan 04, 2023: Tony Bonnallie, Owner of Mission Motors, Stanwood, WA - Cocaine & Grace
+Jan 03, 2023: Former WA St. House of Reps. & Pastor Matt Shea - What Will Happen in 2023?
+Jan 02, 2023: Satisfied Tenacious Eagles

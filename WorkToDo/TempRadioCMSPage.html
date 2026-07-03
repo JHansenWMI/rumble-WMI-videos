@@ -1,0 +1,368 @@
+<div id="content">
+<style><!--
+        #content li {
+            padding-left: 80px;
+            text-indent: -80px;
+        }
+        #content li.highlight {
+            background-color: #DCD4E6;
+            font-weight: bold;
+        }
+--></style>
+<script type="text/javascript">// <![CDATA[
+        document.addEventListener('DOMContentLoaded', function() {
+            const now = new Date(); // Current date and time in user's timezone
+
+            // Function to get Pacific Time offset (PDT: -420, PST: -480) for a given date
+            function getPacificOffset(date) {
+                // Get date in Pacific Time
+                const pacificString = date.toLocaleString('en-US', {
+                    timeZone: 'America/Los_Angeles',
+                    year: 'numeric',
+                    month: 'numeric',
+                    day: 'numeric',
+                    hour: 'numeric',
+                    minute: 'numeric',
+                    second: 'numeric',
+                    hour12: false
+                });
+                // Parse Pacific Time components (MM/DD/YYYY, HH:mm:ss)
+                const [datePart, timePart] = pacificString.split(', ');
+                const [month, day, year] = datePart.split('/').map(Number);
+                const [hour, minute, second] = timePart.split(':').map(Number);
+                // Create Pacific and UTC Date objects
+                const pacificDate = new Date(year, month - 1, day, hour, minute, second);
+                const utcDate = new Date(Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate(), date.getUTCHours(), date.getUTCMinutes(), date.getUTCSeconds()));
+                // Calculate offset in minutes
+                return (pacificDate - utcDate) / (1000 * 60);
+            }
+
+            // Get Pacific Time offset for today
+            const pacificOffsetMinutes = getPacificOffset(now);
+            const userOffsetMinutes = now.getTimezoneOffset();
+            const offsetDiffHours = (userOffsetMinutes - pacificOffsetMinutes) / 60;
+            // Adjust now to Pacific Time
+            const nowPacific = new Date(now.getTime() + offsetDiffHours * 60 * 60 * 1000);
+            // Normalize to midnight for date comparison
+            const todayMidnight = new Date(nowPacific.getFullYear(), nowPacific.getMonth(), nowPacific.getDate());
+            // Set broadcast time to 12:30 PM PT
+            const broadcastHourPT = 12;
+            const broadcastMinute = 30;
+            const broadcastTime = new Date(nowPacific.getFullYear(), nowPacific.getMonth(), nowPacific.getDate(), broadcastHourPT, broadcastMinute);
+            // Select today or tomorrow based on broadcast time
+            const targetDate = nowPacific < broadcastTime ? todayMidnight : new Date(todayMidnight.getTime() + 24 * 60 * 60 * 1000);
+
+            // Debug logging
+            console.log('Now (local):', now.toString());
+            console.log('Pacific Offset (minutes):', pacificOffsetMinutes);
+            console.log('Now (Pacific):', nowPacific.toString());
+            console.log('Broadcast Time:', broadcastTime.toString());
+            console.log('Target Date:', targetDate.toString());
+
+            let closestDate = null;
+            let closestLi = null;
+            let minDiff = Infinity;
+
+            // Regex to match dates like "MMM DD, YYYY" or "Fri, MMM DD, YYYY"
+            const dateRegex = /^(?:[A-Za-z]+,\s)?([A-Za-z]+)\s(\d{1,2}),\s(\d{4})/;
+
+            // Get all <li> elements within <div id="content">
+            const listItems = document.querySelectorAll('#content ul li');
+
+            listItems.forEach(li => {
+                const text = li.textContent;
+                const match = text.match(dateRegex);
+                if (match) {
+                    // Parse the date (e.g., "Sep 25, 2025")
+                    const month = match[1];
+                    const day = parseInt(match[2], 10);
+                    const year = parseInt(match[3], 10);
+                    // Normalize liDate to midnight
+                    const liDate = new Date(year, new Date(`${month} 1, ${year}`).getMonth(), day);
+
+                    // Calculate difference from target date (in milliseconds)
+                    const diff = liDate - targetDate;
+
+                    // Check if the date is the target date or in the future and closest
+                    if (diff >= 0 && diff < minDiff) {
+                        minDiff = diff;
+                        closestDate = liDate;
+                        closestLi = li;
+                        console.log('Matched LI:', text, 'Diff:', diff, 'Date:', liDate.toString());
+                    }
+                }
+            });
+
+            // Highlight the closest <li> (today or next upcoming)
+            if (closestLi) {
+                closestLi.classList.add('highlight');
+                console.log('Highlighted LI:', closestLi.textContent);
+            }
+        });
+// ]]></script>
+<h4>Radio Broadcast</h4>
+<p><a href="https://www.vsmtools.com/U/566/ReviewFiles/radio-stations.aspx">ACN American Christian Network :&nbsp;</a>Weekdays 11:30 AM &amp; 3 PM (PT)</p>
+<ul>
+<li></li>
+<li>Fri, Jul 3, 2026:&nbsp;Does God CELEBRATE Diversity in Marriage?</li>
+<li>Thu, Jul 2, 2026:&nbsp;Overcoming Tribalism - Bishop Dr. Geoffrey Njuguna</li>
+<li>Wed, Jul 1, 2026:&nbsp;Women in Ministry Part 2 - The Overcoming Women - Rev. Elizabeth Kamau of Deliverance Church Lang'ata, Nairobi Kenya - Pastor Carol Muthiora of Joy Bringers International, Everett WA</li>
+<li>Tue, Jun 30, 2026:&nbsp;Women in Ministry Part 1 - The Overcoming Women - Rev. Elizabeth Kamau of Deliverance Church Lang'ata, Nairobi Kenya - Pastor Carol Muthiora of Joy Bringers International, Everett WA</li>
+<li>Mon, Jun 29, 2026:&nbsp;A Balanced Christian Life - Bishop Geoffrey Njuguna</li>
+<li>Fri, Jun 26, 2026:&nbsp;God's Unconditional Love - Pastor Elizabeth Kamau Njuguna</li>
+<li>Thu, Jun 25, 2026:&nbsp;Warning - 25 Prophetic Dreams Part 4</li>
+<li>Wed, Jun 24, 2026:&nbsp;Warning - 25 Prophetic Dreams Part 3</li>
+<li>Tue, Jun 23, 2026:&nbsp;The Heart of God Part 2 - The Overcoming Women - Drs. Adalia &amp; Jonathan Hansen</li>
+<li>Mon, Jun 22, 2026:&nbsp;The Heart of God Part 1 - The Overcoming Women - Drs. Adalia &amp; Jonathan Hansen</li>
+<li>Fri, Jun 19, 2026:&nbsp;How Can We Live in the Glory of God and His Presence Part 3 - Apostle Joe Mwaniki</li>
+<li>Thu, Jun 18, 2026:&nbsp;How Can We Live in the Glory of God and His Presence Part 2 - Apostle Joe Mwaniki</li>
+<li>Wed, Jun 17, 2026:&nbsp;How Can We Live in the Glory of God and His Presence Part 1 - Apostle Joe Mwaniki</li>
+<li>Tue, Jun 16, 2026:&nbsp;Warning - 25 Prophetic Dreams Part 2</li>
+<li>Mon, Jun 15, 2026:&nbsp;The Building Blocks of Harmony in the Family - Bishop Dr. Geoffrey Njuguna</li>
+<li>Fri, Jun 12, 2026:&nbsp;His Divine Nature Part 3 - Apostle Joe Mwaniki</li>
+<li>Thu, Jun 11, 2026:&nbsp;His Divine Nature Part 2 - Apostle Joe Mwaniki</li>
+<li>Wed, Jun 10, 2026:&nbsp;His Divine Nature Part 1 - Apostle Joe Mwaniki</li>
+<li>Tue, Jun 9, 2026:&nbsp;Warning - 25 Prophetic Dreams</li>
+<li>Mon, Jun 8, 2026:&nbsp;Pursue Your Life Purpose - Bishop Dr. Geoffrey Njuguna</li>
+<li>Fri, Jun 5, 2026:&nbsp;Apostle Joe Mwaniki &amp; Bishop Dr. Geoffrey Njuguna - Kenya Needs Repentance</li>
+<li>Thu, Jun 4, 2026:&nbsp;Grace - Gods Unspeakable Gift Part 4 - Bishop Dr. Geoffrey Njuguna</li>
+<li>Wed, Jun 3, 2026:&nbsp;Grace - Gods Unspeakable Gift Part 3 - Bishop Dr. Geoffrey Njuguna</li>
+<li>Tue, Jun 2, 2026:&nbsp;Redigging the Wells of Faith - Bishop Dr. Geoffrey Njuguna</li>
+<li>Mon, Jun 1, 2026:&nbsp;Church Leaders in Kenya</li>
+<li>Fri, May 29, 2026:&nbsp;Governmental Intercessor - The Overcoming Women - Drs. Adalia &amp; Jonathan Hansen</li>
+<li>Thu, May 28, 2026:&nbsp;Grace - Gods Unspeakable Gift Part 2 - Bishop Dr. Geoffrey Njuguna</li>
+<li>Wed. May 27, 2026:&nbsp;Grace - Gods Unspeakable Gift Part 1 - Bishop Dr. Geoffrey Njuguna</li>
+<li>Tue, May 26, 2026:&nbsp;Kenya's Prophecy &amp; 2027 Election</li>
+<li>Mon, May 25, 2026:&nbsp;Kenya 2027 Elections - Bishop Geoffrey Njuguna</li>
+<li>Fri, May 22, 2026:&nbsp;The War with Iran and Hamas - Gideon Behar, Israel Ambassador to Kenya</li>
+<li>Thu, May 21, 2026:&nbsp;Queen Esther Part 2</li>
+<li>Wed, May 20, 2026:&nbsp;Queen Esther Part 1</li>
+<li>Tue, May 19, 2026:&nbsp;Nuclear Conflict - Iran in the Bible</li>
+<li>Mon, May 18, 2026:&nbsp;The Fall of Fauci &amp; Spiritual Entities</li>
+<li>Fri, May 15, 2026:&nbsp;Eagles Saving the Nations</li>
+<li>Thu, May 14, 2026:&nbsp;Bishop Geoffrey Njuguna &amp; Dr. Jonathan Hansen - Kenya 2026</li>
+<li>Wed, May 13, 2026:&nbsp;The Image of God</li>
+<li>Tue, May 12, 2026:&nbsp;Let the Weight of Your Glory Fall Part 2 - Rev. Dr. Adalia Hansen - Rebecca Arise Ladies Conference, Word of Faith Church Kiambu, Kenya</li>
+<li>Mon, May 11, 2026:&nbsp;Let the Weight of Your Glory Fall Part 1 - Rev. Dr. Adalia Hansen - Rebecca Arise Ladies Conference, Word of Faith Church Kiambu, Kenya</li>
+<li>Fri, May 8, 2026:&nbsp;The Supernatural - Egypt's War Against God's People Part 2 - Rev. Dr. Adalia Hansen - Rebecca Arise Ladies Conference, Word of Faith Church Kiambu, Kenya</li>
+<li>Thu, May 7, 2026:&nbsp;The Supernatural - Egypt's War Against God's People Part 1 - Rev. Dr. Adalia Hansen - Rebecca Arise Ladies Conference, Word of Faith Church Kiambu, Kenya</li>
+<li>Wed, May 6, 2026:&nbsp;Dr. EJ Buckardt - If - Then</li>
+<li>Tue, May 5, 2026:&nbsp;The Well of Refreshing Part 2 - Bishop Dr. Thomas Muthee, Rebecca Arise Ladies Conference, Word of Faith Church, Kiambu, Kenya</li>
+<li>Mon, May 4, 2026:&nbsp;The Well of Refreshing Part 1 - Bishop Dr. Thomas Muthee, Rebecca Arise Ladies Conference, Word of Faith Church, Kiambu, Kenya</li>
+<li>Fri, May 1, 2026: Moses' Rod &amp; Eagles Saving Nations Part 3 - 10:30am service for Bishop Thomas Muthee, Word of Faith Church in Kiambu Kenya</li>
+<li>Thu, Apr 30, 2026: Moses' Rod &amp; Eagles Saving Nations Part 2 - 10:30am service for Bishop Thomas Muthee, Word of Faith Church in Kiambu Kenya</li>
+<li>Wed, Apr 29, 2026: Moses' Rod &amp; Eagles Saving Nations Part 1 - 10:30am service for Bishop Thomas Muthee, Word of Faith Church in Kiambu Kenya</li>
+<li>Tue, Apr 28, 2026: Dr. EJ Buckardt - Bible - Israel - America - Last Days - Part 3</li>
+<li>Mon, Apr 27, 2026:&nbsp;Marxist - Islamic - Attack on America</li>
+<li>Fri, Apr 24, 2026: I Am a Debtor Part 2 - 8am Service for Bishop Thomas Muthee, Word of Faith Church in Kiambu Kenya</li>
+<li>Thu, Apr 23, 2026: I Am a Debtor Part 1 - 8am Service for Bishop Thomas Muthee, Word of Faith Church in Kiambu Kenya</li>
+<li>Wed, Apr 22, 2026: Dr. EJ Buckardt - Bible - Israel - America - Last Days Part 2</li>
+<li>Tue, Apr 21, 2026: Dr. EJ Buckardt - Bible - Israel - America - Last Days Part 1</li>
+<li>Mon, Apr 20, 2026: Why Did God Raise Up Adversaries Against King Solomon?</li>
+<li>Fri, Apr 17, 2026: Resurrection Day and Your DNA Part 3 - Deliverance Church Lang'ata by invitation of Bishop Geoffrey Njuguna, Nairobi, Kenya</li>
+<li>Thu, Apr 16, 2026: Resurrection Day and Your DNA Part 2 - Deliverance Church Lang'ata by invitation of Bishop Geoffrey Njuguna, Nairobi, Kenya</li>
+<li>Wed, Apr 15, 2026: Resurrection Day and Your DNA Part 1 - Deliverance Church Lang'ata by invitation of Bishop Geoffrey Njuguna, Nairobi, Kenya</li>
+<li>Tue, Apr 14, 2026: The Power of a Name - Ministers Fred Christian &amp; Vance Miller</li>
+<li>Mon, Apr 13, 2026: Today's Unholy Alliances</li>
+<li>Fri, Apr 10, 2026: The Passover Season Part 3</li>
+<li>Thu, Apr 9, 2026: The Passover Season Part 2</li>
+<li>Wed, Apr 8, 2026: The Passover Season Part 1</li>
+<li>Tue, Apr 7, 2026: Prayer Warriors &amp; Senior Pastors Part 4</li>
+<li>Mon, Apr 6, 2026: Warning - Prophetic Dreams - Guatamalan Illegal Kills American - Part 4</li>
+<li>Fri, Apr 3, 2026: Prayer Warriors &amp; Senior Pastors Part 3</li>
+<li>Thu, Apr 2, 2026: Pastor Tory Grayson - Liberia &amp; Lawlessness</li>
+<li>Wed, Apr 1, 2026: Moses' Rod Part 6</li>
+<li>Tue, Mar 31, 2026: Moses' Rod Part 5</li>
+<li>Mon, Mar 30, 2026: Warning - Prophetic Dreams - Seattle - Part 3</li>
+<li>Fri, Mar 27, 2026: Warning - Prophetic Dreams</li>
+<li>Thu, Mar 26, 2026: Prayer Warriors</li>
+<li>Wed, Mar 25, 2026: Moses' Rod Part 4</li>
+<li>Tue, Mar 24, 2026: Moses' Rod Part 3</li>
+<li>Mon, Mar 23, 2026: Pastor Tory Grayson - Tanzania</li>
+<li>Fri, Mar 20, 2026:&nbsp;Moses' Rod Part 2</li>
+<li>Thu, Mar 19, 2026:&nbsp;Moses' Rod Part 1</li>
+<li>Wed, Mar 18, 2026:&nbsp;Pastor Shaun Easterbrook - Make No Room for Sin Part 2</li>
+<li>Tue, Mar 17, 2026:&nbsp;Pastor Shaun Easterbrook - Make No Room for Sin Part 1</li>
+<li>Mon, Mar 16, 2026:&nbsp;Pastor Tory Grayson - Uganda - Jamaica - USA</li>
+<li>Fri, Mar 13, 2026: What is Your DNA? Part 2</li>
+<li>Thu, Mar 12, 2026: What is Your DNA? Part 1</li>
+<li>Wed, Mar 11, 2026: Spiritual Warfare 2 - Three Bible Verses that Terrify Demons</li>
+<li>Tue, Mar 10, 2026: Spiritual Warfare - How Demons Enter You!</li>
+<li>Mon, Mar 9, 2026: Pastor Tory Grayson - Kenya-Uganda April-May 2025</li>
+<li>Fri, Mar 6, 2026: King David's Mighty Men Part 2</li>
+<li>Thu, Mar 5, 2026: King David's Mighty Men Part 1</li>
+<li>Wed, Mar 4, 2026: Marxist - Islamic - Attack on America Part 4 - Seattle</li>
+<li>Tue, Mar 3, 2026: Marxist - Islamic - Attack on America Part 3 - Churchill &amp; Jefferson</li>
+<li>Mon, Mar 2, 2026: Nelson Sua, Former Convicted Felon, Candidate for Governor Hawaii 2026</li>
+<li>Fri, Feb 27, 2026: Broken Dreams - Do You Know Yourself? Part 2</li>
+<li>Thu, Feb 26, 2026: Broken Dreams - Do You Know Yourself? Part 1</li>
+<li>Wed, Feb 25, 2026: Wealthiest Families &amp; The N.W.O.</li>
+<li>Tue, Feb 24, 2026: Marxist - Islamic - Attack on America Part 2</li>
+<li>Mon, Feb 23, 2026: When I am Weak, Then I am Strong - Bishop Israel Sanoy</li>
+<li>Fri, Feb 20, 2026: Marxist - Islamic - Attack on America</li>
+<li>Thur, Feb 19, 2026: Sodom and Gomorrah &amp; 25 Prophetic Dreams Part 2 - 2/05/2026 - OMR - Shannon Davis</li>
+<li>Wed, Feb 18, 2026: Sodom and Gomorrah &amp; 25 Prophetic Dreams Part 1 - 2/5/2026 - OMR - Shannon Davis</li>
+<li>Tue, Feb 17, 2026: General Michael Flynn - American Police Officers Alliance Save Our Sheriffs Rally Part 2</li>
+<li>Mon, Feb 16, 2026: General Michael Flynn - American Police Officers Alliance Save Our Sheriffs Rally Part 1</li>
+<li>Fri, Feb 13, 2026:&nbsp;There is Hope in the Dark Part 2</li>
+<li>Thur, Feb 12, 2026:&nbsp;There is Hope in the Dark Part 1</li>
+<li>Wed, Feb 11, 2026:&nbsp;Renee Good &amp; Alex Pretti - Federal Crimes</li>
+<li>Tue, Feb 10, 2026: The Real Story - Minnesota - Corruption - The Governor and Mayor Criminals - Part 2 1/29/2026 - OMR - Shannon Davis</li>
+<li>Mon, Feb 9, 2026: The Real Story - Minnesota - Corruption - The Governor and Mayor Criminals - Part 1 1/29/2026 - OMR - Shannon Davis</li>
+<li>Fri, Feb 6, 2026: Anointing Power of the Holy Spirit - Dr. Michael McKinney, President, Promise Christian University, CA - 9th World Holy Spirit Ministry International Conference in Korea</li>
+<li>Thu, Feb 5, 2026: The Spirit of Sodom in America - Holy Hill of Zion, Thy Dwelling Place - Hawaii</li>
+<li>Wed, Feb 4, 2026: America &amp; Sodom and Gomorrah - Paradise Chapel - Hawaii Part 2</li>
+<li>Tue, Feb 3, 2026: America &amp; Sodom and Gomorrah - Paradise Chapel - Hawaii Part 1</li>
+<li>Mon, Feb 2, 2026: Israel / America - Dr. EJ Buckardt</li>
+<li>Fri, Jan 30, 2026: The Spirit of Sodom &amp; Gomorrah in America Part 2</li>
+<li>Thu, Jan 29, 2026: The Spirit of Sodom &amp; Gomorrah in America Part 1</li>
+<li>Wed, Jan 28, 2026: Constitutional Sheriffs</li>
+<li>Tue, Jan 27, 2026: Don't Give Up &amp; Don't Look Back</li>
+<li>Mon, Jan 26, 2026: Covenant Breaking Spirits Part 12 - Renewing the Covenant</li>
+<li>Fri, Jan 23, 2026: Do You Know Yourself? Part 2</li>
+<li>Thu, Jan 22, 2026: Do You Know Yourself? Part 1</li>
+<li>Wed, Jan 21, 2026: Spiritual Warfare - We will Save Our Nation through the Holy Spirit Part 2 - Philippine church service</li>
+<li>Tue, Jan 20, 2026: Spiritual Warfare - We will Save Our Nation through the Holy Spirit Part 1 - Philippine church service</li>
+<li>Mon, Jan 19, 2026: Covenant Breaking Spirits Part 11 - Restoration and Reconciliation</li>
+<li>Fri, Jan 16, 2026: 2026 Breakthroughs - In His Glory Part 2</li>
+<li>Thu, Jan 15, 2026: 2026 Breakthroughs - In His Glory Part 1</li>
+<li>Wed, Jan 14, 2026: Covenant Breaking Spirits Part 10 - Breaking Free</li>
+<li>Tue, Jan 13, 2026: Covenant Breaking Spirits Part 9 - God's Faithfulness</li>
+<li>Mon, Jan 12, 2026: "All the Heroes of the Bible Made Mistakes - God Can Use You - You Have a Destiny" Philippine Maximum Security Prison with Bishop Israel Sanoy</li>
+<li>Fri, Jan 9, 2026: Philippine Leaders Meeting - Dr. Adalia Hansen</li>
+<li>Thu, Jan 8, 2026: Broken Dreams is the Beginning of Real Living</li>
+<li>Wed, Jan 7, 2026: Christmas and Hanukkah</li>
+<li>Tue, Jan 6, 2026: Covenant Breaking Spirits Part 8 - Harm to the Vulnerable</li>
+<li>Mon, Jan 5, 2026: Covenant Breaking Spirits Part 7 - Emotional &amp; Legal Consequences</li>
+<li>Fri, Jan 2, 2026: Flood Victims, the Philippines Church Service</li>
+<li>Thu, Jan 1, 2026: Philippine Interview, Engineer Edwin Canlas, Bishop Israel Sanoy's Friend</li>
+<li>Wed, Dec 31, 2025: Grace - Vision &amp; Revelation Work Together</li>
+<li>Tue, Dec 30, 2025: Covenant Breaking Spirits Part 6 - Consequences</li>
+<li>Mon, Dec 29, 2025: Covenant Breaking Spirits Part 5 - Spiritual Life &amp; Consequences</li>
+<li>Fri, Dec 26, 2025: Minister Fred Christian - Sharing the Full Gospel - We Need Your Help</li>
+<li>Thu, Dec 25, 2025: Give to the Forgotten Faces</li>
+<li>Wed, Dec 24, 2025:&nbsp;Steve Buckardt - Helping to Reach the Nations</li>
+<li>Tue, Dec 23, 2025: Minister Fred Christian - Tremendous Year, Help Us Save the Nations</li>
+<li>Mon, Dec 22, 2025: Dr. EJ Buckardt - Tremendous Year, an Opportunity</li>
+<li>Fri, Dec 19, 2025: Only the Holy Spirit Led Church Can Save the Philippines Part 2</li>
+<li>Thu, Dec 18, 2025: Only the Holy Spirit Led Church Can Save the Philippines Part 1</li>
+<li>Wed, Dec 17, 2025: Covenant Breaking Spirits Part 4 - Broken Political Promises, Treaties &amp; Moral Values</li>
+<li>Tue, Dec 16, 2025: Covenant Breaking Spirits Part 3 - Pres. Kibaki, Uhuru Kenyatta &amp; Ruto</li>
+<li>Mon, Dec 15, 2025: Covenant Breaking Spirits Part 2 - Pres. Jomo Kenyatta &amp; Daniel Arap Moi</li>
+<li>Fri, Dec 12, 2025: It's Supernatural - God is Real - Philippines Crusade</li>
+<li>Thu, Dec 11, 2025: Extending the Kingdom of God Through Relationship Part 2 - Global Ministries Network International Congress 2025, Baltimore, MD</li>
+<li>Wed, Dec 10, 2025: Extending the Kingdom of God Through Relationship Part 1 - Global Ministries Network International Congress 2025, Baltimore, MD</li>
+<li>Tue, Dec 9, 2025: The Nature of Covenant Breaking Spirits Part 1</li>
+<li>Mon, Dec 8, 2025: Respect Part 2 - Dr. EJ Buckardt</li>
+<li>Fri, Dec 5, 2025: Are You Earnestly Contending for the Faith? Part 2 - Bishop Geoffrey Njuguna (Kenya National Congress of Pentecostal Churches) - Subject: How to Conquer Falsehood Against the Church - Text: Jude 1-3</li>
+<li>Thu, Dec 4, 2025: Are You Earnestly Contending for the Faith? Part 1 - Bishop Geoffrey Njuguna (Kenya National Congress of Pentecostal Churches) - Subject: How to Conquer Falsehood Against the Church - Text: Jude 1-3</li>
+<li>Wed, Dec 3, 2025: Respect Part 1 - Rev. Dr. EJ Buckardt</li>
+<li>Tue, Dec 2, 2025: Rescuing Lives</li>
+<li>Mon, Dec 1, 2025: The Forgotten Faces</li>
+<li>Fri, Nov 28, 2025: Israel Trip 2025</li>
+<li>Thur, Nov 27, 2025: Dr. Jae Won-Kim, Founder World Holy Spirit Ministries International - Korea</li>
+<li>Wed, Nov 26, 2025: Fear Doesn't Stand a Chance Part 2</li>
+<li>Tue, Nov 25, 2025: Fear Doesn't Stand a Chance Part 1</li>
+<li>Mon, Nov 24, 2025: Where is the God of Elijah - Dr. Hansen for Pastor Mike Adipo, Breakout Session - 9th World Holy Spirit Ministries International Conference, Seoul, South Korea</li>
+<li>Fri, Nov 21, 2025: The Prophetic Shift - Minister Fred Christian,&nbsp;World Holy Spirit Ministry International, Korea</li>
+<li>Thu, Nov 20, 2025: When the Spirit Comes Upon the Wounded - Dr. Adalia Hansen,&nbsp;World Holy Spirit Ministry International, Korea</li>
+<li>Wed, Nov 19, 2025: Don't Let the Fire Go Out - Dr. Michael Hyodo,&nbsp;World Holy Spirit Ministry International, Korea</li>
+<li>Tue, Nov 18, 2025: Are You Prepared? - Dr. EJ Buckardt, World Holy Spirit Ministry International, Korea</li>
+<li>Mon, Nov 17, 2025: Having a Closer Walk with The Lord - Dr. EJ Buckardt, World Holy Spirit Ministry International, Korea</li>
+<li>Fri, Nov 14, 2025: The Holy Spirit Makes War in Korea, LIVE in Seoul, South Korea - Part 2</li>
+<li>Thu, Nov 13, 2025: The Holy Spirit Makes War in Korea, LIVE in Seoul, South Korea - Part 1</li>
+<li>Wed, Nov 12, 2025: Germany in Prophecy</li>
+<li>Tue, Nov 11, 2025: We Are Ambassadors</li>
+<li>Mon, Nov 10, 2025: Spiritual Warfare</li>
+<li>Fri, Nov 7, 2025: Who is The Holy Spirit? Part 2 - 9th World Holy Spirit Ministries International Conference, Seoul, South Korea</li>
+<li>Thu, Nov 6, 2025: Who is The Holy Spirit? Part 1 - 9th World Holy Spirit Ministries International Conference, Seoul, South Korea</li>
+<li>Wed, Nov 5, 2025: When Fear is Sinful &amp; When Fear is Healthy</li>
+<li>Tue, Nov 4, 2025: Unity/Disunity &amp; Where is the Church At Today? - Dr. EJ Buckardt</li>
+<li>Mon, Nov 3, 2025: Prophecy - Ukraine &amp; Russia - America and Nuclear War</li>
+<li>Fri, Oct 31, 2025: The World Holy Spirit Conference Korea 2025 - OMR with Shannon Davis (LIVE) Part 2</li>
+<li>Thu, Oct 30, 2025: The World Holy Spirit Conference Korea 2025 - OMR with Shannon Davis (LIVE) Part 1</li>
+<li>Wed, Oct 29, 2025: Finding Peace in Times of Trouble - Bishop Tobias Nyamwaya&nbsp;&nbsp;&nbsp;</li>
+<li>Tue, Oct 28, 2025: The Holy Spirit Makes War in Canada Part 2</li>
+<li>Mon, Oct 27, 2025: The Holy Spirit Makes War in Canada Part 1&nbsp;</li>
+<li>Fri, Oct 24, 2025: The Wrong Belief System - Bishop Tobias Nyamwaya</li>
+<li>Thu, Oct 23, 2025: The Beloved of The Father - Bishop Tobias Nyamwaya</li>
+<li>Wed, Oct 22, 2025: I Am a Debtor - Hand of God Church International, Lilongwe, Malawi Sept. 14, 2025</li>
+<li>Tue, Oct 21, 2025: Where are the Elijah's of God? - Church Leaders Conference, Lilongwe, Malawi Sept. 13, 2025 Part 2</li>
+<li>Mon, Oct 20, 2025: Where are the Elijah's of God? - Church Leaders Conference, Lilongwe, Malawi Sept. 13, 2025 Part 1</li>
+<li><span style="text-indent: -80px;">Fri, Oct 17, 2025: True Ambassadors Use Nuclear Weapons - Joy Bringers Church, Everett, WA Part 2</span></li>
+<li><span style="text-indent: -80px;">Thu, Oct 16, 2025: True Ambassadors Use Nuclear Weapons - Joy Bringers Church, Everett, WA Part 1</span></li>
+<li><span style="text-indent: -80px;">Wed, Oct 15, 2025: God 's Enemies Reject Prophecy</span></li>
+<li><span style="text-indent: -80px;">Tue, Oct 14, 2025: Called to Add Value - Bishop Tobias Nyamwaya</span></li>
+<li><span style="text-indent: -80px;">Mon, Oct 13, 2025: Prayers - Bishop Tobias Nyamwaya</span></li>
+<li><span style="text-indent: -80px;"><br /></span></li>
+<li>Fri, Oct 10, 2025: Malawi Presidential Election</li>
+<li>Thu, Oct 9, 2025: Kenya / Malawi, Presidential Visit - Live with Shannon Davis (Eagles Saving Nations: Election Fraud, Spiritual Warfare &amp; The Mark of the Beast) Part 3</li>
+<li>Wed, Oct 8, 2025: Kenya / Malawi, Presidential Visit - Live with Shannon Davis (Eagles Saving Nations: Election Fraud, Spiritual Warfare &amp; The Mark of the Beast) Part 2</li>
+<li>Tue, Oct 7, 2025: Kenya / Malawi, Presidential Visit - Live with Shannon Davis (Eagles Saving Nations: Election Fraud, Spiritual Warfare &amp; The Mark of the Beast) Part 1</li>
+<li>Mon, Oct 6, 2025: Does God Dictate a President?</li>
+<li>Fri, Oct 3, 2025: Elijah's Mantle - Word of Faith Church in Kiambu, Kenya with Bishop Thomas Muthee, Sept. 7, 2025 Part 2</li>
+<li>Thu, Oct 2, 2025: Elijah's Mantle - Word of Faith Church in Kiambu, Kenya with Bishop Thomas Muthee, Sept. 7, 2025 Part 1</li>
+<li>Wed, Oct 1, 2025: Principles of Love - Forgiveness Part 2 - Bishop Tobias Nyamwaya</li>
+<li>Tue, Sep 30, 2025: The Dead Still Speaks - Bishop Tobias Nyamwaya</li>
+<li>Mon, Sep 29, 2025: God's Redirection or the Blessing of Obedience - Bishop Tobias Nyamwaya</li>
+<li>Fri, Sep 26, 2025: Where's the God of Elijah? - Morning Devotional</li>
+<li>Thu, Sep 25, 2025: An Agent of Transformation - Bishop Dr. Stanley Michuki</li>
+<li>Wed, Sep 24, 2025: A Dangerous World - Bishop Dr. Stanley Michuki</li>
+<li>Tue, Sep 23, 2025: The Church's Responsibility in the Nations - Bishop Dr. Stanley Michuki, Pastor Peter Muthiora</li>
+<li>Mon, Sep 22, 2025: Principles of Love - Forgiveness: Older Brother Syndrome - Bishop Tobias Nyamwaya</li>
+<li>Fri, Sep 19, 2025: Apostolic Leader Dennis Moore - Spirit of Deceit in the Nations</li>
+<li>Thu, Sep 18, 2025: Bishop Tobias Nyamwaya, Widows &amp; Orphans - Kenya</li>
+<li>Wed, Sep 17, 2025: Bishop Tobias Nyamwaya, Prophecy to Kenya &amp; Eagles Saving Nations</li>
+<li>Tue, Sep 16, 2025: Bishop Tobias Nyamwaya, Return to The Father</li>
+<li>Mon, Sep 15, 2025: Love Proves Covenant and Christianity Bishop Dr. Stanley Michuki from Sabbath Service&hellip;</li>
+<li>Fri, Sep 12, 2025: Turning Point - Dr. Emmanuel Ziga Part 3 08/30/2025</li>
+<li>Thu, Sep 11, 2025: Turning Point - Dr. Emmanuel Ziga Part 2 08/30/2025</li>
+<li>Wed, Sep 10, 2025: Turning Point - Dr. Emmanuel Ziga Part 1 08/30/2025</li>
+<li>Tue, Sep 9, 2025: Altars, Piercings &amp; Tattoos - Minister Fred Christian 08/29/2025</li>
+<li>Mon, Sep 8, 2025: Unholy Alliances Part 2 08/28/2025</li>
+<li>Fri, Aug 29, 2025: OMR - Bishop Tobias Nyamwaya - Tyranny in the Nations - Tattoos - False Apostles/Prophets Part 2 08/15/2025</li>
+<li>Thu, Aug 28, 2025: OMR - Bishop Tobias Nyamwaya - Tyranny in the Nations - Tattoos - False Apostles/Prophets Part 1 08/15/2025</li>
+<li>Wed, Aug 27, 2025: Enemies of Focus - Bishop Tobias Nyamwaya 08/15/2025</li>
+<li>Tue, Aug 26, 2025: Dealing with Strongholds - Bishop Tobias Nyamwaya 08/14/2025</li>
+<li>Mon, Aug 25, 2025: Love Proves Covenant &amp; Christianity - Bishop Dr. Stanley Michuki 08/08/2025</li>
+<li>Fri, Aug 22, 2025: Science of Judgment, Covenant Breaking Spirits - Bishop Dr. Stanley Michuki 08/08/2025</li>
+<li>Thu, Aug 21, 2025: Crisis in Kenya - Bishop Dr. Stanley Michuki - Pastor Titus Njuguna (Joy Bringers Ministries International, 14550 Westminster Way, Shoreline, WA 98133 joybringersministries.com/) 08/08/2025</li>
+<li>Wed, Aug 20, 2025: Demons in the Church Today - Bishop Tobias Nyamwaya, Shannon Davis, Dr. Hansen 08/08/2025</li>
+<li>Tue, Aug 19, 2025: Church Racism - Bishop Tobias Nyamwaya, Shannon Davis, Dr. Hansen 08/08/2025</li>
+<li>Mon, Aug 18, 2025: Israel-Iran Trump Mistake - Shannon Davis, Dr. Hansen 08/08/2025</li>
+<li>Fri, Aug 15, 2025: Covering in Prophetic Times - Racism/Tribalism is Evil</li>
+<li>Thu, Aug 14, 2025: Bishop Tobias Nyamwaya - Faith, Not Tears 08/07/2025</li>
+<li>Wed, Aug 13, 2025: Covenant Breaking Spirits Part 4 - Divine Judgment&nbsp; 8/01/2025</li>
+<li>Tue, Aug 12, 2025: Bishop Tobias Nyamwaya - Overcoming Fear Part 2 08/01/2025</li>
+<li>Mon, Aug 11, 2025: Bishop Tobias Nyamwaya - Overcoming Fear Part 1 08/01/2025</li>
+<li>Fri, Aug 8, 2025: Covenant Breaking Spirits Part 3 - Kenya Pres. Jomo Kenyatta and Moi 7/19/2025</li>
+<li>Thu, Aug 7, 2025: Bishop Dr. Stanley Michuki (Kenya National Congress of Pentecostal Churches) - Bishop J.M. Ole Kahara (Lead Pastor, Fireflow Ministries Intl., PO Box 60074, Renton, WA 98058, (425) 633-6335, fireflow.season@yahoo.com, www.fireflowmintl.org) Kenya 06/30/2025</li>
+<li>Wed, Aug 6, 2025: Dr. Hansen, Bishop Geoffrey Njuguna - Kenya 06/17/2025 1095R5 1096R5 1097R2</li>
+<li>Tue, Aug 5, 2025: Iran-Israel Ceasefire Mistake - Nuclear War Instead 07/26/2025</li>
+<li>Mon, Aug 4, 2025: Iran-Israel War, Ceasefire a Mistake 07/25/2025</li>
+<li>Fri, Aug 1, 2025: Bishop Geoffrey Njuguna - Fathers as God's Image Bearers Part 3 06/15/2025</li>
+<li>Thu, Jul 31, 2025: Bishop Geoffrey Njuguna - Fathers as God's Image Bearers Part 2 06/15/2025</li>
+<li>Wed, Jul 30, 2025: Bishop Geoffrey Njuguna - Fathers as God's Image Bearers Part 1 06/15/2025</li>
+<li>Tue, Jul 29, 2025: Covenant Breaking Spirits Part 3 - Kenya Pres. Jomo Kenyatta and Moi&nbsp; 7/19/2025</li>
+<li>Mon, Jul 28, 2025: Flawless Covering 07/18/2025</li>
+<li>Fri, Jul 25, 2025: Radio Part 4 Dr. EJ Buckardt - Critical Time for the Christian Church in America (We Need to WAKE Up not be Woke Up) 05/31/2025</li>
+<li>Thu, Jul 24, 2025: Radio Part 3 Dr. EJ Buckardt - Critical Time for the Christian Church in America (We Need to WAKE Up not be Woke Up) 05/31/2025</li>
+<li>Wed, Jul 23, 2025: Dr. Apostle Vee Sitoh (Apostolic Founder of Evangelical Christian Assembly International) &amp; Rev. Janice Tan (Campus Pastor of Evangelical Assembly International - Australia) The Apostolic Responsibility Worldwide 07/15/2025</li>
+<li>Tue, Jul 22, 2025: Covenant Breaking Spirits Part 2&nbsp; 7/12/2025</li>
+<li>Mon, Jul 21, 2025: Covering in Prophetic Times - Racism/Tribalism is Evil 07/11/2025</li>
+<li>Fri, Jul 18, 2025: Rev. Dr. Adalia Hansen &amp; Rev. Elizabeth Kamau - Breaking Spiritual Barriers &amp; Reclaiming Generational Blessings Part 2 06/19/2025</li>
+<li>Thu, Jul 17, 2025: Rev. Dr. Adalia Hansen &amp; Rev. Elizabeth Kamau - Breaking Spiritual Barriers &amp; Reclaiming Generational Blessings Part 1 06/19/2025</li>
+<li>Wed, Jul 16, 2025: Bishop Geoffrey Njuguna - The Demonic Spirits that Target the Five-Fold Ministries 06/27/2025 (Men's 6:00 am Bible &amp; Prayer)</li>
+<li>Tue, Jul 15, 2025: Covenant Breaking Spirits Part 1&nbsp; 7/5/2025</li>
+<li>Mon, Jul 14, 2025: Prophecy The Science of Judgment 7/4/2025</li>
+<li>Fri, Jul 11, 2025: World Control vs the Power of God (Prophetic Times)&nbsp; 6/28/2025</li>
+<li>Thu, Jul 10, 2025: Bishop Geoffrey Njuguna - Tanzania - Bishop Gwajima&nbsp; 6/17/2025</li>
+<li>Wed, Jul 9, 2025: Bishop Dr. Stanley Michuki (Kenya National Congress of Pentecostal Churches) - Bishop J.M. Ole Kahara (Lead Pastor, Fireflow Ministries Intl., PO Box 60074, Renton, WA 98058, (425) 633-6335, fireflow.season@yahoo.com, www.fireflowmintl.org) Kenya 6/30/2025</li>
+<li>Tue, Jul 8, 2025: Dr. Hansen, Bishop Geoffrey Njuguna - Kenya 06/17/2025 1095R5 1096R5</li>
+<li>Mon, Jul 7, 2025: Prophetic Times (Facebook Live Streamed) 06/27/2025</li>
+</ul>
+</div>
+<div>
+<p>&nbsp;</p>
+<div dir="ltr" id="docs-internal-guid-709989c6-7fff-8270-6c94-21c026617b1d" align="left"></div>
+</div>
