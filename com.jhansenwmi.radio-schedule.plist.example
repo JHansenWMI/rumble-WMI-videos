@@ -3,23 +3,28 @@
 <plist version="1.0">
 <dict>
   <key>Label</key>
-  <string>com.jhansenwmi.tv-schedule</string>
+  <string>com.jhansenwmi.radio-schedule</string>
 
   <key>ProgramArguments</key>
   <array>
-    <string>/Users/USERNAME/PATH/TO/rumble-WMI-videos/update_tv_schedule.sh</string>
+    <string>/Users/USERNAME/PATH/TO/rumble-WMI-videos/update_radio_schedule.sh</string>
   </array>
 
   <key>WorkingDirectory</key>
   <string>/Users/USERNAME/PATH/TO/rumble-WMI-videos</string>
 
   <key>StandardOutPath</key>
-  <string>/Users/USERNAME/Library/Logs/tv-schedule.log</string>
+  <string>/Users/USERNAME/Library/Logs/radio-schedule.log</string>
 
   <key>StandardErrorPath</key>
-  <string>/Users/USERNAME/Library/Logs/tv-schedule.log</string>
+  <string>/Users/USERNAME/Library/Logs/radio-schedule.log</string>
 
-  <!-- Friday 4:00am. launchd Weekday: 0=Sunday … 5=Friday. Radio runs at 4:10 (see com.jhansenwmi.radio-schedule.plist.example). -->
+  <!--
+  Friday 4:10am — 10 minutes after the TV schedule job (com.jhansenwmi.tv-schedule
+  at Friday 4:00am) so TV can finish its git push before this run pulls.
+
+  launchd Weekday: 0=Sunday … 5=Friday, 6=Saturday.
+  -->
   <key>StartCalendarInterval</key>
   <array>
     <dict>
@@ -28,7 +33,7 @@
       <key>Hour</key>
       <integer>4</integer>
       <key>Minute</key>
-      <integer>0</integer>
+      <integer>10</integer>
     </dict>
   </array>
 

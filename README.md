@@ -20,11 +20,11 @@ TV schedule (for TVShowsSnippetNew.html):
 - Use `update_tv_schedule.py` (run on a machine that can see the file):
     python update_tv_schedule.py --xlsx "/Volumes/Office/Public/01 TV-Radio Spreadsheets/KAZQ.xlsx" --schedule docs/tv-schedule.txt
   It looks at the last few usable rows, converts the (Sunday) air date codes to actual Friday air dates, and merges only new entries.
-- On the production Mac Mini this runs automatically every Friday at 4am via launchd (`update_tv_schedule.sh` + `com.jhansenwmi.tv-schedule.plist`).
+- On the production Mac Mini this runs automatically every **Friday at 4:00am** via launchd (`update_tv_schedule.sh` + `com.jhansenwmi.tv-schedule.plist`).
   The wrapper handles git pull, runs the updater, and commits/pushes only if the schedule changed.
 - To install on the Mac Mini (or similar):
   1. `pip3 install openpyxl` (or ensure your `python3` has it)
-  2. Copy `com.jhansenwmi.tv-schedule.plist` (or the .example, customized) to `~/Library/LaunchAgents/`
+  2. Copy `com.jhansenwmi.tv-schedule.plist` (or the `.example`, customized) to `~/Library/LaunchAgents/`
   3. `launchctl load ~/Library/LaunchAgents/com.jhansenwmi.tv-schedule.plist`
 - Manual runs (or on other machines) still work with the python command above; follow with `git add + commit + push` if desired.
 
@@ -33,6 +33,7 @@ Radio schedule (for RadioBroadcastSnippet.html):
 - Generated from `Intra Support Files/radio_programs.csv` (primary slot-1 programs + cleaning). Pure data file — no display logic or paging info (see design principle in docs/README.md).
 - `RadioBroadcastSnippet.html` fetches it dynamically and handles all paging client-side (50 items/page, buttons, last-page special case, scroll stabilization).
 - Run `update_radio_programs.py` (xlsx path in WorkToDo/Radio Program Parsing.MD); `--schedule-only` regenerates from existing CSV. Air dates capped at today + 10 days (Pacific).
+- On the production Mac Mini: **Friday at 4:10am** via launchd (`update_radio_schedule.sh` + `com.jhansenwmi.radio-schedule.plist.example`). Runs 10 minutes after the TV job so TV can push first; one shell script updates radio CSV, `docs/radio-schedule.txt`, and `docs/shortwave-schedule.txt` (shortwave is chained inside `update_radio_programs.py` — no separate Python master needed).
 - See WorkToDo/Radio Program Parsing.MD for generation details, seed comparison, and snippet implementation notes.
 
 Shortwave schedule (for ShortWaveBroadcastSnippet.html):
