@@ -3,17 +3,11 @@ Goal: To parse the radio program data from the source spreadsheet and create a t
 that can be used by the website to display them, similar to how the TV parsing works (see update_tv_schedule.py + docs/tv-schedule.txt).
 
 ## Current Status (as of 2026-07)
-- CSV generation implemented and run (see below).
-- Output is clean: 1283 meaningful rows (only entries with program_number or title).
-- Script: `update_radio_programs.py` (modeled on TV updater).
-- Intermediate file: `Intra Support Files/radio_programs.csv`
-- Seed list fetched from public site (see below).
-- `docs/radio-schedule.txt` generated from CSV (slot 1 primary programs + title cleaning) and usable like `tv-schedule.txt`.
-- RadioBroadcastSnippet.html implemented (dynamic fetch of radio-schedule.txt + full paging logic in the snippet only).
-- Paging: 50 items at a time, buttons auto-hide when no data in direction, special last-page handling (natural/short height, buttons directly under content).
-- Scroll stabilization on full pages (rect capture + compensation); minimal correction on last page.
-- Initial load always at top (page 0, no auto-scroll).
-- Design principle: all display/paging logic lives in the snippet; source data files remain pure (no display concepts).
+- CSV generation: `update_radio_programs.py` → `Intra Support Files/radio_programs.csv` (modeled on TV updater).
+- Radio: `docs/radio-schedule.txt` from CSV slot-1 rows; `RadioBroadcastSnippet.html` fetches + pages client-side.
+- Shortwave: `docs/shortwave-schedule.txt` from CSV `*SW` rows via `update_shortwave_schedule.py` (also invoked at end of radio xlsx run); `ShortWaveBroadcastSnippet.html` fetches + pages like radio.
+- Seed list from public site for comparison (see below).
+- Both schedules: flat `Day, Mon DD, YYYY: Title` lines only; 10-day future air-date cap (Pacific); display/paging logic lives entirely in snippets.
 
 ## Design Details for CSV Generation
 - **Source**: Sheet "WATV Radio NOTES" in the Warning! Radio xlsx.
@@ -31,7 +25,7 @@ that can be used by the website to display them, similar to how the TV parsing w
   - `week_str`, `source_row`: original header + excel row (for traceability/debug)
 - **Cleaning**:
   - Skips completely empty (no prog_num and no title) slot rows for a compact CSV.
-  - No aggressive title stripping in the CSV `title` field (raw data preserved). `clean_title_for_display()` helper exists in the script for future text output.
+  - No title stripping in the CSV `title` field (raw preserved). Schedule output uses `clean_title_for_display()` (radio) or `clean_shortwave_title_for_display()` (shortwave).
   - Program numbers kept verbatim (structure: seq + R[1-5]/SW/Sun documented in spec).
 - **Run command** (similar to TV):
   ```
@@ -58,7 +52,7 @@ that can be used by the website to display them, similar to how the TV parsing w
   - Only `slot == "1"` (primary Mon-Fri program per day).
   - Compute exact air date = week_start + day offset.
   - Clean title: strip trailing recorded date (e.g. ` 06/19/2026`) + trailing program number suffix.
-  - Format: `Jul 03, 2026: Title` (exact same style as tv-schedule.txt), newest first.
+  - Format: `Fri, Jul 3, 2026: Title` (weekday prefix; otherwise like tv-schedule), newest first.
 - Comparison vs `radio_broadcasts_seed.csv` (247 overlapping dates):
   - Exact title matches: 156 (63.2%).
   - Recent (Jun–Jul 2026 block): virtually 100% match after cleaning. Example week 2026-06-29/07-03 lines up entry-for-entry with the seed titles.
@@ -68,7 +62,11 @@ that can be used by the website to display them, similar to how the TV parsing w
 - Future dates (e.g. Nov 2026) appear because the XLSX already contains planned weeks.
 - Conclusion: Strong rules-based mapping exists from the CSV for recent/current data. 100% historical identity to the site-published seed list is not possible without also incorporating seed titles (the two sources track planned/recorded vs actually-published in some periods). The CSV version is richer for program numbers.
 
-The `docs/radio-schedule.txt` can now be treated like `tv-schedule.txt` as the derived list for snippets.
+## Shortwave schedule (Jul 2026)
+- Source rows: `program_number` ending in `SW` (typically Friday Program 2; titles may combine two programs with ` / `).
+- Script: `update_shortwave_schedule.py` (reads same CSV; `--extract-static` builds `docs/shortwave-schedule-static.txt` from CMS HTML for comparison).
+- Title cleaning (`clean_shortwave_title_for_display`): strip recorded dates and program numbers **anywhere** in the title, remove all `(parenthetical)` segments, collapse `- -` left by removals. Radio uses lighter end-only stripping.
+- Output: `docs/shortwave-schedule.txt` on GitHub Pages; `ShortWaveBroadcastSnippet.html` fetches it.
 
 ## Snippet Implementation
 - `RadioBroadcastSnippet.html` (at project root) is the live CMS snippet.
@@ -80,11 +78,7 @@ The `docs/radio-schedule.txt` can now be treated like `tv-schedule.txt` as the d
 - Uses site's `jQ()` / `jQuery()` (from asp/site.js) for pager controls.
 - Pure data principle: `radio-schedule.txt` contains only flat "Day, Mon DD, YYYY: Title" lines. No page markers or display info.
 
-See also: RadioBroadcastSnippet.html, docs/radio-schedule.txt, and the scroll/paging logic in the script.
-
-Future steps (per original spec):
-- Read the CSV (or re-parse) to produce a text document analogous to `docs/tv-schedule.txt` (likely date-based lines, possibly per-program or weekly summary).
-- Integrate into website snippets (similar to TVShowsSnippet*) — basic dynamic snippet + paging complete (see Snippet Implementation section above).
+See also: RadioBroadcastSnippet.html, ShortWaveBroadcastSnippet.html, docs/radio-schedule.txt, docs/shortwave-schedule.txt.
 
 See also: `update_tv_schedule.py` for the TV equivalent and merge/update logic.
 
@@ -97,8 +91,6 @@ Sheet: WATV Radio NOTES
 
 Write a python that can parse that sheet and generate a .csv
 I created a folder 'Intra Support Files/' See the README.md inside.
-
-Future steps will be to read the csv and make a text document similar to tv-schedule.txt
 
 # How to parse WATV Radio NOTES
 Starting at about row 9039

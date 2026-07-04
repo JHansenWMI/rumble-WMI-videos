@@ -409,6 +409,18 @@ def main():
     for line in schedule_lines[:5]:
         print(" ", line)
 
+    _update_shortwave_schedule(csv_path, project_root, args.max_future_days)
+
+
+def _update_shortwave_schedule(csv_path: Path, project_root: Path, max_future_days: int) -> None:
+    """Regenerate docs/shortwave-schedule.txt from the CSV just written/read."""
+    import update_shortwave_schedule as sw
+
+    schedule_path = project_root / "docs/shortwave-schedule.txt"
+    print(f"\nMapping shortwave schedule from {csv_path}")
+    lines = sw.generate_and_write(csv_path, schedule_path, max_future_days=max_future_days)
+    print(f"Wrote {len(lines)} lines to {schedule_path}")
+
 
 if __name__ == "__main__":
     main()

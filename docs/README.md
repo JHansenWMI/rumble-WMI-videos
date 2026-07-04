@@ -62,5 +62,7 @@ See top-level README.md for overall usage, production vs dev modes, and launchd 
 **Design principle:** Avoid display logic and parameters in data files.
 - `tv-schedule.txt`: Managed separately by `update_tv_schedule.py` (merge from spreadsheet). Used by TVShowsSnippetNew.html.
 - `radio-schedule.txt`: Generated from `radio_programs.csv` (slot=1 entries + title cleaning). Analogous to tv-schedule. Pure data (flat lines only — see design principle above). Used by RadioBroadcastSnippet.html (dynamic fetch + paging logic entirely in snippet).
+- `shortwave-schedule.txt`: Generated from the same CSV (`program_number` ending in `SW` + shortwave-specific title cleaning). Same flat-line format. Used by ShortWaveBroadcastSnippet.html.
+- `shortwave-schedule-static.txt`: One-time CMS extract for comparison; not used by the live snippet.
 - `rumble-urls.txt`, `overcoming-urls.txt`: See above.
 

@@ -32,7 +32,14 @@ Radio schedule (for RadioBroadcastSnippet.html):
 - `docs/radio-schedule.txt` contains the ordered list of radio broadcast entries (one line per entry in the form "Day, Mon DD, YYYY: Title").
 - Generated from `Intra Support Files/radio_programs.csv` (primary slot-1 programs + cleaning). Pure data file — no display logic or paging info (see design principle in docs/README.md).
 - `RadioBroadcastSnippet.html` fetches it dynamically and handles all paging client-side (50 items/page, buttons, last-page special case, scroll stabilization).
+- Run `update_radio_programs.py` (xlsx path in WorkToDo/Radio Program Parsing.MD); `--schedule-only` regenerates from existing CSV. Air dates capped at today + 10 days (Pacific).
 - See WorkToDo/Radio Program Parsing.MD for generation details, seed comparison, and snippet implementation notes.
+
+Shortwave schedule (for ShortWaveBroadcastSnippet.html):
+- `docs/shortwave-schedule.txt` — same line format; CSV rows where `program_number` ends in `SW` (often combined titles with ` / `).
+- `update_shortwave_schedule.py` from the same CSV; also runs at the end of `update_radio_programs.py` after an xlsx parse.
+- Stricter title cleaning than radio: dates/program numbers anywhere, all `(parenthetical)` text removed, `- -` collapsed. Plain `&` for JS `textContent`.
+- `ShortWaveBroadcastSnippet.html` fetches from GitHub Pages. `docs/shortwave-schedule-static.txt` is a CMS snapshot (`--extract-static`).
 
 Rumble HTML samples:
 - samples/rumble-channel-pages/ stores dated snapshots of channel listing pages (see README there). Use when Rumble changes markup and the feed parser needs updating.

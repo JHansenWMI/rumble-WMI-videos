@@ -1,0 +1,253 @@
+<div id="content">
+<style><!--
+        #content li {
+            padding-left: 80px;
+            text-indent: -80px;
+        }
+        #content li.highlight {
+            background-color: #DCD4E6;
+            font-weight: bold;
+        }
+
+        #schedule-list {
+            min-height: 1100px;
+        }
+        #schedule-list.last-page {
+            min-height: 0;
+        }
+
+        #shortwave-pager {
+            margin: 6px 0 2px;
+            text-align: center;
+            font-size: 0.9em;
+        }
+        #shortwave-pager button {
+            padding: 1px 8px;
+            font-size: 0.9em;
+            vertical-align: middle;
+        }
+--></style>
+<script type="text/javascript">// <![CDATA[
+const SCHEDULE_URL = "https://jhansenwmi.github.io/rumble-WMI-videos/shortwave-schedule.txt";
+const PAGE_SIZE = 50;
+
+/*
+ * The source file (docs/shortwave-schedule.txt) is pure data:
+ *   - Simple flat list, one line per broadcast.
+ *   - Format: "Fri, Jul 3, 2026: Title"
+ */
+
+function highlightUpcoming(ul) {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    const dateRegex = /^(?:[A-Za-z]+,\s)?([A-Za-z]+)\s(\d{1,2}),\s(\d{4})/;
+
+    let closestLi = null;
+    let minDiff = Infinity;
+
+    const listItems = ul ? ul.querySelectorAll('li') : document.querySelectorAll('#content ul li');
+
+    listItems.forEach(li => {
+        const text = li.textContent || '';
+        const match = text.match(dateRegex);
+        if (match) {
+            const month = match[1];
+            const day = parseInt(match[2], 10);
+            const year = parseInt(match[3], 10);
+            const liDate = new Date(year, new Date(`${month} 1, ${year}`).getMonth(), day);
+            liDate.setHours(0, 0, 0, 0);
+
+            const diff = liDate - today;
+            if (diff >= 0 && diff < minDiff) {
+                minDiff = diff;
+                closestLi = li;
+            }
+        }
+    });
+
+    if (closestLi) {
+        closestLi.classList.add('highlight');
+    }
+}
+
+let allShortwaveLines = [];
+let currentShortwavePage = 0;
+let shortwaveUl = null;
+let isFirstRender = true;
+
+function getJQ() {
+    if (typeof jQ !== 'undefined') return jQ;
+    if (typeof jQuery !== 'undefined') return jQuery;
+    return null;
+}
+
+function renderShortwavePage(page) {
+    if (!shortwaveUl || !allShortwaveLines.length) return;
+
+    const totalPages = Math.ceil(allShortwaveLines.length / PAGE_SIZE) || 1;
+    currentShortwavePage = Math.max(0, Math.min(page, totalPages - 1));
+
+    const isLastPage = currentShortwavePage === totalPages - 1;
+
+    const wasFirstRender = isFirstRender;
+    if (isFirstRender) {
+        isFirstRender = false;
+    }
+
+    const pagerEl = document.getElementById('shortwave-pager');
+    const rectBefore = (!wasFirstRender && pagerEl) ? pagerEl.getBoundingClientRect() : null;
+
+    if (isLastPage) {
+        shortwaveUl.classList.add('last-page');
+    } else {
+        shortwaveUl.classList.remove('last-page');
+    }
+
+    const start = currentShortwavePage * PAGE_SIZE;
+    const end = Math.min(start + PAGE_SIZE, allShortwaveLines.length);
+    const pageLines = allShortwaveLines.slice(start, end);
+
+    shortwaveUl.innerHTML = '';
+
+    pageLines.forEach(line => {
+        const li = document.createElement('li');
+        li.textContent = line;
+        shortwaveUl.appendChild(li);
+    });
+
+    updatePagerUI();
+    highlightUpcoming(shortwaveUl);
+
+    if (pagerEl && !wasFirstRender && rectBefore) {
+        const settleFrames = isLastPage ? 2 : 1;
+        const step = (remaining) => {
+            if (remaining > 1) {
+                requestAnimationFrame(() => step(remaining - 1));
+                return;
+            }
+            requestAnimationFrame(() => {
+                const rectAfter = pagerEl.getBoundingClientRect();
+                const delta = rectAfter.top - rectBefore.top;
+                if (delta !== 0) {
+                    window.scrollBy(0, delta);
+                }
+            });
+        };
+        step(settleFrames);
+    }
+}
+
+function updatePagerUI() {
+    const totalPages = Math.ceil(allShortwaveLines.length / PAGE_SIZE) || 1;
+    const start = currentShortwavePage * PAGE_SIZE + 1;
+    const end = Math.min((currentShortwavePage + 1) * PAGE_SIZE, allShortwaveLines.length);
+    const info = `Page ${currentShortwavePage + 1} of ${totalPages} &nbsp;(${start}–${end} of ${allShortwaveLines.length})`;
+
+    const j = getJQ();
+    if (j) {
+        j('#shortwave-page-info').html(info);
+        j('#shortwave-prev').toggle(currentShortwavePage > 0);
+        j('#shortwave-next').toggle(currentShortwavePage < totalPages - 1);
+        return;
+    }
+
+    const infoEl = document.getElementById('shortwave-page-info');
+    if (infoEl) infoEl.innerHTML = info;
+
+    const prev = document.getElementById('shortwave-prev');
+    const next = document.getElementById('shortwave-next');
+    if (prev) prev.style.display = (currentShortwavePage > 0) ? '' : 'none';
+    if (next) next.style.display = (currentShortwavePage < totalPages - 1) ? '' : 'none';
+}
+
+function setupShortwavePager(ul) {
+    shortwaveUl = ul;
+
+    const container = ul.parentNode || document.getElementById('content');
+    let pager = document.getElementById('shortwave-pager');
+    if (!pager) {
+        pager = document.createElement('div');
+        pager.id = 'shortwave-pager';
+        pager.innerHTML = `
+            <button type="button" id="shortwave-prev">« Newer 50</button>
+            <span id="shortwave-page-info" style="margin: 0 10px; font-size: 0.9em;"></span>
+            <button type="button" id="shortwave-next">Older 50 »</button>
+        `;
+        if (ul.nextSibling) {
+            container.insertBefore(pager, ul.nextSibling);
+        } else {
+            container.appendChild(pager);
+        }
+    }
+
+    const j = getJQ();
+    if (!j) {
+        const prev = document.getElementById('shortwave-prev');
+        const next = document.getElementById('shortwave-next');
+        if (prev) prev.onclick = () => renderShortwavePage(currentShortwavePage - 1);
+        if (next) next.onclick = () => renderShortwavePage(currentShortwavePage + 1);
+        return;
+    }
+
+    j('#shortwave-prev').off('click').on('click', function () {
+        renderShortwavePage(currentShortwavePage - 1);
+    });
+    j('#shortwave-next').off('click').on('click', function () {
+        renderShortwavePage(currentShortwavePage + 1);
+    });
+}
+
+async function loadShortwaveSchedule() {
+    const container = document.getElementById('content') || document.querySelector('#content');
+    if (!container) return;
+
+    let ul = container.querySelector('#schedule-list') || container.querySelector('ul');
+    if (!ul) {
+        ul = document.createElement('ul');
+        ul.id = 'schedule-list';
+        const p = container.querySelector('p');
+        if (p && p.nextSibling) {
+            container.insertBefore(ul, p.nextSibling);
+        } else {
+            container.appendChild(ul);
+        }
+    }
+    ul.innerHTML = '';
+
+    try {
+        const res = await fetch(SCHEDULE_URL, { cache: "no-store" });
+        if (res.ok) {
+            const txt = await res.text();
+            allShortwaveLines = txt.split(/\r?\n/).map(l => l.trim()).filter(Boolean);
+        } else {
+            console.warn("Failed to fetch schedule, status", res.status);
+            allShortwaveLines = [];
+        }
+    } catch (e) {
+        console.warn("Could not load shortwave-schedule.txt:", e);
+        allShortwaveLines = [];
+    }
+
+    if (allShortwaveLines.length === 0) {
+        const li = document.createElement('li');
+        li.textContent = "Unable to load schedule.";
+        ul.appendChild(li);
+        return;
+    }
+
+    setupShortwavePager(ul);
+    currentShortwavePage = 0;
+    renderShortwavePage(currentShortwavePage);
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', loadShortwaveSchedule);
+} else {
+    loadShortwaveSchedule();
+}
+// ]]></script>
+<h4>Shortwave Programs 07/2025 to Date<br />WWCR-12.160 - 4pm EST Fridays</h4>
+<p>&nbsp;</p>
+<ul id="schedule-list"></ul>
+</div>
