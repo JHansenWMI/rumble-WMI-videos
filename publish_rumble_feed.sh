@@ -167,6 +167,17 @@ if [ $OVER_STATUS -ne 0 ]; then
   exit $OVER_STATUS
 fi
 
+log "Generating feed (tv)"
+set +e
+TV_OUT=$(python3 "$SCRIPT_DIR/generate_tv_feed.py" $PROD_FLAG 2>&1)
+TV_STATUS=$?
+set -e
+print -r -- "$TV_OUT"
+if [ $TV_STATUS -ne 0 ]; then
+  log "TV feed generation failed (exit $TV_STATUS)"
+  exit $TV_STATUS
+fi
+
 # Determine which feed JSON files (and their archives) to manage for this run.
 # We load the list of *primary* feeds from Python (single source of truth)
 # and only include the corresponding archive if it actually exists on disk
@@ -185,6 +196,8 @@ for p in PRIMARY_FEED_FILES:
 # Always include primaries. Include an archive only if it was created on disk
 # (using the exact same get_archive_path logic the generator uses).
 FEED_FILES=()
+FEED_FILES+=("docs/tv-feed.json")
+
 for primary in "${PRIMARY_FEEDS[@]}"; do
     FEED_FILES+=("$primary")
     archive=$(python3 -c '
