@@ -219,3 +219,6 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Per-machine overrides for update scripts (dev machines)
+local-config.sh
