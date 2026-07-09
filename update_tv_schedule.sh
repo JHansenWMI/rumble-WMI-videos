@@ -26,6 +26,17 @@ git pull --ff-only origin main
 
 XLSX="/Volumes/Office/Public/01 TV-Radio Spreadsheets/KAZQ.xlsx"
 
+# Optional per-machine overrides (gitignored). A dev machine can set XLSX here.
+if [ -f "$SCRIPT_DIR/local-config.sh" ]; then
+  log "Loading local overrides from local-config.sh"
+  source "$SCRIPT_DIR/local-config.sh"
+fi
+
+if [ ! -f "$XLSX" ]; then
+  log "KAZQ.xlsx not found at $XLSX. Aborting."
+  exit 1
+fi
+
 log "Running TV schedule update from Excel"
 python3 "$SCRIPT_DIR/update_tv_schedule.py" \
   --xlsx "$XLSX" \

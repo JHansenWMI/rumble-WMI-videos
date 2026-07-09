@@ -77,12 +77,18 @@ def extract_from_excel(xlsx_path: Path, max_recent: int = 15) -> list[str]:
         row = [c.value for c in ws[row_idx][:5]]
         rec = row[0]
         title = row[1]
+        sent = row[2]
         air = row[3]
 
         if rec is None or title is None:
             if candidates and len(candidates) >= 3:
                 # we've passed the active block
                 break
+            continue
+
+        # Column C is the sent date; a program without one hasn't been
+        # supplied to the TV station yet, so keep it out of the schedule.
+        if sent is None:
             continue
 
         try:
