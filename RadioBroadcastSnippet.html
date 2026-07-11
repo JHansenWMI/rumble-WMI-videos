@@ -1,18 +1,80 @@
 <div id="content">
 <style><!--
         #content li {
-            padding-left: 80px;
-            text-indent: -80px;
+            padding-left: 0;
+            text-indent: 0;
+            list-style: none;
+            margin: 0 0 0.35em 0;
         }
         #content li.highlight {
             background-color: #DCD4E6;
             font-weight: bold;
+        }
+        #content li.highlight .radio-line {
+            font-weight: bold;
+        }
+
+        .radio-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 6px;
+            /* Keep hanging-indent feel for date:col text when no play btn spacer */
+        }
+        .radio-play {
+            flex: 0 0 1.4em;
+            width: 1.4em;
+            height: 1.4em;
+            margin: 0;
+            padding: 0;
+            border: none;
+            background: transparent;
+            color: #3a2a5c;
+            font-size: 0.95em;
+            line-height: 1.3;
+            cursor: pointer;
+            text-align: center;
+        }
+        .radio-play:hover {
+            color: #6b4a9e;
+        }
+        .radio-play.is-playing {
+            color: #1a7a3a;
+        }
+        .radio-play-spacer {
+            flex: 0 0 1.4em;
+            width: 1.4em;
+            display: inline-block;
+        }
+        .radio-line {
+            flex: 1 1 auto;
+            /* hanging indent for "Day, Mon D, YYYY: " block (~80px) */
+            padding-left: 80px;
+            text-indent: -80px;
+        }
+        .radio-player-wrap {
+            margin: 4px 0 10px 1.6em;
+            padding: 6px 8px;
+            background: #f4f1f8;
+            border-radius: 4px;
+            max-width: 28em;
+        }
+        .radio-player-wrap audio {
+            width: 100%;
+            height: 32px;
+            vertical-align: middle;
+        }
+        .radio-player-wrap .radio-podbean-link {
+            display: inline-block;
+            margin-top: 4px;
+            font-size: 0.85em;
         }
 
         #schedule-list {
             /* Reserve space for ~50 items on full pages to reduce jumpiness.
                On the last page we intentionally let it shrink (see .last-page). */
             min-height: 1100px;
+            padding-left: 0;
+            margin-left: 0;
         }
         #schedule-list.last-page {
             /* Last page has fewer items: allow natural (short) height so the
@@ -33,18 +95,50 @@
 --></style>
 <script type="text/javascript">// <![CDATA[
 const SCHEDULE_URL = "https://jhansenwmi.github.io/rumble-WMI-videos/radio-schedule.txt";
+const MATCHES_URL = "https://jhansenwmi.github.io/rumble-WMI-videos/podbean-radio-matches.json";
 const PAGE_SIZE = 50;
 
 /*
- * The source file (docs/radio-schedule.txt) is pure data:
- *   - Simple flat list, one line per broadcast.
- *   - Format: "Fri, Jul 3, 2026: Title"
+ * docs/radio-schedule.txt — pure data lines: "Fri, Jul 3, 2026: Title"
+ * docs/podbean-radio-matches.json — optional play links (audioUrl / episodeUrl)
  */
 
 function decodeHtmlEntities(str) {
     const el = document.createElement("textarea");
     el.innerHTML = str;
     return el.value;
+}
+
+/** Map radioTitle -> { audioUrl, episodeUrl, ... } */
+let podbeanByTitle = Object.create(null);
+
+function buildMatchIndex(data) {
+    const map = Object.create(null);
+    const list = (data && data.matches) ? data.matches : [];
+    list.forEach(function (m) {
+        if (!m || !m.radioTitle) return;
+        const key = String(m.radioTitle).trim();
+        if (!key) return;
+        // First strong match wins; duplicates (Part 1/2 → same full ep) are fine
+        if (!map[key]) {
+            map[key] = m;
+        }
+    });
+    return map;
+}
+
+function parseScheduleLine(line) {
+    const text = decodeHtmlEntities(line);
+    const idx = text.indexOf(":");
+    if (idx < 0) {
+        return { displayDate: "", title: text, full: text };
+    }
+    // "Fri, Jul 3, 2026: Title" — first colon separates date header from title
+    return {
+        displayDate: text.slice(0, idx).trim(),
+        title: text.slice(idx + 1).trim(),
+        full: text
+    };
 }
 
 function getPacificOffset(date) {
@@ -75,18 +169,15 @@ function highlightUpcoming(ul) {
     const broadcastTime = new Date(nowPacific.getFullYear(), nowPacific.getMonth(), nowPacific.getDate(), broadcastHourPT, broadcastMinute);
     const targetDate = nowPacific < broadcastTime ? todayMidnight : new Date(todayMidnight.getTime() + 24 * 60 * 60 * 1000);
 
-    console.log('Target Date for highlight:', targetDate.toString());
-
     const dateRegex = /^(?:[A-Za-z]+,\s)?([A-Za-z]+)\s(\d{1,2}),\s(\d{4})/;
 
-    let closestDate = null;
     let closestLi = null;
     let minDiff = Infinity;
 
     const listItems = ul ? ul.querySelectorAll('li') : document.querySelectorAll('#content ul li');
 
     listItems.forEach(li => {
-        const text = li.textContent || '';
+        const text = (li.getAttribute('data-line') || li.textContent || '');
         const match = text.match(dateRegex);
         if (match) {
             const month = match[1];
@@ -97,7 +188,6 @@ function highlightUpcoming(ul) {
             const diff = liDate - targetDate;
             if (diff >= 0 && diff < minDiff) {
                 minDiff = diff;
-                closestDate = liDate;
                 closestLi = li;
             }
         }
@@ -112,6 +202,8 @@ let allRadioLines = [];
 let currentRadioPage = 0;
 let radioUl = null;
 let isFirstRender = true;
+/** Currently open player li (only one expanded at a time) */
+let activePlayerLi = null;
 
 function getJQ() {
     if (typeof jQ !== 'undefined') return jQ;
@@ -119,41 +211,169 @@ function getJQ() {
     return null;
 }
 
-function findBestStartingPage(lines) {
-    // Try to find the index of the closest upcoming broadcast so we can default to that page
-    const now = new Date();
-    const pacificOffsetMinutes = getPacificOffset(now);
-    const userOffsetMinutes = now.getTimezoneOffset();
-    const offsetDiffHours = (userOffsetMinutes - pacificOffsetMinutes) / 60;
-    const nowPacific = new Date(now.getTime() + offsetDiffHours * 60 * 60 * 1000);
-    const todayMidnight = new Date(nowPacific.getFullYear(), nowPacific.getMonth(), nowPacific.getDate());
-
-    const broadcastHourPT = 12;
-    const broadcastMinute = 30;
-    const broadcastTime = new Date(nowPacific.getFullYear(), nowPacific.getMonth(), nowPacific.getDate(), broadcastHourPT, broadcastMinute);
-    const targetDate = nowPacific < broadcastTime ? todayMidnight : new Date(todayMidnight.getTime() + 24 * 60 * 60 * 1000);
-
-    const dateRegex = /^(?:[A-Za-z]+,\s)?([A-Za-z]+)\s(\d{1,2}),\s(\d{4})/;
-
-    let bestIdx = 0;
-    let minDiff = Infinity;
-
-    lines.forEach((text, idx) => {
-        const match = text.match(dateRegex);
-        if (match) {
-            const month = match[1];
-            const day = parseInt(match[2], 10);
-            const year = parseInt(match[3], 10);
-            const liDate = new Date(year, new Date(`${month} 1, ${year}`).getMonth(), day);
-            const diff = liDate - targetDate;
-            if (diff >= 0 && diff < minDiff) {
-                minDiff = diff;
-                bestIdx = idx;
-            }
-        }
+function stopAllAudio(exceptAudio) {
+    if (!radioUl) return;
+    radioUl.querySelectorAll('audio').forEach(function (a) {
+        if (exceptAudio && a === exceptAudio) return;
+        try {
+            a.pause();
+            a.currentTime = 0;
+        } catch (e) { /* ignore */ }
     });
+    radioUl.querySelectorAll('.radio-play.is-playing').forEach(function (btn) {
+        if (exceptAudio && btn.closest('li') && btn.closest('li').querySelector('audio') === exceptAudio) return;
+        btn.classList.remove('is-playing');
+        btn.setAttribute('aria-label', 'Play');
+        btn.textContent = '\u25B6'; // ▶
+    });
+}
 
-    return Math.floor(bestIdx / PAGE_SIZE);
+function closePlayer(li) {
+    if (!li) return;
+    const wrap = li.querySelector('.radio-player-wrap');
+    const btn = li.querySelector('.radio-play');
+    const audio = li.querySelector('audio');
+    if (audio) {
+        try { audio.pause(); } catch (e) { /* ignore */ }
+    }
+    if (wrap) wrap.hidden = true;
+    if (btn) {
+        btn.classList.remove('is-playing');
+        btn.setAttribute('aria-label', 'Play');
+        btn.textContent = '\u25B6';
+    }
+    if (activePlayerLi === li) activePlayerLi = null;
+}
+
+function openPlayer(li) {
+    if (!li) return;
+    if (activePlayerLi && activePlayerLi !== li) {
+        closePlayer(activePlayerLi);
+    }
+    const wrap = li.querySelector('.radio-player-wrap');
+    const btn = li.querySelector('.radio-play');
+    const audio = li.querySelector('audio');
+    if (!wrap || !audio) return;
+    wrap.hidden = false;
+    activePlayerLi = li;
+    if (btn) {
+        btn.classList.add('is-playing');
+        btn.setAttribute('aria-label', 'Pause');
+        btn.textContent = '\u23F8'; // ⏸
+    }
+    stopAllAudio(audio);
+    const p = audio.play();
+    if (p && typeof p.catch === 'function') {
+        p.catch(function () { /* autoplay blocked until user gesture — click already is gesture */ });
+    }
+}
+
+function togglePlayer(li) {
+    const wrap = li.querySelector('.radio-player-wrap');
+    const audio = li.querySelector('audio');
+    if (!wrap || !audio) return;
+    if (!wrap.hidden && !audio.paused) {
+        audio.pause();
+        const btn = li.querySelector('.radio-play');
+        if (btn) {
+            btn.classList.remove('is-playing');
+            btn.setAttribute('aria-label', 'Play');
+            btn.textContent = '\u25B6';
+        }
+        return;
+    }
+    openPlayer(li);
+}
+
+function createScheduleItem(line) {
+    const parsed = parseScheduleLine(line);
+    const match = podbeanByTitle[parsed.title] || null;
+    const hasAudio = !!(match && match.audioUrl);
+
+    const li = document.createElement('li');
+    li.className = 'radio-item' + (hasAudio ? ' has-audio' : '');
+    li.setAttribute('data-line', parsed.full);
+
+    const row = document.createElement('div');
+    row.className = 'radio-row';
+
+    if (hasAudio) {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'radio-play';
+        btn.setAttribute('aria-label', 'Play');
+        btn.title = 'Play audio';
+        btn.textContent = '\u25B6';
+        btn.addEventListener('click', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            togglePlayer(li);
+        });
+        row.appendChild(btn);
+    } else {
+        const spacer = document.createElement('span');
+        spacer.className = 'radio-play-spacer';
+        spacer.setAttribute('aria-hidden', 'true');
+        row.appendChild(spacer);
+    }
+
+    const span = document.createElement('span');
+    span.className = 'radio-line';
+    span.textContent = parsed.full;
+    row.appendChild(span);
+    li.appendChild(row);
+
+    if (hasAudio) {
+        const wrap = document.createElement('div');
+        wrap.className = 'radio-player-wrap';
+        wrap.hidden = true;
+
+        const audio = document.createElement('audio');
+        audio.controls = true;
+        audio.preload = 'none';
+        audio.src = match.audioUrl;
+        audio.addEventListener('play', function () {
+            stopAllAudio(audio);
+            const b = li.querySelector('.radio-play');
+            if (b) {
+                b.classList.add('is-playing');
+                b.setAttribute('aria-label', 'Pause');
+                b.textContent = '\u23F8';
+            }
+            activePlayerLi = li;
+        });
+        audio.addEventListener('pause', function () {
+            const b = li.querySelector('.radio-play');
+            if (b && audio.paused) {
+                b.classList.remove('is-playing');
+                b.setAttribute('aria-label', 'Play');
+                b.textContent = '\u25B6';
+            }
+        });
+        audio.addEventListener('ended', function () {
+            const b = li.querySelector('.radio-play');
+            if (b) {
+                b.classList.remove('is-playing');
+                b.setAttribute('aria-label', 'Play');
+                b.textContent = '\u25B6';
+            }
+        });
+        wrap.appendChild(audio);
+
+        if (match.episodeUrl) {
+            const a = document.createElement('a');
+            a.className = 'radio-podbean-link';
+            a.href = match.episodeUrl;
+            a.target = '_blank';
+            a.rel = 'noopener noreferrer';
+            a.textContent = 'Open on Podbean';
+            wrap.appendChild(a);
+        }
+
+        li.appendChild(wrap);
+    }
+
+    return li;
 }
 
 function renderRadioPage(page) {
@@ -186,12 +406,11 @@ function renderRadioPage(page) {
     const end = Math.min(start + PAGE_SIZE, allRadioLines.length);
     const pageLines = allRadioLines.slice(start, end);
 
+    activePlayerLi = null;
     radioUl.innerHTML = '';
 
-    pageLines.forEach(line => {
-        const li = document.createElement('li');
-        li.textContent = decodeHtmlEntities(line);
-        radioUl.appendChild(li);
+    pageLines.forEach(function (line) {
+        radioUl.appendChild(createScheduleItem(line));
     });
 
     // Update pager UI
@@ -310,18 +529,36 @@ async function loadRadioSchedule() {
     }
     ul.innerHTML = '';
 
+    // Load schedule + optional Podbean match map in parallel
     try {
-        const res = await fetch(SCHEDULE_URL, { cache: "no-store" });
-        if (res.ok) {
-            const txt = await res.text();
+        const [schedRes, matchRes] = await Promise.all([
+            fetch(SCHEDULE_URL, { cache: "no-store" }),
+            fetch(MATCHES_URL, { cache: "no-store" }).catch(function () { return null; })
+        ]);
+
+        if (schedRes.ok) {
+            const txt = await schedRes.text();
             allRadioLines = txt.split(/\r?\n/).map(l => l.trim()).filter(Boolean);
         } else {
-            console.warn("Failed to fetch schedule, status", res.status);
+            console.warn("Failed to fetch schedule, status", schedRes.status);
             allRadioLines = [];
         }
+
+        if (matchRes && matchRes.ok) {
+            try {
+                const data = await matchRes.json();
+                podbeanByTitle = buildMatchIndex(data);
+            } catch (e) {
+                console.warn("Could not parse podbean-radio-matches.json:", e);
+                podbeanByTitle = Object.create(null);
+            }
+        } else {
+            podbeanByTitle = Object.create(null);
+        }
     } catch (e) {
-        console.warn("Could not load radio-schedule.txt:", e);
+        console.warn("Could not load radio schedule / matches:", e);
         allRadioLines = [];
+        podbeanByTitle = Object.create(null);
     }
 
     if (allRadioLines.length === 0) {

@@ -1,0 +1,339 @@
+#!/usr/bin/env python3
+"""
+Match radio-schedule.txt titles to Podbean RSS episodes for play-button links.
+
+Usage:
+  python match_podbean_to_radio.py
+  python match_podbean_to_radio.py --dry-run
+
+Writes docs/podbean-radio-matches.json (website data only).
+
+Matching (summary):
+  - Normalize titles (like other WMI tools).
+  - Exact → containment → fuzzy (with thresholds).
+  - Part N on radio may match a Podbean episode *without* Part N (full program
+    on Podbean; radio split for airtime). Same Part N still matches. Different
+    Part numbers do not.
+  - Weak/ambiguous matches are omitted (no play button).
+"""
+
+from __future__ import annotations
+
+import argparse
+import html
+import json
+import re
+import sys
+import urllib.request
+from collections import defaultdict
+from difflib import SequenceMatcher
+from pathlib import Path
+
+DEFAULT_FEED = "https://feed.podbean.com/warningjonathanhansen/feed.xml"
+DEFAULT_SCHEDULE = Path("docs/radio-schedule.txt")
+DEFAULT_OUTPUT = Path("docs/podbean-radio-matches.json")
+
+LINE_RE = re.compile(
+    r"^(?:[A-Za-z]+,\s+)?([A-Za-z]+)\s+(\d{1,2}),\s+(\d{4}):\s*(.*)$"
+)
+PART_RE = re.compile(r"\bpart\s*(\d+)\b", re.I)
+TRAIL_DATE_RE = re.compile(r"\s+\d{1,2}/\d{1,2}/\d{2,4}\s*$")
+PROG_RE = re.compile(r"\s+\d+(?:R[1-5]|SW|Sun)\s*$", re.I)
+# Strip "Part N" (and optional dash before it) for base-title compares
+PART_STRIP_RE = re.compile(r"\s*[-–—]?\s*part\s*\d+\b", re.I)
+
+
+def normalize_title(value: str) -> str:
+    value = (value or "").lower().replace("&", " and ")
+    value = re.sub(r"[^a-z0-9]+", " ", value)
+    value = re.sub(r"\b(the|a|an)\b", " ", value)
+    return " ".join(value.split())
+
+
+def clean_title(t: str) -> str:
+    t = html.unescape(re.sub(r"\s+", " ", (t or "").strip()))
+    t = re.sub(
+        r"^(?:warning\s*!?\s*[-:]?\s*|dr\.?\s*hansen\s*[-:]\s*)",
+        "",
+        t,
+        flags=re.I,
+    ).strip()
+    while True:
+        prev = t
+        t = TRAIL_DATE_RE.sub("", t)
+        t = PROG_RE.sub("", t)
+        if t == prev:
+            break
+    return t.strip(" -–—")
+
+
+def part_num(t: str) -> int | None:
+    m = PART_RE.search(t or "")
+    return int(m.group(1)) if m else None
+
+
+def base_title(t: str) -> str:
+    """Title with Part N removed (for matching radio parts to full PB episodes)."""
+    return PART_STRIP_RE.sub("", t or "").strip(" -–—")
+
+
+def part_compatible(radio_title: str, ep_part: int | None) -> bool:
+    """
+    Radio Part N may match:
+      - Podbean same Part N
+      - Podbean with no Part (full program; radio was split for time)
+    Radio Part N must NOT match a different Part M.
+    """
+    rp = part_num(radio_title)
+    if rp is None:
+        return True
+    if ep_part is None:
+        return True  # allow full-episode on Podbean
+    return rp == ep_part
+
+
+def fetch_feed(url: str) -> str:
+    req = urllib.request.Request(
+        url,
+        headers={"User-Agent": "WMI-radio-podbean-match/1.0"},
+    )
+    with urllib.request.urlopen(req, timeout=120) as resp:
+        return resp.read().decode("utf-8", errors="replace")
+
+
+def parse_podbean_rss(xml_text: str) -> list[dict]:
+    raw_items = re.findall(r"<item>(.*?)</item>", xml_text, re.S | re.I)
+
+    def grab(tag: str, blob: str) -> str:
+        m = re.search(rf"<{tag}(?:\s[^>]*)?>(.*?)</{tag}>", blob, re.S | re.I)
+        return re.sub(r"<[^>]+>", "", m.group(1)).strip() if m else ""
+
+    episodes: list[dict] = []
+    for it in raw_items:
+        title = html.unescape(grab("title", it))
+        link = grab("link", it)
+        m = re.search(r'<enclosure[^>]+url=["\']([^"\']+)["\']', it, re.I)
+        enc = m.group(1) if m else ""
+        if not title:
+            continue
+        cleaned = clean_title(title)
+        episodes.append(
+            {
+                "title": title,
+                "link": link,
+                "enclosure": enc,
+                "clean": cleaned,
+                "norm": normalize_title(cleaned),
+                "base_norm": normalize_title(base_title(cleaned)),
+                "part": part_num(cleaned),
+            }
+        )
+    return episodes
+
+
+def load_schedule(path: Path) -> list[dict]:
+    rows: list[dict] = []
+    for ln in path.read_text(encoding="utf-8").splitlines():
+        ln = ln.strip()
+        if not ln:
+            continue
+        m = LINE_RE.match(ln)
+        if not m:
+            continue
+        title = m.group(4).strip()
+        rows.append(
+            {
+                "date": f"{m.group(1)} {m.group(2)}, {m.group(3)}",
+                "title": title,
+                "clean": clean_title(title),
+            }
+        )
+    return rows
+
+
+def match_one(radio_title: str, episodes: list[dict], by_norm: dict, by_base: dict):
+    cleaned = clean_title(radio_title)
+    n = normalize_title(cleaned)
+    n_base = normalize_title(base_title(cleaned))
+    if not n:
+        return "no_match", 0.0, None
+
+    def ok(ep: dict) -> bool:
+        return part_compatible(radio_title, ep["part"])
+
+    # 1) Exact full title
+    exact = [ep for ep in by_norm.get(n, []) if ok(ep)]
+    if exact:
+        return "exact_norm", 1.0, exact[0]
+
+    # 2) Radio "… Part N" → Podbean base title (no part) or same base
+    if part_num(radio_title) is not None and n_base:
+        base_hits = [ep for ep in by_base.get(n_base, []) if ok(ep)]
+        # Prefer episode with no part (full program), then same part exact already handled
+        no_part = [ep for ep in base_hits if ep["part"] is None]
+        if no_part:
+            return "part_to_full", 0.95, no_part[0]
+        same_part = [ep for ep in base_hits if ep["part"] == part_num(radio_title)]
+        if same_part:
+            return "exact_norm", 1.0, same_part[0]
+
+    # 3) Containment
+    hits: list[tuple[float, dict]] = []
+    for ep in episodes:
+        if not ep["norm"] or not ok(ep):
+            continue
+        pn = ep["norm"]
+        # Also try base forms when radio has a part
+        candidates = [(n, pn)]
+        if n_base and n_base != n:
+            candidates.append((n_base, pn))
+            candidates.append((n_base, ep["base_norm"]))
+        for a, b in candidates:
+            if not a or not b:
+                continue
+            if len(a) >= 10 and a in b:
+                hits.append((0.92, ep))
+            elif len(b) >= 10 and b in a:
+                hits.append((0.88, ep))
+    if hits:
+        hits.sort(key=lambda x: (-x[0], -len(x[1]["norm"])))
+        top_score = hits[0][0]
+        top = [h for h in hits if h[0] >= top_score - 0.02]
+        norms = {h[1]["norm"] for h in top}
+        if len(norms) == 1:
+            return "containment", top[0][0], top[0][1]
+        scored = [
+            (SequenceMatcher(None, n_base or n, h[1]["base_norm"] or h[1]["norm"]).ratio(), h[1])
+            for h in top
+        ]
+        scored.sort(key=lambda x: -x[0])
+        if scored[0][0] >= 0.90 and (
+            len(scored) == 1 or scored[0][0] - scored[1][0] >= 0.02
+        ):
+            return "fuzzy_from_ambig", scored[0][0], scored[0][1]
+        return "containment_ambiguous", top[0][0], top[0][1]
+
+    # 4) Fuzzy on token shortlist
+    tokens = set((n_base or n).split())
+    pool_scored: list[tuple[float, dict]] = []
+    for ep in episodes:
+        if not ok(ep) or not ep["norm"]:
+            continue
+        pt = set((ep["base_norm"] or ep["norm"]).split())
+        inter = len(tokens & pt)
+        if inter == 0:
+            continue
+        jacc = inter / len(tokens | pt)
+        if jacc >= 0.35 or inter >= 3:
+            pool_scored.append((jacc, ep))
+    pool_scored.sort(key=lambda x: -x[0])
+    pool = [ep for _, ep in pool_scored[:50]]
+    if not pool:
+        pool = [ep for ep in episodes if ok(ep)]
+
+    compare = n_base or n
+    scores = [
+        (
+            SequenceMatcher(None, compare, ep["base_norm"] or ep["norm"]).ratio(),
+            ep,
+        )
+        for ep in pool
+        if (ep["base_norm"] or ep["norm"])
+    ]
+    scores.sort(key=lambda x: -x[0])
+    if not scores:
+        return "no_match", 0.0, None
+    best_r, best = scores[0]
+    second = scores[1][0] if len(scores) > 1 else 0.0
+    gap = best_r - second
+    if best_r >= 0.92 or (best_r >= 0.88 and gap >= 0.04):
+        return "fuzzy", best_r, best
+    if best_r >= 0.80:
+        return "weak_fuzzy", best_r, best
+    return "no_match", best_r, best
+
+
+def run(feed_url: str, schedule_path: Path, output_path: Path, dry_run: bool) -> int:
+    print(f"Fetching {feed_url} …")
+    xml_text = fetch_feed(feed_url)
+    episodes = parse_podbean_rss(xml_text)
+    print(f"Podbean episodes: {len(episodes)}")
+
+    schedule = load_schedule(schedule_path)
+    print(f"Radio schedule lines: {len(schedule)}")
+
+    by_norm: dict[str, list] = defaultdict(list)
+    by_base: dict[str, list] = defaultdict(list)
+    for ep in episodes:
+        if ep["norm"]:
+            by_norm[ep["norm"]].append(ep)
+        if ep["base_norm"]:
+            by_base[ep["base_norm"]].append(ep)
+
+    strong = {"exact_norm", "part_to_full", "containment", "fuzzy", "fuzzy_from_ambig"}
+    matches = []
+    tiers: dict[str, int] = defaultdict(int)
+
+    for row in schedule:
+        tier, conf, ep = match_one(row["title"], episodes, by_norm, by_base)
+        tiers[tier] += 1
+        if tier not in strong or not ep:
+            continue
+        matches.append(
+            {
+                "radioTitle": row["title"],
+                "airDate": row["date"],
+                "podbeanTitle": ep["title"],
+                "episodeUrl": ep["link"],
+                "audioUrl": ep["enclosure"],
+                "match": tier,
+                "confidence": round(conf, 3),
+            }
+        )
+
+    print("Tiers:")
+    for k, v in sorted(tiers.items(), key=lambda kv: -kv[1]):
+        print(f"  {k}: {v}")
+    print(f"Strong matches: {len(matches)}/{len(schedule)}")
+
+    payload = {
+        "sourceFeed": feed_url,
+        "podbeanSite": "https://warningjonathanhansen.podbean.com/",
+        "schedule": str(schedule_path).replace("\\", "/"),
+        "matchCount": len(matches),
+        "rules": {
+            "partN": (
+                "Radio 'Part N' may link to Podbean episode without Part "
+                "(full program). Different Part numbers never match."
+            ),
+            "reject": "weak_fuzzy / ambiguous / no_match omitted",
+        },
+        "matches": matches,
+    }
+
+    if dry_run:
+        print("--dry-run: not writing", output_path)
+        return 0
+
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    output_path.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
+    print(f"Wrote {output_path} ({len(matches)} matches)")
+    return 0
+
+
+def main(argv: list[str] | None = None) -> int:
+    ap = argparse.ArgumentParser(description="Match radio schedule titles to Podbean RSS")
+    ap.add_argument("--feed", default=DEFAULT_FEED, help="Podbean RSS URL")
+    ap.add_argument("--schedule", type=Path, default=DEFAULT_SCHEDULE)
+    ap.add_argument("--output", type=Path, default=DEFAULT_OUTPUT)
+    ap.add_argument("--dry-run", action="store_true")
+    args = ap.parse_args(argv)
+    try:
+        return run(args.feed, args.schedule, args.output, args.dry_run)
+    except Exception as exc:
+        print(f"ERROR: {exc}", file=sys.stderr)
+        return 1
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

@@ -57,12 +57,21 @@ PACIFIC = ZoneInfo("America/Los_Angeles")
 MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
 DAY_OFFSETS = {"Monday": 0, "Tuesday": 1, "Wednesday": 2, "Thursday": 3, "Friday": 4}
 DAY_ABBRS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
-WEEK_HEADER_PARTS_RE = re.compile(r"^(\d{4}/\d{2}/\d{2})-(\d{4}/\d{2}/\d{2})$")
+# Allow ASCII hyphen or common Word/Excel dashes between the two dates.
+WEEK_HEADER_PARTS_RE = re.compile(
+    r"^(\d{4}/\d{2}/\d{2})[-–—‒-](\d{4}/\d{2}/\d{2})$"
+)
 
 
 def parse_week_header_parts(week_str: str) -> tuple[str, str] | None:
-    """Parse week header dates after removing all whitespace (handles '05/25- 05/29', etc.)."""
+    """Parse week header dates after removing all whitespace (handles '05/25- 05/29', etc.).
+
+    Spreadsheet cells often use an en-dash (–) from Word/Excel, not ASCII '-'.
+    Example: '2026/07/13 – 2026/07/17'
+    """
     compact = re.sub(r"\s+", "", (week_str or "").strip())
+    # Normalize any dash-like char between the dates to ASCII hyphen for matching
+    compact = re.sub(r"[\u2010-\u2015\u2212\-]+", "-", compact)
     m = WEEK_HEADER_PARTS_RE.match(compact)
     if not m:
         return None

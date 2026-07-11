@@ -5,6 +5,9 @@ generate_rumble_feed.py
 generate_tv_feed.py
 publish_rumble_feed.sh
 
+- **`docs/`** — website data (feeds, schedules, match JSON). Short note: [docs/README.md](docs/README.md).
+- **`info/`** — longer project docs (not served as site data): [info/](info/).
+
 Feeds:
 - `docs/rumble-feed.json` (main) is produced from `docs/rumble-urls.txt` (DrJonathanHansenWMI user account: videos/shorts/livestreams).
 - `docs/overcoming-feed.json` is produced from `docs/overcoming-urls.txt` (specific Overcoming channel).
@@ -39,8 +42,9 @@ TV schedule (for TVShowsSnippetNew.html):
 
 Radio schedule (for RadioBroadcastSnippet.html):
 - `docs/radio-schedule.txt` contains the ordered list of radio broadcast entries (one line per entry in the form "Day, Mon DD, YYYY: Title").
-- Generated from `Intra Support Files/radio_programs.csv` (primary slot-1 programs + cleaning). Pure data file — no display logic or paging info (see design principle in docs/README.md).
-- `RadioBroadcastSnippet.html` fetches it dynamically and handles all paging client-side (50 items/page, buttons, last-page special case, scroll stabilization).
+- Generated from `Intra Support Files/radio_programs.csv` (primary slot-1 programs + cleaning). Pure data file — no display logic or paging info (see design principle in [info/feeds-and-schedules.md](info/feeds-and-schedules.md)).
+- `RadioBroadcastSnippet.html` fetches the schedule (+ optional `podbean-radio-matches.json`) and handles paging client-side (50 items/page). Lines with a Podbean match show a ▶ control; click expands a simple HTML5 audio player under the line (one open at a time).
+- Podbean play map: `python match_podbean_to_radio.py` → `docs/podbean-radio-matches.json` (title match to https://feed.podbean.com/warningjonathanhansen/feed.xml). Radio “Part N” may map to a full unsplit Podbean episode (duplicate play URLs OK). Publish that JSON to GitHub Pages with the schedule.
 - Run `update_radio_programs.py` (xlsx path in WorkToDo/Radio Program Parsing.MD); `--schedule-only` regenerates from existing CSV. Air dates capped at today + 10 days (Pacific).
 - On the production Mac Mini: **Friday at 4:10am** via launchd (`update_radio_schedule.sh` + `com.jhansenwmi.radio-schedule.plist.example`). Runs 10 minutes after the TV job so TV can push first; one shell script updates radio CSV, `docs/radio-schedule.txt`, and `docs/shortwave-schedule.txt` (shortwave is chained inside `update_radio_programs.py` — no separate Python master needed).
 - See WorkToDo/Radio Program Parsing.MD for generation details, seed comparison, and snippet implementation notes.

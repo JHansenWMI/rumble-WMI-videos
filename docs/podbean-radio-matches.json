@@ -1,0 +1,3261 @@
+{
+  "sourceFeed": "https://feed.podbean.com/warningjonathanhansen/feed.xml",
+  "podbeanSite": "https://warningjonathanhansen.podbean.com/",
+  "schedule": "docs/radio-schedule.txt",
+  "matchCount": 361,
+  "rules": {
+    "partN": "Radio 'Part N' may link to Podbean episode without Part (full program). Different Part numbers never match.",
+    "reject": "weak_fuzzy / ambiguous / no_match omitted"
+  },
+  "matches": [
+    {
+      "radioTitle": "God Created Fathers to Save the Nations Part 2",
+      "airDate": "Jul 10, 2026",
+      "podbeanTitle": "God Created Fathers to Save the Nations",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/god-created-fathers-to-save-the-nations/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/rgenffvesvhqt2yg/God_Created_Fathers_to_Save_the_Nations9yqqz.m4a",
+      "match": "part_to_full",
+      "confidence": 0.95
+    },
+    {
+      "radioTitle": "God Created Fathers to Save the Nations Part 1",
+      "airDate": "Jul 9, 2026",
+      "podbeanTitle": "God Created Fathers to Save the Nations",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/god-created-fathers-to-save-the-nations/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/rgenffvesvhqt2yg/God_Created_Fathers_to_Save_the_Nations9yqqz.m4a",
+      "match": "part_to_full",
+      "confidence": 0.95
+    },
+    {
+      "radioTitle": "Saving the Nations",
+      "airDate": "Jul 8, 2026",
+      "podbeanTitle": "Saving The Nations",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/saving-the-nations/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/k6q9iuax4bzbhtva/Saving_the_Nations9kfmg.m4a",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "The Sacrifice God Desires",
+      "airDate": "Jul 7, 2026",
+      "podbeanTitle": "The Sacrifice God Desires",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/the-sacrifice-god-desires/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/s6ewkyrwciwa5w79/The_Sacrifice_God_Desires92waf.m4a",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "Racism - Tribalism & The Holy Spirit",
+      "airDate": "Jul 6, 2026",
+      "podbeanTitle": "Racism - Tribalism & The Holy Spirit",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/racism-tribalism-the-holy-spirit/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/pbsf7c8grmajwajc/2026-06-20_trimmed.m4a",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "Does God CELEBRATE Diversity in Marriage?",
+      "airDate": "Jul 3, 2026",
+      "podbeanTitle": "Does God CELEBRATE Diversity in Marriage?",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/does-god-celebrate-diversity-in-marriage/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/q2vmpzp35zviyh3e/Does_God_CELEBRATE_Diversity_in_Marriage9i97h.m4a",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "Overcoming Tribalism - Bishop Dr. Geoffrey Njuguna",
+      "airDate": "Jul 2, 2026",
+      "podbeanTitle": "Overcoming Tribalism - Bishop Dr. Geoffrey Njuguna",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/overcoming-tribalism-bishop-dr-geoffrey-njuguna/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/5swzjffxrsq8qdxw/Overcoming_Tribalism_-_Bishop_Dr_Geoffrey_Njuguna9vplb.m4a",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "A Balanced Christian Life - Bishop Geoffrey Njuguna",
+      "airDate": "Jun 29, 2026",
+      "podbeanTitle": "A Balanced Christian LIfe - Bishop Geoffrey Njuguna",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/a-balanced-christian-life-bishop-geoffrey-njuguna/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/ykqyebrecajfy57w/A_Balanced_Christian_LIfe_-_Bishop_Geoffrey_Njuguna8ndh8.m4a",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "Warning - 25 Prophetic Dreams Part 4",
+      "airDate": "Jun 25, 2026",
+      "podbeanTitle": "Warning - 25 Prophetic Dreams Part 4",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/warning-25-prophetic-dreams-part-3-1781186078/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/gs3yqjt2yqedx9ju/Warning_-_25_Prophetic_Dreams_Part_49tcvz.m4a",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "Warning - 25 Prophetic Dreams Part 3",
+      "airDate": "Jun 24, 2026",
+      "podbeanTitle": "Warning - 25 Prophetic Dreams Part 3",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/warning-25-prophetic-dreams-part-3/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/vh9f6qme8m6pyfe3/Warning_-_25_Prophetic_Dreams_Part_399qsn.m4a",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "How Can We Live in the Glory of God and His Presence Part 3 - Apostle Joe Mwaniki",
+      "airDate": "Jun 19, 2026",
+      "podbeanTitle": "How Can We Live in the Glory of God and His Presence - Apostle Joe Mwaniki",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/how-can-we-live-in-the-glory-of-god-and-his-presence-apostle-joe-mwaniki/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/ffpbz6s5hkjwnuie/2026-06-05_clipped7rpmi.m4a",
+      "match": "part_to_full",
+      "confidence": 0.95
+    },
+    {
+      "radioTitle": "How Can We Live in the Glory of God and His Presence Part 2 - Apostle Joe Mwaniki",
+      "airDate": "Jun 18, 2026",
+      "podbeanTitle": "How Can We Live in the Glory of God and His Presence - Apostle Joe Mwaniki",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/how-can-we-live-in-the-glory-of-god-and-his-presence-apostle-joe-mwaniki/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/ffpbz6s5hkjwnuie/2026-06-05_clipped7rpmi.m4a",
+      "match": "part_to_full",
+      "confidence": 0.95
+    },
+    {
+      "radioTitle": "How Can We Live in the Glory of God and His Presence Part 1 - Apostle Joe Mwaniki",
+      "airDate": "Jun 17, 2026",
+      "podbeanTitle": "How Can We Live in the Glory of God and His Presence - Apostle Joe Mwaniki",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/how-can-we-live-in-the-glory-of-god-and-his-presence-apostle-joe-mwaniki/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/ffpbz6s5hkjwnuie/2026-06-05_clipped7rpmi.m4a",
+      "match": "part_to_full",
+      "confidence": 0.95
+    },
+    {
+      "radioTitle": "Warning - 25 Prophetic Dreams Part 2",
+      "airDate": "Jun 16, 2026",
+      "podbeanTitle": "Warning - 25 Prophetic Dreams Part 2",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/warning-25-prophetic-dreams-part-2/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/3k8mwyfxbv9mudr5/Warning_-_25_Prophetic_Dreams_Part_2-c630mc.m4a",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "The Bilding Blocks of Harmony in the Family - Bishop Dr. Geoffrey Njuguna",
+      "airDate": "Jun 15, 2026",
+      "podbeanTitle": "The Building Blocks of Harmony in the Family - Bishop Dr. Geoffrey Njuguna",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/the-building-blocks-of-harmony-in-the-family-bishop-dr-geoffrey-njuguna/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/bsnmjituub3hxwya/The_Building_Blocks_of_Harmony_in_the_Family_-_Bishop_Dr_Geoffrey_Njuguna6fjo9.m4a",
+      "match": "fuzzy",
+      "confidence": 0.992
+    },
+    {
+      "radioTitle": "His Divine Nature Part 3 - Apostle Joe Mwaniki",
+      "airDate": "Jun 12, 2026",
+      "podbeanTitle": "His Divine Nature - Apostle Joe Mwaniki",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/his-divine-nature-apostle-joe-mwaniki/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/4szrbj836hd3jyj7/GodsDivineNature.m4a",
+      "match": "part_to_full",
+      "confidence": 0.95
+    },
+    {
+      "radioTitle": "His Divine Nature Part 2 - Apostle Joe Mwaniki",
+      "airDate": "Jun 11, 2026",
+      "podbeanTitle": "His Divine Nature - Apostle Joe Mwaniki",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/his-divine-nature-apostle-joe-mwaniki/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/4szrbj836hd3jyj7/GodsDivineNature.m4a",
+      "match": "part_to_full",
+      "confidence": 0.95
+    },
+    {
+      "radioTitle": "His Divine Nature Part 1 - Apostle Joe Mwaniki",
+      "airDate": "Jun 10, 2026",
+      "podbeanTitle": "His Divine Nature - Apostle Joe Mwaniki",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/his-divine-nature-apostle-joe-mwaniki/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/4szrbj836hd3jyj7/GodsDivineNature.m4a",
+      "match": "part_to_full",
+      "confidence": 0.95
+    },
+    {
+      "radioTitle": "Warning - 25 Prophetic Dreams",
+      "airDate": "Jun 9, 2026",
+      "podbeanTitle": "Warning - 25 Prophetic Dreams",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/warning-25-prophetic-dreams/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/4jabzt64hxfm3se9/Warning_-_25_Prophetic_Dreams8mksi.m4a",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "Pursue Your Life Purpose - Bishop Dr. Geoffrey Njuguna",
+      "airDate": "Jun 8, 2026",
+      "podbeanTitle": "Pursue Your Life Purpose - Bishop Dr. Geoffrey Njuguna",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/pursue-your-life-purpose-bishop-dr-geoffrey-njuguna/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/utqrpzppfh8z36cq/Bishop_Dr_Geoffrey_Njuguna_-_Speaks_in_our_Thursday_Prayer_Meeting7xw5m.m4a",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "Apostle Joe Mwaniki & Bishop Dr. Geoffrey Njuguna - Kenya Needs Repentance",
+      "airDate": "Jun 5, 2026",
+      "podbeanTitle": "Apostle Joe Mwaniki & Bishop Dr. Geoffrey Njuguna - Kenya Needs National Repentance",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/apostle-joe-mwaniki-bishop-dr-geoffrey-njuguna-kenya-needs-national-repentance/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/rryes9wy77nsy6jy/IMG_0464_trimmed745xw.mp3",
+      "match": "fuzzy",
+      "confidence": 0.942
+    },
+    {
+      "radioTitle": "Grace - Gods Unspeakable Gift Part 4 - Bishop Dr. Geoffrey Njuguna",
+      "airDate": "Jun 4, 2026",
+      "podbeanTitle": "Grace - God's Unspeakable Gift - Bishop Dr. Geoffrey K. Njuguna",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/grace-gods-unspeakable-gift-bishop-dr-geoffrey-k-njuguna/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/gftvzgi67g364kap/Untitled.m4a",
+      "match": "fuzzy",
+      "confidence": 0.973
+    },
+    {
+      "radioTitle": "Grace - Gods Unspeakable Gift Part 3 - Bishop Dr. Geoffrey Njuguna",
+      "airDate": "Jun 3, 2026",
+      "podbeanTitle": "Grace - God's Unspeakable Gift - Bishop Dr. Geoffrey K. Njuguna",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/grace-gods-unspeakable-gift-bishop-dr-geoffrey-k-njuguna/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/gftvzgi67g364kap/Untitled.m4a",
+      "match": "fuzzy",
+      "confidence": 0.973
+    },
+    {
+      "radioTitle": "Redigging the Wells of Faith - Bishop Dr. Geoffrey Njuguna",
+      "airDate": "Jun 2, 2026",
+      "podbeanTitle": "Redigging the Wells of Faith - Bishop Dr. Geoffrey Njuguna",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/redigging-the-wells-of-faith-bishop-dr-geoffrey-njuguna/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/iwiv2dq6irpch3a9/Redigging_the_Wells_of_Faith_-_Bishop_Dr_Geoffrey_Njugunab63e3.m4a",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "Church Leaders in Kenya",
+      "airDate": "Jun 1, 2026",
+      "podbeanTitle": "Church Leaders in Kenya",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/church-leaders-in-kenya/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/srw9qhkeb272tq6i/Church_Leaders_in_Kenya8rwmo.m4a",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "Grace - Gods Unspeakable Gift Part 2 - Bishop Dr. Geoffrey Njuguna",
+      "airDate": "May 28, 2026",
+      "podbeanTitle": "Grace - Gods Unspeakable Gift Part 2- Bishop Dr Geoffrey Njuguna",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/grace-gods-unspeakable-gift-part-2-bishop-dr-geoffrey-njuguna/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/zkmja4bf3eyai5xx/part2.m4a",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "Grace - Gods Unspeakable Gift Part 1 - Bishop Dr. Geoffrey Njuguna",
+      "airDate": "May 27, 2026",
+      "podbeanTitle": "Grace - God's Unspeakable Gift - Bishop Dr. Geoffrey K. Njuguna",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/grace-gods-unspeakable-gift-bishop-dr-geoffrey-k-njuguna/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/gftvzgi67g364kap/Untitled.m4a",
+      "match": "fuzzy",
+      "confidence": 0.973
+    },
+    {
+      "radioTitle": "Kenya's Prophecy & 2027 Election",
+      "airDate": "May 26, 2026",
+      "podbeanTitle": "Kenya's Prophecy & 2027 Election",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/kenyas-prophecy-2027-election/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/cuei3j2pqvcj29hu/Kenya_s_Prophecy_n_2027_Election8rdgr.mp3",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "Kenya 2027 Elections - Bishop Geoffrey Njuguna",
+      "airDate": "May 25, 2026",
+      "podbeanTitle": "Kenya 2027 Elections - Bishop Geoffrey Njuguna",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/kenya-2027-elections-bishop-geoffrey-njuguna/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/bj2n35autdiv25bh/Kenya_2027_Elections_-_Bishop_Geoffrey_Njuguna5ykp9.mp3",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "The War with Iran and Hamas - Gideon Behar, Israel Ambassador to Kenya",
+      "airDate": "May 22, 2026",
+      "podbeanTitle": "The War with Iran and Hamas - Gideon Behar, Israel Ambassador to Kenya",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/the-war-with-iran-and-hamas-gideon-behar-israel-ambassador-to-kenya/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/zqqnu5aa2m24kemq/060726_War_with_Iran_and_Hamas_-_Gideon_Behar7d0yo.m4a",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "Queen Esther Part 2",
+      "airDate": "May 21, 2026",
+      "podbeanTitle": "Queen Esther",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/queen-esther/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/3vpazp2t9qps7imv/q.m4a",
+      "match": "part_to_full",
+      "confidence": 0.95
+    },
+    {
+      "radioTitle": "Queen Esther Part 1",
+      "airDate": "May 20, 2026",
+      "podbeanTitle": "Queen Esther",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/queen-esther/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/3vpazp2t9qps7imv/q.m4a",
+      "match": "part_to_full",
+      "confidence": 0.95
+    },
+    {
+      "radioTitle": "Nuclear Conflict - Iran in the Bible",
+      "airDate": "May 19, 2026",
+      "podbeanTitle": "Nuclear Conflict - Iran in the Bible",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/nuclear-conflict-iran-in-the-bible/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/63ig9y3kkjta7dz2/Nuclear_Conflict_-_Iran_in_the_Bible9u0cv.mp3",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "The Fall of Fauci & Spiritual Entities",
+      "airDate": "May 18, 2026",
+      "podbeanTitle": "The Fall of Fauci & Spiritual Entities",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/the-fall-of-fauci-spiritual-entities/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/ymdzxtgbsyxbcwf6/The_Fall_of_Fauci_Spiritual_Entities9oj83.m4a",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "Eagles Saving the Nations",
+      "airDate": "May 15, 2026",
+      "podbeanTitle": "Eagles Saving the Nations",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/eagles-saving-the-nations/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/rcc82iridwiy5gjd/Eagles_Saving_the_Nations60dwh.mp3",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "Bishop Geoffrey Njuguna & Dr. Jonathan Hansen - Kenya 2026",
+      "airDate": "May 14, 2026",
+      "podbeanTitle": "Bishop Geoffrey Njuguna & Dr. Jonathan Hansen - Kenya 2026",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/bishop-geoffrey-njuguna-dr-jonathan-hansen-kenya-2026/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/7m8ufx2d4eh7ekdf/Bishop_Geoffrey_Njuguna_Dr_Jonathan_Hansen_-_Kenya_2026ac8ak.mp3",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "The Image of God",
+      "airDate": "May 13, 2026",
+      "podbeanTitle": "The Image of God",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/the-image-of-god/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/ce3e2aph3k4qzuq2/The_Image_of_God7h90p.mp3",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "Dr. EJ Buckardt - If - Then",
+      "airDate": "May 6, 2026",
+      "podbeanTitle": "Dr. EJ Buckardt, IF - THEN",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/dr-ej-buckardt-if-then/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/23tbc2v8r2piedfn/output-2.m4a",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "Dr. EJ Buckardt - Bible - Israel - America - Last Days Part 2",
+      "airDate": "Apr 22, 2026",
+      "podbeanTitle": "Dr. EJ Buckardt - Bible - Israel - America - Last Days - Part 2",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/dr-ej-buckardt-bible-israel-america-last-days-part-2/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/azxf59iu3cp87i55/Dr_EJ74yv3.m4a",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "Dr. EJ Buckardt - Bible - Israel - America - Last Days Part 1",
+      "airDate": "Apr 21, 2026",
+      "podbeanTitle": "Dr EJ Buckardt - Bible - Israel - America - Last Days",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/dr-ej-buckardt-bible-israel-america-last-days/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/g4vjajttp3dhkri5/audo-clip.m4a",
+      "match": "part_to_full",
+      "confidence": 0.95
+    },
+    {
+      "radioTitle": "Dr. EJ Buckardt - Bible - Israel - America - Last Days - Part 3",
+      "airDate": "Apr 21, 2026",
+      "podbeanTitle": "Dr. EJ Buckardt - Bible - Israel - America - Last Days - Part 3",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/dr-ej-buckardt-bible-israel-america-last-days-part-3/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/h4qg6bqzar2jz7r8/434178204.m4a",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "Why Did God Raise Up Adversaries Against King Solomon?",
+      "airDate": "Apr 20, 2026",
+      "podbeanTitle": "Why Did God Raise Up Adversaries Against King Solomon",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/why-did-god-raise-up-adversaries-against-king-solomon/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/akwzjfn2zxtchv2a/2026-03-30_Clipped685lb.m4a",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "Marxist - Islamic - Attack on America",
+      "airDate": "Apr 20, 2026",
+      "podbeanTitle": "Marxist - Islamic - Attack on America",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/marxist-islamic-attack-on-america/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/z8h4uuaez8uy3t27/Marxist_-_Islamic_-_Attack_on_America6y3hr.mp3",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "The Power of a Name - Ministers Fred Christian & Vance Miller",
+      "airDate": "Apr 14, 2026",
+      "podbeanTitle": "The Power in a Name - With Ministers Fred Christian and Vance Miller",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/the-power-in-a-name/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/b25ek36c8tyyaafb/The_Power_in_a_Name_-_clippedbre7n.m4a",
+      "match": "fuzzy",
+      "confidence": 0.922
+    },
+    {
+      "radioTitle": "Covering Part 2",
+      "airDate": "Apr 11, 2026",
+      "podbeanTitle": "F - 04/11/25 - Dr. Hansen - Covering Part 2",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/f-041125-dr-hansen-covering-part-2/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/2eux8be5if9f8ih2/2025-04-11.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Covering Part 1",
+      "airDate": "Apr 10, 2026",
+      "podbeanTitle": "Th - 04/10/25 - Dr. Hansen - Covering Part 1",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/th-041025-dr-hansen-covering-part-1/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/uzu9nfic6a7mepiy/2025-04-10.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Part 3 The New World Order & Judgment - There is Hope - Deliverance Church Langata, Nairobi, Kenya, for Bishop Geoffrey Njuguna",
+      "airDate": "Apr 9, 2026",
+      "podbeanTitle": "New World Order",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/new-world-order/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/vbxqmzfq84bte56k/New_World_Order_-_1104_95beedt.mp3",
+      "match": "containment",
+      "confidence": 0.88
+    },
+    {
+      "radioTitle": "Part 2 The New World Order & Judgment - There is Hope - Deliverance Church Langata, Nairobi, Kenya, for Bishop Geoffrey Njuguna",
+      "airDate": "Apr 8, 2026",
+      "podbeanTitle": "New World Order",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/new-world-order/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/vbxqmzfq84bte56k/New_World_Order_-_1104_95beedt.mp3",
+      "match": "containment",
+      "confidence": 0.88
+    },
+    {
+      "radioTitle": "Part 1 The New World Order & Judgment - There is Hope - Deliverance Church Langata, Nairobi, Kenya, for Bishop Geoffrey Njuguna",
+      "airDate": "Apr 7, 2026",
+      "podbeanTitle": "New World Order",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/new-world-order/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/vbxqmzfq84bte56k/New_World_Order_-_1104_95beedt.mp3",
+      "match": "containment",
+      "confidence": 0.88
+    },
+    {
+      "radioTitle": "Prayer Warriors & Senior Pastors Part 4",
+      "airDate": "Apr 7, 2026",
+      "podbeanTitle": "Prayer Warriors",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/prayer-warriors/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/5tisx7vfvxt3g93t/Prayer_Warriorsalb9w.mp3",
+      "match": "containment",
+      "confidence": 0.88
+    },
+    {
+      "radioTitle": "Warning - Prophetic Dreams - Guatamalan Illegal Kills American - Part 4",
+      "airDate": "Apr 6, 2026",
+      "podbeanTitle": "Warning - Prophetic Dreams",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/warning-prophetic-dreams/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/k63g5axhe5zdx7pc/Warning_-_Prophetic_Dreams9c70r.mp3",
+      "match": "containment",
+      "confidence": 0.88
+    },
+    {
+      "radioTitle": "Prayer Warriors & Senior Pastors Part 3",
+      "airDate": "Apr 3, 2026",
+      "podbeanTitle": "Prayer Warriors",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/prayer-warriors/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/5tisx7vfvxt3g93t/Prayer_Warriorsalb9w.mp3",
+      "match": "containment",
+      "confidence": 0.88
+    },
+    {
+      "radioTitle": "Pastor Tory Grayson - Liberia & Lawlessness",
+      "airDate": "Apr 2, 2026",
+      "podbeanTitle": "Pastor Tory Grayson - Liberia & Lawlessness",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/pastor-tory-grayson-liberia-lawlessness/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/x4mgvqvzg33m8vh9/Pastor_Tory_Grayson_-_Liberia_and_Lawlessness9w9s7.m4a",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "Moses' Rod Part 6",
+      "airDate": "Apr 1, 2026",
+      "podbeanTitle": "Moses' Rod",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/moses-rod/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/8gic2h5p6huxc35w/Moses_Rod9kfnu.m4a",
+      "match": "part_to_full",
+      "confidence": 0.95
+    },
+    {
+      "radioTitle": "Moses' Rod Part 5",
+      "airDate": "Mar 31, 2026",
+      "podbeanTitle": "Moses' Rod",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/moses-rod/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/8gic2h5p6huxc35w/Moses_Rod9kfnu.m4a",
+      "match": "part_to_full",
+      "confidence": 0.95
+    },
+    {
+      "radioTitle": "Warning - Prophetic Dreams - Seattle - Part 3",
+      "airDate": "Mar 30, 2026",
+      "podbeanTitle": "Warning - Prophetic Dreams",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/warning-prophetic-dreams/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/k63g5axhe5zdx7pc/Warning_-_Prophetic_Dreams9c70r.mp3",
+      "match": "containment",
+      "confidence": 0.88
+    },
+    {
+      "radioTitle": "Warning - Prophetic Dreams",
+      "airDate": "Mar 27, 2026",
+      "podbeanTitle": "Warning - Prophetic Dreams",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/warning-prophetic-dreams/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/k63g5axhe5zdx7pc/Warning_-_Prophetic_Dreams9c70r.mp3",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "Prayer Warriors",
+      "airDate": "Mar 26, 2026",
+      "podbeanTitle": "Prayer Warriors",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/prayer-warriors/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/5tisx7vfvxt3g93t/Prayer_Warriorsalb9w.mp3",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "Moses' Rod Part 4",
+      "airDate": "Mar 25, 2026",
+      "podbeanTitle": "Moses' Rod",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/moses-rod/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/8gic2h5p6huxc35w/Moses_Rod9kfnu.m4a",
+      "match": "part_to_full",
+      "confidence": 0.95
+    },
+    {
+      "radioTitle": "Moses' Rod Part 3",
+      "airDate": "Mar 24, 2026",
+      "podbeanTitle": "Moses' Rod Part 3",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/moses-rod-part-3/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/w96ubh84ehj2xnq7/moses_rod_part_37sxqy.m4a",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "Pastor Tory Grayson - Tanzania",
+      "airDate": "Mar 23, 2026",
+      "podbeanTitle": "Pastor Tory Grayson - Tanzania",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/pastor-tory-grayson-tanzania/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/33769w7kie45gsu8/2026-03-12_Pastor_Tory_Grayson_-_Tanzaniabbsw2.m4a",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "Moses' Rod Part 2",
+      "airDate": "Mar 20, 2026",
+      "podbeanTitle": "Moses' Rod",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/moses-rod/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/8gic2h5p6huxc35w/Moses_Rod9kfnu.m4a",
+      "match": "part_to_full",
+      "confidence": 0.95
+    },
+    {
+      "radioTitle": "Moses' Rod Part 1",
+      "airDate": "Mar 19, 2026",
+      "podbeanTitle": "Moses' Rod",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/moses-rod/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/8gic2h5p6huxc35w/Moses_Rod9kfnu.m4a",
+      "match": "part_to_full",
+      "confidence": 0.95
+    },
+    {
+      "radioTitle": "Pastor Tory Grayson - Uganda - Jamaica - USA",
+      "airDate": "Mar 16, 2026",
+      "podbeanTitle": "Pastor Tory Grayson Uganda-Jamaica-USA",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/pastor-tory-grayson-uganda-jamaica-usa/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/8uks4fnq99vitrps/2026-03-04_Pastor_Tory_Grayson_Uganda-Jamaica-USAayr3c.m4a",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "What is Your DNA? Part 2",
+      "airDate": "Mar 13, 2026",
+      "podbeanTitle": "What is Your DNA?",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/what-is-your-dna/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/9uvamin3ye98heea/What_is_Your_DNA7w9la.m4a",
+      "match": "part_to_full",
+      "confidence": 0.95
+    },
+    {
+      "radioTitle": "What is Your DNA? Part 1",
+      "airDate": "Mar 12, 2026",
+      "podbeanTitle": "What is Your DNA?",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/what-is-your-dna/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/9uvamin3ye98heea/What_is_Your_DNA7w9la.m4a",
+      "match": "part_to_full",
+      "confidence": 0.95
+    },
+    {
+      "radioTitle": "Spiritual Warfare 2 - Three Bible Verses that Terrify Demons",
+      "airDate": "Mar 11, 2026",
+      "podbeanTitle": "Spiritual Warfare 2 - Three Bible Verses that Terrify Demons",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/spiritual-warfare-2-three-bible-verses-that-terrify-demons/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/vukaeetzeutt39kx/Spiritual_Warfare_2_-_Three_Bible_Verses_that_Terrify_Demonsa7pst.mp3",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "Spiritual Warfare - How Demons Enter You!",
+      "airDate": "Mar 10, 2026",
+      "podbeanTitle": "Spiritual Warfare - How Demons enter You!",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/spiritual-warfare-1772159683/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/c5me4cbkyt4gwiyb/Spiritual_Warfare7l1jf.mp3",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "Pastor Tory Grayson - Kenya-Uganda April-May 2025",
+      "airDate": "Mar 9, 2026",
+      "podbeanTitle": "Pastor Tory Grayson - Kenya-Uganda April-May 2025",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/pastor-tory-grayson-kenya-uganda-april-may-2025/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/4uk5ncazcgm6miec/Tory1.m4a",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "Marxist - Islamic - Attack on America Part 4 - Seattle",
+      "airDate": "Mar 4, 2026",
+      "podbeanTitle": "Marxist - Islamic - Attack on America Part 4 - Seattle",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/marxist-islamic-attack-on-america-part-4-seattle/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/x8zmhqtayria7k29/Marxist_-_Islamic_-_Attack_on_America_Part_4_-_Seattleasxet.mp3",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "Marxist - Islamic - Attack on America Part 3 - Churchill & Jefferson",
+      "airDate": "Mar 3, 2026",
+      "podbeanTitle": "Marxist - Islamic - Attack on America Part 3 - Churchill & Jefferson",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/marxist-islamic-attack-on-america-part-3/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/qvsp4ispxn4p7m69/Marxist_-_Islamic_-_Attack_on_America_Part_378ksu.mp3",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "Nelson Sua, Former Convicted Felon, Candidate for Governor Hawaii 2026",
+      "airDate": "Mar 2, 2026",
+      "podbeanTitle": "Nelson Sua, Former Convicted Felon, Candidate for Governor Hawaii 2026",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/nelson-sua-former-convicted-felon-candidate-for-governor-hawaii-2026/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/jcjsa4kvsq4yur5v/video1482237432.mp3",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "Broken Dreams - Do You Know Yourself? Part 2",
+      "airDate": "Feb 27, 2026",
+      "podbeanTitle": "Broken Dreams - Do You Know Yourself?",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/broken-dreams-do-you-know-yourself/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/yewwp2vj3x8xby3a/429263170.m4a",
+      "match": "part_to_full",
+      "confidence": 0.95
+    },
+    {
+      "radioTitle": "Broken Dreams - Do You Know Yourself? Part 1",
+      "airDate": "Feb 26, 2026",
+      "podbeanTitle": "Broken Dreams - Do You Know Yourself?",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/broken-dreams-do-you-know-yourself/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/yewwp2vj3x8xby3a/429263170.m4a",
+      "match": "part_to_full",
+      "confidence": 0.95
+    },
+    {
+      "radioTitle": "Wealthiest Families & The N.W.O.",
+      "airDate": "Feb 25, 2026",
+      "podbeanTitle": "Wealthiest Families & The N.W.O",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/wealthiest-families-the-nwo/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/q78uj7acmbzybcbq/Wealthiest_Families_The_N_W_O_9hdl0.mp3",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "Marxist - Islamic - Attack on America Part 2",
+      "airDate": "Feb 24, 2026",
+      "podbeanTitle": "Marxist Islamic Attack on America part 2",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/marxist-islamic-attack-on-america-part-2/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/3adevuduzu2x5kup/Marxist_Islamic_Attack_on_America_part_27607a.mp3",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "Marxist - Islamic - Attack on America",
+      "airDate": "Feb 20, 2026",
+      "podbeanTitle": "Marxist - Islamic - Attack on America",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/marxist-islamic-attack-on-america/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/z8h4uuaez8uy3t27/Marxist_-_Islamic_-_Attack_on_America6y3hr.mp3",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "Renee Good & Alex Pretti - Federal Crimes",
+      "airDate": "Feb 11, 2026",
+      "podbeanTitle": "Renee Good & Alex Pretti - Federal Crimes",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/renee-good-alex-pretti-federal-crimes/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/fssh4sm6ywuvab9v/Renee_Good_and_Alex_Pretti_-_Federal_Crimes635c7.m4a",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "The Spirit of Sodom & Gomorrah in America Part 2",
+      "airDate": "Jan 30, 2026",
+      "podbeanTitle": "The Spirit of Sodom & Gomorrah in America",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/the-spirit-of-sodom-gomorrah-in-america/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/8zgurtnxgfchuex9/SandM.m4a",
+      "match": "part_to_full",
+      "confidence": 0.95
+    },
+    {
+      "radioTitle": "The Spirit of Sodom & Gomorrah in America Part 1",
+      "airDate": "Jan 29, 2026",
+      "podbeanTitle": "The Spirit of Sodom & Gomorrah in America",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/the-spirit-of-sodom-gomorrah-in-america/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/8zgurtnxgfchuex9/SandM.m4a",
+      "match": "part_to_full",
+      "confidence": 0.95
+    },
+    {
+      "radioTitle": "Constitutional Sheriffs",
+      "airDate": "Jan 28, 2026",
+      "podbeanTitle": "Constitutional Sheriffs",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/constitutional-sheriffs/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/im6tv2aj4tbytk84/Warning_Program_-_Friday_Morning_Message_-_Jan_16_2026bkyl5.mp3",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "Don't Give Up & Don't Look Back",
+      "airDate": "Jan 27, 2026",
+      "podbeanTitle": "Don't Give Up & Don't Look Back",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/dont-give-up-dont-look-back/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/fcxhr7et5qn5zsag/Don_t_Give_Up_Don_t_Look_Back8aldg.mp3",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "Covenant Breaking Spirits Part 12 - Renewing the Covenant",
+      "airDate": "Jan 26, 2026",
+      "podbeanTitle": "Covenant Breaking Spirits Part 12 - Renewing the Covenant",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/covenant-breaking-spirits-part-12-renewing-the-covenant-jan-8-2026/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/cwazyfewy7v9gcsk/Covenant_Breaking_Spirits_Part_12_-_Renewing_the_Covenant8si67.mp3",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "Do You Know Yourself? Part 2",
+      "airDate": "Jan 23, 2026",
+      "podbeanTitle": "Broken Dreams - Do You Know Yourself?",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/broken-dreams-do-you-know-yourself/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/yewwp2vj3x8xby3a/429263170.m4a",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Do You Know Yourself? Part 1",
+      "airDate": "Jan 22, 2026",
+      "podbeanTitle": "Broken Dreams - Do You Know Yourself?",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/broken-dreams-do-you-know-yourself/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/yewwp2vj3x8xby3a/429263170.m4a",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Spiritual Warfare - We will Save Our Nation through the Holy Spirit Part 2 - Philippine church service",
+      "airDate": "Jan 21, 2026",
+      "podbeanTitle": "Spiritual Warfare",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/spiritual-warfare/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/xz786zzhfr8xyrjg/Germany_in_Prophecy5z8jg.mp3",
+      "match": "containment",
+      "confidence": 0.88
+    },
+    {
+      "radioTitle": "Spiritual Warfare - We will Save Our Nation through the Holy Spirit Part 1 - Philippine church service",
+      "airDate": "Jan 20, 2026",
+      "podbeanTitle": "Spiritual Warfare",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/spiritual-warfare/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/xz786zzhfr8xyrjg/Germany_in_Prophecy5z8jg.mp3",
+      "match": "containment",
+      "confidence": 0.88
+    },
+    {
+      "radioTitle": "Covenant Breaking Spirits Part 11 - Restoration and Reconciliation",
+      "airDate": "Jan 19, 2026",
+      "podbeanTitle": "Covenant Breaking Spirits Part 11 - Restoration & Reconciliation",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/covenant-breaking-spirits-part-11-restoration-reconciliation/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/uk3k23q5ta3qp5x6/Covenant_Breaking_Spirits_Part_11_-_Breaking_Free83k52.mp3",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "2026 Breakthroughs - In His Glory Part 2",
+      "airDate": "Jan 16, 2026",
+      "podbeanTitle": "2026 Breakthroughs - In His Glory",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/2026-breakthroughs-in-his-glory/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/cbata59w3v7ye664/2026-01-03_2026_breakthroughsb2qvn.m4a",
+      "match": "part_to_full",
+      "confidence": 0.95
+    },
+    {
+      "radioTitle": "2026 Breakthroughs - In His Glory Part 1",
+      "airDate": "Jan 15, 2026",
+      "podbeanTitle": "2026 Breakthroughs - In His Glory",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/2026-breakthroughs-in-his-glory/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/cbata59w3v7ye664/2026-01-03_2026_breakthroughsb2qvn.m4a",
+      "match": "part_to_full",
+      "confidence": 0.95
+    },
+    {
+      "radioTitle": "Covenant Breaking Spirits Part 10 - Breaking Free",
+      "airDate": "Jan 14, 2026",
+      "podbeanTitle": "Covenant Breaking Spirits Part 10 - Breaking Free",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/covenant-breaking-spirits-part-10-breaking-free/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/7f6bkdsnsffg7hfb/2026-01-02_Covenant_Breaking_Spirits_Part_10_-_clippedaafsg.m4a",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "Covenant Breaking Spirits Part 9 - God's Faithfulness",
+      "airDate": "Jan 13, 2026",
+      "podbeanTitle": "Covenant Breaking Spirits Part 9 - God's Faithfulness",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/covenant-breaking-spirits-part-9-gods-faithfulness/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/eau964mpuah4udjf/Covenant_Breaking_Spirits_Part_8_-_God_s_Faithfulness_-_Jan_2_2026bc22n.mp3",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "Philippine Leaders Meeting - Dr. Adalia Hansen",
+      "airDate": "Jan 9, 2026",
+      "podbeanTitle": "Philippine Leaders Meeting - Dr. Adalia Hansen",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/philippine-leaders-meeting-dr-adalia-hansen/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/ppurs38yp48b8db4/1123R5_2026-01-09_Philippine_Leaders_Meeting_-_Adalia9104k.m4a",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "Broken Dreams is the Beginning of Real Living",
+      "airDate": "Jan 8, 2026",
+      "podbeanTitle": "Broken Dreams is The Beginning of Real Living",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/broken-dreams-is-the-beginning-of-real-living/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/tyn4sw3h2iadfkxk/425524568.m4a",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "Covenant Breaking Spirits Part 8 - Harm to the Vulnerable",
+      "airDate": "Jan 6, 2026",
+      "podbeanTitle": "Covenant Breaking Spirits Part 8 - Harm to the Vulnerable",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/covenant-breaking-spirits-part-8-harm-to-the-vulnerable/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/xdv7f3b9yrwr7c95/2025-12-26_Covenant_Breaking_Spirits_Part_8_-_Harm_to_the_Vulnerable_clipped8v1et.m4a",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "Covenant Breaking Spirits Part 7 - Emotional & Legal Consequences",
+      "airDate": "Jan 5, 2026",
+      "podbeanTitle": "Covenant Breaking Spirits Part 7 - Emotional and Legal Consequences",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/covenant-breaking-spirits-part-7-emotional-and-legal-consequences/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/byxf5rhhehedww5x/Covenant_Breaking_Spirits_Part_7_-_Emotional_and_Legal_Consequences_clipped62l52.m4a",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "\"We Serve a Living God\" - Flood Victims, the Philippines Church Service",
+      "airDate": "Jan 2, 2026",
+      "podbeanTitle": "Flood Victims, the Philippines Church Service",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/flood-victims-the-philippines-church-service/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/3ekehbr852fufduk/1122R5_2026-01-02_Philippine_Flood_Zone_Service_stitched_8mcvf.m4a",
+      "match": "containment",
+      "confidence": 0.88
+    },
+    {
+      "radioTitle": "Philippine Interview, Engineer Edwin Canlas, Bishop Israel Sanoy's Friend",
+      "airDate": "Jan 1, 2026",
+      "podbeanTitle": "Philippine Interview, Engineer Edwin Canlas, Bishop Israel Sanoy's Friend",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/philippine-interview-engineer-edwin-canlas-bishop-israel-sanoys-friend/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/at2q5nv7wipntyab/IMG_5093_Philippine_Interview_Engineer_Edwin_Canlas_Bishop_Israel_Sanoys_Friendb1o52.m4a",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "Grace - Vision & Revelation Work Together",
+      "airDate": "Dec 31, 2025",
+      "podbeanTitle": "Grace - Vision & Revelation Work Together",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/grace-vision-revelation-work-together/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/amuf6a3wwgwa2ias/052426_Grace_-_Vision_n_Revelation_Work_Together9cwgo.m4a",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "Covenant Breaking Spirits Part 6 - Consequences",
+      "airDate": "Dec 30, 2025",
+      "podbeanTitle": "Dr. Hansen - Covenant Breaking Spirits",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/covenant-breaking-spirits/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/w7ytvbx8ee8g8mcx/2025-07-15.mp3",
+      "match": "containment",
+      "confidence": 0.88
+    },
+    {
+      "radioTitle": "Covenant Breaking Spirits Part 5 - Spiritual Life & Consequences",
+      "airDate": "Dec 29, 2025",
+      "podbeanTitle": "Covenant Breaking Spirits Part 5 - Spiritual Life & Consequences",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/covenant-breaking-spirits-part-5-spiritual-life-consequences/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/9u42yiwm6hpag4xp/Covenant_Breaking_Spirits_Part_5_-_Spiritual_Life_Consequences6w1zc.mp3",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "Minister Fred Christian - Sharing the Full Gospel - We Need Your Help",
+      "airDate": "Dec 26, 2025",
+      "podbeanTitle": "Minister Fred Christian - Sharing the Full Gospel - We Need Your Help - Dec 26, 2025",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/minister-fred-christian-sharing-the-full-gospel-we-need-your-help-dec-26-2025/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/mqbpm49dwda662is/1121R5_2025-12-26_Fred_C_-_Sharing_the_Full_Gospel8lwi4.m4a",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Give to the Forgotten Faces",
+      "airDate": "Dec 25, 2025",
+      "podbeanTitle": "Give to the Forgotten Faces",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/give-to-the-forgotten-faces/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/acw9vic3vszcdmhi/1121R4_2025-12-25_Give_to_the_Forgotten_Faces70mlx.m4a",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "Steve Buckardt - Helping to Reach the Nations",
+      "airDate": "Dec 24, 2025",
+      "podbeanTitle": "Steve Buckardt - Helping to Reach the Nations - Dec 24, 2025",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/steve-buckardt-helping-to-reach-the-nations-dec-24-2025/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/75gk2mdmr34kb9az/1121R3_2025-12-24_Steve_Buckardtbbm7s.m4a",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Minister Fred Christian - Tremendous Year, Help Us Save the Nations",
+      "airDate": "Dec 23, 2025",
+      "podbeanTitle": "Minister Fred Christian - Tremendous Year, Help Us Save the Nations",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/tremendous-year-help-us-save-the-nations/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/74yn2khtq3qgbvm6/1121R2_2025-12-23_Fred_Christian_-_Tremendous_Year_Help_Us_Save_the_Nations92ruf.m4a",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "Dr. EJ Buckardt - Tremendous Year, an Opportunity",
+      "airDate": "Dec 22, 2025",
+      "podbeanTitle": "Tremendous Year - An Opportunity",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/tremendous-year-an-opportunity/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/889v96tuky5mtmvq/1121R1_2025-12-22_-_Tremendous_Year_-_an_Opportunity6c9kn.m4a",
+      "match": "containment",
+      "confidence": 0.88
+    },
+    {
+      "radioTitle": "Only the Holy Spirit Led Church Can Save the Philippines Part 2",
+      "airDate": "Dec 19, 2025",
+      "podbeanTitle": "Only the Holy Spirit Led Church Can Save the Philippines",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/only-the-holy-spirit-led-church-can-save-the-philippines/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/iqwq2zwnw4p6ffxe/Only_the_Holy_Spirit_Led_Church_Can_Save_the_Philippinesa8g2x.m4a",
+      "match": "part_to_full",
+      "confidence": 0.95
+    },
+    {
+      "radioTitle": "Only the Holy Spirit Led Church Can Save the Philippines Part 1",
+      "airDate": "Dec 18, 2025",
+      "podbeanTitle": "Only the Holy Spirit Led Church Can Save the Philippines",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/only-the-holy-spirit-led-church-can-save-the-philippines/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/iqwq2zwnw4p6ffxe/Only_the_Holy_Spirit_Led_Church_Can_Save_the_Philippinesa8g2x.m4a",
+      "match": "part_to_full",
+      "confidence": 0.95
+    },
+    {
+      "radioTitle": "Covenant Breaking Spirits (Part 4) - Broken Political Promises, Treaties & Moral Values",
+      "airDate": "Dec 17, 2025",
+      "podbeanTitle": "Covenant Breaking Spirits Part 4 - Broken Political Promises, Treaties, & Moral Values",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/covenant-breaking-spirits-part-4-broken-political-promises-treaties-moral-values/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/bhtz4a4ab32urdm2/Covenant_Breaking_Spirits_Part_4_-_Political_Promises_Treaties_and_Moral_Values_-_Dec_9_202577k5h.mp3",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "Covenant Breaking Spirits (Part 3) - Pres. Kibaki, Uhuru Kenyatta & Ruto",
+      "airDate": "Dec 16, 2025",
+      "podbeanTitle": "Covenant Breaking Spirits Part 3 - Pres. Kibaki, Uhuru Kenyatta & Ruto",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/covenant-breaking-spirits-part-3-pres-kibaki-uhuru-kenyatta-ruto/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/cfsnydativcy6n8a/424102012.m4a",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "Covenant Breaking Spirits (Part 2) - Pres. Jomo Kenyatta & Daniel Arap Moi",
+      "airDate": "Dec 15, 2025",
+      "podbeanTitle": "Covenant Breaking Spirits Part 2 - Pres. Jomo Kenyatta & Daniel Arap Moi",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/the-nature-of-covenant-breaking-spirits-part-2/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/7hc7jab7q9ctmbdd/The_Nature_of_Covenant_Breaking_Spirits_-_Part_2bjf4l.mp3",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "It's Supernatural - God is Real - Philippines Crusade",
+      "airDate": "Dec 12, 2025",
+      "podbeanTitle": "It's Supernatural - God is Real - Philippines Crusade",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/its-supernatural-god-is-real-philippines-crusade/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/95kvuqkcmpmh893d/its_supernatural9u96y.m4a",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "Extending the Kingdom of God Through Relationship Part 2 - Global Ministries Network International Congress 2025, Baltmore, MD",
+      "airDate": "Dec 11, 2025",
+      "podbeanTitle": "Extending the Kingdom of God Through Relationship",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/extending-the-kingdom-of-god-through-relationship/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/rw4qjcbvvmawhgyy/Extending_the_Kingdom_of_God_Through_Relationship_-_Pastor_Hansen_in_Baltimore_exporta05b6.m4a",
+      "match": "containment",
+      "confidence": 0.88
+    },
+    {
+      "radioTitle": "Extending the Kingdom of God Through Relationship Part 1 - Global Ministries Network International Congress 2025, Baltmore, MD",
+      "airDate": "Dec 10, 2025",
+      "podbeanTitle": "Extending the Kingdom of God Through Relationship",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/extending-the-kingdom-of-god-through-relationship/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/rw4qjcbvvmawhgyy/Extending_the_Kingdom_of_God_Through_Relationship_-_Pastor_Hansen_in_Baltimore_exporta05b6.m4a",
+      "match": "containment",
+      "confidence": 0.88
+    },
+    {
+      "radioTitle": "The Nature of Covenant Breaking Spirits Part 1",
+      "airDate": "Dec 9, 2025",
+      "podbeanTitle": "Dr. Hansen - Covenant Breaking Spirits",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/covenant-breaking-spirits/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/w7ytvbx8ee8g8mcx/2025-07-15.mp3",
+      "match": "containment",
+      "confidence": 0.88
+    },
+    {
+      "radioTitle": "Respect Part 2 - Dr. EJ Buckardt",
+      "airDate": "Dec 8, 2025",
+      "podbeanTitle": "Respect Part 2 - Dr. EJ Buckardt",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/respect-part-2-dr-ej-buckardt/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/y4wevn2hbtzb52ft/Respect_Part_2aso68.m4a",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "Respect - Rev. Dr. EJ Buckardt",
+      "airDate": "Dec 3, 2025",
+      "podbeanTitle": "Respect Part 2 - Dr. EJ Buckardt",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/respect-part-2-dr-ej-buckardt/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/y4wevn2hbtzb52ft/Respect_Part_2aso68.m4a",
+      "match": "fuzzy",
+      "confidence": 0.917
+    },
+    {
+      "radioTitle": "Rescuing Lives",
+      "airDate": "Dec 2, 2025",
+      "podbeanTitle": "Rescuing Lives",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/rescuing-lives/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/zk8877awm8ndwqeu/Rescuing_Livesb78mx.mp3",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "The Forgotten Faces",
+      "airDate": "Dec 1, 2025",
+      "podbeanTitle": "The Forgotten Faces",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/the-forgotten-faces/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/ezqbc5t5q2jezdu7/The_Forgotten_Facesbhf4o.mp3",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "The Holy Spirit Makes War in Korea, LIVE in Seoul South Korea 10/05/2025 Part 2",
+      "airDate": "Nov 14, 2025",
+      "podbeanTitle": "The Holy Spirit Makes War in Korea",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/the-holy-spirit-makes-war-in-korea/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/zgtv3qqp8cup5zzd/The_Holy_Spirit_Makes_War_in_Korea8d81w.mp3",
+      "match": "containment",
+      "confidence": 0.88
+    },
+    {
+      "radioTitle": "The Holy Spirit Makes War in Korea, LIVE in Seoul South Korea 10/05/2025 Part 1",
+      "airDate": "Nov 13, 2025",
+      "podbeanTitle": "The Holy Spirit Makes War in Korea",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/the-holy-spirit-makes-war-in-korea/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/zgtv3qqp8cup5zzd/The_Holy_Spirit_Makes_War_in_Korea8d81w.mp3",
+      "match": "containment",
+      "confidence": 0.88
+    },
+    {
+      "radioTitle": "Germany in Prophecy",
+      "airDate": "Nov 12, 2025",
+      "podbeanTitle": "Germany in Prophecy",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/germany-in-prophecy/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/9xt8rk64ysagimy7/Germany_in_Prophecy876rm.mp3",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "We Are Ambassadors",
+      "airDate": "Nov 11, 2025",
+      "podbeanTitle": "We Are Ambassadors",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/we-are-ambassadors/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/5u272syitf8pwc4a/We_Are_Ambassadors_-_audio8we1w.m4a",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "Spiritual Warfare",
+      "airDate": "Nov 10, 2025",
+      "podbeanTitle": "Spiritual Warfare",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/spiritual-warfare/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/xz786zzhfr8xyrjg/Germany_in_Prophecy5z8jg.mp3",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "Unity/Disunity & Where is the Church At Today? - Dr. EJ Buckardt",
+      "airDate": "Nov 4, 2025",
+      "podbeanTitle": "Unity/Disunity & Where is the Church At Today? - Dr. EJ Buckardt",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/unitydisunity-where-is-the-church-at-today-dr-ej-buckardt/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/jmhuwfamv7mfty39/2025-10-25_Unity_Disunity_Where_is_the_Church_At_Today_-_Dr_EJ_Buckardt_clippedbkwe9.m4a",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "Prophecy - Ukraine & Russia - America and Nuclear War",
+      "airDate": "Nov 3, 2025",
+      "podbeanTitle": "Prophecy - Ukraine & Russia - America & Nuclear War",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/prophecy-ukraine-russia-america-nuclear-war/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/uyc828kfmjyi522z/053126_Prophecy_-_Ukraine_n_Russia_-_America_and_Nuclear_War8ekxb.m4a",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "The World Holy Spirit Conference Korea 2025 - OMR with Shannon Davis (LIVE) Part 2",
+      "airDate": "Oct 31, 2025",
+      "podbeanTitle": "The World Holy Spirit Conference Korea 2025",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/the-world-holy-spirit-conference-korea-2025/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/girr2jx5x6a9udys/Dr_Jonathan_Hansen_10-16-2025_trimmedaribu.m4a",
+      "match": "containment",
+      "confidence": 0.88
+    },
+    {
+      "radioTitle": "The World Holy Spirit Conference Korea 2025 - OMR with Shannon Davis (LIVE) Part 1",
+      "airDate": "Oct 30, 2025",
+      "podbeanTitle": "The World Holy Spirit Conference Korea 2025",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/the-world-holy-spirit-conference-korea-2025/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/girr2jx5x6a9udys/Dr_Jonathan_Hansen_10-16-2025_trimmedaribu.m4a",
+      "match": "containment",
+      "confidence": 0.88
+    },
+    {
+      "radioTitle": "Finding Peace in Times of Trouble - Bishop Tobias Nyamwaya",
+      "airDate": "Oct 29, 2025",
+      "podbeanTitle": "Finding Peace in Times of Trouble - Bishop Tobias Nyamwaya",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/finding-peace-in-times-of-trouble-bishop-tobias-nyamwaya/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/7nsqu34jf9at28px/419890144.m4a",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "The Wrong Belief System - Bishop Tobias Nyamwaya",
+      "airDate": "Oct 24, 2025",
+      "podbeanTitle": "The Wrong Belief System - Bishop Tobias Nyamwaya",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/the-wrong-belief-system-bishop-tobias-nyamwaya/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/48vscbgd746ngtw7/2025-10-09_The_Wrong_Belief_System_-_Bishop_Tobias_clipt8f7bg.m4a",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "The Beloved of The Father - Bishop Tobias Nyamwaya",
+      "airDate": "Oct 23, 2025",
+      "podbeanTitle": "The Beloved of The Father - Bishop Tobias Nyamwaya",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/the-beloved-of-the-father-bishop-tobias-nyamwaya/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/itvu7eta9jh8jmf9/Beloved_of_The_Father_-_Bishop_Tobias_Nyamwaya99tg1.mp3",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "God 's Enemies Reject Prophecy",
+      "airDate": "Oct 15, 2025",
+      "podbeanTitle": "God's Enemies Reject Prophecy",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/gods-enemies-reject-prophecy/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/gayaitifbwju8bu4/God_s_Enemies_Reject_Prophecy7cn6k.mp3",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "Called to Add Value - Bishop Tobias Nyamwaya",
+      "airDate": "Oct 14, 2025",
+      "podbeanTitle": "Called to Add Value - Bishop Tobias Nyamwaya",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/called-to-add-value-bishop-tobias-nyamwaya/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/gftvzgi67g364kap/Untitled.m4a",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "Prayers - Bishop Tobias Nyamwaya",
+      "airDate": "Oct 13, 2025",
+      "podbeanTitle": "Prayers - Bishop Tobias Nyamwaya",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/prayers-bishop-tobias-nyamwaya/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/2jgmmyaqc92jr73m/Prayers_-_Bishop_Tobias_Nyamwaya6d2hv.mp3",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "Malawi Presidential Election",
+      "airDate": "Oct 10, 2025",
+      "podbeanTitle": "Malawi Presidential Elections",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/malawi-presidential-elections/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/79y5b8i64fkh75me/Malawi_Presidential_Elections75edd.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Does God Dictate a President?",
+      "airDate": "Oct 6, 2025",
+      "podbeanTitle": "Does God Dictate a President?",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/does-god-dictate-a-president/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/jugnznwx8mk3tiqh/Does_God_Dictate_a_President_6a1u0.mp3",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "Principles of Love - Forgiveness Part 2 - Bishop Tobias Nyamwaya",
+      "airDate": "Oct 1, 2025",
+      "podbeanTitle": "Principles of Love - Forgiveness: Part 2 - Bishop Tobias",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/principles-of-love-forgiveness-part-2-bishop-tobias/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/nkddr7h8dfafrfz4/Principles_of_Love_-_Forgiveness_Part_2_-_Bishop_Tobiasaut9a.mp3",
+      "match": "containment",
+      "confidence": 0.88
+    },
+    {
+      "radioTitle": "God's Redirection or the Blessing of Obedience - Bishop Tobias Nyamwaya",
+      "airDate": "Sep 29, 2025",
+      "podbeanTitle": "God's Redirection or the Blessing of Obedience - Bishop Tobias",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/gods-redirection-or-the-blessing-of-obedience-bishop-tobias/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/t9c24p8528qm4pb4/God_s_Redirection_or_the_Blessing_of_Obedience_-_Bishop_Tobiasbbqid.mp3",
+      "match": "containment",
+      "confidence": 0.88
+    },
+    {
+      "radioTitle": "Where's the God of Elijah?",
+      "airDate": "Sep 26, 2025",
+      "podbeanTitle": "Where's the God of Elijah",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/wheres-the-god-of-elijah/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/3qtixifk8jt8tiri/Where_s_the_God_of_Elijah_-_Dr_Jonathan_Hansen8182u.mp3",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "An Agent of Transformation - Bishop Dr. Stanley Michuki",
+      "airDate": "Sep 25, 2025",
+      "podbeanTitle": "An Agent of Transformation - Bishop Dr. Stanley Michuki",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/an-agent-of-transformation-bishop-dr-stanley-michuki/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/wevp8xm6vjcga5b8/2025-09-02_Stanley_Michuki_-_An_Agent_of_Transformation98bmo.mp3",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "A Dangerous World - Bishop Dr. Stanley Michuki",
+      "airDate": "Sep 24, 2025",
+      "podbeanTitle": "A Dangerous World - Bishop Dr. Stanley Michuki",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/a-dangerous-world-bishop-dr-stanley-michuki/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/ckcxrksheza62n5h/A_Dangerous_World_-_Bishop_Dr_Stanley_Michuki7pabs.mp3",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "Principles of Love - Forgiveness: Older Brother Syndrome - Bishop Tobias Nyamwaya",
+      "airDate": "Sep 22, 2025",
+      "podbeanTitle": "Principles of Love - Forgiveness: The Older Brother Syndrome",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/principles-of-love-forgiveness-the-older-brother-syndrome/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/6643uqynsg3dstsv/Bishop_Tobias_Nyamwaya_-_WMI_Sabbath_Service83w8b.mp3",
+      "match": "containment",
+      "confidence": 0.88
+    },
+    {
+      "radioTitle": "Turning Point - Dr. Emmanuel Ziga Part 2",
+      "airDate": "Sep 11, 2025",
+      "podbeanTitle": "Turning Point - Dr. Emmanual Ziga",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/turning-point-dr-emmanual-ziga/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/bs2bbqqagr2z47ra/Ziga.m4a",
+      "match": "fuzzy",
+      "confidence": 0.967
+    },
+    {
+      "radioTitle": "Turning Point - Dr. Emmanuel Ziga Part 1",
+      "airDate": "Sep 10, 2025",
+      "podbeanTitle": "Turning Point - Dr. Emmanual Ziga",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/turning-point-dr-emmanual-ziga/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/bs2bbqqagr2z47ra/Ziga.m4a",
+      "match": "fuzzy",
+      "confidence": 0.967
+    },
+    {
+      "radioTitle": "Unholy Alliances Part 2",
+      "airDate": "Sep 8, 2025",
+      "podbeanTitle": "Unholy Alliances Part 2 - Dr. Jonathan Hansen",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/unholy-alliances-part-2-dr-jonathan-hansen/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/cv2cre2kj262stum/Unholy_Alliances_Part_2_-_Dr_Jonathan_Hansen8xufp.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Unholy Alliances",
+      "airDate": "Sep 2, 2025",
+      "podbeanTitle": "Unholy Alliances Part 2 - Dr. Jonathan Hansen",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/unholy-alliances-part-2-dr-jonathan-hansen/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/cv2cre2kj262stum/Unholy_Alliances_Part_2_-_Dr_Jonathan_Hansen8xufp.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Enemies of Focus - Bishop Tobias Nyamwaya",
+      "airDate": "Aug 27, 2025",
+      "podbeanTitle": "The Enemies of Focus - Bishop Tobias Nyamwaya",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/the-enemies-of-focus-bishop-tobias-nyamwaya/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/zfy49muysah84ki3/The_Enemies_of_Focus_-_Bishop_Tobias_Nyamwaya6yyy7.mp3",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "Dealing with Strongholds - Bishop Tobias Nyamwaya",
+      "airDate": "Aug 26, 2025",
+      "podbeanTitle": "Dealing With Strongholds - Bishop Tobias Nyamwaya",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/dealing-with-strongholds-bishop-tobias-nyamwaya/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/a3ntz2sncawk7s4j/Bishop_Tobias_Nyamwayabh0bf.mp3",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "Science of Judgment, Covenant Breaking Spirits - Bishop Dr. Stanley Michuki",
+      "airDate": "Aug 22, 2025",
+      "podbeanTitle": "Science of Judgment, Covenant Breaking Spirits - Bishop Dr. Stanley Michuki",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/science-of-judgment-covenant-breaking-spirits-bishop-dr-stanley-michuki/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/7y8jgthsfxtwhh3e/2025-08-22.mp3",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "Crisis in Kenya - Bishop Dr. Stanley Michuki - Pastor Titus Njuguna (Joy Bringers Ministries International, 14550 Westminster Way, Shoreline, WA 98133  joybringersministries.com/)",
+      "airDate": "Aug 21, 2025",
+      "podbeanTitle": "Crisis in Kenya - Bishop Dr. Stanley Michuki - Pastor Titus Njuguna",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/crisis-in-kenya-bishop-dr-stanley-michuki-pastor-titus-njuguna/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/ahxv8wvqdxuybwuu/2025-08-21.mp3",
+      "match": "containment",
+      "confidence": 0.88
+    },
+    {
+      "radioTitle": "Demons in the Church Today - Bishop Tobias Nyamwaya, Shannon Davis, Dr. Hansen",
+      "airDate": "Aug 20, 2025",
+      "podbeanTitle": "Demons in the Church Today - Bishop Tobias Nyamwaya, Shannon Davis, Dr. Hansen",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/demons-in-the-church-today-bishop-tobias-nyamwaya-shannon-davis-dr-hansen/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/gkpks55ppku6bnep/2025-08-20.mp3",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "Church Racism - Bishop Tobias Nyamwaya, Shannon Davis, Dr. Hansen",
+      "airDate": "Aug 19, 2025",
+      "podbeanTitle": "Church Racism - Bishop Tobias Nyamwaya, Shannon Davis, Dr. Hansen",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/church-racism-bishop-tobias-nyamwaya-shannon-davis-dr-hansen/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/ytre5rfgww6efw58/2025-08-19.mp3",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "Israel-Iran Trump Mistake - Shannon Davis, Dr. Hansen",
+      "airDate": "Aug 18, 2025",
+      "podbeanTitle": "Israel-Iran Trump Mistake - Shannon Davis, Dr. Hansen",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/israel-iran-trump-mistake-shannon-davis-dr-hansen/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/tp5fc8w3iumedi5i/2025-08-18.mp3",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "Covering in Prophetic Times - Racism/Tribalism is Evil",
+      "airDate": "Aug 15, 2025",
+      "podbeanTitle": "Dr. Hansen - Covering in Prophetic Times - Racism/Tribalism is Evil",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/dr-hansen-covering-in-prophetic-times-racismtribalism-is-evil-1754605243/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/n9urjn5nqj5s3hg6/2025-08-15.mp3",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "Bishop Tobias Nyamwaya - Faith, Not Tears",
+      "airDate": "Aug 14, 2025",
+      "podbeanTitle": "Bishop Tobias Nyamwaya - Faith, Not Tears",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/bishop-tobias-nyamwaya-faith-not-tears/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/jpeupe6x2eehjr9h/2025-08-14.mp3",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "Covenant Breaking Spirits Part 4 - Divine Judgment",
+      "airDate": "Aug 13, 2025",
+      "podbeanTitle": "Dr. Hansen - Covenant Breaking Spirits Part 4 - Divine Judgment",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/dr-hansen-covenant-breaking-spirits-part-4-divine-judgment/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/af3bt9f6usa3p2nj/2025-08-13.mp3",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "Bishop Tobias Nyamwaya - Overcoming Fear Part 1",
+      "airDate": "Aug 12, 2025",
+      "podbeanTitle": "Bishop Tobias Nyamwaya - Overcoming Fear Part 1",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/bishop-tobias-nyamwaya-overcoming-fear-part-1/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/i56wss8j2q9syuvb/2025-08-11.mp3",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "Bishop Tobias Nyamwaya - Overcoming Fear Part 1",
+      "airDate": "Aug 11, 2025",
+      "podbeanTitle": "Bishop Tobias Nyamwaya - Overcoming Fear Part 1",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/bishop-tobias-nyamwaya-overcoming-fear-part-1/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/i56wss8j2q9syuvb/2025-08-11.mp3",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "Covenant Breaking Spirits Part 3 - Kenya Pres. Jomo Kenyatta and Moi",
+      "airDate": "Aug 8, 2025",
+      "podbeanTitle": "Dr. Hansen - Covenant Breaking Spirits Part 3 - Kenya Pres. Jomo Kenyatta and Moi",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/dr-hansen-covenant-breaking-spirits-part-3-kenya-pres-jomo-kenyatta-and-moi-1754006534/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/rtpehdphq58vaaz9/2025-08-08.mp3",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "Dr. Hansen, Bishop Geoffrey Njuguna - Kenya",
+      "airDate": "Aug 6, 2025",
+      "podbeanTitle": "Dr. Hansen, Bishop Geoffrey Njuguna - Kenya 06/17/2025",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/dr-hansen-bishop-geoffrey-njuguna-kenya-06172025-1754006407/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/zxea25upftyph4da/2025-08-06.mp3",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "Iran-Israel Ceasefire Mistake - Nuclear War Instead",
+      "airDate": "Aug 5, 2025",
+      "podbeanTitle": "Dr. Hansen - Iran-Israel Ceasefire Mistake - Nuclear War Instead",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/dr-hansen-iran-israel-ceasefire-mistake-nuclear-war-instead/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/h7aug6px8crqwsnn/2025-08-05.mp3",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "Iran-Israel War, Ceasefire a Mistake",
+      "airDate": "Aug 4, 2025",
+      "podbeanTitle": "Dr. Hansen - Iran-Israel War, Ceasefire a Mistake",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/dr-hansen-iran-israel-war-ceasefire-a-mistake/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/hu5ybbrt6c6cndvu/2025-08-04.mp3",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "Bishop Geoffrey Njuguna - Fathers as God's Image Bearers Part 3",
+      "airDate": "Aug 1, 2025",
+      "podbeanTitle": "Bishop Geoffrey Njuguna - Fathers as God's Image Bearers Part 3",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/bishop-geoffrey-njuguna-fathers-as-gods-image-bearers-part-3/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/jzwz24cppb75d2n6/2025-08-01.mp3",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "Bishop Geoffrey Njuguna - Fathers as God's Image Bearers Part 2",
+      "airDate": "Jul 31, 2025",
+      "podbeanTitle": "Bishop Geoffrey Njuguna - Fathers as God's Image Bearers Part 2",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/bishop-geoffrey-njuguna-fathers-as-gods-image-bearers-part-2/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/9cma722gxkh2p64j/2025-07-31.mp3",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "Bishop Geoffrey Njuguna - Fathers as God's Image Bearers Part 1",
+      "airDate": "Jul 30, 2025",
+      "podbeanTitle": "Bishop Geoffrey Njuguna - Fathers as God's Image Bearers Part 1",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/bishop-geoffrey-njuguna-fathers-as-gods-image-bearers-part-1/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/xgmnh53s49cbhz88/2025-07-30.mp3",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "Covenant Breaking Spirits part 3 - Kenya Pres. Jomo Kenyatta and Moi",
+      "airDate": "Jul 29, 2025",
+      "podbeanTitle": "Dr. Hansen - Covenant Breaking Spirits Part 3 - Kenya Pres. Jomo Kenyatta and Moi",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/dr-hansen-covenant-breaking-spirits-part-3-kenya-pres-jomo-kenyatta-and-moi-1754006534/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/rtpehdphq58vaaz9/2025-08-08.mp3",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "Flawless Covering",
+      "airDate": "Jul 28, 2025",
+      "podbeanTitle": "Dr. Hansen - Flawless Covering",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/dr-hansen-flawless-covering/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/8v8msrbv59cwy82x/2025-07-28.mp3",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "Covenant Breaking Spirits Part 2",
+      "airDate": "Jul 22, 2025",
+      "podbeanTitle": "Dr. Hansen - Covenant Breaking Spirits Part 2",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/dr-hansen-covenant-breaking-spirits-part-2/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/kjruhqhh48neasc3/2025-07-22.mp3",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "Covering in Prophetic Times - Racism/Tribalism is Evil",
+      "airDate": "Jul 21, 2025",
+      "podbeanTitle": "Dr. Hansen - Covering in Prophetic Times - Racism/Tribalism is Evil",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/dr-hansen-covering-in-prophetic-times-racismtribalism-is-evil-1754605243/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/n9urjn5nqj5s3hg6/2025-08-15.mp3",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "Rev. Dr. Adalia Hansen & Rev. Elizabeth Kamau - Breaking Spiritual Barriers & Reclaiming Generational Blessings Part 2",
+      "airDate": "Jul 18, 2025",
+      "podbeanTitle": "Rev. Dr. Adalia Hansen & Rev. Elizabeth Kamau - Breaking Spiritual Barriers & Reclaiming Generational Blessings Part 2",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/rev-dr-adalia-hansen-rev-elizabeth-kamau-breaking-spiritual-barriers-reclaiming-generational-blessings-part-2/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/8wxhse5d7utfj94i/2025-07-18.mp3",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "Rev. Dr. Adalia Hansen & Rev. Elizabeth Kamau - Breaking Spiritual Barriers & Reclaiming Generational Blessings Part 1",
+      "airDate": "Jul 17, 2025",
+      "podbeanTitle": "Rev. Dr. Adalia Hansen & Rev. Elizabeth Kamau - Breaking Spiritual Barriers & Reclaiming Generational Blessings Part 1",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/rev-dr-adalia-hansen-rev-elizabeth-kamau-breaking-spiritual-barriers-reclaiming-generational-blessings-part-1/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/mqz53w4m8iyfkiq5/2025-07-17.mp3",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "Bishop Geoffrey Njuguna - The Demonic Spirits that Target the Five-Fold Ministries 06/27/2025 (Men's 6:00 am Bible & Prayer)",
+      "airDate": "Jul 16, 2025",
+      "podbeanTitle": "Bishop Geoffrey Njuguna - The Demonic Spirits that Target the Five-Fold Ministries",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/bishop-geoffrey-njuguna-the-demonic-spirits-that-target-the-five-fold-ministries/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/tgrd4yf9sjnnhv3b/2025-07-16.mp3",
+      "match": "containment",
+      "confidence": 0.88
+    },
+    {
+      "radioTitle": "Covenant Breaking Spirits",
+      "airDate": "Jul 15, 2025",
+      "podbeanTitle": "Dr. Hansen - Covenant Breaking Spirits",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/covenant-breaking-spirits/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/w7ytvbx8ee8g8mcx/2025-07-15.mp3",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "Prophecy The Science of Judgment",
+      "airDate": "Jul 14, 2025",
+      "podbeanTitle": "Dr. Hansen - Prophecy & The Science of Judgment",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/dr-hansen-covenant-breaking-spirits/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/93nvwcuh2pqrwfzt/2025-07-14.mp3",
+      "match": "fuzzy",
+      "confidence": 0.933
+    },
+    {
+      "radioTitle": "Bishop Geoffrey Njuguna - Tanzania - Bishop Gwajima",
+      "airDate": "Jul 10, 2025",
+      "podbeanTitle": "Bishop Geoffrey Njuguna - Tanzania - Bishop Gwajima 06/17/2025",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/bishop-geoffrey-njuguna-tanzania-bishop-gwajima-06172025-1751576567/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/djp4kgby7e9h9939/2025-07-10.mp3",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "Dr. Hansen, Bishop Geoffrey Njuguna - Kenya",
+      "airDate": "Jul 8, 2025",
+      "podbeanTitle": "Dr. Hansen, Bishop Geoffrey Njuguna - Kenya 06/17/2025",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/dr-hansen-bishop-geoffrey-njuguna-kenya-06172025-1754006407/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/zxea25upftyph4da/2025-08-06.mp3",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "Prophetic Times (Facebook Live Streamed)",
+      "airDate": "Jul 7, 2025",
+      "podbeanTitle": "Dr. Hansen - Prophetic Times",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/dr-hansen-prophetic-times/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/sndgrmk7n48c38z2/2025-07-07.mp3",
+      "match": "containment",
+      "confidence": 0.88
+    },
+    {
+      "radioTitle": "Dr. Hansen, Bishop Geoffrey Njuguna - Kenya",
+      "airDate": "Jul 4, 2025",
+      "podbeanTitle": "Dr. Hansen, Bishop Geoffrey Njuguna - Kenya 06/17/2025",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/dr-hansen-bishop-geoffrey-njuguna-kenya-06172025-1754006407/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/zxea25upftyph4da/2025-08-06.mp3",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "Bishop Geoffrey Njuguna - Tanzania - Bishop Gwajima",
+      "airDate": "Jul 3, 2025",
+      "podbeanTitle": "Bishop Geoffrey Njuguna - Tanzania - Bishop Gwajima 06/17/2025",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/bishop-geoffrey-njuguna-tanzania-bishop-gwajima-06172025-1751576567/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/djp4kgby7e9h9939/2025-07-10.mp3",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "Dr. EJ Buckardt - Tanzania Bishop Joshephat Gwajima Persecuted",
+      "airDate": "Jul 2, 2025",
+      "podbeanTitle": "Dr. EJ Buckardt - Tanzania Bishop Joshephat Gwajima Persecuted 06/11/2025",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/dr-ej-buckardt-tanzania-bishop-joshephat-gwajima-persecuted-06112025-1750979866/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/9xmx8x34gsg7gsam/2025-07-02.mp3",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "Dr. EJ Buckardt - Illegal Aliens Riot in LA June 2025",
+      "airDate": "Jul 1, 2025",
+      "podbeanTitle": "Dr. EJ Buckardt - Illegal Aliens Riot in LA June 2025 06/11/2025",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/dr-ej-buckardt-illegal-aliens-riot-in-la-june-2025-06112025/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/vuubz9mnt655uy27/2025-07-01.mp3",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "Dr. Hansen, Bishop Geoffrey Njuguna - Kenya",
+      "airDate": "Jun 27, 2025",
+      "podbeanTitle": "Dr. Hansen, Bishop Geoffrey Njuguna - Kenya 06/17/2025",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/dr-hansen-bishop-geoffrey-njuguna-kenya-06172025-1754006407/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/zxea25upftyph4da/2025-08-06.mp3",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "Bishop Geoffrey Njuguna - Tanzania - Bishop Gwajima",
+      "airDate": "Jun 26, 2025",
+      "podbeanTitle": "Bishop Geoffrey Njuguna - Tanzania - Bishop Gwajima 06/17/2025",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/bishop-geoffrey-njuguna-tanzania-bishop-gwajima-06172025-1751576567/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/djp4kgby7e9h9939/2025-07-10.mp3",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "Dr. EJ Buckardt - Tanzania Bishop Joshephat Gwajima Persecuted",
+      "airDate": "Jun 25, 2025",
+      "podbeanTitle": "Dr. EJ Buckardt - Tanzania Bishop Joshephat Gwajima Persecuted 06/11/2025",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/dr-ej-buckardt-tanzania-bishop-joshephat-gwajima-persecuted-06112025-1750979866/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/9xmx8x34gsg7gsam/2025-07-02.mp3",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "Dr. EJ Buckardt - Illegal Aliens Riot in LA June 2025",
+      "airDate": "Jun 24, 2025",
+      "podbeanTitle": "Dr. EJ Buckardt - Illegal Aliens Riot in LA June 2025 06/11/2025",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/dr-ej-buckardt-illegal-aliens-riot-in-la-june-2025-06112025/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/vuubz9mnt655uy27/2025-07-01.mp3",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "Dr. EJ Buckardt - Israel Attacks Iran's Nuclear Facilities",
+      "airDate": "Jun 23, 2025",
+      "podbeanTitle": "Dr. EJ Buckardt - Israel Attacks Iran's Nuclear Facilities 06/17/2025",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/dr-ej-buckardt-israel-attacks-irans-nuclear-facilities-06172025-1750979738/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/d8ivcsqt5bn9xngh/2025-06-30.mp3",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "Issachar & War",
+      "airDate": "Jun 20, 2025",
+      "podbeanTitle": "Dr. Hansen - Issachar & War",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/dr-hansen-issachar-war/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/9jmfmeq7pbpkmu24/2025-06-20.mp3",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "Defeating Temptation",
+      "airDate": "Jun 19, 2025",
+      "podbeanTitle": "Dr. Hansen - Defeating Temptation",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/defeating-temptation/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/7qk4ji4827teee9k/2025-06-19.mp3",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "Grace for Each Other",
+      "airDate": "Jun 18, 2025",
+      "podbeanTitle": "Dr. Hansen - Grace for Each Other",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/grace-for-each-other/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/xr3y2ac6j4dzjuuf/2025-06-18.mp3",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "Dr. EJ Buckardt - Tanzania Bishop Joshephat Gwajima Persecuted",
+      "airDate": "Jun 17, 2025",
+      "podbeanTitle": "Dr. EJ Buckardt - Tanzania Bishop Joshephat Gwajima Persecuted 06/11/2025",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/dr-ej-buckardt-tanzania-bishop-joshephat-gwajima-persecuted-06112025-1750979866/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/9xmx8x34gsg7gsam/2025-07-02.mp3",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "Dr. EJ Buckardt - Illegal Aliens Riot in LA June 2025",
+      "airDate": "Jun 16, 2025",
+      "podbeanTitle": "Dr. EJ Buckardt - Illegal Aliens Riot in LA June 2025 06/11/2025",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/dr-ej-buckardt-illegal-aliens-riot-in-la-june-2025-06112025/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/vuubz9mnt655uy27/2025-07-01.mp3",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "Satisfied Tenacious Eagles",
+      "airDate": "Jun 9, 2025",
+      "podbeanTitle": "Dr. Jonathan Hansen - Satisfied Tenacious Eagles",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/m-010223-dr-jonathan-hansen-satisfied-tenacious-eagles/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/bqekii/2023-01-02.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "The Consequences for Rejecting Israel - Jerusalem Prayer Breakfast, Oslo, Norway 04/03/2025  1087R3,",
+      "airDate": "Jun 6, 2025",
+      "podbeanTitle": "Dr. Hansen - The Consequences for Rejecting Israel - Jerusalem Prayer Breakfast, Oslo, Norway 04/03/2025",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/w-043025-dr-hansen-the-consequences-for-rejecting-israel-jerusalem-prayer-breakfast-oslo-norway-04032025/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/m3rm7iuwcvubq8ib/2025-04-30.mp3",
+      "match": "containment",
+      "confidence": 0.88
+    },
+    {
+      "radioTitle": "Radio Part 2 Dr. EJ Buckardt - Critical Time for the Christian Church in America (We Need to WAKE Up not be Woke Up)",
+      "airDate": "Jun 3, 2025",
+      "podbeanTitle": "Radio Part 2 Dr. EJ Buckardt - Critical Time for the Christian Church in America",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/t-060325-radio-part-2-dr-ej-buckardt-critical-time-for-the-christian-church-in-america/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/6qj9g2bhpp7nmdf5/2025-06-03.mp3",
+      "match": "containment",
+      "confidence": 0.88
+    },
+    {
+      "radioTitle": "Radio Part 1 Dr. EJ Buckardt - Critical Time for the Christian Church in America (We Need to WAKE Up not be Woke Up)",
+      "airDate": "Jun 2, 2025",
+      "podbeanTitle": "Radio Part 1 Dr. EJ Buckardt - Critical Time for the Christian Church in America",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/m-060225-radio-part-1-dr-ej-buckardt-critical-time-for-the-christian-church-in-america/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/d9m58qbibyiu9j2s/2025-06-02.mp3",
+      "match": "containment",
+      "confidence": 0.88
+    },
+    {
+      "radioTitle": "Minister Fred Christian - Dr. EJ Buckardt - Trusting God when You Feel Forgotten 2",
+      "airDate": "May 30, 2025",
+      "podbeanTitle": "F - 05/30/25 - Minister Fred Christian - Dr. EJ Buckardt - Trusting God when You Feel Forgotten 2",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/f-053025-minister-fred-christian-dr-ej-buckardt-trusting-god-when-you-feel-forgotten-2/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/425dk42eecimrj6g/2025-05-30.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Minister Fred Christian - Trusting God when You Feel Forgotten 1",
+      "airDate": "May 29, 2025",
+      "podbeanTitle": "Th - 05/29/25 - Minister Fred Christian - Trusting God when You Feel Forgotten 1",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/th-052925-minister-fred-christian-trusting-god-when-you-feel-forgotten-1/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/54dh9r8ttjvmn8nv/2025-05-29.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Bishop Paye Bagnon - Liberia",
+      "airDate": "May 28, 2025",
+      "podbeanTitle": "W - 05/28/25 - Bishop Paye Bagnon - Liberia 05/16/2025",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/w-052825-bishop-paye-bagnon-liberia-05162025/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/w36zw7aytvvvmjhz/2025-05-28.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "The Vatican & Protestants (The Day of Worship)",
+      "airDate": "May 27, 2025",
+      "podbeanTitle": "T - 05/27/25 - Dr. Hansen - The Vatican & Protestants (The Day of Worship)",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/t-052725-dr-hansen-the-vatican-protestants-the-day-of-worship/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/twud9ex7vfvywni4/2025-05-27.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "The Consequences for Rejecting Israel - Jerusalem Prayer Breakfast, Oslo, Norway",
+      "airDate": "May 23, 2025",
+      "podbeanTitle": "Dr. Hansen - The Consequences for Rejecting Israel - Jerusalem Prayer Breakfast, Oslo, Norway 04/03/2025",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/w-043025-dr-hansen-the-consequences-for-rejecting-israel-jerusalem-prayer-breakfast-oslo-norway-04032025/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/m3rm7iuwcvubq8ib/2025-04-30.mp3",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "Pope - Vatican & Lies",
+      "airDate": "May 20, 2025",
+      "podbeanTitle": "T - 05/20/25 - Dr. Hansen - Pope - Vatican & Lies",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/t-052025-dr-hansen-pope-vatican-lies/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/9vqdg62zicm7yw92/2025-05-20.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Without the Baptism, Power of the Holy Spirit, America & the Nations will Fall (Dr. Emmanuel Ziga's 2025 Holy Ghost Conference)",
+      "airDate": "May 16, 2025",
+      "podbeanTitle": "F - 05/16/25 - Dr. Hansen - Without the Baptism, Power of the Holy Spirit, America & the Nations will Fall (Dr. Emmanuel Ziga's 2025 Holy Ghost Conference) 02/08/24",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/f-051625-dr-hansen-without-the-baptism-power-of-the-holy-spirit-america-the-nations-will-fall-dr-emmanuel-zigas-2025-holy-ghost-conference-020824/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/rqcjkxhpbqwe2x7j/2025-05-16.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Hananya Naftali, Digital Aid to Israeli Prime Minister, Benjamin Netanyahu, Oslo, Norway",
+      "airDate": "May 7, 2025",
+      "podbeanTitle": "W - 05/07/25 - Hananya Naftali, Digital Aid to Israeli Prime Minister, Benjamin Netanyahu, Oslo, Norway 04/04/25",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/w-050725-hananya-naftali-digital-aid-to-israeli-prime-minister-benjamin-netanyahu-oslo-norway-040425/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/ppewbuejme6rc5zd/2025-05-07.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "The Dualistic Nature of God",
+      "airDate": "May 6, 2025",
+      "podbeanTitle": "T - 05/06/25 - Dr. Hansen - The Dualistic Nature of God",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/t-050625-dr-hansen-the-dualistic-nature-of-god/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/3ejm3ixmqfc5r6d8/2025-05-06.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Robert Ilatov, Co-Chairman of Jerusalem Prayer Breakfast and former Knesset Member, Oslo, Norway",
+      "airDate": "May 2, 2025",
+      "podbeanTitle": "F - 05/02/25 - Robert Ilatov, Co-Chairman of Jerusalem Prayer Breakfast and former Knesset Member, Oslo, Norway 04/04/2025",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/f-050225-robert-ilatov-co-chairman-of-jerusalem-prayer-breakfast-and-former-knesset-member-oslo-norway-04042025/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/yvsh2e5hiicnigd7/2025-05-02.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Erik Selle, Leader of the Norwegian Conservative Party-Partileder Konservative, Oslo, Norway",
+      "airDate": "May 1, 2025",
+      "podbeanTitle": "Th - 05/01/25 - Erik Selle, Leader of the Norwegian Conservative Party-Partileder Konservative, Oslo, Norway 04/07/2025",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/th-050125-erik-selle-leader-of-the-norwegian-conservative-party-partileder-konservative-oslo-norway-04072025/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/dupbtu7gbvcx42aj/2025-05-01.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "The Consequences for Rejecting Israel - Jerusalem Prayer Breakfast, Oslo, Norway",
+      "airDate": "Apr 30, 2025",
+      "podbeanTitle": "Dr. Hansen - The Consequences for Rejecting Israel - Jerusalem Prayer Breakfast, Oslo, Norway 04/03/2025",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/w-043025-dr-hansen-the-consequences-for-rejecting-israel-jerusalem-prayer-breakfast-oslo-norway-04032025/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/m3rm7iuwcvubq8ib/2025-04-30.mp3",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "The Passover Feasts / Resurrection Day",
+      "airDate": "Apr 29, 2025",
+      "podbeanTitle": "T - 04/29/25 - Dr. Hansen - The Passover Feasts / Resurrection Day",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/t-042925-dr-hansen-the-passover-feasts-resurrection-day/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/3spt4yvwv83bve5m/2025-04-29.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Albert Veksler - President of the Jerusalem Prayer Breakfast in Oslo, Norway",
+      "airDate": "Apr 25, 2025",
+      "podbeanTitle": "F - 04/25/25 - Albert Veksler - President of the Jerusalem Prayer Breakfast in Oslo, Norway 04/02/2025",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/f-042525-albert-veksler-president-of-the-jerusalem-prayer-breakfast-in-oslo-norway-04022025/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/gti557gwhwamk858/2025-04-25.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Dr. EJ Buckardt - Prepare",
+      "airDate": "Apr 21, 2025",
+      "podbeanTitle": "M - 04/21/25 - Dr. EJ Buckardt - Prepare",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/m-042125-dr-ej-buckardt-prepare/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/48mkdkcuqwugadr2/2025-04-21.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Dr. EJ Buckardt - Spiritual Food & Physical Food Part 3",
+      "airDate": "Mar 21, 2025",
+      "podbeanTitle": "F - 03/21/25 - Dr. EJ Buckardt - Spiritual Food & Physical Food Part 3",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/f-032125-dr-ej-buckardt-spiritual-food-physical-food-part-3/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/wz42t9fubtw8ij3t/2025-03-21.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Dr. EJ Buckardt - Spiritual Food & Physical Food Part 2",
+      "airDate": "Mar 20, 2025",
+      "podbeanTitle": "Th - 03/20/25 - Dr. EJ Buckardt - Spiritual Food & Physical Food Part 2",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/th-032025-dr-ej-buckardt-spiritual-food-physical-food-part-2/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/ziiwywxjst82k72c/2025-03-20.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Dr. EJ Buckardt - Spiritual Food & Physical Food Part 1",
+      "airDate": "Mar 19, 2025",
+      "podbeanTitle": "W - 03/19/25 - Dr. EJ Buckardt - Spiritual Food & Physical Food Part 1",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/w-031925-dr-ej-buckardt-spiritual-food-physical-food-part-1/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/cssk7xp9ehfuuj29/2025-03-19.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Dr. EJ Buckardt - Repent: Why?",
+      "airDate": "Mar 18, 2025",
+      "podbeanTitle": "T - 03/18/25 - Dr. EJ Buckardt - Repent: Why?",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/t-031825-dr-ej-buckardt-repent-why/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/d2vfr8tum6fvf8t8/2025-03-18.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Dr. EJ Buckardt & Minister Fred Christian - Protestants & the Pope part 3",
+      "airDate": "Mar 17, 2025",
+      "podbeanTitle": "M - 03/17/25 - Dr. EJ Buckardt & Minister Fred Christian - Protestants & the Pope part 3",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/m-031725-dr-ej-buckardt-minister-fred-christian-protestants-the-pope-part-3/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/jau3zqc5ucz5gjbp/2025-03-17.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Dr. EJ Buckardt & Minister Fred Christian - Protestants & the Pope part 2",
+      "airDate": "Mar 14, 2025",
+      "podbeanTitle": "F - 03/14/25 - Dr. EJ Buckardt & Minister Fred Christian - Protestants & the Pope Part 2",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/f-031425-dr-ej-buckardt-minister-fred-christian-protestants-the-pope-part-2/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/34ssxhzry66g74ek/2025-03-14.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Dr. EJ Buckardt & Minister Fred Christian - Protestants & the Pope Part 1",
+      "airDate": "Mar 13, 2025",
+      "podbeanTitle": "Th - 03/13/25 - Dr. EJ Buckardt & Minister Fred Christian - Protestants & the Pope Part 1",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/th-031325-dr-ej-buckardt-minister-fred-christian-protestants-the-pope-part-1/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/taa2czizzjruvg68/2025-03-13.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Minister Fred Christian - This Means War Part 2",
+      "airDate": "Mar 12, 2025",
+      "podbeanTitle": "W - 03/12/25 - Minister Fred Christian - This Means War Part 2",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/w-031225-minister-fred-christian-this-means-war-part-2/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/sjqs9y2fm3ba67xu/2025-03-12.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Minister Fred Christian - This Means War Part 1",
+      "airDate": "Mar 11, 2025",
+      "podbeanTitle": "T - 03/11/25 - Minister Fred Christian - This Means War Part 1",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/t-031125-minister-fred-christian-this-means-war-part-1/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/9p7d8zqk8c3jdkn3/2025-03-11.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Apostolic Leader Eric Hurd - The Humble of Heart",
+      "airDate": "Mar 10, 2025",
+      "podbeanTitle": "M - 03/10/25 - Apostolic Leader Eric Hurd - The Humble of Heart",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/m-031025-apostolic-leader-eric-hurd-the-humble-of-heart/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/jvgap2aej9yxqjd7/2025-03-10.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Shannon Davis - The Baptism of the Holy Spirit",
+      "airDate": "Mar 4, 2025",
+      "podbeanTitle": "T - 03/04/25 - Shannon Davis - The Baptism of the Holy Spirit",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/t-030425-shannon-davis-the-baptism-of-the-holy-spirit/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/k58g79w7fgeb7gzz/2025-03-04.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Shannon Davis - The Science of Judgment",
+      "airDate": "Mar 3, 2025",
+      "podbeanTitle": "M - 03/03/25 - Shannon Davis - The Science of Judgment",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/m-030325-shannon-davis-the-science-of-judgment/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/u4ryzpk6a299wxff/2025-03-03.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Apostolic Leader Eric Hurd - Without Holy Spirit, the Nations will Fall",
+      "airDate": "Feb 25, 2025",
+      "podbeanTitle": "T - 02/25/25 - Apostolic Leader Eric Hurd - Without Holy Spirit, the Nations will Fall",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/t-022525-apostolic-leader-eric-hurd-without-holy-spirit-the-nations-will-fall/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/en53jrb84fyuytic/2025-02-25.mp3",
+      "match": "fuzzy_from_ambig",
+      "confidence": 0.921
+    },
+    {
+      "radioTitle": "Without the Baptism, Power of the Holy Spirit, America & the Nations will Fall (Dr. Emmanuel Ziga's 2025 Holy Ghost Conference)",
+      "airDate": "Feb 20, 2025",
+      "podbeanTitle": "F - 05/16/25 - Dr. Hansen - Without the Baptism, Power of the Holy Spirit, America & the Nations will Fall (Dr. Emmanuel Ziga's 2025 Holy Ghost Conference) 02/08/24",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/f-051625-dr-hansen-without-the-baptism-power-of-the-holy-spirit-america-the-nations-will-fall-dr-emmanuel-zigas-2025-holy-ghost-conference-020824/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/rqcjkxhpbqwe2x7j/2025-05-16.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Rev. Anthony Githui, Missionary from Kenya - No Tribalism",
+      "airDate": "Feb 14, 2025",
+      "podbeanTitle": "F - 02/14/25 - Rev. Anthony Githui, Missionary from Kenya - No Tribalism",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/f-021425-rev-anthony-githui-missionary-from-kenya-no-tribalism/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/ynir7zxv4ickrejd/2025-02-14.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Drs. Drake & Serena Travis, Drake Travis Global Ministries",
+      "airDate": "Feb 12, 2025",
+      "podbeanTitle": "W - 02/12/25 - Drs. Drake & Serena Travis, Drake Travis Global Ministries",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/w-021225-drs-drake-serena-travis-drake-travis-global-ministries/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/msrxmv7baaj3jxb6/2025-02-12.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Dr. Augustine (Augie) David, GLA Connection (Global Leadership Alignment)",
+      "airDate": "Feb 5, 2025",
+      "podbeanTitle": "W - 02/05/25 - Dr. Augustine (Augie) David, GLA Connection (Global Leadership Alignment)",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/w-020525-dr-augustine-augie-david-gla-connection-global-leadership-alignment/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/7kqppab7hp8vpeyd/2025-02-05.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Thomas Moltu, Vice Chair, Christian Conservative Party, Norway",
+      "airDate": "Feb 4, 2025",
+      "podbeanTitle": "T - 02/04/25 - Thomas Moltu, Vice Chair, Christian Conservative Party, Norway",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/t-020425-thomas-moltu-vice-chair-christian-conservative-party-norway/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/fcb9bhz6ggbjnki7/2025-02-04.mp3",
+      "match": "fuzzy_from_ambig",
+      "confidence": 0.915
+    },
+    {
+      "radioTitle": "Jan-Aage Torp, President, European Apostolic Leaders, Norway",
+      "airDate": "Jan 31, 2025",
+      "podbeanTitle": "S - 02/08/25 - Jan-Aage Torp, President, European Apostolic Leaders, Norway / Thomas Moltu, Vice Chair, Christian Conservative Party, Norway (Shannon Davis)",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/s-020825-jan-aage-torp-president-european-apostolic-leaders-norway-thomas-moltu-vice-chair-christian-conservative-party-norway-shannon-davis/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/72bqz6j9yjtyv8d4/SW2025-02-07.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Rosemarie Fenchel, Babies Survive Abortion",
+      "airDate": "Jan 30, 2025",
+      "podbeanTitle": "Th - 01/30/25 - Rosemarie Fenchel, Babies Survive Abortion",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/th-013025-rosemarie-fenchel-babies-survive-abortion/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/n7ysyq2xhwbn7v4c/2025-01-30.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Rev. Gary Cristofaro, Vice President, Ezra International",
+      "airDate": "Jan 28, 2025",
+      "podbeanTitle": "T - 01/28/25 - Rev. Gary Cristofaro - Vice President, Ezra International",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/t-012825-rev-gary-cristofaro-vice-president-ezra-international/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/i5wue8paw8ceerty/2025-01-28.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Hanukkah 2024",
+      "airDate": "Jan 14, 2025",
+      "podbeanTitle": "T - 01/14/25 - Dr. Hansen - Hanukkah 2024",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/t-011425-dr-hansen-hanukkah-2024/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/dpvnkdvz9cdwmvjh/2025-01-14.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Apostolic Leader Eric Hurd - Trauma is Drama Part 2",
+      "airDate": "Jan 8, 2025",
+      "podbeanTitle": "W - 01/08/25 - Apostolic Leader Eric Hurd - Trauma is Drama Part 2",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/w-010825-apostolic-leader-eric-hurd-trauma-is-drama-part-2/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/8xaf3b5mqf4avnh9/2025-01-08.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Apostolic Leader Eric Hurd - Trauma is Drama Part 1",
+      "airDate": "Jan 7, 2025",
+      "podbeanTitle": "T - 01/07/25 - Apostolic Leader Eric Hurd - Trauma is Drama Part 1",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/t-010725-apostolic-leader-eric-hurd-trauma-is-drama-part-1/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/9rjtrmpirtr9s8qy/2025-01-07.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Pastor Matt Shea - Reasons for Concern Before Trump Takes Office in 2025",
+      "airDate": "Jan 6, 2025",
+      "podbeanTitle": "M - 01/06/25 - Pastor Matt Shea - Reasons for Concern Before Trump Takes Office in 2025",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/m-010625-pastor-matt-shea-reasons-for-concern-before-trump-takes-office-in-2025/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/qhmrdwbjhg3t9ji3/2025-01-06.mp3",
+      "match": "fuzzy_from_ambig",
+      "confidence": 0.927
+    },
+    {
+      "radioTitle": "Apostle T. Garreston Saydee, Liberia - Church Corruption in Liberia",
+      "airDate": "Jan 3, 2025",
+      "podbeanTitle": "F - 01/03/25 - Apostle T. Garreston Saydee, Liberia - Church Corruption in Liberia",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/f-010325-apostle-t-garreston-saydee-liberia-church-corruption-in-liberia/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/djv6gm9w4nn27yar/2025-01-03.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Minister Fred Christian - Dr. Hansen Needs Intercessors",
+      "airDate": "Jan 1, 2025",
+      "podbeanTitle": "W - 01/01/25 - Minister Fred Christian - Dr. Hansen Needs Intercessors",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/w-010125-minister-fred-christian-dr-hansen-needs-intercessors/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/wakfbug3hjithqsy/2025-01-01.mp3",
+      "match": "fuzzy_from_ambig",
+      "confidence": 0.904
+    },
+    {
+      "radioTitle": "Minister Fred Christian - Dear Friends, End of the Year Campaign 2024",
+      "airDate": "Dec 26, 2024",
+      "podbeanTitle": "Th - 12/26/24 - Minister Fred Christian - Dear Friends, End of the Year Campaign 2024",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/th-122624-minister-fred-christian-dear-friends-end-of-the-year-campaign-2024/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/u7gkd4ztydc7a7i8/2024-12-26.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Ways to Protect Yourself - Spiritual Warfare & Don't Look Back Part 2",
+      "airDate": "Dec 16, 2024",
+      "podbeanTitle": "M - 12/16/24 - Dr. Hansen - Ways to Protect Yourself - Spiritual Warfare & Don't Look Back Part 2",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/m-121624-dr-hansen-ways-to-protect-yourself-spiritual-warfare-dont-look-back-part-2/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/95pie7i385a68w9k/2024-12-16.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "The Church's Responsibility through the Power of God - Naalehu Assembly of God - Naalehu, HI",
+      "airDate": "Dec 6, 2024",
+      "podbeanTitle": "F - 12/06/24 - Dr. Hansen - The Church's Responsibility through the Power of God - Naalehu Assembly of God - Naalehu, HI 11/17/2024",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/f-120624-dr-hansen-the-churchs-responsibility-through-the-power-of-god-naalehu-assembly-of-god-naalehu-hi-11172024/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/cbr7z4qv7564x7u6/2024-12-06.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Current Crisis in America - Holy Hill of Zion Thy Dwelling Place, Waianae, HI",
+      "airDate": "Dec 5, 2024",
+      "podbeanTitle": "Th - 12/05/24 - Dr. Hansen - Current Crisis in America - Holy Hill of Zion Thy Dwelling Place, Waianae, HI 11/03/2024",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/th-120524-dr-hansen-current-crisis-in-america-holy-hill-of-zion-thy-dwelling-place-waianae-hi-11032024/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/k7d9f48jeqe85zhx/2024-12-05.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Rev. Dr. EJ Buckardt - The Ordination of Man to Serve the Lord",
+      "airDate": "Dec 2, 2024",
+      "podbeanTitle": "M - 12/02/24 - Rev. Dr. EJ Buckardt - The Ordination of Man to Serve the Lord",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/m-120224-rev-dr-ej-buckardt-the-ordination-of-man-to-serve-the-lord/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/qfzxjtyepi2by2k6/2024-12-02.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Apostolic Leader Eric Hurd - How to Please God Part 2",
+      "airDate": "Nov 12, 2024",
+      "podbeanTitle": "T - 11/12/24 - Apostolic Leader Eric Hurd - How to Please God Part 2",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/t-111224-apostolic-leader-eric-hurd-how-to-please-god-part-2/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/pvyt5cdctgxvur9s/2024-11-12.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Rev. Dr. EJ Buckardt - Inventions and the Heart",
+      "airDate": "Nov 11, 2024",
+      "podbeanTitle": "M - 11/11/24 - Rev. Dr. EJ Buckardt - Inventions and the Heart",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/m-111124-rev-dr-ej-buckardt-inventions-and-the-heart/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/zrgemvttjyt3r9he/2024-11-11.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Apostolic Leader Eric Hurd - How to Please God Part 1",
+      "airDate": "Nov 6, 2024",
+      "podbeanTitle": "W - 11/06/24 - Apostolic Leader Eric Hurd - How to Please God Part 1",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/w-110624-apostolic-leader-eric-hurd-how-to-please-god-part-1/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/b2pkxeabarnw6mnp/2024-11-06.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Apostolic Leader Leo Bogee - America, The Church in Heresy",
+      "airDate": "Nov 5, 2024",
+      "podbeanTitle": "T - 11/05/24 - Apostolic Leader Leo Bogee - America, The Church in Heresy",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/t-110524-apostolic-leader-leo-bogee-america-the-church-in-heresy/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/b7w6ypf6q4k4qrqn/2024-11-05.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Apostolic Leader Eric Hurd - Quantum Life Part 4",
+      "airDate": "Nov 4, 2024",
+      "podbeanTitle": "M - 11/04/24 - Apostolic Leader Eric Hurd - Quantum Life Part 4",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/m-110424-apostolic-leader-eric-hurd-quantum-life-part-4/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/2yt4vwieaiigckff/2024-11-04.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Apostolic Leader Eric Hurd - Quantum Life Part 3",
+      "airDate": "Nov 1, 2024",
+      "podbeanTitle": "F - 11/01/24 - Apostolic Leader Eric Hurd - Quantum Life Part 3",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/f-110124-apostolic-leader-eric-hurd-quantum-life-part-3/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/xek77n6kxp5ckqbt/2024-11-01.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Apostolic Leader Eric Hurd - Quantum Life Part 2",
+      "airDate": "Oct 31, 2024",
+      "podbeanTitle": "Th - 10/31/24 - Apostolic Leader Eric Hurd - Quantum Life Part 2",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/th-103124-apostolic-leader-eric-hurd-quantum-life-part-2/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/wv65md9k3ra58tyv/2024-10-31.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Apostolic Leader Eric Hurd - Quantum Life Part 1",
+      "airDate": "Oct 30, 2024",
+      "podbeanTitle": "W - 10/30/24 - Apostolic Leader Eric Hurd - Quantum Life Part 1",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/w-103024-apostolic-leader-eric-hurd-quantum-life-part-1/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/jwak6e2ra2yjw3sh/2024-10-30.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Rev. Adalia Hansen - The Heart Posture Part 2",
+      "airDate": "Oct 29, 2024",
+      "podbeanTitle": "Rev. Adalia Hansen - The Heart Posture",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/su-110324-rev-adalia-hansen-the-heart-posture/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/nh6z2yn93mn82sht/Sun2024-11-03_51_18.mp3",
+      "match": "part_to_full",
+      "confidence": 0.95
+    },
+    {
+      "radioTitle": "Rev. Adalia Hansen - The Heart Posture Part 1",
+      "airDate": "Oct 28, 2024",
+      "podbeanTitle": "Rev. Adalia Hansen - The Heart Posture",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/su-110324-rev-adalia-hansen-the-heart-posture/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/nh6z2yn93mn82sht/Sun2024-11-03_51_18.mp3",
+      "match": "part_to_full",
+      "confidence": 0.95
+    },
+    {
+      "radioTitle": "Rev. Dr. EJ Buckardt - Presidential Election Crisis 2024",
+      "airDate": "Oct 15, 2024",
+      "podbeanTitle": "T - 10/15/24 - Rev. Dr. EJ Buckardt - Presidential Election Crisis 2024",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/t-101524-rev-dr-ej-buckardt-presidential-election-crisis-2024/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/v56ea8xhfvajdqj2/2024-10-15.mp3",
+      "match": "fuzzy_from_ambig",
+      "confidence": 0.904
+    },
+    {
+      "radioTitle": "The Crisis of November 2024",
+      "airDate": "Oct 3, 2024",
+      "podbeanTitle": "Th - 10/03/24 - Dr. Hansen - The Crisis of November 2024",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/th-100324-dr-hansen-the-crisis-of-november-2024/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/n8jh5dxzwaj3rws3/2024-10-03.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Rev. Marya Moore - The River of God in You",
+      "airDate": "Oct 2, 2024",
+      "podbeanTitle": "W - 10/02/24 - Rev. Marya Moore - The River of God in You",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/w-100224-rev-marya-moore-the-river-of-god-in-you/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/i6w2esurhwcdcbdx/2024-10-02.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Apostolic Leader Eric Hurd - For Men Only",
+      "airDate": "Sep 24, 2024",
+      "podbeanTitle": "T - 09/24/24 - Apostolic Leader Eric Hurd - For Men Only",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/t-092424-apostolic-leader-eric-hurd-for-men-only/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/25tgk54rv6xtin2f/2024-09-24.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Apostolic Leader Eric Hurd - Marriage God's Way Part 2",
+      "airDate": "Sep 23, 2024",
+      "podbeanTitle": "M - 09/23/24 - Apostolic Leader Eric Hurd - Marriage God's Way Part 2",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/m-092324-apostolic-leader-eric-hurd-marriage-gods-way-part-2/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/jv2mvqyckksmw4qv/2024-09-23.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Apostolic Leader Eric Hurd - Marriage God's Way Part 1",
+      "airDate": "Sep 20, 2024",
+      "podbeanTitle": "F - 09/20/24 - Apostolic Leader Eric Hurd - Marriage God's Way Part 1",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/f-092024-apostolic-leader-eric-hurd-marriage-gods-way-part-1/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/hcp92iayumijfmmg/2024-09-20.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Minister Fred Christian - Predestination vs. Free Will",
+      "airDate": "Aug 28, 2024",
+      "podbeanTitle": "W - 08/28/24 - Minister Fred Christian - Predestination vs. Free Will",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/w-082824-minister-fred-christian-predestination-vs-free-will/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/igmqn2rzeaqfg3zv/2024-08-28.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Minister Fred Christian - Liberalism and the Destruction of America",
+      "airDate": "Aug 27, 2024",
+      "podbeanTitle": "T - 08/27/24 - Minister Fred Christian - Liberalism and the Destruction of America",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/t-082724-minister-fred-christian-liberalism-and-the-destruction-of-america/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/es8ubjmphv9bnzqx/2024-08-27.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Bishop Geoffrey Njuguna - The True Path to Spiritual Growth",
+      "airDate": "Aug 23, 2024",
+      "podbeanTitle": "F - 08/23/24 - Bishop Geoffrey Njuguna - The True Path to Spiritual Growth",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/f-082324-bishop-geoffrey-njuguna-the-true-path-to-spiritual-growth/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/rgqg8289ymmuqgtt/2024-08-23.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Rev. Elizabeth Njuguna - Keep a Humble Attitude, Always Acknowledging Your Need for God's Word",
+      "airDate": "Aug 22, 2024",
+      "podbeanTitle": "Th - 08/22/24 - Rev. Elizabeth Njuguna - Keep a Humble Attitude, Always Acknowledging Your Need for God's Word",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/th-082224-rev-elizabeth-njuguna-keep-a-humble-attitude-always-acknowledging-your-need-for-gods-word/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/jd7axrcxhxz6wsv6/2024-08-22.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Pastor Leo Bogee - Heresy - Olympics - Lesbian Bishop",
+      "airDate": "Aug 15, 2024",
+      "podbeanTitle": "Th - 08/15/24 - Pastor Leo Bogee - Heresy - Olympics - Lesbian Bishop",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/th-081524-pastor-leo-bogee-heresy-olympics-lesbian-bishop/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/x6cxhbagg6thnhtt/2024-08-15.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Minister Fred Christian - The Difference Between Conviction & Condemnation",
+      "airDate": "Aug 14, 2024",
+      "podbeanTitle": "W - 08/14/24 - Minister Fred Christian - The Difference Between Conviction & Condemnation",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/w-081424-minister-fred-christian-the-difference-between-conviction-condemnation/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/rvtbphjykgy2r4v3/2024-08-14.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Bishop Geoffrey Njuguna - Focusing on God's Kingdom Purpose (OmegaManRadio with Shannon Davis 08/02/24) Part 2",
+      "airDate": "Aug 13, 2024",
+      "podbeanTitle": "T - 08/13/24 - Bishop Geoffrey Njuguna - Focusing on God's Kingdom Purpose (OmegaManRadio with Shannon Davis) Part 2",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/t-081324-bishop-geoffrey-njuguna-focusing-on-gods-kingdom-purpose-omegamanradio-with-shannon-davis-part-2/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/9i45ka7eq8hcnczm/2024-08-13.mp3",
+      "match": "fuzzy",
+      "confidence": 0.9
+    },
+    {
+      "radioTitle": "Bishop Geoffrey Njuguna - Focusing on God's Kingdom Purpose (OmegaManRadio with Shannon Davis 08/02/24) Part 1",
+      "airDate": "Aug 12, 2024",
+      "podbeanTitle": "M - 08/12/24 - Bishop Geoffrey Njuguna - Focusing on God's Kingdom Purpose (OmegaManRadio with Shannon Davis) Part 1",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/m-081224-bishop-geoffrey-njuguna-focusing-on-gods-kingdom-purpose-omegamanradio-with-shannon-davis-part-1/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/be2esvmdedc2icgy/2024-08-12.mp3",
+      "match": "fuzzy",
+      "confidence": 0.9
+    },
+    {
+      "radioTitle": "Apostle Joceley Silveira - Global Church, Puyallup, WA",
+      "airDate": "Aug 9, 2024",
+      "podbeanTitle": "F - 08/09/24 - Apostle Joceley Silveira - Global Church, Puyallup, WA",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/f-080924-apostle-joceley-silveira-global-church-puyallup-wa/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/2umedz8tm8d6scin/2024-08-09.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Apostolic Leader Eric Hurd - Mind Control Part 2 (Hitler - Biden - COVID)",
+      "airDate": "Aug 8, 2024",
+      "podbeanTitle": "Th - 08/08/24 - Apostolic Leader Eric Hurd - Mind Control Part 2 (Hitler - Biden - COVID)",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/th-080824-apostolic-leader-eric-hurd-mind-control-part-2-hitler-biden-covid/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/37pufrmjrge6wx3j/2024-08-08.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Pastor Mike Unverzagt, The House NW, Vancouver, WA - Miracles",
+      "airDate": "Aug 7, 2024",
+      "podbeanTitle": "W - 08/07/24 - Pastor Mike Unverzagt, The House NW, Vancouver, WA - Miracles",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/m-080724-pastor-mike-unverzagt-the-house-nw-vancouver-wa-miracles/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/ifbaiq2dh4dmxwan/2024-08-07.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Dr. EJ Buckardt - Decernment: Seeing Through Satan's Deception",
+      "airDate": "Aug 5, 2024",
+      "podbeanTitle": "M - 08/05/24 - Dr. EJ Buckardt - Discernment: Seeing Through Satan's Deception",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/m-080524-dr-ej-buckardt-discernment-seeing-through-satans-deception/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/a4tsucgrsbs456uq/2024-08-05.mp3",
+      "match": "fuzzy",
+      "confidence": 0.891
+    },
+    {
+      "radioTitle": "Sidney Hemmingmoore - Prime Minister Netanyahu",
+      "airDate": "Aug 2, 2024",
+      "podbeanTitle": "F - 08/02/24 - Sidney Hemmingmoore - Prime Minister Netanyahu",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/f-080224-sidney-hemmingmoore-prime-minister-netanyahu/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/gc82bc3vv354yatw/2024-08-02.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Minister Fred Christian - The Importance of Prayer Part 2 - Some Things Christians Should Pray For",
+      "airDate": "Jul 31, 2024",
+      "podbeanTitle": "W - 07/31/24 - Minister Fred Christian - The Importance of Prayer Part 2 - Some Things Christians Should Pray For",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/w-073124-minister-fred-christian-the-importance-of-prayer-part-2-some-things-christians-should-pray-for/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/qa7e36wbwwhvrggn/2024-07-31.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Corey Fischer - Flatlined - Demonics",
+      "airDate": "Jul 18, 2024",
+      "podbeanTitle": "Th - 07/18/24 - Corey Fischer - Flatlined - Demonics",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/th-071824-corey-fischer-flatlined-demonics/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/s9kv4g3eattdrc8p/2024-07-18.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Captain Milton Alvarez - United Arab Emirates - God's Treasure Chest",
+      "airDate": "Jul 17, 2024",
+      "podbeanTitle": "W - 07/17/24 - Captain Milton Alvarez - United Arab Emirates - God's Treasure Chest",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/w-071724-captain-milton-alvarez-united-arab-emirates-gods-treasure-chest/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/cpz6xg48ehbfifav/2024-07-17.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Apostolic Leader Eric Hurd - Mind Control - Biden - COVID",
+      "airDate": "Jul 12, 2024",
+      "podbeanTitle": "F - 07/12/24 - Apostolic Leader Eric Hurd - Mind Control - Biden - COVID",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/f-071224-apostolic-leader-eric-hurd-mind-control-biden-covid/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/5ez7cnmts34e623c/2024-07-12.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Ben (Benancio) Garcia - Candidate U.S. Congress, WA State 4th Dist.",
+      "airDate": "Jul 10, 2024",
+      "podbeanTitle": "W - 07/10/24 - Ben (Benancio) Garcia - Candidate U.S. Congress, WA State 4th Dist.",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/w-071024-ben-benancio-garcia-candidate-us-congress-wa-state-4th-dist/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/uvp9sy7rmu6hpxhn/2024-07-10.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Sidney Hemmingmoore - Warning for Netanyahu & Germany's Betrayal",
+      "airDate": "Jul 5, 2024",
+      "podbeanTitle": "F - 07/05/24 - Sidney Hemmingmoore - Warning for Netanyahu & Germany's Betrayal",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/f-070524-sidney-hemmingmoore-warning-for-netanyahu-germanys-betrayal/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/ccdaxzrk3bd77pp5/2024-07-05.mp3",
+      "match": "fuzzy_from_ambig",
+      "confidence": 0.921
+    },
+    {
+      "radioTitle": "Minister Fred Christian - The Importance of Prayer / Frank Sinatra & Elvis Presley",
+      "airDate": "Jul 4, 2024",
+      "podbeanTitle": "Th - 07/04/24 - Minister Fred Christian - The Importance of Prayer / Frank Sinatra & Elvis Presley",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/th-070424-minister-fred-christian-the-importance-of-prayer-frank-sinatra-elvis-presley/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/626xnf75ae5azbnc/2024-07-04.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Dr. Andy Nazario, Ret. Capt. Bernalillo County Sheriff's Dept., NM - Critical Race Theory",
+      "airDate": "Jul 3, 2024",
+      "podbeanTitle": "W - 07/03/24 - Dr. Andy Nazario, Ret. Capt. Bernalillo County Sheriff's Dept., NM - Critical Race Theory",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/w-070324-dr-andy-nazario-ret-capt-bernalillo-county-sheriffs-dept-nm-critical-race-theory/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/b59hixvjqbtmjpac/2024-07-03.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Pastor David Manila - Former Philadelphia Mobster, Now Evangelist & Pastor part 2",
+      "airDate": "Jul 2, 2024",
+      "podbeanTitle": "T - 07/02/24 - Pastor David Manila - Former Philadelphia Mobster, Now Evangelist & Pastor part 2",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/t-070224-pastor-david-manila-former-philadelphia-mobster-now-evangelist-pastor-part-2/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/6i9qx3ywa79s9p7b/2024-07-02.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "The Consequences of Disbelief in the Warnings of Visions and Dreams",
+      "airDate": "Jul 1, 2024",
+      "podbeanTitle": "M - 07/01/24 - Dr. Hansen - The Consequences of Disbelief in the Warnings of Visions and Dreams",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/m-070124-dr-hansen-the-consequences-of-disbelief-in-the-warnings-of-visions-and-dreams/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/xurvnqdczn5wy77m/2024-07-01.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Apostolic Leader Eric Hurd - The Divine Nature Part 2",
+      "airDate": "Jun 28, 2024",
+      "podbeanTitle": "F - 06/28/24 - Apostolic Leader Eric Hurd - The Divine Nature Part 2",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/f-062824-apostolic-leader-eric-hurd-the-divine-nature-part-2/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/pkqpghch32brcv2i/2024-06-28.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Dr. EJ Buckardt - Toppling of Constitution & Treason",
+      "airDate": "Jun 25, 2024",
+      "podbeanTitle": "T - 06/25/24 - Dr. EJ Buckardt - Toppling of Constitution & Treason",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/t-062524-dr-ej-buckardt-toppling-of-constitution-treason/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/iara79bury6h3pjg/2024-06-25.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Dr. Andy Nazario, Ret. Capt. Bernalillo County Sheriff's Dept., NM - Pride Month",
+      "airDate": "Jun 20, 2024",
+      "podbeanTitle": "Th - 06/20/24 - Dr. Andy Nazario, Ret. Capt. Bernalillo County Sheriff's Dept., NM - Pride Month",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/th-062024-dr-andy-nazario-ret-capt-bernalillo-county-sheriffs-dept-nm-pride-month/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/q9myh4nafgdemq3y/2024-06-20.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Apostolic Leader Eric Hurd - The Divine Nature Part 1",
+      "airDate": "Jun 19, 2024",
+      "podbeanTitle": "W - 06/19/24 - Apostolic Leader Eric Hurd - The Divine Nature Part 1",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/w-061924-apostolic-leader-eric-hurd-the-divine-nature-part-1/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/ch97q6j654v7kn99/2024-06-19.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Scott Nazarino - Candidate US Senate, WA State 2024",
+      "airDate": "Jun 14, 2024",
+      "podbeanTitle": "F - 06/14/24 - Scott Nazarino - Candidate US Senate, WA State 2024",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/f-061424-scott-nazarino-candidate-us-senate-wa-state-2024/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/zdtcy54radj88evw/2024-06-14.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Captain Milton Alvarez - Japan Mafia",
+      "airDate": "Jun 12, 2024",
+      "podbeanTitle": "W - 06/12/24 - Captain Milton Alvarez - Japan Mafia",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/w-061224-captain-milton-alvarez-japan-mafia/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/4crgsdcgt6ca8sa8/2024-06-12.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Captain Milton Alvarez - Former Mafia - God Moving in Pakistan",
+      "airDate": "Jun 6, 2024",
+      "podbeanTitle": "Th - 06/06/24 - Captain Milton Alvarez - Former Mafia - God Moving in Pakistan",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/th-060624-captain-milton-alvarez-former-mafia-god-moving-in-pakistan/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/h4ywum82t5thhn5z/2024-06-06.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Dominic Imperato - Drugs - Died 3 Times",
+      "airDate": "Jun 4, 2024",
+      "podbeanTitle": "T - 06/04/24 - Dominic Imperato - Drugs - Died 3 Times",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/t-060424-dominic-imperato-drugs-died-3-times/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/zyk4ad3hqswh8fuf/2024-06-04.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Minister Fred Christian - Communism & the New World Order",
+      "airDate": "Jun 3, 2024",
+      "podbeanTitle": "M - 06/03/24 - Minister Fred Christian - Communism & the New World Order",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/m-060324-minister-fred-christian-communism-the-new-world-order/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/wzdp8t32hqgkkfcd/2024-06-03.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Pastor Joe Kirkwood - Miracles - Pakistan - Uganda - Ethiopia",
+      "airDate": "May 24, 2024",
+      "podbeanTitle": "F - 05/24/24 - Pastor Joe Kirkwood - Miracles - Pakistan - Uganda - Ethiopia",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/f-052424-pastor-joe-kirkwood-miracles-pakistan-uganda-ethiopia/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/v984wggia8pbi2in/2024-05-24.mp3",
+      "match": "fuzzy_from_ambig",
+      "confidence": 0.906
+    },
+    {
+      "radioTitle": "Bishop Rick Callahan - America's Church",
+      "airDate": "May 21, 2024",
+      "podbeanTitle": "T - 05/21/24 - Bishop Rick Callahan - America's Church",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/t-052124-bishop-rick-callahan-americas-church/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/pta7mhumgi8fbp35/2024-05-21.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Resurrection Day - First Fruits",
+      "airDate": "May 20, 2024",
+      "podbeanTitle": "M - 05/20/24 - Dr. Hansen - Resurrection Day - First Fruits",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/m-052024-dr-hansen-resurrection-day-first-fruits/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/wddx4znpva4nyimb/2024-05-20.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Unleavened Bread",
+      "airDate": "May 13, 2024",
+      "podbeanTitle": "M - 05/13/24 - Dr. Hansen - Unleavened Bread",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/m-051324-dr-hansen-unleavened-bread/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/7h9iae9dv6p6e4ij/2024-05-13.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Rev. Dr. EJ Buckardt, Pastor Vance Miller - European Union & America's Attack on Speech",
+      "airDate": "May 8, 2024",
+      "podbeanTitle": "W - 05/08/24 - Rev. Dr. EJ Buckardt, Pastor Vance Miller - European Union & America's Attack on Speech",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/w-050824-rev-dr-ej-buckardt-pastor-vance-miller-european-union-americas-attack-on-speech/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/e7u78qfddmjmmw2c/2024-05-08.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Rev. Dr. EJ Buckardt - Bio",
+      "airDate": "May 7, 2024",
+      "podbeanTitle": "T - 05/07/24 - Rev. Dr. EJ Buckardt - Bio",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/t-050724-rev-dr-ej-buckardt-bio/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/4m92uf752nwgz5m2/2024-05-07.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Fred Christian - Need to Evangelize - Study & Repent",
+      "airDate": "May 3, 2024",
+      "podbeanTitle": "F - 05/03/24 - Fred Christian - Need to Evangelize - Study & Repent",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/f-050324-fred-christian-need-to-evangelize-study-repent/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/h9kgd2jbqid44u4z/2024-05-03.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Pastor Ron Dimaline - Church & WA. D.C. (Founder of New Mount Zion Ministries)",
+      "airDate": "May 2, 2024",
+      "podbeanTitle": "Th - 05/02/24 - Pastor Ron Dimaline - Church & WA. D.C. (Founder of New Mount Zion Ministries)",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/th-050224-pastor-ron-dimaline-church-wa-dc-founder-of-new-mount-zion-ministries/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/vhphw4s3rnnah7tb/2024-05-02.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Dr. EJ Buckardt - Absolute Truth",
+      "airDate": "Apr 26, 2024",
+      "podbeanTitle": "F - 04/26/24 - Dr. EJ Buckardt - Absolute Truth",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/f-042624-dr-ej-buckardt-absolute-truth/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/qvfq4supzzpxmqgz/2024-04-26.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "The Way for Unity & Peace",
+      "airDate": "Apr 22, 2024",
+      "podbeanTitle": "M - 04/22/24 - Dr. Hansen - The Way for Unity & Peace",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/m-042224-dr-hansen-the-way-for-unity-peace/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/ikta7bkkz7t8nmsc/2024-04-22.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "George Bates - Died - Paralyzed & Healed",
+      "airDate": "Apr 16, 2024",
+      "podbeanTitle": "T - 04/16/24 - George Bates - Died - Paralyzed & Healed",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/t-041624-george-bates-died-paralyzed-healed/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/a4j3pc7mdyympis4/2024-04-16.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Total Peace",
+      "airDate": "Apr 15, 2024",
+      "podbeanTitle": "M - 04/15/24 - Dr. Hansen - Total Peace",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/m-041524-dr-hansen-total-peace/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/6mwtiegbiweerwb3/2024-04-15.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Dr. Hansen - Daily Pentecost - Bogota, Colombia 3/17/24 am Meeting Part 2",
+      "airDate": "Apr 12, 2024",
+      "podbeanTitle": "F - 04/12/24 - Dr. Hansen - Daily Pentecost - Bogota, Colombia 3/17/24 am Meeting Part 2",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/f-041224-dr-hansen-daily-pentecost-bogota-colombia-31724-am-meeting-part-2/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/33ur2u/2024-04-12.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Dr. Hansen - Daily Pentecost - Bogota, Colombia 3/17/24 am Meeting Part 1",
+      "airDate": "Apr 11, 2024",
+      "podbeanTitle": "Th - 04/11/24 - Dr. Hansen - Daily Pentecost - Bogota, Colombia 3/17/24 am Meeting Part 1",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/th-041124-dr-hansen-daily-pentecost-bogota-colombia-31724-am-meeting-part-1/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/chknw8/2024-04-11.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Rev. Adalia Hansen - Who is the Holy Spirit? - Bogota, Colombia 3/17/24 am Meeting Part 2",
+      "airDate": "Apr 10, 2024",
+      "podbeanTitle": "W - 04/10/24 - Rev. Adalia Hansen - Who is the Holy Spirit? - Bogota, Colombia 3/17/24 am Meeting Part 2",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/w-041024-rev-adalia-hansen-who-is-the-holy-spirit-bogota-colombia-31724-am-meeting-part-2/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/hbnn9d/2024-04-10.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Rev. Adalia Hansen - Who is the Holy Spirit? - Bogota, Colombia 3/17/24 am Meeting Part 1",
+      "airDate": "Apr 9, 2024",
+      "podbeanTitle": "T - 04/09/24 - Rev. Adalia Hansen - Who is the Holy Spirit? - Bogota, Colombia 3/17/24 am Meeting Part 1",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/t-040924-rev-adalia-hansen-who-is-the-holy-spirit-bogota-colombia-31724-am-meeting-part-1/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/mb4zma/2024-04-09.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Pastor Vance Miller - Bogota, Colombia, March 12-19, 2024",
+      "airDate": "Apr 3, 2024",
+      "podbeanTitle": "W - 04/03/24 - Pastor Vance Miller - Bogota, Colombia, March 12-19, 2024",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/w-040324-pastor-vance-miller-bogota-colombia-march-12-19-2024/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/yp6efw/2024-04-03.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "The Foundations Destroyed - Bogota, Colombia 3/15/24 am Meeting",
+      "airDate": "Apr 2, 2024",
+      "podbeanTitle": "T - 04/02/24 - Dr. Hansen - The Foundations Destroyed - Bogota, Colombia 3/15/24 am Meeting",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/t-040224-dr-hansen-the-foundations-destroyed-bogota-colombia-31524-am-meeting/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/wwprzj/2024-04-02.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Apostle David Bohorquez & Evangelist Alvaro Luna, Interpreter Angel Diaz, Bogota, Colombia",
+      "airDate": "Mar 29, 2024",
+      "podbeanTitle": "F - 03/29/24 - Apostle David Bohorquez & Evangelist Alvaro Luna, Interpreter Angel Diaz, Bogota, Colombia",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/f-032924-apostle-david-bohorquez-evangelist-alvaro-luna-interpreter-angel-diaz-bogota-colombia/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/eqymd4/2024-03-29.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Entrepreneur & Driver Camilo Quiroga, Interpreter Angel Diaz, Bogota, Colombia",
+      "airDate": "Mar 28, 2024",
+      "podbeanTitle": "Th - 03/28/24 - Entrepreneur & Driver Camilo Quiroya, Interpreter Angel Diaz, Bogota, Colombia",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/th-032824-entrepreneur-driver-camilo-quiroya-interpreter-angel-diaz-bogota-colombia/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/t9zcvu/2024-03-28.mp3",
+      "match": "fuzzy",
+      "confidence": 0.916
+    },
+    {
+      "radioTitle": "Pastor, Journalist, Director of the newspaper The Word, Arnaldo Araque, Apostle David Bohorquez, Interpreter Angel Diaz, Bogota, Colombia",
+      "airDate": "Mar 27, 2024",
+      "podbeanTitle": "W - 03/27/24 - Pastor, Journalist of the newspaper The Word, Arnaldo Araque, Apostle David Bohorquez, Interpreter Angel Diaz, Bogota, Colombia",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/w-032724-pastor-journalist-of-the-newspaper-the-word-arnaldo-araque-apostle-david-bohorquez-interpreter-angel-diaz-bogota-colombia/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/f3pi2b/2024-03-27.mp3",
+      "match": "fuzzy",
+      "confidence": 0.919
+    },
+    {
+      "radioTitle": "Apostle David Bohorquez, Interpreter Angel Diaz, Bogota, Colombia",
+      "airDate": "Mar 26, 2024",
+      "podbeanTitle": "T - 03/26/24 - Apostle David Bohorquez, Interpreter Angel Diaz, Bogota, Colombia",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/t-032624-apostle-david-bohorquez-interpreter-angel-diaz-bogota-colombia/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/6yaqc9/2024-03-26.mp3",
+      "match": "fuzzy_from_ambig",
+      "confidence": 0.919
+    },
+    {
+      "radioTitle": "Dr. EJ Buckardt - Understanding the Israel & Hamas Situation",
+      "airDate": "Mar 25, 2024",
+      "podbeanTitle": "M - 03/25/24 - Dr. EJ Buckardt - Understanding the Israel & Hamas Situation",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/m-032524-dr-ej-buckardt-understanding-the-israel-hamas-situation/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/znzc6x/2024-03-25.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Apostle Don Beasley - Who Is Holy Ghost?  continued, Gives direction",
+      "airDate": "Mar 21, 2024",
+      "podbeanTitle": "Th - 03/21/24 - Apostle Don Beasley - Who Is Holy Ghost?  continued, Gives direction",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/th-032124-apostle-don-beasley-who-is-holy-ghost-continued-gives-direction/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/exhjfy/2024-03-21.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Mark Doolittle \"Preparing for End Times\" - The Ministry of Dr. Jonathan Hansen",
+      "airDate": "Mar 20, 2024",
+      "podbeanTitle": "W - 03/20/24 - Mark Doolittle \"Preparing for End Times\" - The Ministry of Dr. Jonathan Hansen",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/w-032024-mark-doolittle-preparing-for-end-times-the-ministry-of-dr-jonathan-hansen/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/ahmttv/2024-03-20.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Apostle Don Beasley - The Great Deception/Falling Away",
+      "airDate": "Mar 13, 2024",
+      "podbeanTitle": "W - 03/13/24 - Apostle Don Beasley - The Great Deception/Falling Away",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/w-031324-apostle-don-beasley-the-great-deceptionfalling-away/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/4qwfm8/2024-03-13.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Dr. Emmanuel Ziga, The Holy Ghost Conference 2/21/24 - Who Is The Holy Spirit? Part 3",
+      "airDate": "Mar 7, 2024",
+      "podbeanTitle": "Th - 03/07/24 - Dr. Emmanuel Ziga, The Holy Ghost Conference 2/21/24 - Who Is The Holy Spirit? Part 3",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/th-030724-dr-emmanuel-ziga-the-holy-ghost-conference-22124-who-is-the-holy-spirit-part-3/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/jt7hdw/2024-03-07.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Dr. Emmanuel Ziga, The Holy Ghost Conference 2/21/24 - Who Is The Holy Spirit? Part 2",
+      "airDate": "Mar 6, 2024",
+      "podbeanTitle": "W - 03/06/24 - Dr. Emmanuel Ziga, The Holy Ghost Conference 2/21/24 - Who Is The Holy Spirit? Part 2",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/w-030624-dr-emmanuel-ziga-the-holy-ghost-conference-22124-who-is-the-holy-spirit-part-2/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/x2ubga/2024-03-06.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Dr. Emmanuel Ziga, The Holy Ghost Conference 2/21/24 - Who Is The Holy Spirit? Part 1",
+      "airDate": "Mar 5, 2024",
+      "podbeanTitle": "T - 03/05/24 - Dr. Emmanuel Ziga, The Holy Ghost Conference 2/21/24 - Who Is The Holy Spirit? Part 1",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/t-030524-dr-emmanuel-ziga-the-holy-ghost-conference-22124-who-is-the-holy-spirit-part-1/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/8cub4z/2024-03-05.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "How to Defeat Our Destructive Emotions and Evil Thoughts",
+      "airDate": "Mar 4, 2024",
+      "podbeanTitle": "M - 03/04/24 - Dr. Hansen - How to Defeat Our Destructive Emotions and Evil Thoughts",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/m-030424-dr-hansen-how-to-defeat-our-destructive-emotions-and-evil-thoughts/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/9qit2k/2024-03-04.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "25 Prophetic Dreams",
+      "airDate": "Mar 1, 2024",
+      "podbeanTitle": "Warning - 25 Prophetic Dreams",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/warning-25-prophetic-dreams/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/4jabzt64hxfm3se9/Warning_-_25_Prophetic_Dreams8mksi.m4a",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "25 Prophetic Dreams",
+      "airDate": "Feb 13, 2024",
+      "podbeanTitle": "Warning - 25 Prophetic Dreams",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/warning-25-prophetic-dreams/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/4jabzt64hxfm3se9/Warning_-_25_Prophetic_Dreams8mksi.m4a",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "Rev. Dr. EJ Buckardt - How do the Seven Churches of Revelation Compare to the Church Today? Part 3",
+      "airDate": "Feb 12, 2024",
+      "podbeanTitle": "M - 02/12/24 - Rev. Dr. EJ Buckardt - How do the Seven Churches of Revelation Compare to the Church Today? Part 3",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/m-021224-rev-dr-ej-buckardt-how-do-the-seven-churches-of-revelation-compare-to-the-church-today-part-3/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/r83556/2024-02-12.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Share the Love Centre, with Teacher John CW, Kenol, Kenya January 28, 2024 Part 5",
+      "airDate": "Feb 9, 2024",
+      "podbeanTitle": "Su - 02/11/24 - Dr. Hansen, Rev Adalia Hansen - Share the Love Centre, with Teacher John CW, Kenol, Kenya January 28, 2024 (Full Length 2:26:20:00)",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/su-021124-dr-hansen-rev-adalia-hansen-share-the-love-centre-with-teacher-john-cw-nairobi-kenya-january-28-2024-full-length-2262000/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/d6aww4/Sun2024-02-11_2_26_20_00.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Share the Love Centre, with Teacher John CW, Kenol, Kenya January 28, 2024 Part 4",
+      "airDate": "Feb 8, 2024",
+      "podbeanTitle": "Su - 02/11/24 - Dr. Hansen, Rev Adalia Hansen - Share the Love Centre, with Teacher John CW, Kenol, Kenya January 28, 2024 (Full Length 2:26:20:00)",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/su-021124-dr-hansen-rev-adalia-hansen-share-the-love-centre-with-teacher-john-cw-nairobi-kenya-january-28-2024-full-length-2262000/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/d6aww4/Sun2024-02-11_2_26_20_00.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Share the Love Centre, with Teacher John CW, Kenol, Kenya January 28, 2024 Part 3",
+      "airDate": "Feb 7, 2024",
+      "podbeanTitle": "Su - 02/11/24 - Dr. Hansen, Rev Adalia Hansen - Share the Love Centre, with Teacher John CW, Kenol, Kenya January 28, 2024 (Full Length 2:26:20:00)",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/su-021124-dr-hansen-rev-adalia-hansen-share-the-love-centre-with-teacher-john-cw-nairobi-kenya-january-28-2024-full-length-2262000/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/d6aww4/Sun2024-02-11_2_26_20_00.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Share the Love Centre, with Teacher John CW, Kenol, Kenya January 28, 2024 Part 2",
+      "airDate": "Feb 6, 2024",
+      "podbeanTitle": "Su - 02/11/24 - Dr. Hansen, Rev Adalia Hansen - Share the Love Centre, with Teacher John CW, Kenol, Kenya January 28, 2024 (Full Length 2:26:20:00)",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/su-021124-dr-hansen-rev-adalia-hansen-share-the-love-centre-with-teacher-john-cw-nairobi-kenya-january-28-2024-full-length-2262000/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/d6aww4/Sun2024-02-11_2_26_20_00.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Share the Love Centre, with Teacher John CW, Kenol, Kenya January 28, 2024 Part 1",
+      "airDate": "Feb 5, 2024",
+      "podbeanTitle": "Su - 02/11/24 - Dr. Hansen, Rev Adalia Hansen - Share the Love Centre, with Teacher John CW, Kenol, Kenya January 28, 2024 (Full Length 2:26:20:00)",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/su-021124-dr-hansen-rev-adalia-hansen-share-the-love-centre-with-teacher-john-cw-nairobi-kenya-january-28-2024-full-length-2262000/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/d6aww4/Sun2024-02-11_2_26_20_00.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Apostolic Leader Eric Hurd - Communism - Pope - Vaccines",
+      "airDate": "Feb 2, 2024",
+      "podbeanTitle": "F - 02/02/24 - Apostolic Leader Eric Hurd - Communism - Pope - Vaccines",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/f-020224-apostolic-leader-eric-hurd-communism-pope-vaccines/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/dm92ek/2024-02-02.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Pastor Nathan Gaub - Salvation - Food - Deliverance",
+      "airDate": "Jan 30, 2024",
+      "podbeanTitle": "T - 01/30/24 - Pastor Nathan Gaub - Salvation - Food - Deliverance",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/t-013024-pastor-nathan-gaub-salvation-food-deliverance/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/zhcbrr/2024-01-30.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Rev. Dr. EJ Buckardt - How do the Seven Churches of Revelation Compare to the Church Today? Part 2",
+      "airDate": "Jan 29, 2024",
+      "podbeanTitle": "M - 01/29/24 - Rev. Dr. EJ Buckardt - How do the Seven Churches of Revelation Compare to the Church Today? Part 2",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/m-012924-rev-dr-ej-buckardt-how-do-the-seven-churches-of-revelation-compare-to-the-church-today-part-2/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/gaid4i/2024-01-29.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Fred Christian - Public Schools are the Enemy",
+      "airDate": "Jan 26, 2024",
+      "podbeanTitle": "F - 01/26/24 - Fred Christian - Public Schools are the Enemy",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/f-012624-fred-christian-public-schools-are-the-enemy/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/5zw7qu/2024-01-26.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Rev. Dr. EJ Buckardt - Palestine, Beast, Israel Betrayed (OmegaManRadio with Shannon Davis 01/05/24) Part 3 of 3",
+      "airDate": "Jan 25, 2024",
+      "podbeanTitle": "S - 01/27/24 - Rev. Dr. EJ Buckardt - Palestine, Beast, Israel Betrayed (OmegaManRadio with Shannon Davis 01/05/24)",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/s-012624-rev-dr-ej-buckardt-palestine-beast-israel-betrayed-omegamanradio-with-shannon-davis-010524/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/auu5k4/SW2024-01-26.mp3",
+      "match": "fuzzy",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Rev. Dr. EJ Buckardt - Palestine, Beast, Israel Betrayed (OmegaManRadio with Shannon Davis 01/05/24) Part 2 of 3",
+      "airDate": "Jan 24, 2024",
+      "podbeanTitle": "W - 01/24/24 - Rev. Dr. EJ Buckardt - Palestine, Beast, Israel Betrayed (OmegaManRadio with Shannon Davis 01/05/24) Part 2",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/w-012424-rev-dr-ej-buckardt-palestine-beast-israel-betrayed-omegamanradio-with-shannon-davis-010524-part-2/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/6frnet/2024-01-24.mp3",
+      "match": "fuzzy",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Rev. Dr. EJ Buckardt - Palestine, Beast, Israel Betrayed (OmegaManRadio with Shannon Davis 01/05/24) Part 1 of 3",
+      "airDate": "Jan 23, 2024",
+      "podbeanTitle": "S - 01/27/24 - Rev. Dr. EJ Buckardt - Palestine, Beast, Israel Betrayed (OmegaManRadio with Shannon Davis 01/05/24)",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/s-012624-rev-dr-ej-buckardt-palestine-beast-israel-betrayed-omegamanradio-with-shannon-davis-010524/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/auu5k4/SW2024-01-26.mp3",
+      "match": "fuzzy",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Rev. Dr. EJ Buckardt - How do the Seven Churches of Revelation Compare to the Church Today? Part 1",
+      "airDate": "Jan 22, 2024",
+      "podbeanTitle": "M - 01/22/24 - Rev. Dr. EJ Buckardt - How do the Seven Churches of Revelation Compare to the Church Today? Part 1",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/m-012224-rev-dr-ej-buckardt-how-do-the-seven-churches-of-revelation-compare-to-the-church-today-part-1/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/niuhaw/2024-01-22.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Steven Lambert - Saving Faith",
+      "airDate": "Jan 19, 2024",
+      "podbeanTitle": "F - 01/19/24 - Steven Lambert - Saving Faith",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/f-011924-steven-lambert-saving-faith/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/cdv4cc/2024-01-19.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Rev. Dr. EJ Buckardt - Truth & Lies about the Israel-Hamas War",
+      "airDate": "Jan 12, 2024",
+      "podbeanTitle": "F - 01/12/24 - Rev. Dr. EJ Buckardt - Truth & Lies about the Israel-Hamas War",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/f-011224-rev-dr-ej-buckardt-truth-lies-about-the-israel-hamas-war/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/gu3wnc/2024-01-12.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Dr. Steven Lambert - Died Six Times",
+      "airDate": "Jan 11, 2024",
+      "podbeanTitle": "Th - 01/11/24 - Dr. Steven Lambert - Died Six Times",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/th-011124-dr-steven-lambert-died-six-times/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/rza5hy/2024-01-11.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Come Boldly into His Presence",
+      "airDate": "Jan 8, 2024",
+      "podbeanTitle": "M - 01/08/24 - Dr. Hansen - Come Boldly into His Presence",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/m-010824-dr-hansen-come-boldly-into-his-presence/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/p7bg4r/2024-01-08.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Rev. Dr. EJ Buckardt - The Scripture in Hymns, Do You Trust and Obey?",
+      "airDate": "Jan 2, 2024",
+      "podbeanTitle": "T - 01/02/24 - Rev. Dr. EJ Buckardt - The Scripture in Hymns, Do You Trust and Obey?",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/t-010224-rev-dr-ej-buckardt-the-scripture-in-hymns-do-you-trust-and-obey/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/vmai3s/2024-01-02.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Rev. Dr. EJ Buckardt - Jesus' Call to the Disciples",
+      "airDate": "Dec 29, 2023",
+      "podbeanTitle": "F - 12/29/23 - Rev. Dr. EJ Buckardt - Jesus\u2019 Call to the Disciples",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/f-122229-rev-dr-ej-buckardt-jesus-call-to-the-disciples/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/c889uq/2023-12-29.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Bishop Rick Callahan - The Responsibility of the Church",
+      "airDate": "Dec 28, 2023",
+      "podbeanTitle": "Th - 12/28/23 - Bishop Rick Callahan - The Responsibility of the Church",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/th-122228-bishop-rick-callahan-the-responsibility-of-the-church/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/d6kw7f/2023-12-28.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Sidney Hemmingmoore - North Korea",
+      "airDate": "Dec 27, 2023",
+      "podbeanTitle": "W - 12/27/23 - Sidney Hemmingmoore - North Korea",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/w-122227-sidney-hemmingmoore-north-korea/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/ffnk5s/2023-12-27.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Sidney Hemmingmoore - Hamas/Gaza Destroyed",
+      "airDate": "Dec 26, 2023",
+      "podbeanTitle": "T - 12/26/23 - Sidney Hemmingmoore - Hamas/Gaza Destroyed",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/t-122226-sidney-hemmingmoore-hamasgaza-destroyed/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/6zbkww/2023-12-26.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Sidney Hemmingmoore - Terminal Illness - Spirit of Death",
+      "airDate": "Dec 22, 2023",
+      "podbeanTitle": "F - 12/22/23 - Sidney Hemmingmoore - Terminal Illness - Spirit of Death",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/f-122223-sidney-hemmingmoore-terminal-illness-spirit-of-death/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/mqmc2m/2023-12-22.mp3",
+      "match": "fuzzy_from_ambig",
+      "confidence": 0.904
+    },
+    {
+      "radioTitle": "Rev. Dr. EJ Buckardt  & Fred Christian - Lives Destroyed in Israel",
+      "airDate": "Dec 21, 2023",
+      "podbeanTitle": "Th - 12/21/23 - Rev. Dr. EJ Buckardt  & Fred Christian - Lives Destroyed in Israel",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/th-122123-rev-dr-ej-buckardt-fred-christian-lives-destroyed-in-israel/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/rvpv5j/2023-12-21.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Apostolic Leader Eric Hurd - Man Becoming an Animal, The Vatican",
+      "airDate": "Dec 15, 2023",
+      "podbeanTitle": "F - 12/15/23 - Apostolic Leader Eric Hurd - Man Becoming an Animal, The Vatican",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/f-121523-apostolic-leader-eric-hurd-man-becoming-an-animal-the-vatican/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/pyiife/2023-12-15.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Fred Christian & Vance Miller - Men & Governments Becoming Animals",
+      "airDate": "Dec 14, 2023",
+      "podbeanTitle": "Th - 12/14/23 - Fred Christian & Vance Miller - Men & Governments Becoming Animals",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/th-121423-fred-christian-vance-miller-men-governments-becoming-animals/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/v2m6fb/2023-12-14.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Fred Christian - Time to Fight Back - Eagles Saving Nations",
+      "airDate": "Dec 13, 2023",
+      "podbeanTitle": "W - 12/13/23 - Fred Christian - Time to Fight Back - Eagles Saving Nations",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/w-121323-fred-christian-time-to-fight-back-eagles-saving-nations/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/d9kski/2023-12-13.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Apostolic Leader Eric Hurd - Men Becoming Animals - Hamas",
+      "airDate": "Dec 12, 2023",
+      "podbeanTitle": "T - 12/12/23 - Apostolic Leader Eric Hurd - Men Becoming Animals - Hamas",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/t-121223-apostolic-leader-eric-hurd-men-becoming-animals-hamas/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/siuqq6/2023-12-12.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Rev. Dr. EJ Buckardt - People with Animal Minds and the Worst is Yet to Come, continuation",
+      "airDate": "Dec 11, 2023",
+      "podbeanTitle": "M - 12/11/23 - Rev. Dr. EJ Buckardt - People with Animal Minds and the Worst is Yet to Come, continuation",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/m-121123-rev-dr-ej-buckardt-people-with-animal-minds-and-the-worst-is-yet-to-come-continuation/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/zd574b/2023-12-11.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Rev. Dr. EJ Buckardt - Haggai - Comfort, Hope & Holiness Part 2",
+      "airDate": "Dec 1, 2023",
+      "podbeanTitle": "Su - 12/10/23 - Rev. Dr. EJ Buckardt - Haggai - Comfort, Hope & Holiness",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/su-121023-rev-dr-ej-buckardt-haggai-comfort-hope-holiness/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/y3e6ic/Sun2023-12-10_48_25.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Rev. Dr. EJ Buckardt - Haggai - Comfort, Hope & Holiness Part 1",
+      "airDate": "Nov 30, 2023",
+      "podbeanTitle": "Su - 12/10/23 - Rev. Dr. EJ Buckardt - Haggai - Comfort, Hope & Holiness",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/su-121023-rev-dr-ej-buckardt-haggai-comfort-hope-holiness/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/y3e6ic/Sun2023-12-10_48_25.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Roy Kendall - Jerusalem - War",
+      "airDate": "Nov 8, 2023",
+      "podbeanTitle": "S - 12/08/23 - Roy Kendall - Jerusalem - War / Pastor Ronald Dimaline - U.S. Congress - Hamas / Dr. Hansen - The Real Palestinians",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/s-120823-roy-kendall-jerusalem-war-pastor-ronald-dimaline-us-congress-hamas-dr-hansen-the-real-palestinians/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/4a4fqu/SW2023-12-08.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    },
+    {
+      "radioTitle": "Rev. Dr. EJ Buckardt - Israel at War 2023",
+      "airDate": "Oct 19, 2023",
+      "podbeanTitle": "Rev. Dr. EJ Buckardt - Israel at War 2023",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/th-101923-rev-dr-ej-buckardt-israel-at-war-2023/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/xhiss5/2023-10-19.mp3",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "Dr. EJ Buckardt - If, Then",
+      "airDate": "Aug 1, 2023",
+      "podbeanTitle": "Dr. EJ Buckardt, IF - THEN",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/dr-ej-buckardt-if-then/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/23tbc2v8r2piedfn/output-2.m4a",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "Issachar & War",
+      "airDate": "Jan 24, 2023",
+      "podbeanTitle": "Dr. Hansen - Issachar & War",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/dr-hansen-issachar-war/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/9jmfmeq7pbpkmu24/2025-06-20.mp3",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "Defeating Temptation",
+      "airDate": "Jan 16, 2023",
+      "podbeanTitle": "Dr. Hansen - Defeating Temptation",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/defeating-temptation/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/7qk4ji4827teee9k/2025-06-19.mp3",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "Grace for Each Other",
+      "airDate": "Jan 10, 2023",
+      "podbeanTitle": "Dr. Hansen - Grace for Each Other",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/grace-for-each-other/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/xr3y2ac6j4dzjuuf/2025-06-18.mp3",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "Satisfied Tenacious Eagles",
+      "airDate": "Jan 2, 2023",
+      "podbeanTitle": "Dr. Jonathan Hansen - Satisfied Tenacious Eagles",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/m-010223-dr-jonathan-hansen-satisfied-tenacious-eagles/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/bqekii/2023-01-02.mp3",
+      "match": "containment",
+      "confidence": 0.92
+    }
+  ]
+}
