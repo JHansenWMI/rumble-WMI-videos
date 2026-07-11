@@ -8,7 +8,7 @@
     "activeLimit": "Active file keeps the newest N matches (by schedule order); older matches go to the archive file for lazy load on Older."
   },
   "matchCount": 100,
-  "totalMatchCount": 397,
+  "totalMatchCount": 399,
   "activeLimit": 100,
   "hasArchive": true,
   "archiveFile": "podbean-radio-matches-archive.json",
@@ -154,6 +154,24 @@
       "podbeanTitle": "Warning - 25 Prophetic Dreams Part 3",
       "episodeUrl": "https://warningjonathanhansen.podbean.com/e/warning-25-prophetic-dreams-part-3/",
       "audioUrl": "https://mcdn.podbean.com/mf/web/vh9f6qme8m6pyfe3/Warning_-_25_Prophetic_Dreams_Part_399qsn.m4a",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "The Heart of God Part 2 - The Overcoming Women - Drs. Adalia & Jonathan Hansen",
+      "airDate": "Jun 23, 2026",
+      "podbeanTitle": "The Heart of God Part 2 - The Overcoming Women - Drs. Adalia & Jonathan Hansen",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/the-heart-of-god-part-2-the-overcoming-women-drs-adalia-jonathan-hansen/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/c6cchhnyyfvabv9r/part2_2.m4a",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "The Heart of God Part 1 - The Overcoming Women - Drs. Adalia & Jonathan Hansen",
+      "airDate": "Jun 22, 2026",
+      "podbeanTitle": "The Heart of God Part 1 - The Overcoming Women - Drs. Adalia & Jonathan Hansen",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/the-heart-of-god-part-1-the-overcoming-women-drs-adalia-jonathan-hansen/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/4kkygmacyzfanj0a/part1_g.m4a",
       "match": "exact_norm",
       "confidence": 1.0
     },
@@ -892,24 +910,6 @@
       "podbeanTitle": "Covenant Breaking Spirits Part 9 - God's Faithfulness",
       "episodeUrl": "https://warningjonathanhansen.podbean.com/e/covenant-breaking-spirits-part-9-gods-faithfulness/",
       "audioUrl": "https://mcdn.podbean.com/mf/web/eau964mpuah4udjf/Covenant_Breaking_Spirits_Part_8_-_God_s_Faithfulness_-_Jan_2_2026bc22n.mp3",
-      "match": "exact_norm",
-      "confidence": 1.0
-    },
-    {
-      "radioTitle": "Philippine Leaders Meeting - Dr. Adalia Hansen",
-      "airDate": "Jan 9, 2026",
-      "podbeanTitle": "Philippine Leaders Meeting - Dr. Adalia Hansen",
-      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/philippine-leaders-meeting-dr-adalia-hansen/",
-      "audioUrl": "https://mcdn.podbean.com/mf/web/ppurs38yp48b8db4/1123R5_2026-01-09_Philippine_Leaders_Meeting_-_Adalia9104k.m4a",
-      "match": "exact_norm",
-      "confidence": 1.0
-    },
-    {
-      "radioTitle": "Broken Dreams is the Beginning of Real Living",
-      "airDate": "Jan 8, 2026",
-      "podbeanTitle": "Broken Dreams is The Beginning of Real Living",
-      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/broken-dreams-is-the-beginning-of-real-living/",
-      "audioUrl": "https://mcdn.podbean.com/mf/web/tyn4sw3h2iadfkxk/425524568.m4a",
       "match": "exact_norm",
       "confidence": 1.0
     }

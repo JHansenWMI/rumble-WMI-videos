@@ -7,11 +7,29 @@
     "reject": "weak_fuzzy / ambiguous / no_match omitted",
     "activeLimit": "Active file keeps the newest N matches (by schedule order); older matches go to the archive file for lazy load on Older."
   },
-  "matchCount": 297,
-  "totalMatchCount": 397,
+  "matchCount": 299,
+  "totalMatchCount": 399,
   "activeLimit": 100,
   "isArchive": true,
   "matches": [
+    {
+      "radioTitle": "Philippine Leaders Meeting - Dr. Adalia Hansen",
+      "airDate": "Jan 9, 2026",
+      "podbeanTitle": "Philippine Leaders Meeting - Dr. Adalia Hansen",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/philippine-leaders-meeting-dr-adalia-hansen/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/ppurs38yp48b8db4/1123R5_2026-01-09_Philippine_Leaders_Meeting_-_Adalia9104k.m4a",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "Broken Dreams is the Beginning of Real Living",
+      "airDate": "Jan 8, 2026",
+      "podbeanTitle": "Broken Dreams is The Beginning of Real Living",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/broken-dreams-is-the-beginning-of-real-living/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/tyn4sw3h2iadfkxk/425524568.m4a",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
     {
       "radioTitle": "Covenant Breaking Spirits Part 8 - Harm to the Vulnerable",
       "airDate": "Jan 6, 2026",
