@@ -40,6 +40,7 @@ import csv
 import html
 import io
 import re
+import sys
 from datetime import datetime, timedelta
 from pathlib import Path
 from zoneinfo import ZoneInfo
@@ -49,8 +50,6 @@ try:
 except ImportError:
     print("ERROR: openpyxl not installed. Run: pip install openpyxl", file=sys.stderr)
     raise
-
-import sys
 
 PACIFIC = ZoneInfo("America/Los_Angeles")
 

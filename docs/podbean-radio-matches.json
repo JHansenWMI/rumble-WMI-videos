@@ -1,7 +1,7 @@
 {
   "sourceFeed": "https://feed.podbean.com/warningjonathanhansen/feed.xml",
   "podbeanSite": "https://warningjonathanhansen.podbean.com/",
-  "schedule": "docs/radio-schedule.txt",
+  "schedule": "/Users/fredchristian/dev/rumble-WMI-videos/Intra Support Files/radio_programs.csv",
   "rules": {
     "partN": "Radio 'Part N' may link to Podbean episode without Part (full program). Different Part numbers never match.",
     "reject": "weak_fuzzy / ambiguous / no_match omitted",

@@ -3,8 +3,16 @@
 Match radio-schedule.txt titles to Podbean RSS episodes for play-button links.
 
 Usage:
+  # Default: match using existing docs/radio-schedule.txt (no Office drive needed)
   python match_podbean_to_radio.py
+
+  # Or build the title list from existing radio_programs.csv (no spreadsheet rebuild)
+  python match_podbean_to_radio.py --from-csv
+
   python match_podbean_to_radio.py --dry-run
+
+This script never rebuilds radio_programs.csv and never opens the Office spreadsheet.
+Only needs: Podbean RSS (network) + local schedule text and/or CSV.
 
 Writes website data only:
   - docs/podbean-radio-matches.json          (newest active matches, default max 100)
@@ -33,6 +41,7 @@ from pathlib import Path
 
 DEFAULT_FEED = "https://feed.podbean.com/warningjonathanhansen/feed.xml"
 DEFAULT_SCHEDULE = Path("docs/radio-schedule.txt")
+DEFAULT_CSV = Path("Intra Support Files/radio_programs.csv")
 DEFAULT_OUTPUT = Path("docs/podbean-radio-matches.json")
 DEFAULT_ARCHIVE = Path("docs/podbean-radio-matches-archive.json")
 DEFAULT_ACTIVE_LIMIT = 100
@@ -136,6 +145,7 @@ def parse_podbean_rss(xml_text: str) -> list[dict]:
 
 
 def load_schedule(path: Path) -> list[dict]:
+    """Load title list from docs/radio-schedule.txt (website schedule)."""
     rows: list[dict] = []
     for ln in path.read_text(encoding="utf-8").splitlines():
         ln = ln.strip()
@@ -152,6 +162,63 @@ def load_schedule(path: Path) -> list[dict]:
                 "clean": clean_title(title),
             }
         )
+    return rows
+
+
+def load_schedule_from_csv(
+    csv_path: Path,
+    max_future_days: int = 10,
+) -> list[dict]:
+    """
+    Build the same title list the website schedule uses, from an existing
+    radio_programs.csv — without opening the Office spreadsheet or rewriting
+    the CSV. Reuses update_radio_programs mapping (slot 1, title clean, cutoff).
+    """
+    # Local import so this file can still run if radio updater is absent.
+    from update_radio_programs import (
+        MONTHS,
+        air_date_for_entry,
+        clean_title_for_display,
+        load_radio_programs_csv,
+        schedule_cutoff_date,
+    )
+
+    if not csv_path.is_file():
+        raise FileNotFoundError(f"CSV not found: {csv_path}")
+
+    entries = load_radio_programs_csv(csv_path)
+    cutoff = schedule_cutoff_date(max_future_days)
+    rows: list[dict] = []
+
+    for entry in entries:
+        if entry.get("slot") != "1":
+            continue
+        air_date = air_date_for_entry(entry)
+        if not air_date or air_date > cutoff:
+            continue
+        title = clean_title_for_display(entry.get("title") or "")
+        if not title:
+            continue
+        date_str = f"{MONTHS[air_date.month - 1]} {air_date.day}, {air_date.year}"
+        rows.append(
+            {
+                "date": date_str,
+                "title": title,
+                "clean": clean_title(title),
+            }
+        )
+
+    # Newest first (same as radio-schedule.txt)
+    def sort_key(r: dict):
+        # date like "Jul 17, 2026"
+        try:
+            from datetime import datetime
+
+            return datetime.strptime(r["date"], "%b %d, %Y")
+        except Exception:
+            return r["date"]
+
+    rows.sort(key=sort_key, reverse=True)
     return rows
 
 
@@ -257,11 +324,11 @@ def match_one(radio_title: str, episodes: list[dict], by_norm: dict, by_base: di
     return "no_match", best_r, best
 
 
-def _payload_base(feed_url: str, schedule_path: Path) -> dict:
+def _payload_base(feed_url: str, schedule_label: str) -> dict:
     return {
         "sourceFeed": feed_url,
         "podbeanSite": "https://warningjonathanhansen.podbean.com/",
-        "schedule": str(schedule_path).replace("\\", "/"),
+        "schedule": schedule_label,
         "rules": {
             "partN": (
                 "Radio 'Part N' may link to Podbean episode without Part "
@@ -269,8 +336,8 @@ def _payload_base(feed_url: str, schedule_path: Path) -> dict:
             ),
             "reject": "weak_fuzzy / ambiguous / no_match omitted",
             "activeLimit": (
-                f"Active file keeps the newest N matches (by schedule order); "
-                f"older matches go to the archive file for lazy load on Older."
+                "Active file keeps the newest N matches (by schedule order); "
+                "older matches go to the archive file for lazy load on Older."
             ),
         },
     }
@@ -283,14 +350,30 @@ def run(
     archive_path: Path,
     active_limit: int,
     dry_run: bool,
+    from_csv: bool = False,
+    csv_path: Path | None = None,
+    max_future_days: int = 10,
 ) -> int:
     print(f"Fetching {feed_url} …")
     xml_text = fetch_feed(feed_url)
     episodes = parse_podbean_rss(xml_text)
     print(f"Podbean episodes: {len(episodes)}")
 
-    schedule = load_schedule(schedule_path)
-    print(f"Radio schedule lines: {len(schedule)}")
+    if from_csv:
+        csv_path = csv_path or DEFAULT_CSV
+        if not csv_path.is_absolute():
+            csv_path = Path(__file__).parent / csv_path
+        print(f"Building title list from existing CSV (no rebuild): {csv_path}")
+        schedule = load_schedule_from_csv(csv_path, max_future_days=max_future_days)
+        schedule_label = str(csv_path).replace("\\", "/")
+    else:
+        if not schedule_path.is_absolute():
+            schedule_path = Path(__file__).parent / schedule_path
+        print(f"Loading schedule text: {schedule_path}")
+        schedule = load_schedule(schedule_path)
+        schedule_label = str(schedule_path).replace("\\", "/")
+
+    print(f"Radio titles to match: {len(schedule)}")
 
     by_norm: dict[str, list] = defaultdict(list)
     by_base: dict[str, list] = defaultdict(list)
@@ -331,7 +414,7 @@ def run(
     active = matches[:limit]
     archive = matches[limit:]
 
-    base = _payload_base(feed_url, schedule_path)
+    base = _payload_base(feed_url, schedule_label)
     active_payload = {
         **base,
         "matchCount": len(active),
@@ -373,9 +456,39 @@ def run(
 
 
 def main(argv: list[str] | None = None) -> int:
-    ap = argparse.ArgumentParser(description="Match radio schedule titles to Podbean RSS")
+    ap = argparse.ArgumentParser(
+        description=(
+            "Match radio titles to Podbean RSS for play buttons. "
+            "Does not open Office spreadsheets or rebuild radio_programs.csv."
+        )
+    )
     ap.add_argument("--feed", default=DEFAULT_FEED, help="Podbean RSS URL")
-    ap.add_argument("--schedule", type=Path, default=DEFAULT_SCHEDULE)
+    ap.add_argument(
+        "--schedule",
+        type=Path,
+        default=DEFAULT_SCHEDULE,
+        help="Schedule text (default: docs/radio-schedule.txt)",
+    )
+    ap.add_argument(
+        "--from-csv",
+        action="store_true",
+        help=(
+            "Build title list from existing radio_programs.csv instead of "
+            "radio-schedule.txt (no spreadsheet, no CSV rewrite)"
+        ),
+    )
+    ap.add_argument(
+        "--csv",
+        type=Path,
+        default=DEFAULT_CSV,
+        help="CSV path when using --from-csv",
+    )
+    ap.add_argument(
+        "--max-future-days",
+        type=int,
+        default=10,
+        help="With --from-csv: same air-date cutoff as update_radio_programs (default 10)",
+    )
     ap.add_argument("--output", type=Path, default=DEFAULT_OUTPUT)
     ap.add_argument("--archive", type=Path, default=DEFAULT_ARCHIVE)
     ap.add_argument(
@@ -394,6 +507,9 @@ def main(argv: list[str] | None = None) -> int:
             args.archive,
             args.active_limit,
             args.dry_run,
+            from_csv=args.from_csv,
+            csv_path=args.csv,
+            max_future_days=args.max_future_days,
         )
     except Exception as exc:
         print(f"ERROR: {exc}", file=sys.stderr)
