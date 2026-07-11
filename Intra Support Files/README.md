@@ -6,5 +6,6 @@ These can be considered temporary or useful for debugging and planning.
 Radio / shortwave:
 - `radio_programs.csv` — from XLSX schedule (program numbers + titles, 2023+). Shared source for both schedules.
 - `radio_broadcasts_seed.txt` + `.csv` — from https://www.worldministries.org/radio-broadcasts.aspx (public aired list)
-- Derived in `docs/`: `radio-schedule.txt` (slot 1 / `R*`), `shortwave-schedule.txt` (`*SW`)
+- `podbean_episodes.json` — accumulated Podbean catalog (merge by guid). Daily RSS is a rolling window (~999 items); merge keeps older episodes after they leave the feed. Used by `match_podbean_to_radio.py`.
+- Derived in `docs/`: `radio-schedule.txt` (slot 1 / `R*`), `shortwave-schedule.txt` (`*SW`), `podbean-radio-matches*.json`
 - See WorkToDo/Radio Program Parsing.MD for the full pipeline and snippet notes

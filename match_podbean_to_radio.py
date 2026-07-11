@@ -12,7 +12,12 @@ Usage:
   python match_podbean_to_radio.py --dry-run
 
 This script never rebuilds radio_programs.csv and never opens the Office spreadsheet.
-Only needs: Podbean RSS (network) + local schedule text and/or CSV.
+Needs: Podbean RSS (network, unless --cache-only) + local schedule text and/or CSV.
+
+Podbean episode catalog (accumulated, not website):
+  - Intra Support Files/podbean_episodes.json
+  Each fetch merges into this file by guid (add/update; never drops old episodes
+  that aged out of the RSS window). Matching uses the full local catalog.
 
 Writes website data only:
   - docs/podbean-radio-matches.json          (newest active matches, default max 100)
@@ -42,6 +47,7 @@ from pathlib import Path
 DEFAULT_FEED = "https://feed.podbean.com/warningjonathanhansen/feed.xml"
 DEFAULT_SCHEDULE = Path("docs/radio-schedule.txt")
 DEFAULT_CSV = Path("Intra Support Files/radio_programs.csv")
+DEFAULT_PODBEAN_CACHE = Path("Intra Support Files/podbean_episodes.json")
 DEFAULT_OUTPUT = Path("docs/podbean-radio-matches.json")
 DEFAULT_ARCHIVE = Path("docs/podbean-radio-matches-archive.json")
 DEFAULT_ACTIVE_LIMIT = 100
@@ -114,7 +120,34 @@ def fetch_feed(url: str) -> str:
         return resp.read().decode("utf-8", errors="replace")
 
 
+def _episode_key(ep: dict) -> str:
+    """Stable id for merge: guid preferred, else link, else enclosure."""
+    return (
+        (ep.get("guid") or "").strip()
+        or (ep.get("link") or "").strip()
+        or (ep.get("enclosure") or "").strip()
+    )
+
+
+def enrich_episode_fields(ep: dict) -> dict:
+    """Ensure derived clean/norm/part fields exist (for cache reload)."""
+    title = ep.get("title") or ""
+    cleaned = clean_title(title)
+    ep["clean"] = cleaned
+    ep["norm"] = normalize_title(cleaned)
+    ep["base_norm"] = normalize_title(base_title(cleaned))
+    ep["part"] = part_num(cleaned)
+    return ep
+
+
 def parse_podbean_rss(xml_text: str) -> list[dict]:
+    """
+    Parse one RSS document.
+
+    Note: A typical Podbean RSS response is a *rolling window* (here ~999 items),
+    not guaranteed full lifetime history. There is usually no separate "latest only"
+    endpoint that is smaller — you download the whole feed XML each time.
+    """
     raw_items = re.findall(r"<item>(.*?)</item>", xml_text, re.S | re.I)
 
     def grab(tag: str, blob: str) -> str:
@@ -125,23 +158,131 @@ def parse_podbean_rss(xml_text: str) -> list[dict]:
     for it in raw_items:
         title = html.unescape(grab("title", it))
         link = grab("link", it)
+        guid = grab("guid", it)
+        pub = grab("pubDate", it)
         m = re.search(r'<enclosure[^>]+url=["\']([^"\']+)["\']', it, re.I)
         enc = m.group(1) if m else ""
         if not title:
             continue
-        cleaned = clean_title(title)
-        episodes.append(
+        ep = {
+            "guid": guid,
+            "title": title,
+            "link": link,
+            "enclosure": enc,
+            "pubDate": pub,
+        }
+        episodes.append(enrich_episode_fields(ep))
+    return episodes
+
+
+def load_podbean_cache(path: Path) -> list[dict]:
+    if not path.is_file():
+        return []
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as exc:
+        print(f"Warning: could not read Podbean cache {path}: {exc}", file=sys.stderr)
+        return []
+    raw = data.get("episodes") if isinstance(data, dict) else data
+    if not isinstance(raw, list):
+        return []
+    return [enrich_episode_fields(dict(ep)) for ep in raw if ep.get("title")]
+
+
+def merge_podbean_episodes(existing: list[dict], fresh: list[dict]) -> tuple[list[dict], int, int]:
+    """
+    Merge fresh RSS items into the accumulated catalog by guid/link.
+    Returns (merged_list, added_count, updated_count).
+    Never removes episodes that disappeared from the feed.
+    """
+    from datetime import datetime, timezone
+
+    now = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    by_key: dict[str, dict] = {}
+    order: list[str] = []
+
+    for ep in existing:
+        key = _episode_key(ep)
+        if not key:
+            continue
+        if key not in by_key:
+            order.append(key)
+        by_key[key] = enrich_episode_fields(dict(ep))
+
+    added = 0
+    updated = 0
+    for ep in fresh:
+        key = _episode_key(ep)
+        if not key:
+            continue
+        ep = enrich_episode_fields(dict(ep))
+        if key not in by_key:
+            ep.setdefault("firstSeen", now)
+            ep["lastSeen"] = now
+            by_key[key] = ep
+            order.append(key)
+            added += 1
+        else:
+            prev = by_key[key]
+            # Update mutable fields from feed; keep firstSeen
+            first = prev.get("firstSeen") or now
+            changed = any(
+                prev.get(f) != ep.get(f)
+                for f in ("title", "link", "enclosure", "pubDate")
+            )
+            if changed:
+                updated += 1
+            prev.update(
+                {
+                    "guid": ep.get("guid") or prev.get("guid"),
+                    "title": ep.get("title") or prev.get("title"),
+                    "link": ep.get("link") or prev.get("link"),
+                    "enclosure": ep.get("enclosure") or prev.get("enclosure"),
+                    "pubDate": ep.get("pubDate") or prev.get("pubDate"),
+                    "firstSeen": first,
+                    "lastSeen": now,
+                }
+            )
+            by_key[key] = enrich_episode_fields(prev)
+
+    # Prefer newest pubDate first for matching shortlists (stable enough)
+    merged = [by_key[k] for k in order if k in by_key]
+    return merged, added, updated
+
+
+def save_podbean_cache(
+    path: Path,
+    episodes: list[dict],
+    feed_url: str,
+) -> None:
+    from datetime import datetime, timezone
+
+    path.parent.mkdir(parents=True, exist_ok=True)
+    # Persist a lean record (drop pure derived fields that can be recomputed)
+    lean = []
+    for ep in episodes:
+        lean.append(
             {
-                "title": title,
-                "link": link,
-                "enclosure": enc,
-                "clean": cleaned,
-                "norm": normalize_title(cleaned),
-                "base_norm": normalize_title(base_title(cleaned)),
-                "part": part_num(cleaned),
+                "guid": ep.get("guid") or "",
+                "title": ep.get("title") or "",
+                "link": ep.get("link") or "",
+                "enclosure": ep.get("enclosure") or "",
+                "pubDate": ep.get("pubDate") or "",
+                "firstSeen": ep.get("firstSeen") or "",
+                "lastSeen": ep.get("lastSeen") or "",
             }
         )
-    return episodes
+    payload = {
+        "sourceFeed": feed_url,
+        "lastFetched": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "episodeCount": len(lean),
+        "note": (
+            "Accumulated Podbean catalog. Daily RSS is a rolling window (~1000 items); "
+            "merge by guid so older episodes are retained after they leave the feed."
+        ),
+        "episodes": lean,
+    }
+    path.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
 
 
 def load_schedule(path: Path) -> list[dict]:
@@ -353,11 +494,40 @@ def run(
     from_csv: bool = False,
     csv_path: Path | None = None,
     max_future_days: int = 10,
+    cache_path: Path | None = None,
+    cache_only: bool = False,
+    no_cache: bool = False,
 ) -> int:
-    print(f"Fetching {feed_url} …")
-    xml_text = fetch_feed(feed_url)
-    episodes = parse_podbean_rss(xml_text)
-    print(f"Podbean episodes: {len(episodes)}")
+    project_root = Path(__file__).parent
+    cache_path = cache_path or DEFAULT_PODBEAN_CACHE
+    if not cache_path.is_absolute():
+        cache_path = project_root / cache_path
+
+    existing = [] if no_cache else load_podbean_cache(cache_path)
+    if existing:
+        print(f"Loaded Podbean cache: {cache_path} ({len(existing)} episodes)")
+
+    if cache_only:
+        if not existing:
+            print(f"ERROR: --cache-only but no cache at {cache_path}", file=sys.stderr)
+            return 1
+        episodes = existing
+        print(f"Using cache only ({len(episodes)} episodes); no RSS fetch")
+    else:
+        print(f"Fetching {feed_url} …")
+        xml_text = fetch_feed(feed_url)
+        fresh = parse_podbean_rss(xml_text)
+        print(f"Feed returned {len(fresh)} items (rolling window, full RSS document)")
+        episodes, added, updated = merge_podbean_episodes(existing, fresh)
+        print(
+            f"Catalog after merge: {len(episodes)} "
+            f"(+{added} new, ~{updated} updated fields)"
+        )
+        if not dry_run and not no_cache:
+            save_podbean_cache(cache_path, episodes, feed_url)
+            print(f"Wrote Podbean cache: {cache_path}")
+        elif dry_run:
+            print(f"--dry-run: would write cache {cache_path} ({len(episodes)} episodes)")
 
     if from_csv:
         csv_path = csv_path or DEFAULT_CSV
@@ -489,6 +659,22 @@ def main(argv: list[str] | None = None) -> int:
         default=10,
         help="With --from-csv: same air-date cutoff as update_radio_programs (default 10)",
     )
+    ap.add_argument(
+        "--podbean-cache",
+        type=Path,
+        default=DEFAULT_PODBEAN_CACHE,
+        help="Accumulated episode catalog (default: Intra Support Files/podbean_episodes.json)",
+    )
+    ap.add_argument(
+        "--cache-only",
+        action="store_true",
+        help="Do not fetch RSS; match using existing Podbean cache only",
+    )
+    ap.add_argument(
+        "--no-cache",
+        action="store_true",
+        help="Do not read/write the Podbean cache (feed-only, old behavior)",
+    )
     ap.add_argument("--output", type=Path, default=DEFAULT_OUTPUT)
     ap.add_argument("--archive", type=Path, default=DEFAULT_ARCHIVE)
     ap.add_argument(
@@ -499,6 +685,9 @@ def main(argv: list[str] | None = None) -> int:
     )
     ap.add_argument("--dry-run", action="store_true")
     args = ap.parse_args(argv)
+    if args.cache_only and args.no_cache:
+        print("ERROR: use only one of --cache-only / --no-cache", file=sys.stderr)
+        return 2
     try:
         return run(
             args.feed,
@@ -510,6 +699,9 @@ def main(argv: list[str] | None = None) -> int:
             from_csv=args.from_csv,
             csv_path=args.csv,
             max_future_days=args.max_future_days,
+            cache_path=args.podbean_cache,
+            cache_only=args.cache_only,
+            no_cache=args.no_cache,
         )
     except Exception as exc:
         print(f"ERROR: {exc}", file=sys.stderr)

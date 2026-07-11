@@ -7,11 +7,38 @@
     "reject": "weak_fuzzy / ambiguous / no_match omitted",
     "activeLimit": "Active file keeps the newest N matches (by schedule order); older matches go to the archive file for lazy load on Older."
   },
-  "matchCount": 263,
-  "totalMatchCount": 363,
+  "matchCount": 266,
+  "totalMatchCount": 366,
   "activeLimit": 100,
   "isArchive": true,
   "matches": [
+    {
+      "radioTitle": "Covenant Breaking Spirits Part 7 - Emotional & Legal Consequences",
+      "airDate": "Jan 5, 2026",
+      "podbeanTitle": "Covenant Breaking Spirits Part 7 - Emotional and Legal Consequences",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/covenant-breaking-spirits-part-7-emotional-and-legal-consequences/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/byxf5rhhehedww5x/Covenant_Breaking_Spirits_Part_7_-_Emotional_and_Legal_Consequences_clipped62l52.m4a",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
+    {
+      "radioTitle": "\"We Serve a Living God\" - Flood Victims, the Philippines Church Service",
+      "airDate": "Jan 2, 2026",
+      "podbeanTitle": "Flood Victims, the Philippines Church Service",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/flood-victims-the-philippines-church-service/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/3ekehbr852fufduk/1122R5_2026-01-02_Philippine_Flood_Zone_Service_stitched_8mcvf.m4a",
+      "match": "containment",
+      "confidence": 0.88
+    },
+    {
+      "radioTitle": "Philippine Interview, Engineer Edwin Canlas, Bishop Israel Sanoy's Friend",
+      "airDate": "Jan 1, 2026",
+      "podbeanTitle": "Philippine Interview, Engineer Edwin Canlas, Bishop Israel Sanoy's Friend",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/philippine-interview-engineer-edwin-canlas-bishop-israel-sanoys-friend/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/at2q5nv7wipntyab/IMG_5093_Philippine_Interview_Engineer_Edwin_Canlas_Bishop_Israel_Sanoys_Friendb1o52.m4a",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
     {
       "radioTitle": "Grace - Vision & Revelation Work Together",
       "airDate": "Dec 31, 2025",

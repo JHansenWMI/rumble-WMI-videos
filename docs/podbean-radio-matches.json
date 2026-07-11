@@ -8,7 +8,7 @@
     "activeLimit": "Active file keeps the newest N matches (by schedule order); older matches go to the archive file for lazy load on Older."
   },
   "matchCount": 100,
-  "totalMatchCount": 363,
+  "totalMatchCount": 366,
   "activeLimit": 100,
   "hasArchive": true,
   "archiveFile": "podbean-radio-matches-archive.json",
@@ -28,6 +28,33 @@
       "podbeanTitle": "The Rapture of the Church",
       "episodeUrl": "https://warningjonathanhansen.podbean.com/e/the-rapture-of-the-church/",
       "audioUrl": "https://mcdn.podbean.com/mf/web/bjnk7kn3gp3yscc4/The_Rapture_of_the_Church9dtxu.m4a",
+      "match": "part_to_full",
+      "confidence": 0.95
+    },
+    {
+      "radioTitle": "THERE'S A RIVER Part 3 - Dr. Adalia Hansen - Versatile Ladies Conference, Joy Bringers Church, Everett, WA",
+      "airDate": "Jul 15, 2026",
+      "podbeanTitle": "THERE'S A RIVER - Dr. Adalia Hansen - Versatile Ladies Conference, Joy Bringers Church, Everett, WA",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/rev-dr-adalia-hansen-ministers-at-the-versatile-ladys-conference-sunday-night/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/cyyjy5msk7hb5kmw/adalia_from_sun_night_-_clipbwgm4.m4a",
+      "match": "part_to_full",
+      "confidence": 0.95
+    },
+    {
+      "radioTitle": "THERE'S A RIVER Part 2 - Dr. Adalia Hansen - Versatile Ladies Conference, Joy Bringers Church, Everett, WA",
+      "airDate": "Jul 14, 2026",
+      "podbeanTitle": "THERE'S A RIVER - Dr. Adalia Hansen - Versatile Ladies Conference, Joy Bringers Church, Everett, WA",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/rev-dr-adalia-hansen-ministers-at-the-versatile-ladys-conference-sunday-night/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/cyyjy5msk7hb5kmw/adalia_from_sun_night_-_clipbwgm4.m4a",
+      "match": "part_to_full",
+      "confidence": 0.95
+    },
+    {
+      "radioTitle": "THERE'S A RIVER Part 1 - Dr. Adalia Hansen - Versatile Ladies Conference, Joy Bringers Church, Everett, WA",
+      "airDate": "Jul 13, 2026",
+      "podbeanTitle": "THERE'S A RIVER - Dr. Adalia Hansen - Versatile Ladies Conference, Joy Bringers Church, Everett, WA",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/rev-dr-adalia-hansen-ministers-at-the-versatile-ladys-conference-sunday-night/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/cyyjy5msk7hb5kmw/adalia_from_sun_night_-_clipbwgm4.m4a",
       "match": "part_to_full",
       "confidence": 0.95
     },
@@ -883,33 +910,6 @@
       "podbeanTitle": "Covenant Breaking Spirits Part 8 - Harm to the Vulnerable",
       "episodeUrl": "https://warningjonathanhansen.podbean.com/e/covenant-breaking-spirits-part-8-harm-to-the-vulnerable/",
       "audioUrl": "https://mcdn.podbean.com/mf/web/xdv7f3b9yrwr7c95/2025-12-26_Covenant_Breaking_Spirits_Part_8_-_Harm_to_the_Vulnerable_clipped8v1et.m4a",
-      "match": "exact_norm",
-      "confidence": 1.0
-    },
-    {
-      "radioTitle": "Covenant Breaking Spirits Part 7 - Emotional & Legal Consequences",
-      "airDate": "Jan 5, 2026",
-      "podbeanTitle": "Covenant Breaking Spirits Part 7 - Emotional and Legal Consequences",
-      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/covenant-breaking-spirits-part-7-emotional-and-legal-consequences/",
-      "audioUrl": "https://mcdn.podbean.com/mf/web/byxf5rhhehedww5x/Covenant_Breaking_Spirits_Part_7_-_Emotional_and_Legal_Consequences_clipped62l52.m4a",
-      "match": "exact_norm",
-      "confidence": 1.0
-    },
-    {
-      "radioTitle": "\"We Serve a Living God\" - Flood Victims, the Philippines Church Service",
-      "airDate": "Jan 2, 2026",
-      "podbeanTitle": "Flood Victims, the Philippines Church Service",
-      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/flood-victims-the-philippines-church-service/",
-      "audioUrl": "https://mcdn.podbean.com/mf/web/3ekehbr852fufduk/1122R5_2026-01-02_Philippine_Flood_Zone_Service_stitched_8mcvf.m4a",
-      "match": "containment",
-      "confidence": 0.88
-    },
-    {
-      "radioTitle": "Philippine Interview, Engineer Edwin Canlas, Bishop Israel Sanoy's Friend",
-      "airDate": "Jan 1, 2026",
-      "podbeanTitle": "Philippine Interview, Engineer Edwin Canlas, Bishop Israel Sanoy's Friend",
-      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/philippine-interview-engineer-edwin-canlas-bishop-israel-sanoys-friend/",
-      "audioUrl": "https://mcdn.podbean.com/mf/web/at2q5nv7wipntyab/IMG_5093_Philippine_Interview_Engineer_Edwin_Canlas_Bishop_Israel_Sanoys_Friendb1o52.m4a",
       "match": "exact_norm",
       "confidence": 1.0
     }
