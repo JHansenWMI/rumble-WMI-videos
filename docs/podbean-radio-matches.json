@@ -8,7 +8,7 @@
     "activeLimit": "Active file keeps the newest N matches (by schedule order); older matches go to the archive file for lazy load on Older."
   },
   "matchCount": 100,
-  "totalMatchCount": 366,
+  "totalMatchCount": 397,
   "activeLimit": 100,
   "hasArchive": true,
   "archiveFile": "podbean-radio-matches-archive.json",
@@ -131,6 +131,15 @@
       "confidence": 1.0
     },
     {
+      "radioTitle": "God's Unconditional Love - Pastor Elizabeth Kamau Njuguna",
+      "airDate": "Jun 26, 2026",
+      "podbeanTitle": "Gods Unconditional Love - Rev Elizabeth Njuguna",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/gods-unconditional-love-rev-elizabeth-njuguna/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/cr3azqa8783he5k4/Gods_Unconditional_Love_-_Rev_Elizabeth_Njuguna81hp9.m4a",
+      "match": "topic_name",
+      "confidence": 0.93
+    },
+    {
       "radioTitle": "Warning - 25 Prophetic Dreams Part 4",
       "airDate": "Jun 25, 2026",
       "podbeanTitle": "Warning - 25 Prophetic Dreams Part 4",
@@ -190,8 +199,8 @@
       "podbeanTitle": "The Building Blocks of Harmony in the Family - Bishop Dr. Geoffrey Njuguna",
       "episodeUrl": "https://warningjonathanhansen.podbean.com/e/the-building-blocks-of-harmony-in-the-family-bishop-dr-geoffrey-njuguna/",
       "audioUrl": "https://mcdn.podbean.com/mf/web/bsnmjituub3hxwya/The_Building_Blocks_of_Harmony_in_the_Family_-_Bishop_Dr_Geoffrey_Njuguna6fjo9.m4a",
-      "match": "fuzzy",
-      "confidence": 0.992
+      "match": "topic_name",
+      "confidence": 0.93
     },
     {
       "radioTitle": "His Divine Nature Part 3 - Apostle Joe Mwaniki",
@@ -244,8 +253,8 @@
       "podbeanTitle": "Apostle Joe Mwaniki & Bishop Dr. Geoffrey Njuguna - Kenya Needs National Repentance",
       "episodeUrl": "https://warningjonathanhansen.podbean.com/e/apostle-joe-mwaniki-bishop-dr-geoffrey-njuguna-kenya-needs-national-repentance/",
       "audioUrl": "https://mcdn.podbean.com/mf/web/rryes9wy77nsy6jy/IMG_0464_trimmed745xw.mp3",
-      "match": "fuzzy",
-      "confidence": 0.942
+      "match": "topic_name",
+      "confidence": 0.93
     },
     {
       "radioTitle": "Grace - Gods Unspeakable Gift Part 4 - Bishop Dr. Geoffrey Njuguna",
@@ -253,8 +262,8 @@
       "podbeanTitle": "Grace - God's Unspeakable Gift - Bishop Dr. Geoffrey K. Njuguna",
       "episodeUrl": "https://warningjonathanhansen.podbean.com/e/grace-gods-unspeakable-gift-bishop-dr-geoffrey-k-njuguna/",
       "audioUrl": "https://mcdn.podbean.com/mf/web/gftvzgi67g364kap/Untitled.m4a",
-      "match": "fuzzy",
-      "confidence": 0.973
+      "match": "topic_name",
+      "confidence": 0.93
     },
     {
       "radioTitle": "Grace - Gods Unspeakable Gift Part 3 - Bishop Dr. Geoffrey Njuguna",
@@ -262,8 +271,8 @@
       "podbeanTitle": "Grace - God's Unspeakable Gift - Bishop Dr. Geoffrey K. Njuguna",
       "episodeUrl": "https://warningjonathanhansen.podbean.com/e/grace-gods-unspeakable-gift-bishop-dr-geoffrey-k-njuguna/",
       "audioUrl": "https://mcdn.podbean.com/mf/web/gftvzgi67g364kap/Untitled.m4a",
-      "match": "fuzzy",
-      "confidence": 0.973
+      "match": "topic_name",
+      "confidence": 0.93
     },
     {
       "radioTitle": "Redigging the Wells of Faith - Bishop Dr. Geoffrey Njuguna",
@@ -298,8 +307,8 @@
       "podbeanTitle": "Grace - God's Unspeakable Gift - Bishop Dr. Geoffrey K. Njuguna",
       "episodeUrl": "https://warningjonathanhansen.podbean.com/e/grace-gods-unspeakable-gift-bishop-dr-geoffrey-k-njuguna/",
       "audioUrl": "https://mcdn.podbean.com/mf/web/gftvzgi67g364kap/Untitled.m4a",
-      "match": "fuzzy",
-      "confidence": 0.973
+      "match": "topic_name",
+      "confidence": 0.93
     },
     {
       "radioTitle": "Kenya's Prophecy & 2027 Election",
@@ -511,11 +520,11 @@
     {
       "radioTitle": "Warning - Prophetic Dreams - Guatamalan Illegal Kills American - Part 4",
       "airDate": "Apr 6, 2026",
-      "podbeanTitle": "Warning - Prophetic Dreams",
-      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/warning-prophetic-dreams/",
-      "audioUrl": "https://mcdn.podbean.com/mf/web/k63g5axhe5zdx7pc/Warning_-_Prophetic_Dreams9c70r.mp3",
-      "match": "containment",
-      "confidence": 0.88
+      "podbeanTitle": "Warning - Prophetic Dreams - Guatemalan Illegal Kills American - Part 4",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/warning-prophetic-dreams-guatemalan-illegal-kills-american-part-4/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/sgvnhcnem9fdaeja/Warning_-_Prophetic_Dreams_-_Guatemalan_Illegal_Kills_American_-_Part_47jiqd.mp3",
+      "match": "topic_name",
+      "confidence": 0.93
     },
     {
       "radioTitle": "Prayer Warriors & Senior Pastors Part 3",
@@ -901,15 +910,6 @@
       "podbeanTitle": "Broken Dreams is The Beginning of Real Living",
       "episodeUrl": "https://warningjonathanhansen.podbean.com/e/broken-dreams-is-the-beginning-of-real-living/",
       "audioUrl": "https://mcdn.podbean.com/mf/web/tyn4sw3h2iadfkxk/425524568.m4a",
-      "match": "exact_norm",
-      "confidence": 1.0
-    },
-    {
-      "radioTitle": "Covenant Breaking Spirits Part 8 - Harm to the Vulnerable",
-      "airDate": "Jan 6, 2026",
-      "podbeanTitle": "Covenant Breaking Spirits Part 8 - Harm to the Vulnerable",
-      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/covenant-breaking-spirits-part-8-harm-to-the-vulnerable/",
-      "audioUrl": "https://mcdn.podbean.com/mf/web/xdv7f3b9yrwr7c95/2025-12-26_Covenant_Breaking_Spirits_Part_8_-_Harm_to_the_Vulnerable_clipped8v1et.m4a",
       "match": "exact_norm",
       "confidence": 1.0
     }

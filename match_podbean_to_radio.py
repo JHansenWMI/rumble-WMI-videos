@@ -61,12 +61,44 @@ PROG_RE = re.compile(r"\s+\d+(?:R[1-5]|SW|Sun)\s*$", re.I)
 # Strip "Part N" (and optional dash before it) for base-title compares
 PART_STRIP_RE = re.compile(r"\s*[-–—]?\s*part\s*\d+\b", re.I)
 
+# Dropped for matching only (display titles stay as-is on the website).
+# Includes common spellings; "reverand" is a frequent misspelling of reverend.
+HONORIFICS = frozenset(
+    {
+        "pastor",
+        "rev",
+        "reverend",
+        "reverand",
+        "dr",
+        "doctor",
+        "minister",
+        "mr",
+        "mrs",
+        "ms",
+        "miss",
+        "apostle",
+    }
+)
+
 
 def normalize_title(value: str) -> str:
+    """
+    Match key for a title string.
+    - lower; & → and
+    - apostrophes removed so God's → gods (not god + s)
+    - honorifics dropped (pastor/rev/dr/minister/mr/apostle/…)
+    - a/an/the dropped
+    """
     value = (value or "").lower().replace("&", " and ")
+    # Keep s attached: God's → gods
+    value = value.replace("'", "").replace("\u2019", "")
     value = re.sub(r"[^a-z0-9]+", " ", value)
-    value = re.sub(r"\b(the|a|an)\b", " ", value)
-    return " ".join(value.split())
+    tokens = [
+        t
+        for t in value.split()
+        if t not in ("the", "a", "an") and t not in HONORIFICS
+    ]
+    return " ".join(tokens)
 
 
 def clean_title(t: str) -> str:
@@ -94,6 +126,61 @@ def part_num(t: str) -> int | None:
 def base_title(t: str) -> str:
     """Title with Part N removed (for matching radio parts to full PB episodes)."""
     return PART_STRIP_RE.sub("", t or "").strip(" -–—")
+
+
+def split_topic_and_name(clean: str) -> tuple[str, str | None]:
+    """
+    Split 'Topic - Person Name' on the last dash separator.
+    Returns (topic, name) or (full, None) if no clear name tail.
+    """
+    parts = re.split(r"\s+[-–—]\s+", clean or "")
+    parts = [p.strip() for p in parts if p.strip()]
+    if len(parts) < 2:
+        return (clean or "").strip(), None
+    topic = " - ".join(parts[:-1]).strip()
+    name = parts[-1].strip()
+    # Name tail should look like a short person name (2–5 tokens after honorific drop)
+    name_tokens = normalize_title(name).split()
+    if len(name_tokens) < 2 or len(name_tokens) > 6:
+        return (clean or "").strip(), None
+    return topic, name
+
+
+def name_tokens_soft_match(name_a: str, name_b: str) -> bool:
+    """
+    First and last name tokens must match; either side may have extra middle names.
+    e.g. Elizabeth Kamau Njuguna ≈ Elizabeth Njuguna
+    """
+    ta = normalize_title(name_a).split()
+    tb = normalize_title(name_b).split()
+    if len(ta) < 2 or len(tb) < 2:
+        return False
+    if ta[0] != tb[0] or ta[-1] != tb[-1]:
+        return False
+    sa, sb = set(ta), set(tb)
+    return sa <= sb or sb <= sa
+
+
+def topic_name_soft_match(clean_a: str, clean_b: str) -> bool:
+    """Match when topic text agrees and person-name tails soft-match."""
+    topic_a, name_a = split_topic_and_name(clean_a)
+    topic_b, name_b = split_topic_and_name(clean_b)
+    if not name_a or not name_b:
+        return False
+    if not name_tokens_soft_match(name_a, name_b):
+        return False
+    nta = normalize_title(base_title(topic_a))
+    ntb = normalize_title(base_title(topic_b))
+    if not nta or not ntb:
+        return False
+    if nta == ntb:
+        return True
+    if len(nta) >= 10 and (nta in ntb or ntb in nta):
+        return True
+    # high similarity on short topics
+    if SequenceMatcher(None, nta, ntb).ratio() >= 0.92:
+        return True
+    return False
 
 
 def part_compatible(radio_title: str, ep_part: int | None) -> bool:
@@ -373,7 +460,7 @@ def match_one(radio_title: str, episodes: list[dict], by_norm: dict, by_base: di
     def ok(ep: dict) -> bool:
         return part_compatible(radio_title, ep["part"])
 
-    # 1) Exact full title
+    # 1) Exact full title (after apostrophe + honorific normalize)
     exact = [ep for ep in by_norm.get(n, []) if ok(ep)]
     if exact:
         return "exact_norm", 1.0, exact[0]
@@ -388,6 +475,24 @@ def match_one(radio_title: str, episodes: list[dict], by_norm: dict, by_base: di
         same_part = [ep for ep in base_hits if ep["part"] == part_num(radio_title)]
         if same_part:
             return "exact_norm", 1.0, same_part[0]
+
+    # 2b) Topic + soft person-name match (middle names / Pastor vs Rev already dropped)
+    name_hits = [
+        ep for ep in episodes if ep.get("clean") and ok(ep) and topic_name_soft_match(cleaned, ep["clean"])
+    ]
+    if len(name_hits) == 1:
+        return "topic_name", 0.93, name_hits[0]
+    if len(name_hits) > 1:
+        # Prefer unique exact topic norm among hits
+        topics = {}
+        for ep in name_hits:
+            t_topic, _ = split_topic_and_name(ep["clean"])
+            key = normalize_title(base_title(t_topic))
+            topics.setdefault(key, []).append(ep)
+        r_topic, _ = split_topic_and_name(cleaned)
+        r_key = normalize_title(base_title(r_topic))
+        if r_key in topics and len(topics[r_key]) == 1:
+            return "topic_name", 0.93, topics[r_key][0]
 
     # 3) Containment
     hits: list[tuple[float, dict]] = []
@@ -553,7 +658,14 @@ def run(
         if ep["base_norm"]:
             by_base[ep["base_norm"]].append(ep)
 
-    strong = {"exact_norm", "part_to_full", "containment", "fuzzy", "fuzzy_from_ambig"}
+    strong = {
+        "exact_norm",
+        "part_to_full",
+        "topic_name",
+        "containment",
+        "fuzzy",
+        "fuzzy_from_ambig",
+    }
     matches = []
     tiers: dict[str, int] = defaultdict(int)
 
