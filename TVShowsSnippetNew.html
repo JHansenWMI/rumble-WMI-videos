@@ -345,8 +345,10 @@ function getDateKey(displayDateStr) {
   return dateFmt.format(d);
 }
 
-function renderVideoCard(video, scheduleDisplayDate) {
-  const title = normalizeTitle(video.title) || scheduleDisplayDate;
+function renderVideoCard(video, scheduleDisplayDate, scheduleTitle) {
+  // Prefer cleaned schedule title when present; else Rumble title (normalized).
+  const fromSchedule = scheduleTitle && String(scheduleTitle).trim();
+  const title = fromSchedule || normalizeTitle(video && video.title) || scheduleDisplayDate;
   const link = getLink(video);
   const thumb = getThumb(video);
   const date = scheduleDisplayDate || getTVAirDateStr(video);
@@ -427,7 +429,7 @@ async function loadAndRenderSchedule() {
     if (video) {
       li.classList.add('has-video');
       li.dataset.date = parsed.displayDate;
-      li.innerHTML = renderVideoCard(video, parsed.displayDate);
+      li.innerHTML = renderVideoCard(video, parsed.displayDate, parsed.title);
     } else {
       li.textContent = entry;
       const match = entry.match(dateRegex);

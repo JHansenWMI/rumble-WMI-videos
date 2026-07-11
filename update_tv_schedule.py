@@ -15,8 +15,12 @@ The script:
 - Looks at the last usable rows of the first sheet.
 - Parses the "air date" column (MMDDYY code).
 - Adjusts the listed date to the actual Friday air date (the spreadsheet date is typically 2 days off / Sunday).
-- Produces lines in the exact format used by tv-schedule.txt: "Jul 03, 2026: Title"
-- Merges new entries (deduped) and rewrites the file with newest/future first.
+- Produces lines: "Jul 17, 2026: Title"
+  - Leading date = Friday air date
+  - Trailing record/source dates in the KAZQ title (e.g. "… 06/19/26") are **removed**
+    so the public schedule shows a clean title only.
+- Merges new entries (deduped by air date + cleaned title) and rewrites newest first.
+  Prefers the cleaned title when an older line still has a trailing date.
 
 Requires: pip install openpyxl   (only needed on the machine running the update)
 """
@@ -34,6 +38,10 @@ except ImportError:
     raise
 
 MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+
+# Trailing record/source date sometimes embedded in KAZQ titles
+# (e.g. "Does God CELEBRATE Diversity in Marriage? 06/19/26").
+TRAILING_DATE_RE = re.compile(r"\s+\d{1,2}/\d{1,2}/\d{2,4}\s*$")
 
 
 def parse_air_to_friday(air_val) -> datetime | None:
@@ -60,8 +68,25 @@ def parse_air_to_friday(air_val) -> datetime | None:
     return friday
 
 
+def strip_trailing_date(title: str) -> str:
+    """Remove trailing MM/DD/YY (or MM/DD/YYYY) record dates from a title."""
+    if not title:
+        return ""
+    t = title.strip()
+    # Loop in case of odd double suffixes
+    while True:
+        cleaned = TRAILING_DATE_RE.sub("", t).strip()
+        if cleaned == t:
+            return cleaned
+        t = cleaned
+
+
+def has_trailing_date(title: str) -> bool:
+    return bool(TRAILING_DATE_RE.search(title or ""))
+
+
 def format_schedule_line(friday: datetime, title: str) -> str:
-    title = title.strip()
+    title = strip_trailing_date(title)
     return f"{MONTHS[friday.month-1]} {friday.day:02d}, {friday.year}: {title}"
 
 
@@ -144,16 +169,43 @@ def parse_date_from_line(line: str) -> datetime | None:
         return None
 
 
+def title_part(line: str) -> str:
+    if ":" not in line:
+        return line.strip()
+    return line.split(":", 1)[1].strip()
+
+
 def merge_schedules(existing: list[str], new_lines: list[str]) -> list[str]:
-    """Union + sort newest first. Dedup by (date, title)."""
-    seen = {}
+    """Union + sort newest first.
+
+    Dedup by (air date, title without trailing record date) so
+    "Title" and "Title 06/19/26" collapse to one row. Prefer the version
+    **without** the trailing date (cleaned schedule title).
+    """
+    seen: dict[tuple, str] = {}
     for line in existing + new_lines:
         dt = parse_date_from_line(line)
         if dt is None:
             continue
-        key = (dt.date(), line.split(":", 1)[1].strip().lower())
-        if key not in seen or dt > parse_date_from_line(seen[key]) or not seen.get(key):
-            seen[key] = line
+        # Normalize stored line so old file rows with trailing dates get cleaned
+        tit = strip_trailing_date(title_part(line))
+        if not tit:
+            continue
+        cleaned_line = f"{MONTHS[dt.month-1]} {dt.day:02d}, {dt.year}: {tit}"
+        key = (dt.date(), tit.lower())
+        if key not in seen:
+            seen[key] = cleaned_line
+            continue
+        old = seen[key]
+        old_tit = title_part(old)
+        # Prefer cleaned title (no trailing date)
+        if has_trailing_date(old_tit) and not has_trailing_date(tit):
+            seen[key] = cleaned_line
+        elif not has_trailing_date(old_tit) and has_trailing_date(tit):
+            pass
+        else:
+            # new_lines come second → Excel wins over stale file text
+            seen[key] = cleaned_line
 
     merged = list(seen.values())
     merged.sort(key=lambda ln: parse_date_from_line(ln) or datetime.min, reverse=True)

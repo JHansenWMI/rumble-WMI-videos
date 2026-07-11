@@ -22,11 +22,13 @@ TV broadcast videos (for TVShowsSnippetNew.html):
 - `publish_rumble_feed.sh` runs rumble feed → overcoming feed → TV feed, then commits/pushes if any feed changed.
 
 TV schedule (for TVShowsSnippetNew.html):
-- docs/tv-schedule.txt contains the ordered list of upcoming/past TV broadcast entries (one line per entry in the form "MMM DD, YYYY: Title").
+- docs/tv-schedule.txt contains the ordered list of upcoming/past TV broadcast entries.
+  Line form: `MMM DD, YYYY: Title` (leading date = Friday air date).
+  Trailing record dates from KAZQ titles (e.g. `… 06/19/26`) are **stripped** when building the file.
 - The list is maintained by merging from the station spreadsheet.
 - Use `update_tv_schedule.py` (run on a machine that can see the file):
     python update_tv_schedule.py --xlsx "/Volumes/Office/Public/01 TV-Radio Spreadsheets/KAZQ.xlsx" --schedule docs/tv-schedule.txt
-  It looks at the last few usable rows, converts the (Sunday) air date codes to actual Friday air dates, and merges only new entries.
+  It looks at the last few usable rows, converts the (Sunday) air date codes to actual Friday air dates, removes trailing title dates, and merges only new entries.
 - On the production Mac Mini this runs automatically every **Friday at 4:00am** via launchd (`update_tv_schedule.sh` + `com.jhansenwmi.tv-schedule.plist`).
   The wrapper handles git pull, runs the updater, and commits/pushes only if the schedule changed.
 - To install on the Mac Mini (or similar):
