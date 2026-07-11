@@ -8,7 +8,7 @@
     "activeLimit": "Active file keeps the newest N matches (by schedule order); older matches go to the archive file for lazy load on Older."
   },
   "matchCount": 100,
-  "totalMatchCount": 399,
+  "totalMatchCount": 400,
   "activeLimit": 100,
   "hasArchive": true,
   "archiveFile": "podbean-radio-matches-archive.json",
@@ -309,6 +309,15 @@
       "audioUrl": "https://mcdn.podbean.com/mf/web/srw9qhkeb272tq6i/Church_Leaders_in_Kenya8rwmo.m4a",
       "match": "exact_norm",
       "confidence": 1.0
+    },
+    {
+      "radioTitle": "Governmental Intercessor - The Overcoming Women - Drs. Adalia & Jonathan Hansen",
+      "airDate": "May 29, 2026",
+      "podbeanTitle": "Governmental Intercessor",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/the-governmental-intercessors/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/qc9d73prhrubyduq/Dr_Adalia_Hansen_-_The_Governmental_Intercessors7hgr8.m4a",
+      "match": "containment",
+      "confidence": 0.88
     },
     {
       "radioTitle": "Grace - Gods Unspeakable Gift Part 2 - Bishop Dr. Geoffrey Njuguna",
@@ -901,15 +910,6 @@
       "podbeanTitle": "Covenant Breaking Spirits Part 10 - Breaking Free",
       "episodeUrl": "https://warningjonathanhansen.podbean.com/e/covenant-breaking-spirits-part-10-breaking-free/",
       "audioUrl": "https://mcdn.podbean.com/mf/web/7f6bkdsnsffg7hfb/2026-01-02_Covenant_Breaking_Spirits_Part_10_-_clippedaafsg.m4a",
-      "match": "exact_norm",
-      "confidence": 1.0
-    },
-    {
-      "radioTitle": "Covenant Breaking Spirits Part 9 - God's Faithfulness",
-      "airDate": "Jan 13, 2026",
-      "podbeanTitle": "Covenant Breaking Spirits Part 9 - God's Faithfulness",
-      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/covenant-breaking-spirits-part-9-gods-faithfulness/",
-      "audioUrl": "https://mcdn.podbean.com/mf/web/eau964mpuah4udjf/Covenant_Breaking_Spirits_Part_8_-_God_s_Faithfulness_-_Jan_2_2026bc22n.mp3",
       "match": "exact_norm",
       "confidence": 1.0
     }

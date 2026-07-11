@@ -7,11 +7,20 @@
     "reject": "weak_fuzzy / ambiguous / no_match omitted",
     "activeLimit": "Active file keeps the newest N matches (by schedule order); older matches go to the archive file for lazy load on Older."
   },
-  "matchCount": 299,
-  "totalMatchCount": 399,
+  "matchCount": 300,
+  "totalMatchCount": 400,
   "activeLimit": 100,
   "isArchive": true,
   "matches": [
+    {
+      "radioTitle": "Covenant Breaking Spirits Part 9 - God's Faithfulness",
+      "airDate": "Jan 13, 2026",
+      "podbeanTitle": "Covenant Breaking Spirits Part 9 - God's Faithfulness",
+      "episodeUrl": "https://warningjonathanhansen.podbean.com/e/covenant-breaking-spirits-part-9-gods-faithfulness/",
+      "audioUrl": "https://mcdn.podbean.com/mf/web/eau964mpuah4udjf/Covenant_Breaking_Spirits_Part_8_-_God_s_Faithfulness_-_Jan_2_2026bc22n.mp3",
+      "match": "exact_norm",
+      "confidence": 1.0
+    },
     {
       "radioTitle": "Philippine Leaders Meeting - Dr. Adalia Hansen",
       "airDate": "Jan 9, 2026",
