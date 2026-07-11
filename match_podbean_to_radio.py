@@ -6,7 +6,9 @@ Usage:
   python match_podbean_to_radio.py
   python match_podbean_to_radio.py --dry-run
 
-Writes docs/podbean-radio-matches.json (website data only).
+Writes website data only:
+  - docs/podbean-radio-matches.json          (newest active matches, default max 100)
+  - docs/podbean-radio-matches-archive.json  (older matches beyond the active cap)
 
 Matching (summary):
   - Normalize titles (like other WMI tools).
@@ -32,6 +34,8 @@ from pathlib import Path
 DEFAULT_FEED = "https://feed.podbean.com/warningjonathanhansen/feed.xml"
 DEFAULT_SCHEDULE = Path("docs/radio-schedule.txt")
 DEFAULT_OUTPUT = Path("docs/podbean-radio-matches.json")
+DEFAULT_ARCHIVE = Path("docs/podbean-radio-matches-archive.json")
+DEFAULT_ACTIVE_LIMIT = 100
 
 LINE_RE = re.compile(
     r"^(?:[A-Za-z]+,\s+)?([A-Za-z]+)\s+(\d{1,2}),\s+(\d{4}):\s*(.*)$"
@@ -253,7 +257,33 @@ def match_one(radio_title: str, episodes: list[dict], by_norm: dict, by_base: di
     return "no_match", best_r, best
 
 
-def run(feed_url: str, schedule_path: Path, output_path: Path, dry_run: bool) -> int:
+def _payload_base(feed_url: str, schedule_path: Path) -> dict:
+    return {
+        "sourceFeed": feed_url,
+        "podbeanSite": "https://warningjonathanhansen.podbean.com/",
+        "schedule": str(schedule_path).replace("\\", "/"),
+        "rules": {
+            "partN": (
+                "Radio 'Part N' may link to Podbean episode without Part "
+                "(full program). Different Part numbers never match."
+            ),
+            "reject": "weak_fuzzy / ambiguous / no_match omitted",
+            "activeLimit": (
+                f"Active file keeps the newest N matches (by schedule order); "
+                f"older matches go to the archive file for lazy load on Older."
+            ),
+        },
+    }
+
+
+def run(
+    feed_url: str,
+    schedule_path: Path,
+    output_path: Path,
+    archive_path: Path,
+    active_limit: int,
+    dry_run: bool,
+) -> int:
     print(f"Fetching {feed_url} …")
     xml_text = fetch_feed(feed_url)
     episodes = parse_podbean_rss(xml_text)
@@ -274,6 +304,7 @@ def run(feed_url: str, schedule_path: Path, output_path: Path, dry_run: bool) ->
     matches = []
     tiers: dict[str, int] = defaultdict(int)
 
+    # Schedule is newest-first; preserve that order so active = newest matches.
     for row in schedule:
         tier, conf, ep = match_one(row["title"], episodes, by_norm, by_base)
         tiers[tier] += 1
@@ -296,28 +327,48 @@ def run(feed_url: str, schedule_path: Path, output_path: Path, dry_run: bool) ->
         print(f"  {k}: {v}")
     print(f"Strong matches: {len(matches)}/{len(schedule)}")
 
-    payload = {
-        "sourceFeed": feed_url,
-        "podbeanSite": "https://warningjonathanhansen.podbean.com/",
-        "schedule": str(schedule_path).replace("\\", "/"),
-        "matchCount": len(matches),
-        "rules": {
-            "partN": (
-                "Radio 'Part N' may link to Podbean episode without Part "
-                "(full program). Different Part numbers never match."
-            ),
-            "reject": "weak_fuzzy / ambiguous / no_match omitted",
-        },
-        "matches": matches,
+    limit = max(0, int(active_limit))
+    active = matches[:limit]
+    archive = matches[limit:]
+
+    base = _payload_base(feed_url, schedule_path)
+    active_payload = {
+        **base,
+        "matchCount": len(active),
+        "totalMatchCount": len(matches),
+        "activeLimit": limit,
+        "hasArchive": len(archive) > 0,
+        "archiveFile": archive_path.name if archive else None,
+        "matches": active,
+    }
+    archive_payload = {
+        **base,
+        "matchCount": len(archive),
+        "totalMatchCount": len(matches),
+        "activeLimit": limit,
+        "isArchive": True,
+        "matches": archive,
     }
 
+    print(f"Active (newest): {len(active)}  archive (older): {len(archive)}")
+
     if dry_run:
-        print("--dry-run: not writing", output_path)
+        print("--dry-run: not writing", output_path, archive_path)
         return 0
 
     output_path.parent.mkdir(parents=True, exist_ok=True)
-    output_path.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
-    print(f"Wrote {output_path} ({len(matches)} matches)")
+    output_path.write_text(json.dumps(active_payload, indent=2) + "\n", encoding="utf-8")
+    print(f"Wrote {output_path} ({len(active)} matches)")
+
+    if archive:
+        archive_path.write_text(
+            json.dumps(archive_payload, indent=2) + "\n", encoding="utf-8"
+        )
+        print(f"Wrote {archive_path} ({len(archive)} matches)")
+    elif archive_path.exists():
+        archive_path.unlink()
+        print(f"Removed empty archive {archive_path}")
+
     return 0
 
 
@@ -326,10 +377,24 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--feed", default=DEFAULT_FEED, help="Podbean RSS URL")
     ap.add_argument("--schedule", type=Path, default=DEFAULT_SCHEDULE)
     ap.add_argument("--output", type=Path, default=DEFAULT_OUTPUT)
+    ap.add_argument("--archive", type=Path, default=DEFAULT_ARCHIVE)
+    ap.add_argument(
+        "--active-limit",
+        type=int,
+        default=DEFAULT_ACTIVE_LIMIT,
+        help="Max matches in the active JSON (rest go to archive). Default: 100",
+    )
     ap.add_argument("--dry-run", action="store_true")
     args = ap.parse_args(argv)
     try:
-        return run(args.feed, args.schedule, args.output, args.dry_run)
+        return run(
+            args.feed,
+            args.schedule,
+            args.output,
+            args.archive,
+            args.active_limit,
+            args.dry_run,
+        )
     except Exception as exc:
         print(f"ERROR: {exc}", file=sys.stderr)
         return 1

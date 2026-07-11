@@ -96,11 +96,13 @@
 <script type="text/javascript">// <![CDATA[
 const SCHEDULE_URL = "https://jhansenwmi.github.io/rumble-WMI-videos/radio-schedule.txt";
 const MATCHES_URL = "https://jhansenwmi.github.io/rumble-WMI-videos/podbean-radio-matches.json";
+const MATCHES_ARCHIVE_URL = "https://jhansenwmi.github.io/rumble-WMI-videos/podbean-radio-matches-archive.json";
 const PAGE_SIZE = 50;
 
 /*
  * docs/radio-schedule.txt — pure data lines: "Fri, Jul 3, 2026: Title"
- * docs/podbean-radio-matches.json — optional play links (audioUrl / episodeUrl)
+ * docs/podbean-radio-matches.json — newest play links (active cap)
+ * docs/podbean-radio-matches-archive.json — older matches; loaded on first Older click
  */
 
 function decodeHtmlEntities(str) {
@@ -111,20 +113,51 @@ function decodeHtmlEntities(str) {
 
 /** Map radioTitle -> { audioUrl, episodeUrl, ... } */
 let podbeanByTitle = Object.create(null);
+let matchesArchiveLoaded = false;
+let matchesArchiveLoading = null; // Promise while in flight
 
-function buildMatchIndex(data) {
-    const map = Object.create(null);
+function mergeMatchIndex(data) {
     const list = (data && data.matches) ? data.matches : [];
     list.forEach(function (m) {
         if (!m || !m.radioTitle) return;
         const key = String(m.radioTitle).trim();
         if (!key) return;
-        // First strong match wins; duplicates (Part 1/2 → same full ep) are fine
-        if (!map[key]) {
-            map[key] = m;
+        // First strong match wins; do not overwrite active with archive
+        if (!podbeanByTitle[key]) {
+            podbeanByTitle[key] = m;
         }
     });
-    return map;
+}
+
+function ensureMatchesArchiveLoaded() {
+    if (matchesArchiveLoaded) {
+        return Promise.resolve(false);
+    }
+    if (matchesArchiveLoading) {
+        return matchesArchiveLoading;
+    }
+    matchesArchiveLoading = fetch(MATCHES_ARCHIVE_URL, { cache: "no-store" })
+        .then(function (res) {
+            if (!res || !res.ok) {
+                // No archive file yet (few matches) — fine
+                matchesArchiveLoaded = true;
+                return false;
+            }
+            return res.json().then(function (data) {
+                mergeMatchIndex(data);
+                matchesArchiveLoaded = true;
+                return true;
+            });
+        })
+        .catch(function (e) {
+            console.warn("Could not load podbean-radio-matches-archive.json:", e);
+            matchesArchiveLoaded = true; // do not retry every click
+            return false;
+        })
+        .finally(function () {
+            matchesArchiveLoading = null;
+        });
+    return matchesArchiveLoading;
 }
 
 function parseScheduleLine(line) {
@@ -492,23 +525,31 @@ function setupRadioPager(ul) {
         }
     }
 
+    function goNewer() {
+        renderRadioPage(currentRadioPage - 1);
+    }
+
+    // Older pages may need archive play matches; load once, then re-render.
+    function goOlder() {
+        const target = currentRadioPage + 1;
+        ensureMatchesArchiveLoaded().then(function () {
+            renderRadioPage(target);
+        });
+    }
+
     const j = getJQ();
     if (!j) {
         // Fallback to vanilla if no jQuery available (should not happen on the site)
         const prev = document.getElementById('radio-prev');
         const next = document.getElementById('radio-next');
-        if (prev) prev.onclick = () => renderRadioPage(currentRadioPage - 1);
-        if (next) next.onclick = () => renderRadioPage(currentRadioPage + 1);
+        if (prev) prev.onclick = goNewer;
+        if (next) next.onclick = goOlder;
         return;
     }
 
     // Use jQ / jQuery as required by the site
-    j('#radio-prev').off('click').on('click', function () {
-        renderRadioPage(currentRadioPage - 1);
-    });
-    j('#radio-next').off('click').on('click', function () {
-        renderRadioPage(currentRadioPage + 1);
-    });
+    j('#radio-prev').off('click').on('click', goNewer);
+    j('#radio-next').off('click').on('click', goOlder);
 }
 
 async function loadRadioSchedule() {
@@ -544,16 +585,19 @@ async function loadRadioSchedule() {
             allRadioLines = [];
         }
 
+        podbeanByTitle = Object.create(null);
+        matchesArchiveLoaded = false;
         if (matchRes && matchRes.ok) {
             try {
                 const data = await matchRes.json();
-                podbeanByTitle = buildMatchIndex(data);
+                mergeMatchIndex(data);
+                // If generator says there is no archive, skip later Older fetch
+                if (data && data.hasArchive === false) {
+                    matchesArchiveLoaded = true;
+                }
             } catch (e) {
                 console.warn("Could not parse podbean-radio-matches.json:", e);
-                podbeanByTitle = Object.create(null);
             }
-        } else {
-            podbeanByTitle = Object.create(null);
         }
     } catch (e) {
         console.warn("Could not load radio schedule / matches:", e);
