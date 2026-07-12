@@ -10,8 +10,9 @@ publish_rumble_feed.sh
 
 CMS snippets (HTML at project root):
 - Naming: prefer page-title based names with hyphens (no spaces), e.g. CMS page **Warning Social Media Video** → `Warning-Social-Media-Video-cms.html`. Shared data files keep descriptive names (`rumble-feed.json`, etc.).
-- Current snippets include `Warning-Social-Media-Video-cms.html` (main Rumble grid), `TVShowsSnippetNew.html`, `overcoming CMS snippet using feed.html`, `RadioBroadcastSnippet.html`, `ShortWaveBroadcastSnippet.html`.
-- **Edited in this repo for version control only — not auto-deployed.** The CMS has no hook that pulls these files. After a snippet change, paste/load the updated HTML into the CMS page manually. (JSON/txt under `docs/` *are* served via GitHub Pages once pushed.)
+- **Pilot (thin shell + hosted widget):** `Warning-Social-Media-Video-cms.html` loads CSS/JS from `docs/widgets/Warning-Social-Media-Video.{css,js}` on GitHub Pages. Re-paste the CMS shell only when mount markup / page chrome changes; grid logic updates via git push.
+- Other (still full inline) snippets: `TVShowsSnippetNew.html`, `overcoming CMS snippet using feed.html`, `RadioBroadcastSnippet.html`, `ShortWaveBroadcastSnippet.html`.
+- **CMS shells are not auto-deployed.** Paste into the CMS by hand. `docs/*` (feeds + widgets) *are* served via GitHub Pages once pushed.
 
 Feeds:
 - `docs/rumble-feed.json` (main) is produced from `docs/rumble-urls.txt` (DrJonathanHansenWMI user account: videos/shorts/livestreams).
