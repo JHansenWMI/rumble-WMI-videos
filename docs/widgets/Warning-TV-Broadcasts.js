@@ -12,12 +12,17 @@
  * - Titles ending TV{YYYYMMDD}: match schedule by air date (not Rumble pubDate).
  * - WMI TV Broadcast History without TV{date}: match by normalized title;
  *   display date from tv-schedule.txt.
+ * - No video: if a site thumb exists for the schedule air date
+ *   (…/video-thumbs/YYYYMMDD.jpg), show a non-clickable card that looks like
+ *   the video rows. Optional data-thumb-base on #content overrides the URL base.
  */
 (function () {
   var DEFAULT_FEED =
     "https://jhansenwmi.github.io/rumble-WMI-videos/tv-feed.json";
   var DEFAULT_SCHEDULE =
     "https://jhansenwmi.github.io/rumble-WMI-videos/tv-schedule.txt";
+  var DEFAULT_THUMB_BASE =
+    "https://www.worldministries.org/Userfiles/video-thumbs/";
   var RUMBLE_MODAL_Z_INDEX = 10000;
   var CHANNEL_BROADCAST_HISTORY = "WMI TV Broadcast History";
 
@@ -152,6 +157,54 @@
     var d = new Date(month + " " + day + ", " + year);
     if (isNaN(d.getTime())) return null;
     return dateFmt.format(d);
+  }
+
+  function pad2(n) {
+    return n < 10 ? "0" + n : String(n);
+  }
+
+  /** Schedule display date → YYYYMMDD for video-thumbs/{date}.jpg */
+  function getDateYyyymmdd(displayDateStr) {
+    var match = String(displayDateStr || "").match(
+      /([A-Za-z]+)\s+(\d{1,2}),\s+(\d{4})/
+    );
+    if (!match) return null;
+    var d = new Date(match[1] + " " + match[2] + ", " + match[3]);
+    if (isNaN(d.getTime())) return null;
+    return d.getFullYear() + pad2(d.getMonth() + 1) + pad2(d.getDate());
+  }
+
+  function thumbBaseUrl(container) {
+    var base = (
+      (container && container.getAttribute("data-thumb-base")) ||
+      ""
+    ).trim();
+    if (!base) base = DEFAULT_THUMB_BASE;
+    if (base.charAt(base.length - 1) !== "/") base += "/";
+    return base;
+  }
+
+  function thumbUrlForDate(base, displayDateStr) {
+    var ymd = getDateYyyymmdd(displayDateStr);
+    if (!ymd) return "";
+    return base + ymd + ".jpg";
+  }
+
+  function probeImage(url) {
+    return new Promise(function (resolve) {
+      if (!url) {
+        resolve(false);
+        return;
+      }
+      var img = new Image();
+      img.onload = function () {
+        resolve(true);
+      };
+      img.onerror = function () {
+        resolve(false);
+      };
+      img.src = url;
+    });
   }
 
   function ensureRumbleEmbedScript() {
@@ -295,34 +348,38 @@
     });
   }
 
-  function renderVideoCard(video, scheduleDisplayDate, scheduleTitle) {
-    var fromSchedule = scheduleTitle && String(scheduleTitle).trim();
-    var title =
-      fromSchedule ||
-      normalizeTitle(video && video.title) ||
-      scheduleDisplayDate;
-    var link = getLink(video);
-    var thumb = getThumb(video);
-    var date = scheduleDisplayDate || getTVAirDateStr(video);
-    var videoId = getVideoId(video);
-    var shortClass = isShort(video) ? " rw-card--short" : "";
+  function renderCardHtml(opts) {
+    var title = opts.title || "";
+    var date = opts.date || "";
+    var thumb = opts.thumb || "";
+    var videoId = opts.videoId || "";
+    var link = opts.link || "";
+    var shortClass = opts.shortClass || "";
+    var staticOnly = !!opts.staticOnly;
     var thumbStyle = thumb
       ? ' style="--rw-thumb-bg: url(\'' + escapeHtml(thumb) + "')\""
       : "";
+    var cardClass =
+      "rw-card" + shortClass + (staticOnly ? " rw-card--static" : "");
+    var dataAttrs = staticOnly
+      ? ""
+      : ' data-video-id="' +
+        escapeHtml(videoId) +
+        '" data-link="' +
+        escapeHtml(link) +
+        '"';
 
     return (
-      '<div class="rw-card' +
-      shortClass +
-      '" data-video-id="' +
-      escapeHtml(videoId) +
-      '" data-link="' +
-      escapeHtml(link) +
-      '">' +
+      '<div class="' +
+      cardClass +
+      '"' +
+      dataAttrs +
+      ">" +
       '<div class="rw-thumbWrap"' +
       thumbStyle +
       ">" +
       (thumb
-        ? '<img class="rw-thumb" src="' + escapeHtml(thumb) + '" >'
+        ? '<img class="rw-thumb" src="' + escapeHtml(thumb) + '" alt="">'
         : "") +
       "</div>" +
       '<div class="rw-meta">' +
@@ -335,6 +392,35 @@
       "</div>" +
       "</div>"
     );
+  }
+
+  function renderVideoCard(video, scheduleDisplayDate, scheduleTitle) {
+    var fromSchedule = scheduleTitle && String(scheduleTitle).trim();
+    var title =
+      fromSchedule ||
+      normalizeTitle(video && video.title) ||
+      scheduleDisplayDate;
+    return renderCardHtml({
+      title: title,
+      date: scheduleDisplayDate || getTVAirDateStr(video),
+      thumb: getThumb(video),
+      videoId: getVideoId(video),
+      link: getLink(video),
+      shortClass: isShort(video) ? " rw-card--short" : "",
+      staticOnly: false,
+    });
+  }
+
+  /** Non-clickable card when only a site thumb exists (no Rumble video). */
+  function renderThumbOnlyCard(scheduleDisplayDate, scheduleTitle, thumbUrl) {
+    var title =
+      (scheduleTitle && String(scheduleTitle).trim()) || scheduleDisplayDate;
+    return renderCardHtml({
+      title: title,
+      date: scheduleDisplayDate,
+      thumb: thumbUrl,
+      staticOnly: true,
+    });
   }
 
   function feedUrl(container) {
@@ -417,11 +503,9 @@
       .then(function () {
         var dateRegex =
           /^(?:[A-Za-z]+,\s)?([A-Za-z]+)\s(\d{1,2}),\s(\d{4})/;
-        var today = new Date();
-        var closestLi = null;
-        var minDiff = Infinity;
+        var base = thumbBaseUrl(container);
 
-        schedule.forEach(function (entry) {
+        var rows = schedule.map(function (entry) {
           var parsed = parseScheduleEntry(entry);
           var key = getDateKey(parsed.displayDate);
           var video = key ? videoByDateKey.get(key) : null;
@@ -429,16 +513,59 @@
             var tKey = titleMatchKey(parsed.title);
             if (tKey) video = videoByTitleKey.get(tKey) || null;
           }
+          var thumbUrl = video
+            ? ""
+            : thumbUrlForDate(base, parsed.displayDate);
+          return {
+            entry: entry,
+            parsed: parsed,
+            video: video,
+            thumbUrl: thumbUrl,
+            thumbOk: false,
+          };
+        });
 
+        return Promise.all(
+          rows.map(function (row) {
+            if (row.video || !row.thumbUrl) {
+              return Promise.resolve(row);
+            }
+            return probeImage(row.thumbUrl).then(function (ok) {
+              row.thumbOk = ok;
+              return row;
+            });
+          })
+        );
+      })
+      .then(function (rows) {
+        if (!rows) return;
+
+        var dateRegex =
+          /^(?:[A-Za-z]+,\s)?([A-Za-z]+)\s(\d{1,2}),\s(\d{4})/;
+        var today = new Date();
+        var closestLi = null;
+        var minDiff = Infinity;
+
+        rows.forEach(function (row) {
+          var parsed = row.parsed;
+          var entry = row.entry;
           var li = document.createElement("li");
 
-          if (video) {
+          if (row.video) {
             li.classList.add("has-video");
             li.dataset.date = parsed.displayDate;
             li.innerHTML = renderVideoCard(
-              video,
+              row.video,
               parsed.displayDate,
               parsed.title
+            );
+          } else if (row.thumbOk && row.thumbUrl) {
+            li.classList.add("has-thumb");
+            li.dataset.date = parsed.displayDate;
+            li.innerHTML = renderThumbOnlyCard(
+              parsed.displayDate,
+              parsed.title,
+              row.thumbUrl
             );
           } else {
             li.textContent = entry;
@@ -470,6 +597,7 @@
           closestLi.classList.add("highlight");
         }
 
+        // Only cards with data-video-id get click handlers
         attachCardClicks(container);
       })
       .catch(function (e) {

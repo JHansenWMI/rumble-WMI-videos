@@ -6,15 +6,18 @@
   margin-bottom: 6px;
 }
 #content li.highlight { background-color: #DCD4E6; }
-#content li.has-video {
+#content li.has-video,
+#content li.has-thumb {
   padding-left: 0;
   text-indent: 0;
   list-style: none;
 }
-#content li.highlight.has-video {
+#content li.highlight.has-video,
+#content li.highlight.has-thumb {
   background-color: transparent;
 }
-#content li.highlight.has-video .rw-card {
+#content li.highlight.has-video .rw-card,
+#content li.highlight.has-thumb .rw-card {
   background-color: #DCD4E6;
 }
 
@@ -85,6 +88,16 @@
 }
 .rw-title:hover {
   text-decoration: underline;
+}
+.rw-card--static {
+  cursor: default;
+}
+.rw-card--static .rw-title:hover {
+  text-decoration: none;
+}
+.rw-card--static:hover,
+.rw-card--static:active {
+  filter: none;
 }
 .rw-date {
   opacity: 0.7;
