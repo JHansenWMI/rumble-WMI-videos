@@ -70,7 +70,7 @@ that can be used by the website to display them, similar to how the TV parsing w
 
 ## Snippet Implementation
 - `RadioBroadcastSnippet.html` (at project root) is the live CMS snippet.
-- Dynamically fetches `https://jhansenwmi.github.io/rumble-WMI-videos/radio-schedule.txt` (modeled on TVShowsSnippetNew.html).
+- Dynamically fetches `https://jhansenwmi.github.io/rumble-WMI-videos/radio-schedule.txt` (modeled on Warning-TV-Broadcasts widget).
 - **All paging/display logic is in the snippet only** (50 items/page, "Newer 50"/"Older 50" buttons, auto-hide when no data that direction).
 - Last page special case: drops min-height so pager sits directly under actual (short) content; minimal scroll correction only if needed to bring buttons into view.
 - Scroll stabilization on full pages keeps buttons at ~same viewport position when list height changes.

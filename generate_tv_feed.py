@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Generate docs/tv-feed.json — TV broadcast videos for TVShowsSnippetNew.html.
+Generate docs/tv-feed.json — TV broadcast videos for Warning-TV-Broadcasts widget.
 
 Includes:
   - Any video whose title ends with TV{YYYYMMDD}
