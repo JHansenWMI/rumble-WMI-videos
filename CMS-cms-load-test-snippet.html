@@ -1,0 +1,33 @@
+<!--
+  ONE-TIME CMS LOAD TEST (paste into a CMS *test* page only).
+
+  Purpose: confirm the CMS allows:
+    1) external <link rel="stylesheet" href="…github.io…">
+    2) external <script src="…github.io…">
+    3) cross-origin fetch of docs JSON from that script
+
+  Before testing: push docs/widgets/* to main so GitHub Pages serves them.
+  Direct checks:
+    https://jhansenwmi.github.io/rumble-WMI-videos/widgets/cms-load-test.css
+    https://jhansenwmi.github.io/rumble-WMI-videos/widgets/cms-load-test.js
+
+  Success on the CMS page:
+    - Green bordered mint box
+    - Three PASS lines (JS, CSS, fetch)
+  Failure:
+    - Nothing appears → script src stripped or blocked
+    - Box without green styles + CSS FAIL → stylesheet stripped
+    - JS PASS but fetch FAIL → CORS/network issue (less likely; feeds already work)
+
+  Safe to remove this page content after the test.
+-->
+<div id="wmi-cms-load-test"
+     data-feed="https://jhansenwmi.github.io/rumble-WMI-videos/rumble-feed.json">
+  <p class="wmi-cms-load-test-title">WMI CMS load test</p>
+  <div id="wmi-cms-test-js" class="wmi-cms-load-test-row wmi-pending">Waiting for external JS…</div>
+  <div id="wmi-cms-test-css" class="wmi-cms-load-test-row wmi-pending">Waiting for CSS check…</div>
+  <div id="wmi-cms-test-fetch" class="wmi-cms-load-test-row wmi-pending">Waiting for fetch…</div>
+  <div id="wmi-cms-test-note" class="wmi-cms-load-test-row wmi-pending"></div>
+</div>
+<link rel="stylesheet" href="https://jhansenwmi.github.io/rumble-WMI-videos/widgets/cms-load-test.css">
+<script src="https://jhansenwmi.github.io/rumble-WMI-videos/widgets/cms-load-test.js"></script>
