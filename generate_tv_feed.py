@@ -1,11 +1,15 @@
 #!/usr/bin/env python3
 """
-Generate docs/tv-feed.json — TV broadcast videos only (title ends with TV{YYYYMMDD}).
+Generate docs/tv-feed.json — TV broadcast videos for TVShowsSnippetNew.html.
 
-Reads TV items from the already-generated rumble/overcoming feed JSON files (no extra
-Rumble scrape). Unlike those feeds (capped at ~90 with archiving), tv-feed.json
-accumulates every TV video ever seen so older broadcasts stay available for
-TVShowsSnippetNew.html.
+Includes:
+  - Any video whose title ends with TV{YYYYMMDD}
+  - Videos on channel "WMI TV Broadcast History" even without that suffix
+    (snippet matches those to tv-schedule.txt by title; schedule date is display date)
+
+Reads from already-generated rumble/overcoming feed JSON files (no extra Rumble scrape).
+Unlike those feeds (capped at ~90 with archiving), tv-feed.json accumulates every
+eligible TV video ever seen so older broadcasts stay available.
 """
 
 from __future__ import annotations
@@ -33,6 +37,7 @@ from generate_rumble_feed import (
 DEFAULT_OUTPUT = "docs/tv-feed.json"
 
 TV_TITLE_RE = re.compile(r"TV\d{8}\s*$", re.I)
+CHANNEL_BROADCAST_HISTORY = "WMI TV Broadcast History"
 
 DEFAULT_SOURCE_FEEDS = [
     "docs/rumble-feed.json",
@@ -46,8 +51,20 @@ def is_tv_title(title: str) -> bool:
     return bool(TV_TITLE_RE.search(str(title or "").strip()))
 
 
+def is_broadcast_history_channel(channel_name: str) -> bool:
+    return str(channel_name or "").strip() == CHANNEL_BROADCAST_HISTORY
+
+
 def is_tv_item(item: FeedItem) -> bool:
-    return is_tv_title(item.title)
+    if is_tv_title(item.title):
+        return True
+    return is_broadcast_history_channel(item.channel_name)
+
+
+def is_tv_dict(item: dict) -> bool:
+    if is_tv_title(str(item.get("title") or "")):
+        return True
+    return is_broadcast_history_channel(str(item.get("channelName") or ""))
 
 
 def filter_tv_items(items: list[FeedItem]) -> list[FeedItem]:
@@ -55,7 +72,7 @@ def filter_tv_items(items: list[FeedItem]) -> list[FeedItem]:
 
 
 def filter_tv_dicts(items: list[dict]) -> list[dict]:
-    return [item for item in items if is_tv_title(str(item.get("title") or ""))]
+    return [item for item in items if is_tv_dict(item)]
 
 
 def collect_tv_items_from_feeds(paths: list[Path]) -> list[FeedItem]:
@@ -106,7 +123,10 @@ def write_tv_feed(path: Path, items: list[FeedItem]) -> None:
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
-        description="Generate tv-feed.json from rumble/overcoming feed JSON (TV{YYYYMMDD} titles only)."
+        description=(
+            "Generate tv-feed.json from rumble/overcoming feed JSON "
+            "(TV{YYYYMMDD} titles, plus WMI TV Broadcast History channel)."
+        )
     )
     parser.add_argument(
         "--output",
@@ -155,7 +175,8 @@ def main() -> int:
 
     if not source_items and not existing:
         print(
-            "No TV broadcast items found (titles ending in TV{YYYYMMDD}).",
+            "No TV broadcast items found "
+            "(titles ending in TV{YYYYMMDD}, or WMI TV Broadcast History channel).",
             file=sys.stderr,
         )
         return 1

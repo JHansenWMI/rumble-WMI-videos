@@ -291,9 +291,19 @@ const FEEDS = [
     return /\/shorts(\/|$)/i.test(link) || /\/shorts(\/|$)/i.test(source) || /#shorts\b/i.test(title);
   }
 
+  // Channel-specific TV rules (feed generator unchanged; display-only):
+  // - WMI TV Broadcast History + TV{date}: hide here; still shown on TVShowsSnippetNew.
+  // - WARNING TV - Jonathan Hansen + TV{date}: show here with TV{date} stripped; date from pubDate.
+  const CHANNEL_WARNING_TV = "WARNING TV - Jonathan Hansen";
+  const CHANNEL_BROADCAST_HISTORY = "WMI TV Broadcast History";
+
+  function channelNameOf(item) {
+    return item && item.channelName ? String(item.channelName).trim() : "";
+  }
+
   function shouldExclude(item) {
     const source = item && item.sourcePage ? String(item.sourcePage) : "";
-    const ch = item && item.channelName ? String(item.channelName) : "";
+    const ch = channelNameOf(item);
     if (/\/shorts(\/|$)/i.test(source) && /The Overcoming Women$/i.test(ch)) return true;
     return false;
   }
@@ -301,6 +311,16 @@ const FEEDS = [
   function isTVShowItem(item) {
     const title = item && item.title ? String(item.title) : "";
     return /TV\d{8}\s*$/i.test(title);
+  }
+
+  /** Main grid: only WARNING TV TV-suffixed items among TV{date} titles. */
+  function shouldShowInCmsGrid(item) {
+    if (shouldExclude(item)) return false;
+    if (!isTVShowItem(item)) return true;
+    const ch = channelNameOf(item);
+    if (ch === CHANNEL_BROADCAST_HISTORY) return false;
+    if (ch === CHANNEL_WARNING_TV) return true;
+    return false;
   }
 
   function sortByDateDesc(a, b) {
@@ -336,16 +356,18 @@ const FEEDS = [
       return;
     }
 
-    items = items.filter(item => !shouldExclude(item) && !isTVShowItem(item));
+    items = items.filter(shouldShowInCmsGrid);
 
     items.sort(sortByDateDesc);
 
     items = items.slice(0, 30);
 
     const html = items.map(item => {
+      // normalizeTitle strips trailing TV{YYYYMMDD} (and trailing calendar dates)
       const title = normalizeTitle(item.title);
       const link = getLink(item);
       const thumb = getThumb(item);
+      // Always pubDate for CMS grid dates (including WARNING TV TV shows)
       const date = formatDateLA(getPubDate(item));
       const videoId = getVideoId(item);
       const shortClass = isShort(item) ? " rw-card--short" : "";

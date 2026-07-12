@@ -322,9 +322,35 @@ function isShort(item) {
   return /\/shorts(\/|$)/i.test(link) || /\/shorts(\/|$)/i.test(source) || /#shorts\b/i.test(title);
 }
 
+// TV feed / schedule matching:
+// - Titles ending TV{YYYYMMDD}: match schedule rows by that air date (all channels).
+// - WMI TV Broadcast History without TV{date}: match by normalized title only;
+//   display date comes from tv-schedule.txt (do not use Rumble pubDate for matching).
+// - Broadcast History + TV{date}: still shown here; not on the main CMS feed grid.
+const CHANNEL_BROADCAST_HISTORY = "WMI TV Broadcast History";
+
+function channelNameOf(item) {
+  return item && item.channelName ? String(item.channelName).trim() : "";
+}
+
 function isTVShowItem(item) {
   const title = item && item.title ? String(item.title) : "";
   return /TV\d{8}\s*$/i.test(title);
+}
+
+function isBroadcastHistoryChannel(item) {
+  return channelNameOf(item) === CHANNEL_BROADCAST_HISTORY;
+}
+
+/** Items eligible for the TV schedule list (from tv-feed.json). */
+function isTvScheduleVideo(item) {
+  if (isTVShowItem(item)) return true;
+  // History channel uploads without TV{date} still pair to schedule by title
+  return isBroadcastHistoryChannel(item);
+}
+
+function titleMatchKey(title) {
+  return normalizeTitle(title).toLowerCase();
 }
 
 function parseScheduleEntry(entry) {
@@ -381,7 +407,10 @@ async function loadAndRenderSchedule() {
   ul.innerHTML = '';
 
   // Fetch feed + schedule (both dynamic)
-  let videoMap = new Map();
+  // videoByDateKey: TV{YYYYMMDD} titles → schedule air date (never Rumble pubDate)
+  // videoByTitleKey: Broadcast History without TV{date} → match schedule title
+  let videoByDateKey = new Map();
+  let videoByTitleKey = new Map();
   let schedule = [];
   try {
     const [feedRes, schedRes] = await Promise.allSettled([
@@ -392,10 +421,16 @@ async function loadAndRenderSchedule() {
     if (feedRes.status === "fulfilled" && feedRes.value.ok) {
       const data = await feedRes.value.json();
       let items = (data && Array.isArray(data.items)) ? data.items : [];
-      items = items.filter(isTVShowItem);
+      items = items.filter(isTvScheduleVideo);
       items.forEach(item => {
-        const key = getTVAirDateStr(item);
-        if (key) videoMap.set(key, item);
+        if (isTVShowItem(item)) {
+          const key = getTVAirDateStr(item);
+          if (key) videoByDateKey.set(key, item);
+        } else if (isBroadcastHistoryChannel(item)) {
+          // No TV{date}: title-only match; schedule supplies the display date
+          const tKey = titleMatchKey(item.title);
+          if (tKey) videoByTitleKey.set(tKey, item);
+        }
       });
     } else if (feedRes.status === "rejected") {
       console.warn("Could not load video feed:", feedRes.reason);
@@ -422,13 +457,18 @@ async function loadAndRenderSchedule() {
   schedule.forEach(entry => {
     const parsed = parseScheduleEntry(entry);
     const key = getDateKey(parsed.displayDate);
-    const video = key ? videoMap.get(key) : null;
+    let video = key ? videoByDateKey.get(key) : null;
+    if (!video) {
+      const tKey = titleMatchKey(parsed.title);
+      if (tKey) video = videoByTitleKey.get(tKey) || null;
+    }
 
     const li = document.createElement('li');
 
     if (video) {
       li.classList.add('has-video');
       li.dataset.date = parsed.displayDate;
+      // Display date always from schedule when matched (not Rumble pubDate)
       li.innerHTML = renderVideoCard(video, parsed.displayDate, parsed.title);
     } else {
       li.textContent = entry;
