@@ -15,6 +15,11 @@ CMS snippets (HTML at project root):
   - **The Overcoming Women TV** → `The-Overcoming-Women-TV-cms.html` + `docs/widgets/The-Overcoming-Women-TV.{css,js}` (`overcoming-feed.json`)
 - Other (still full inline) snippets: `TVShowsSnippetNew.html`, `RadioBroadcastSnippet.html`, `ShortWaveBroadcastSnippet.html`.
 - **CMS shells are not auto-deployed.** Paste into the CMS by hand. `docs/*` (feeds + widgets) *are* served via GitHub Pages once pushed.
+- **CMS shell authoring style** (match how the CMS rewrites HTML so re-exports stay close to git):
+  - Comment block for a CMS editor: page title, “pasted from github”, “if text changes, update `…-cms.html` in git”, plus hosted asset/data URLs.
+  - Compact markup (minimal indentation); attributes on one line for the mount div.
+  - Stylesheet as `<p><link rel="stylesheet" href="…" /></p>` (self-closing).
+  - Widget script as `<script src="…" type="text/javascript"></script>`.
 
 Feeds:
 - `docs/rumble-feed.json` (main) is produced from `docs/rumble-urls.txt` (DrJonathanHansenWMI user account: videos/shorts/livestreams).
