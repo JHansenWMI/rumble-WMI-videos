@@ -9,8 +9,9 @@ publish_rumble_feed.sh
 - **`info/`** — longer project docs (not served as site data): [info/](info/).
 
 CMS snippets (HTML at project root):
-- Files such as `snippet in CMS using feed.html`, `TVShowsSnippetNew.html`, `overcoming CMS snippet using feed.html`, `RadioBroadcastSnippet.html`, and `ShortWaveBroadcastSnippet.html` are **edited in this repo for version control only**.
-- **They are not auto-deployed.** The CMS has no hook that pulls these files. After a snippet change, paste/load the updated HTML into the CMS page manually. (JSON/txt under `docs/` *are* served via GitHub Pages once pushed.)
+- Naming: prefer page-title based names with hyphens (no spaces), e.g. CMS page **Warning Social Media Video** → `Warning-Social-Media-Video-cms.html`. Shared data files keep descriptive names (`rumble-feed.json`, etc.).
+- Current snippets include `Warning-Social-Media-Video-cms.html` (main Rumble grid), `TVShowsSnippetNew.html`, `overcoming CMS snippet using feed.html`, `RadioBroadcastSnippet.html`, `ShortWaveBroadcastSnippet.html`.
+- **Edited in this repo for version control only — not auto-deployed.** The CMS has no hook that pulls these files. After a snippet change, paste/load the updated HTML into the CMS page manually. (JSON/txt under `docs/` *are* served via GitHub Pages once pushed.)
 
 Feeds:
 - `docs/rumble-feed.json` (main) is produced from `docs/rumble-urls.txt` (DrJonathanHansenWMI user account: videos/shorts/livestreams).

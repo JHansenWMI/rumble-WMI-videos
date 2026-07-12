@@ -4,7 +4,7 @@ Detail for files under [`docs/`](../docs/). That folder is **website data** (Git
 
 **Design principle:** Avoid display logic and parameters in data files. Snippets own paging/UI; data files are flat lists or JSON feeds.
 
-**CMS vs GitHub Pages:** Snippet HTML files live at the **repo root** (e.g. `snippet in CMS using feed.html`, `TVShowsSnippetNew.html`). Pushing them does **not** update the live site — paste each changed snippet into the CMS by hand. Only `docs/*` feed/schedule files are fetched automatically after a push to GitHub Pages.
+**CMS vs GitHub Pages:** Snippet HTML files live at the **repo root**, named from the CMS page title with hyphens (e.g. page **Warning Social Media Video** → `Warning-Social-Media-Video-cms.html`). Pushing them does **not** update the live site — paste each changed snippet into the CMS by hand. Only `docs/*` feed/schedule files are fetched automatically after a push to GitHub Pages. Shared feeds keep descriptive names (`rumble-feed.json`).
 
 ## Primary Rumble feeds (active / “latest”)
 
