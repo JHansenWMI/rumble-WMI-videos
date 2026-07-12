@@ -14,7 +14,8 @@ CMS snippets (HTML at project root):
   - **Warning Social Media Video** → `Warning-Social-Media-Video-cms.html` + `docs/widgets/Warning-Social-Media-Video.{css,js}` (`rumble-feed.json`)
   - **The Overcoming Women TV** → `The-Overcoming-Women-TV-cms.html` + `docs/widgets/The-Overcoming-Women-TV.{css,js}` (`overcoming-feed.json`)
   - **Warning TV Broadcasts** → `Warning-TV-Broadcasts-cms.html` + `docs/widgets/Warning-TV-Broadcasts.{css,js}` (`tv-feed.json` + `tv-schedule.txt`)
-- Other (still full inline) snippets: `RadioBroadcastSnippet.html`, `ShortWaveBroadcastSnippet.html`.
+  - **Warning Radio Broadcast** → `Warning-Radio-Broadcast-cms.html` + `docs/widgets/Warning-Radio-Broadcast.{css,js}` (`radio-schedule.txt`)
+  - **Shortwave Broadcasts** → `Shortwave-Broadcasts-cms.html` + `docs/widgets/Shortwave-Broadcasts.{css,js}` (`shortwave-schedule.txt`)
 - **CMS shells are not auto-deployed.** Paste into the CMS by hand. `docs/*` (feeds + widgets) *are* served via GitHub Pages once pushed.
 - **CMS shell authoring style** (match how the CMS rewrites HTML so re-exports stay close to git):
   - Comment block for a CMS editor: page title, “pasted from github”, “if text changes, update `…-cms.html` in git”, plus hosted asset/data URLs.
@@ -54,20 +55,20 @@ TV schedule (for Warning TV Broadcasts widget):
   3. `launchctl load ~/Library/LaunchAgents/com.jhansenwmi.tv-schedule.plist`
 - Manual runs (or on other machines) still work with the python command above; follow with `git add + commit + push` if desired.
 
-Radio schedule (for RadioBroadcastSnippet.html):
+Radio schedule (for Warning Radio Broadcast / `Warning-Radio-Broadcast-cms.html`):
 - `docs/radio-schedule.txt` contains the ordered list of radio broadcast entries (one line per entry in the form "Day, Mon DD, YYYY: Title").
 - Generated from `Intra Support Files/radio_programs.csv` (primary slot-1 programs + cleaning). Pure data file — no display logic or paging info (see design principle in [info/feeds-and-schedules.md](info/feeds-and-schedules.md)).
-- `RadioBroadcastSnippet.html` fetches the schedule (+ optional `podbean-radio-matches.json`) and handles paging client-side (50 items/page). Lines with a Podbean match show a ▶ control; click expands a simple HTML5 audio player under the line (one open at a time).
-- Podbean play map: `python match_podbean_to_radio.py` → active + archive JSON under `docs/`. Accumulates episodes in `Intra Support Files/podbean_episodes.json` (merge by guid; RSS is a rolling ~1000-item window). Default uses `docs/radio-schedule.txt`; `--from-csv` uses existing `radio_programs.csv`; `--cache-only` skips RSS. Snippet loads active matches first; archive on first **Older** click.
+- Widget (`docs/widgets/Warning-Radio-Broadcast.js`) fetches the schedule and pages client-side (50 items/page); highlights the next upcoming air date (Pacific, 12:30 cutoff).
+- Podbean match tooling still exists (`match_podbean_to_radio.py` → `docs/podbean-radio-matches*.json`) but is not wired into this schedule widget.
 - Run `update_radio_programs.py` (xlsx path in WorkToDo/Radio Program Parsing.MD); `--schedule-only` regenerates from existing CSV. Air dates capped at today + 10 days (Pacific).
 - On the production Mac Mini: **Friday at 4:10am** via launchd (`update_radio_schedule.sh` + `com.jhansenwmi.radio-schedule.plist.example`). Runs 10 minutes after the TV job so TV can push first; one shell script updates radio CSV, `docs/radio-schedule.txt`, and `docs/shortwave-schedule.txt` (shortwave is chained inside `update_radio_programs.py` — no separate Python master needed).
-- See WorkToDo/Radio Program Parsing.MD for generation details, seed comparison, and snippet implementation notes.
+- See WorkToDo/Radio Program Parsing.MD for generation details and seed comparison.
 
-Shortwave schedule (for ShortWaveBroadcastSnippet.html):
+Shortwave schedule (for Shortwave Broadcasts / `Shortwave-Broadcasts-cms.html`):
 - `docs/shortwave-schedule.txt` — same line format; CSV rows where `program_number` ends in `SW` (often combined titles with ` / `).
 - `update_shortwave_schedule.py` from the same CSV; also runs at the end of `update_radio_programs.py` after an xlsx parse.
 - Stricter title cleaning than radio: dates/program numbers anywhere, all `(parenthetical)` text removed, `- -` collapsed. Plain `&` for JS `textContent`.
-- `ShortWaveBroadcastSnippet.html` fetches from GitHub Pages. `docs/shortwave-schedule-static.txt` is a CMS snapshot (`--extract-static`).
+- Widget (`docs/widgets/Shortwave-Broadcasts.js`) fetches from GitHub Pages. `docs/shortwave-schedule-static.txt` is a CMS snapshot (`--extract-static`).
 
 Rumble HTML samples:
 - samples/rumble-channel-pages/ stores dated snapshots of channel listing pages (see README there). Use when Rumble changes markup and the feed parser needs updating.

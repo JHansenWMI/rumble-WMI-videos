@@ -1,0 +1,32 @@
+/* Warning Radio Broadcast — schedule list + pager (GitHub Pages) */
+
+#content li {
+  padding-left: 80px;
+  text-indent: -80px;
+}
+#content li.highlight {
+  background-color: #DCD4E6;
+  font-weight: bold;
+}
+
+#schedule-list {
+  /* Reserve space for ~50 items on full pages to reduce jumpiness.
+     On the last page we intentionally let it shrink (see .last-page). */
+  min-height: 1100px;
+}
+#schedule-list.last-page {
+  /* Last page has fewer items: allow natural (short) height so the
+     pager buttons sit directly under the last radio program. */
+  min-height: 0;
+}
+
+#radio-pager {
+  margin: 6px 0 2px;
+  text-align: center;
+  font-size: 0.9em;
+}
+#radio-pager button {
+  padding: 1px 8px;
+  font-size: 0.9em;
+  vertical-align: middle;
+}
