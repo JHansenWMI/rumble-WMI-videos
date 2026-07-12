@@ -10,8 +10,10 @@ publish_rumble_feed.sh
 
 CMS snippets (HTML at project root):
 - Naming: prefer page-title based names with hyphens (no spaces), e.g. CMS page **Warning Social Media Video** → `Warning-Social-Media-Video-cms.html`. Shared data files keep descriptive names (`rumble-feed.json`, etc.).
-- **Pilot (thin shell + hosted widget):** `Warning-Social-Media-Video-cms.html` loads CSS/JS from `docs/widgets/Warning-Social-Media-Video.{css,js}` on GitHub Pages. Re-paste the CMS shell only when mount markup / page chrome changes; grid logic updates via git push.
-- Other (still full inline) snippets: `TVShowsSnippetNew.html`, `overcoming CMS snippet using feed.html`, `RadioBroadcastSnippet.html`, `ShortWaveBroadcastSnippet.html`.
+- **Thin shell + hosted widget:** page-title base → `…-cms.html` + `docs/widgets/….{css,js}` on GitHub Pages. Re-paste the CMS shell only when mount markup / page chrome changes; grid logic updates via git push.
+  - **Warning Social Media Video** → `Warning-Social-Media-Video-cms.html` + `docs/widgets/Warning-Social-Media-Video.{css,js}` (`rumble-feed.json`)
+  - **The Overcoming Women TV** → `The-Overcoming-Women-TV-cms.html` + `docs/widgets/The-Overcoming-Women-TV.{css,js}` (`overcoming-feed.json`)
+- Other (still full inline) snippets: `TVShowsSnippetNew.html`, `RadioBroadcastSnippet.html`, `ShortWaveBroadcastSnippet.html`.
 - **CMS shells are not auto-deployed.** Paste into the CMS by hand. `docs/*` (feeds + widgets) *are* served via GitHub Pages once pushed.
 
 Feeds:

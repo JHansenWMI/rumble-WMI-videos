@@ -4,7 +4,7 @@ Detail for files under [`docs/`](../docs/). That folder is **website data** (Git
 
 **Design principle:** Avoid display logic and parameters in data files. Snippets own paging/UI; data files are flat lists or JSON feeds.
 
-**CMS vs GitHub Pages:** CMS paste sources live at the **repo root**, named from the page title with hyphens (e.g. **Warning Social Media Video** → `Warning-Social-Media-Video-cms.html`). Pushing those files does **not** update the live CMS — paste by hand. `docs/*` on GitHub Pages *is* live after push: feeds (`rumble-feed.json`, …) and hosted widgets (`docs/widgets/Warning-Social-Media-Video.{css,js}` for the main grid pilot).
+**CMS vs GitHub Pages:** CMS paste sources live at the **repo root**, named from the page title with hyphens (e.g. **Warning Social Media Video** → `Warning-Social-Media-Video-cms.html`, **The Overcoming Women TV** → `The-Overcoming-Women-TV-cms.html`). Pushing those files does **not** update the live CMS — paste by hand. `docs/*` on GitHub Pages *is* live after push: feeds and hosted widgets under `docs/widgets/`.
 
 ## Primary Rumble feeds (active / “latest”)
 
