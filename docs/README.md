@@ -1,5 +1,6 @@
 # `docs/` — website data
 
-Generated and supporting files **served or fetched by the public site** (GitHub Pages).
+Generated and supporting files **served or fetched by the public site** (GitHub Pages). Longer project notes: [`info/feeds-and-schedules.md`](../info/feeds-and-schedules.md).
 
-Examples: Rumble feed JSON, TV/radio/shortwave schedule text, Podbean match maps, URL lists for scrapers, and hosted CMS widgets under `widgets/` (page-title bases: Warning-Social-Media-Video, The-Overcoming-Women-TV, Warning-TV-Broadcasts, Warning-Radio-Broadcast, Shortwave-Broadcasts).
+- **Feeds / schedules:** `rumble-feed.json`, `overcoming-feed.json`, `tv-feed.json`, `*-schedule.txt`, archives, URL lists, Podbean match maps.
+- **Widgets:** `widgets/*.css` and `widgets/*.js` — loaded by thin CMS shells at repo root (`*-cms.html`). Edits here go live after push; CMS paste only when the shell itself changes.
