@@ -13,16 +13,24 @@
  * - WMI TV Broadcast History without TV{date}: match by normalized title;
  *   display date from tv-schedule.txt.
  * - No video: if a site thumb exists for the schedule air date
- *   (…/video-thumbs/YYYYMMDD.jpg), show a non-clickable card that looks like
- *   the video rows. Optional data-thumb-base on #content overrides the URL base.
+ *   ({base}/YYYYMMDD.jpg), show a non-clickable card that looks like
+ *   the video rows. Bases tried in order (first image that loads wins):
+ *     1) GitHub Pages docs/tv-thumbs/  (preferred for new work)
+ *     2) CMS Userfiles/video-thumbs/   (legacy / already-hosted)
+ *   Optional on #content:
+ *     data-thumb-base="…"   — single base only (replaces the default list)
+ *     data-thumb-bases="url1,url2" — custom ordered list of bases
  */
 (function () {
   var DEFAULT_FEED =
     "https://jhansenwmi.github.io/rumble-WMI-videos/tv-feed.json";
   var DEFAULT_SCHEDULE =
     "https://jhansenwmi.github.io/rumble-WMI-videos/tv-schedule.txt";
-  var DEFAULT_THUMB_BASE =
-    "https://www.worldministries.org/Userfiles/video-thumbs/";
+  /** Preferred first; CMS fallback so existing Userfiles thumbs keep working. */
+  var DEFAULT_THUMB_BASES = [
+    "https://jhansenwmi.github.io/rumble-WMI-videos/tv-thumbs/",
+    "https://www.worldministries.org/Userfiles/video-thumbs/",
+  ];
   var RUMBLE_MODAL_Z_INDEX = 10000;
   var CHANNEL_BROADCAST_HISTORY = "WMI TV Broadcast History";
 
@@ -163,7 +171,7 @@
     return n < 10 ? "0" + n : String(n);
   }
 
-  /** Schedule display date → YYYYMMDD for video-thumbs/{date}.jpg */
+  /** Schedule display date → YYYYMMDD for {base}/{date}.jpg */
   function getDateYyyymmdd(displayDateStr) {
     var match = String(displayDateStr || "").match(
       /([A-Za-z]+)\s+(\d{1,2}),\s+(\d{4})/
@@ -174,20 +182,56 @@
     return d.getFullYear() + pad2(d.getMonth() + 1) + pad2(d.getDate());
   }
 
-  function thumbBaseUrl(container) {
-    var base = (
+  function ensureTrailingSlash(base) {
+    var b = String(base || "").trim();
+    if (!b) return "";
+    if (b.charAt(b.length - 1) !== "/") b += "/";
+    return b;
+  }
+
+  /**
+   * Ordered list of URL bases for thumb-only cards.
+   * data-thumb-base → single override; data-thumb-bases → comma-separated list;
+   * else DEFAULT_THUMB_BASES (GitHub tv-thumbs, then CMS Userfiles).
+   */
+  function thumbBases(container) {
+    var single = (
       (container && container.getAttribute("data-thumb-base")) ||
       ""
     ).trim();
-    if (!base) base = DEFAULT_THUMB_BASE;
-    if (base.charAt(base.length - 1) !== "/") base += "/";
-    return base;
+    if (single) {
+      return [ensureTrailingSlash(single)];
+    }
+    var multi = (
+      (container && container.getAttribute("data-thumb-bases")) ||
+      ""
+    ).trim();
+    if (multi) {
+      return multi
+        .split(",")
+        .map(function (s) {
+          return ensureTrailingSlash(s);
+        })
+        .filter(Boolean);
+    }
+    return DEFAULT_THUMB_BASES.map(ensureTrailingSlash);
   }
 
   function thumbUrlForDate(base, displayDateStr) {
     var ymd = getDateYyyymmdd(displayDateStr);
-    if (!ymd) return "";
-    return base + ymd + ".jpg";
+    if (!ymd || !base) return "";
+    return ensureTrailingSlash(base) + ymd + ".jpg";
+  }
+
+  /** Candidate URLs for a schedule date (one per base). */
+  function thumbUrlsForDate(bases, displayDateStr) {
+    var ymd = getDateYyyymmdd(displayDateStr);
+    if (!ymd) return [];
+    return (bases || [])
+      .map(function (base) {
+        return thumbUrlForDate(base, displayDateStr);
+      })
+      .filter(Boolean);
   }
 
   function probeImage(url) {
@@ -205,6 +249,21 @@
       };
       img.src = url;
     });
+  }
+
+  /** First URL in the list that loads as an image, or null. */
+  function probeFirstImage(urls) {
+    var list = urls || [];
+    var i = 0;
+    function next() {
+      if (i >= list.length) return Promise.resolve(null);
+      var url = list[i++];
+      return probeImage(url).then(function (ok) {
+        if (ok) return url;
+        return next();
+      });
+    }
+    return next();
   }
 
   function ensureRumbleEmbedScript() {
@@ -501,9 +560,7 @@
         return Promise.all([feedChain, schedChain]);
       })
       .then(function () {
-        var dateRegex =
-          /^(?:[A-Za-z]+,\s)?([A-Za-z]+)\s(\d{1,2}),\s(\d{4})/;
-        var base = thumbBaseUrl(container);
+        var bases = thumbBases(container);
 
         var rows = schedule.map(function (entry) {
           var parsed = parseScheduleEntry(entry);
@@ -513,25 +570,29 @@
             var tKey = titleMatchKey(parsed.title);
             if (tKey) video = videoByTitleKey.get(tKey) || null;
           }
-          var thumbUrl = video
-            ? ""
-            : thumbUrlForDate(base, parsed.displayDate);
+          var thumbCandidates = video
+            ? []
+            : thumbUrlsForDate(bases, parsed.displayDate);
           return {
             entry: entry,
             parsed: parsed,
             video: video,
-            thumbUrl: thumbUrl,
+            thumbUrl: "",
             thumbOk: false,
+            thumbCandidates: thumbCandidates,
           };
         });
 
         return Promise.all(
           rows.map(function (row) {
-            if (row.video || !row.thumbUrl) {
+            if (row.video || !row.thumbCandidates.length) {
               return Promise.resolve(row);
             }
-            return probeImage(row.thumbUrl).then(function (ok) {
-              row.thumbOk = ok;
+            return probeFirstImage(row.thumbCandidates).then(function (url) {
+              if (url) {
+                row.thumbUrl = url;
+                row.thumbOk = true;
+              }
               return row;
             });
           })
