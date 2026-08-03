@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Preview — International Itinerary (local / GH Pages)</title>
+    <!--
+      Local check (from this docs/ folder, after a simple static server or via GH Pages):
+        open this file after push, or:
+        cd docs && python3 -m http.server 8765
+        http://127.0.0.1:8765/itinerary-preview-international.html
+
+      Toggle data-itinerary:
+        relative (local server): ./international-itinerary.json
+        production: full jhansenwmi.github.io URL
+    -->
+    <link rel="stylesheet" href="./widgets/International-Itinerary.css" />
+    <style>
+      body {
+        font-family: Georgia, "Times New Roman", serif;
+        margin: 24px;
+        max-width: 900px;
+        line-height: 1.4;
+      }
+      .preview-banner {
+        background: #f4f0f8;
+        border: 1px solid #cfc4dd;
+        padding: 10px 14px;
+        margin-bottom: 20px;
+        font-family: system-ui, sans-serif;
+        font-size: 14px;
+      }
+      h1 {
+        font-size: 1.6rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="preview-banner">
+      Local / offline preview of the CMS itinerary widget. Not the live CMS chrome.
+    </div>
+    <h1>International Itinerary</h1>
+    <div
+      id="content"
+      data-itinerary="./international-itinerary.json"
+    ></div>
+    <script src="./widgets/International-Itinerary.js"></script>
+  </body>
+</html>

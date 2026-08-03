@@ -1,0 +1,53 @@
+/* International Itinerary — events table (GitHub Pages) */
+
+.wmi-itinerary-loading,
+.wmi-itinerary-error,
+.wmi-itinerary-empty {
+  margin: 0.75em 0;
+}
+
+.wmi-itinerary-error {
+  color: #a11;
+}
+
+.wmi-itinerary-intro {
+  margin-bottom: 1em;
+}
+
+table.events-list.wmi-itinerary-table,
+table.wmi-itinerary-table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 0;
+}
+
+table.wmi-itinerary-table td {
+  vertical-align: top;
+  padding: 0.35em 0.5em 0.75em 0;
+  border: 0;
+}
+
+/* Flag column */
+table.wmi-itinerary-table tr.wmi-itinerary-event > td:first-child {
+  width: 64px;
+  padding-right: 10px;
+}
+
+table.wmi-itinerary-table img.wmi-itinerary-flag {
+  width: 48px;
+  height: auto;
+  max-width: 55px;
+  display: block;
+}
+
+/* Flyer images inside body (seed HTML often sets width; keep reasonable) */
+table.wmi-itinerary-table img.wmi-itinerary-flyer,
+table.wmi-itinerary-table td img[src*="Flyer"],
+table.wmi-itinerary-table td img[src*="flyer"] {
+  max-width: min(600px, 100%);
+  height: auto;
+}
+
+table.wmi-itinerary-table h3 {
+  margin: 1em 0 0.4em;
+}
