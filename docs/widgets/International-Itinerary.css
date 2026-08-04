@@ -51,3 +51,44 @@ table.wmi-itinerary-table td img[src*="flyer"] {
 table.wmi-itinerary-table h3 {
   margin: 1em 0 0.4em;
 }
+
+/* Year section: click whole row to expand/collapse */
+table.wmi-itinerary-table tr.wmi-itinerary-year {
+  cursor: pointer;
+  user-select: none;
+}
+
+table.wmi-itinerary-table tr.wmi-itinerary-year:hover td {
+  background: rgba(0, 0, 0, 0.04);
+}
+
+table.wmi-itinerary-table tr.wmi-itinerary-year:focus {
+  outline: 2px solid #4f2683;
+  outline-offset: 2px;
+}
+
+table.wmi-itinerary-table tr.wmi-itinerary-year td {
+  padding-top: 0.65em;
+  padding-bottom: 0.35em;
+}
+
+.wmi-itinerary-year-heading {
+  margin: 0.4em 0;
+  display: flex;
+  align-items: center;
+  gap: 0.35em;
+}
+
+.wmi-itinerary-year-indicator {
+  display: inline-block;
+  width: 1.1em;
+  font-size: 0.85em;
+  line-height: 1;
+  color: #4f2683;
+  font-weight: 700;
+}
+
+table.wmi-itinerary-table tr.wmi-itinerary-event.is-year-collapsed,
+table.wmi-itinerary-table tr.wmi-itinerary-event[hidden] {
+  display: none;
+}
