@@ -108,6 +108,20 @@
     return "<p>" + parts.join("<br />") + "</p>";
   }
 
+  function setEventRowVisible(row, expanded) {
+    // CMS theme CSS often forces tr { display: table-row }, which overrides
+    // the HTML hidden attribute. Set display with !important instead.
+    if (expanded) {
+      row.style.removeProperty("display");
+      row.removeAttribute("hidden");
+      row.classList.remove("is-year-collapsed");
+    } else {
+      row.style.setProperty("display", "none", "important");
+      row.setAttribute("hidden", "hidden");
+      row.classList.add("is-year-collapsed");
+    }
+  }
+
   function setYearExpanded(table, year, expanded) {
     var yearKey = String(year);
     var header = table.querySelector(
@@ -124,12 +138,26 @@
         expanded ? "Collapse year" : "Expand year"
       );
     }
-    var rows = table.querySelectorAll(
-      'tr.wmi-itinerary-event[data-year="' + yearKey + '"]'
-    );
-    for (var i = 0; i < rows.length; i++) {
-      rows[i].hidden = !expanded;
-      rows[i].classList.toggle("is-year-collapsed", !expanded);
+
+    // Hide/show event rows until the next year header (DOM order = year sections).
+    var row = header.nextElementSibling;
+    while (row) {
+      if (
+        row.classList &&
+        row.classList.contains("wmi-itinerary-year")
+      ) {
+        break;
+      }
+      if (
+        row.classList &&
+        row.classList.contains("wmi-itinerary-event")
+      ) {
+        setEventRowVisible(row, expanded);
+      } else if (row.tagName === "TR" || (row.tagName && row.tagName.toLowerCase() === "tr")) {
+        // Fallback if class names were stripped by CMS HTML filter
+        setEventRowVisible(row, expanded);
+      }
+      row = row.nextElementSibling;
     }
   }
 
@@ -214,6 +242,10 @@
             ? String(lastYear)
             : "";
       var expandedEv = yearAttr ? !!openYears[yearAttr] : true;
+      // Inline display for first paint (beats CMS tr{display:table-row} rules)
+      var hideStyle = expandedEv
+        ? ""
+        : ' style="display:none !important" hidden';
 
       var flagCell = "&nbsp;";
       if (ev.flag) {
@@ -234,7 +266,7 @@
           '" data-year="' +
           escapeHtml(yearAttr) +
           '"' +
-          (expandedEv ? "" : " hidden") +
+          hideStyle +
           ">" +
           "<td>" +
           flagCell +
