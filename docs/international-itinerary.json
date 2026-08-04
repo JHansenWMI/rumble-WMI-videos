@@ -1,10 +1,10 @@
 {
   "title": "International Itinerary",
   "region": "international",
-  "generatedAt": "2026-08-04T03:13:16Z",
+  "generatedAt": "2026-08-04T05:27:37Z",
   "sourceUrl": "https://www.worldministries.org/international-itinerary.aspx",
   "introHtml": "<p>Due to the COVID restrictions which started immediately after I arrived back from Amsterdam, Netherlands, February 2, 2020, my international itinerary already scheduled for the rest of 2020 was cancelled as well as 2021. Only limited national ministry trips were taken.</p>",
-  "eventCount": 383,
+  "eventCount": 384,
   "events": [
     {
       "id": "2026-10-25-south-korea",
@@ -23,7 +23,7 @@
       "id": "2026-10-04-tongaat-jonathan-hansen-preaching",
       "year": 2026,
       "sort_date": "2026-10-04",
-      "date_text": "Oct 4, 2026",
+      "date_text": "Oct 4th, 2026",
       "start_date": "2026-10-04",
       "end_date": "2026-10-04",
       "time_text": "",
@@ -48,8 +48,38 @@
       "flyer_alt": "Dr. Jonathan Hansen Preaching — KZN Celebration Centre",
       "links": [],
       "body_lines": [],
-      "body_html": "<p><strong><img src=\"https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/2026-10-04-tongaat-jonathan-hansen.jpg\" style=\"width: 200px; height: auto;\" alt=\"Dr. Jonathan Hansen Preaching — KZN Celebration Centre\" /><br />Tongaat, South Africa<br /></strong>Oct 4, 2026<br />Rev. Dr. Jonathan Hansen - Speaking<br />Host: AFM Tongaat<br />KZN Celebration Centre<br />33 High Street, Tongaat</p>",
-      "region": "international"
+      "region": "international",
+      "body_html": "<p><strong><img src=\"https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/2026-10-04-tongaat-jonathan-hansen.jpg\" style=\"width: 200px; height: auto;\" alt=\"Dr. Jonathan Hansen Preaching — KZN Celebration Centre\" /><br />Tongaat, South Africa<br /></strong>Oct 4th, 2026<br />Rev. Dr. Jonathan Hansen - Speaking<br />Host: AFM Tongaat<br />KZN Celebration Centre<br />33 High Street, Tongaat<br /></p>"
+    },
+    {
+      "id": "2026-10-03-KZNCC-sisters-connect",
+      "year": 2026,
+      "sort_date": "2026-10-03",
+      "date_text": "Oct 3rd, 2026",
+      "start_date": "2026-10-03",
+      "end_date": "2026-10-03",
+      "time_text": "9:30 AM",
+      "place": "Tongaat, South Africa",
+      "city": "Tongaat",
+      "country": "South Africa",
+      "event_name": "Sisters Connect",
+      "event_type": "",
+      "speakers": [
+        "Rev. Dr. Adalia Hansen"
+      ],
+      "hosts": [],
+      "venue": "KZN Celebration Center",
+      "address_lines": [
+        "33 High Street"
+      ],
+      "flag": "https://www.worldministries.org/Userfiles/Flags/south-africa.gif",
+      "flag_alt": "South Africa",
+      "flyer": "https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/2026-01-01-event-sisters-connect.jpg",
+      "flyer_alt": "Sister Connect flyer",
+      "links": [],
+      "body_lines": [],
+      "region": "international",
+      "body_html": "<p><strong><img src=\"https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/2026-01-01-event-sisters-connect.jpg\" style=\"width: 200px; height: auto;\" alt=\"Sister Connect flyer\" /><br />Tongaat, South Africa<br /></strong>Oct 3rd, 2026 — 9:30 AM<br />Sisters Connect<br />Rev. Dr. Adalia Hansen - Speaking<br />KZN Celebration Center<br />33 High Street<br /></p>"
     },
     {
       "id": "2026-09-30-south-africa",
@@ -5006,7 +5036,7 @@
     }
   ],
   "lastManualUpdate": {
-    "at": "2026-08-04T03:13:16Z",
-    "note": "Added Tongaat Jonathan Hansen preaching 2026-10-04 from poster-event-draft Event 1"
+    "at": "2026-08-04T05:27:37Z",
+    "note": "Upsert event 2026-10-04-tongaat-jonathan-hansen-preaching"
   }
 }
