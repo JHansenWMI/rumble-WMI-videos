@@ -14,7 +14,9 @@ Host **website-facing** itinerary data the same way as TV/radio widgets:
 |------|---------|
 | `docs/international-itinerary.json` | Event list + intro (seeded from live CMS scrape; events keep `body_html` for fidelity) |
 | `docs/united-states-itinerary.json` | Same schema (later) |
-| `docs/itinerary-assets/` | Posters (~600px wide) |
+| `docs/itinerary-assets/` | Event posters (~600px wide) |
+| `docs/itinerary-assets/country-flags/` | Country flag GIFs (hosted; not hotlinked from CMS long-term) |
+| `docs/itinerary-assets/state-flags/` | *(planned)* US state flags for United States itinerary |
 | `docs/widgets/International-Itinerary.js` + `.css` | Render for CMS / consumers |
 | `docs/itinerary-preview-international.html` | Local/static preview harness |
 | `International-Itinerary-cms.html` (repo root) | One-time CMS paste shell |
