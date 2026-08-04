@@ -1,10 +1,10 @@
 {
   "title": "International Itinerary",
   "region": "international",
-  "generatedAt": "2026-08-03T18:48:37Z",
+  "generatedAt": "2026-08-04T03:13:16Z",
   "sourceUrl": "https://www.worldministries.org/international-itinerary.aspx",
   "introHtml": "<p>Due to the COVID restrictions which started immediately after I arrived back from Amsterdam, Netherlands, February 2, 2020, my international itinerary already scheduled for the rest of 2020 was cancelled as well as 2021. Only limited national ministry trips were taken.</p>",
-  "eventCount": 382,
+  "eventCount": 383,
   "events": [
     {
       "id": "2026-10-25-south-korea",
@@ -17,6 +17,38 @@
       "flyer": "",
       "flyer_alt": "",
       "body_html": "<p><strong><strong><strong>South Korea<br /></strong></strong></strong>Oct 25 - 30, 2026</p>\r\n<p>Oct 26 - 28: The 10th World Holy Spirit Ministry International Conference<br />Hosting Church: The Lord's First Church, Gwang-Ju City, Korea</p>",
+      "region": "international"
+    },
+    {
+      "id": "2026-10-04-tongaat-jonathan-hansen-preaching",
+      "year": 2026,
+      "sort_date": "2026-10-04",
+      "date_text": "Oct 4, 2026",
+      "start_date": "2026-10-04",
+      "end_date": "2026-10-04",
+      "time_text": "",
+      "place": "Tongaat, South Africa",
+      "city": "Tongaat",
+      "country": "South Africa",
+      "event_name": "",
+      "event_type": "non-titled, speaking at church service",
+      "speakers": [
+        "Rev. Dr. Jonathan Hansen"
+      ],
+      "hosts": [
+        "AFM Tongaat"
+      ],
+      "venue": "KZN Celebration Centre",
+      "address_lines": [
+        "33 High Street, Tongaat"
+      ],
+      "flag": "https://www.worldministries.org/Userfiles/Flags/south-africa.gif",
+      "flag_alt": "South Africa",
+      "flyer": "https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/2026-10-04-tongaat-jonathan-hansen.jpg",
+      "flyer_alt": "Dr. Jonathan Hansen Preaching — KZN Celebration Centre",
+      "links": [],
+      "body_lines": [],
+      "body_html": "<p><strong><img src=\"https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/2026-10-04-tongaat-jonathan-hansen.jpg\" style=\"width: 200px; height: auto;\" alt=\"Dr. Jonathan Hansen Preaching — KZN Celebration Centre\" /><br />Tongaat, South Africa<br /></strong>Oct 4, 2026<br />Rev. Dr. Jonathan Hansen - Speaking<br />Host: AFM Tongaat<br />KZN Celebration Centre<br />33 High Street, Tongaat</p>",
       "region": "international"
     },
     {
@@ -4972,5 +5004,9 @@
       "body_html": "<strong>Kenya</strong><br />January 1 - March 11, 1992",
       "region": "international"
     }
-  ]
+  ],
+  "lastManualUpdate": {
+    "at": "2026-08-04T03:13:16Z",
+    "note": "Added Tongaat Jonathan Hansen preaching 2026-10-04 from poster-event-draft Event 1"
+  }
 }
