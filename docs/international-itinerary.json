@@ -1,9 +1,9 @@
 {
   "title": "International Itinerary",
   "region": "international",
-  "generatedAt": "2026-08-06T22:46:22Z",
+  "generatedAt": "2026-08-06T23:46:02Z",
   "sourceUrl": "https://www.worldministries.org/international-itinerary.aspx",
-  "introHtml": "<p>Due to the COVID restrictions which started immediately after I arrived back from Amsterdam, Netherlands, February 2, 2020, my international itinerary already scheduled for the rest of 2020 was cancelled as well as 2021. Only limited national ministry trips were taken.</p>",
+  "introHtml": "<p>Due to the COVID restrictions which started immediately after I arrived back from Amsterdam, Netherlands, February 2, 2020, my international itinerary already scheduled for the rest of 2020 was cancelled as well as 2021. Only limited national ministry trips were taken..</p>",
   "eventCount": 384,
   "events": [
     {
@@ -11,13 +11,26 @@
       "year": 2026,
       "sort_date": "2026-10-25",
       "date_text": "Oct 25 - 30, 2026",
+      "start_date": "2026-10-25",
+      "end_date": "2026-10-25",
+      "time_text": "",
       "place": "South Korea",
+      "city": "",
+      "country": "",
+      "event_name": "",
+      "event_type": "",
+      "speakers": [],
+      "hosts": [],
+      "venue": "",
+      "address_lines": [],
       "flag": "https://www.worldministries.org/Userfiles/Flags/skorea.gif",
       "flag_alt": "skorea",
       "flyer": "",
-      "flyer_alt": "",
-      "body_html": "<p><strong><strong><strong>South Korea<br /></strong></strong></strong>Oct 25 - 30, 2026</p>\r\n<p>Oct 26 - 28: The 10th World Holy Spirit Ministry International Conference<br />Hosting Church: The Lord's First Church, Gwang-Ju City, Korea</p>",
-      "region": "international"
+      "flyer_alt": "South Korea",
+      "links": [],
+      "body_lines": [],
+      "region": "international",
+      "body_html": "<p><strong>South Korea<br /></strong>Oct 25 - 30, 2026<br /></p>"
     },
     {
       "id": "2026-10-04-tongaat-jonathan-hansen-preaching",
@@ -5036,7 +5049,7 @@
     }
   ],
   "lastManualUpdate": {
-    "at": "2026-08-06T22:46:22Z",
-    "note": "Deleted event evt-000385"
+    "at": "2026-08-06T23:46:02Z",
+    "note": "Upsert event 2026-10-25-south-korea"
   }
 }
