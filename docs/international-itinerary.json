@@ -1,10 +1,10 @@
 {
   "title": "International Itinerary",
   "region": "international",
-  "generatedAt": "2026-08-04T05:27:37Z",
+  "generatedAt": "2026-08-06T22:43:37Z",
   "sourceUrl": "https://www.worldministries.org/international-itinerary.aspx",
   "introHtml": "<p>Due to the COVID restrictions which started immediately after I arrived back from Amsterdam, Netherlands, February 2, 2020, my international itinerary already scheduled for the rest of 2020 was cancelled as well as 2021. Only limited national ministry trips were taken.</p>",
-  "eventCount": 384,
+  "eventCount": 385,
   "events": [
     {
       "id": "2026-10-25-south-korea",
@@ -132,6 +132,40 @@
       "flyer_alt": "South Africa Trip",
       "body_html": "<p><strong><strong><strong><img src=\"https://www.worldministries.org/Userfiles/Flyer-jpegs/2026-09-SAfrica.jpg\" width=\"600\" style=\"width: 200px; height: auto;\" alt=\"South Africa Trip\" /><br />South Africa<br /></strong></strong></strong>Sep 1 - 21, 2026</p>",
       "region": "international"
+    },
+    {
+      "id": "evt-000385",
+      "year": 2026,
+      "sort_date": "2026-08-23",
+      "date_text": "August 23, 2026",
+      "start_date": "2026-08-23",
+      "end_date": "2026-08-23",
+      "time_text": "11:00 AM",
+      "place": "Everett Washington",
+      "city": "Everett",
+      "country": "united states",
+      "event_name": "Out of the Valley Church",
+      "event_type": "",
+      "speakers": [
+        "Dr. Jonathan Hansen",
+        "Dr. Adalia Hansen"
+      ],
+      "hosts": [
+        "Out of the Valley Church"
+      ],
+      "venue": "Out of the Valley Church",
+      "address_lines": [
+        "7003 Evergreen Way",
+        "Everett, WA 98203"
+      ],
+      "flag": "https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/country-flags/america.gif",
+      "flag_alt": "united states",
+      "flyer": "https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/evt-000385.jpg",
+      "flyer_alt": "Event flyer",
+      "links": [],
+      "body_lines": [],
+      "region": "international",
+      "body_html": "<p><strong><img src=\"https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/evt-000385.jpg\" style=\"width: 200px; height: auto;\" alt=\"Event flyer\" /><br />Everett Washington<br /></strong>August 23, 2026 — 11:00 AM<br />Out of the Valley Church<br />Dr. Jonathan Hansen, Dr. Adalia Hansen - Speaking<br />Host: Out of the Valley Church<br />Out of the Valley Church<br />7003 Evergreen Way<br />Everett, WA 98203<br /></p>"
     },
     {
       "id": "2026-08-07-prince-rupert-b-c-canada",
@@ -5036,7 +5070,7 @@
     }
   ],
   "lastManualUpdate": {
-    "at": "2026-08-04T05:27:37Z",
-    "note": "Upsert event 2026-10-04-tongaat-jonathan-hansen-preaching"
+    "at": "2026-08-06T22:43:37Z",
+    "note": "Upsert event evt-000385"
   }
 }
