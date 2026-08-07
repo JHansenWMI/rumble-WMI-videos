@@ -170,10 +170,96 @@
     setYearExpanded(table, year, !expanded);
   }
 
+  function isEventPosterImage(img) {
+    if (!img || !img.tagName || img.tagName.toLowerCase() !== "img") {
+      return false;
+    }
+    if (img.classList && img.classList.contains("wmi-itinerary-flag")) {
+      return false;
+    }
+    var src = (img.getAttribute("src") || "").toLowerCase();
+    if (
+      src.indexOf("country-flags") >= 0 ||
+      src.indexOf("state-flags") >= 0 ||
+      src.indexOf("userfiles/flags") >= 0 ||
+      /\/flags\//.test(src)
+    ) {
+      return false;
+    }
+    var cell = img.closest ? img.closest("td") : null;
+    // First column is the flag cell
+    if (cell && typeof cell.cellIndex === "number" && cell.cellIndex === 0) {
+      return false;
+    }
+    var row = img.closest ? img.closest("tr.wmi-itinerary-event") : null;
+    return !!row;
+  }
+
+  function ensurePosterLightbox() {
+    var box = document.getElementById("wmi-poster-lightbox");
+    if (box) return box;
+    box = document.createElement("div");
+    box.id = "wmi-poster-lightbox";
+    box.className = "wmi-poster-lightbox";
+    box.setAttribute("hidden", "hidden");
+    box.setAttribute("aria-hidden", "true");
+    box.setAttribute("role", "dialog");
+    box.setAttribute("aria-label", "Event poster");
+    box.innerHTML =
+      '<img class="wmi-poster-lightbox-img" alt="Event poster" src="" />' +
+      '<p class="wmi-poster-lightbox-hint">Click anywhere to close</p>';
+    document.body.appendChild(box);
+
+    function closeLightbox() {
+      box.setAttribute("hidden", "hidden");
+      box.setAttribute("aria-hidden", "true");
+      var img = box.querySelector(".wmi-poster-lightbox-img");
+      if (img) img.removeAttribute("src");
+      document.documentElement.classList.remove("wmi-poster-lightbox-open");
+      document.body.classList.remove("wmi-poster-lightbox-open");
+    }
+
+    box.addEventListener("click", function () {
+      closeLightbox();
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && !box.hasAttribute("hidden")) {
+        closeLightbox();
+      }
+    });
+    box._wmiClose = closeLightbox;
+    return box;
+  }
+
+  function openPosterLightbox(src, alt) {
+    if (!src) return;
+    var box = ensurePosterLightbox();
+    var img = box.querySelector(".wmi-poster-lightbox-img");
+    if (img) {
+      img.src = src;
+      img.alt = alt || "Event poster";
+    }
+    box.removeAttribute("hidden");
+    box.setAttribute("aria-hidden", "false");
+    document.documentElement.classList.add("wmi-poster-lightbox-open");
+    document.body.classList.add("wmi-poster-lightbox-open");
+  }
+
   function wireYearToggles(container) {
     var table = container.querySelector("table.wmi-itinerary-table");
     if (!table) return;
     table.addEventListener("click", function (e) {
+      // Poster enlarge: body-cell images only (not flags)
+      var img = e.target && e.target.closest ? e.target.closest("img") : null;
+      if (img && table.contains(img) && isEventPosterImage(img)) {
+        e.preventDefault();
+        e.stopPropagation();
+        openPosterLightbox(
+          img.currentSrc || img.src,
+          img.getAttribute("alt") || "Event poster"
+        );
+        return;
+      }
       var row = e.target.closest
         ? e.target.closest("tr.wmi-itinerary-year")
         : null;
@@ -191,6 +277,20 @@
       e.preventDefault();
       toggleYear(table, row.getAttribute("data-year"));
     });
+  }
+
+  function markPosterThumbs(container) {
+    var imgs = container.querySelectorAll(
+      "tr.wmi-itinerary-event td:nth-child(2) img"
+    );
+    for (var i = 0; i < imgs.length; i++) {
+      if (isEventPosterImage(imgs[i])) {
+        imgs[i].classList.add("wmi-itinerary-poster-thumb");
+        if (!imgs[i].getAttribute("title")) {
+          imgs[i].setAttribute("title", "Click to enlarge poster");
+        }
+      }
+    }
   }
 
   function render(container, data) {
@@ -285,6 +385,7 @@
 
     container.innerHTML = html.join("\n");
     container.classList.add("wmi-itinerary-ready");
+    markPosterThumbs(container);
     wireYearToggles(container);
   }
 

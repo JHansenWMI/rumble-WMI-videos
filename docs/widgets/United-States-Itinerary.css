@@ -43,9 +43,64 @@ table.wmi-itinerary-table img.wmi-itinerary-flag {
 /* Flyer images inside body (seed HTML often sets width; keep reasonable) */
 table.wmi-itinerary-table img.wmi-itinerary-flyer,
 table.wmi-itinerary-table td img[src*="Flyer"],
-table.wmi-itinerary-table td img[src*="flyer"] {
+table.wmi-itinerary-table td img[src*="flyer"],
+table.wmi-itinerary-table img.wmi-itinerary-poster-thumb {
   max-width: min(600px, 100%);
   height: auto;
+}
+
+/* Clickable posters in event body */
+table.wmi-itinerary-table img.wmi-itinerary-poster-thumb,
+table.wmi-itinerary-table tr.wmi-itinerary-event > td:nth-child(2) img {
+  cursor: zoom-in;
+}
+
+/* Full-screen poster lightbox (live site) */
+html.wmi-poster-lightbox-open,
+body.wmi-poster-lightbox-open {
+  overflow: hidden !important;
+}
+
+.wmi-poster-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 2147483000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 16px;
+  box-sizing: border-box;
+  background: rgba(12, 14, 16, 0.84);
+  cursor: zoom-out;
+}
+
+.wmi-poster-lightbox[hidden] {
+  display: none !important;
+}
+
+.wmi-poster-lightbox-img {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: min(600px, calc(100vw - 32px));
+  max-height: calc(100vh - 56px);
+  object-fit: contain;
+  border-radius: 4px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
+  background: #111;
+  cursor: zoom-out;
+}
+
+.wmi-poster-lightbox-hint {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-align: center;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  pointer-events: none;
 }
 
 table.wmi-itinerary-table h3 {
