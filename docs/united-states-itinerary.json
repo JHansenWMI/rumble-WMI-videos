@@ -1,7 +1,7 @@
 {
   "title": "United States Itinerary",
   "region": "us",
-  "generatedAt": "2026-08-07T00:34:49Z",
+  "generatedAt": "2026-08-07T00:43:06Z",
   "sourceUrl": "https://www.worldministries.org/united-states-itinerary.aspx",
   "introHtml": "",
   "eventCount": 254,
@@ -12,7 +12,7 @@
       "sort_date": "2026-08-23",
       "date_text": "Sun August 23, 2026",
       "start_date": "2026-08-23",
-      "end_date": "2026-08-23",
+      "end_date": "2026-08-24",
       "time_text": "11:00 AM (Main Service)",
       "place": "Everett Washington",
       "city": "Everett",
@@ -5356,7 +5356,7 @@
     }
   ],
   "lastManualUpdate": {
-    "at": "2026-08-07T00:34:49Z",
-    "note": "Deleted event 2026-08-23-everett-washington"
+    "at": "2026-08-07T00:43:06Z",
+    "note": "Upsert event evt-000255"
   }
 }
