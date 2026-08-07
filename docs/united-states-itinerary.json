@@ -1,31 +1,45 @@
 {
   "title": "United States Itinerary",
   "region": "us",
-  "generatedAt": "2026-08-07T00:08:11Z",
+  "generatedAt": "2026-08-07T00:34:49Z",
   "sourceUrl": "https://www.worldministries.org/united-states-itinerary.aspx",
   "introHtml": "",
   "eventCount": 254,
   "events": [
     {
-      "id": "2026-08-23-everett-washington",
+      "id": "evt-000255",
       "year": 2026,
       "sort_date": "2026-08-23",
-      "date_text": "Sun, August 23th, 2026 - 11:00 AM (main service)",
+      "date_text": "Sun August 23, 2026",
+      "start_date": "2026-08-23",
+      "end_date": "2026-08-23",
+      "time_text": "11:00 AM (Main Service)",
       "place": "Everett Washington",
-      "city": "",
+      "city": "Everett",
       "state": "Washington",
-      "country": "United States",
+      "country": "CO",
       "event_name": "",
-      "speakers": [],
-      "hosts": [],
-      "venue": "",
-      "address_lines": [],
+      "event_type": "",
+      "speakers": [
+        "Dr. Jonathan Hansen",
+        "Dr. Adalia Hansen"
+      ],
+      "hosts": [
+        "Apostle Ken Flynn"
+      ],
+      "venue": "Out of the Valley Church",
+      "address_lines": [
+        "7003 Evergreen Way",
+        "Everett, WA 98203"
+      ],
       "flag": "https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/state-flags/washington.gif",
-      "flag_alt": "washington",
-      "flyer": "",
-      "flyer_alt": "",
-      "body_html": "<strong>Everett Washington</strong><br />Rev. Dr. Jonathan Hansen Speaking<br />Sun, August 23th, 2026 - 11:00 AM (main service)<br />Out of the Valley Church<br />4601 Elm Street, Everett, WA 98203<br />Host: Apostle Ken Flynn",
-      "region": "us"
+      "flag_alt": "Washington",
+      "flyer": "https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/evt-000385.jpg",
+      "flyer_alt": "Event flyer",
+      "links": [],
+      "body_lines": [],
+      "region": "us",
+      "body_html": "<p><strong><img src=\"https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/evt-000385.jpg\" style=\"width: 200px; height: auto;\" alt=\"Event flyer\" /><br />Everett Washington<br /></strong>Sun August 23, 2026 — 11:00 AM (Main Service)<br />Dr. Jonathan Hansen, Dr. Adalia Hansen - Speaking<br />Host: Apostle Ken Flynn<br />Out of the Valley Church<br />7003 Evergreen Way<br />Everett, WA 98203<br /></p>"
     },
     {
       "id": "2026-08-16-spokane-washington",
@@ -5340,5 +5354,9 @@
       "body_html": "<span>Texas Tour -May 2008</span><br /><span><strong>Odessa, Texas</strong><br /><span>Thursday, May 15, 2008</span><br /><span>GOD&#x27;S LEARNING CHANNEL</span><br /><span>&quot;Light of the Southwest&quot;</span><br /><span>12706 West Hwy. 80 East<br />Odessa, TX 79765</span><br /><span>LIVE Broadcast - Channel 11, 12</span><br /><span>Featuring: Dr. Jonathan Hansen</span><br /><span>8pm -10pm CDT</span><br /><span>Hosts: Al &amp; Tommie Cooper</span><br /><br /><span>Texas Tour May 2008 Conference Topics</span><br /><span>- Dangers of Islam</span><br /><span>- Nuclear Attack</span><br /><span>- Economic Collapse</span><br /><span>- New World Order &amp; Elimination of National Sovereignty</span><br /><span>- Food Shortages, Drought, Famine</span><br /><span>- How to Prepare Spirituality &amp; Physically for the Future</span><br /><span>- Apocalyptic Crises &amp; Plagues</span><br /><span>- Demons: How to Recognize their Activities in the World &amp; their Characteristics in People</span><br /><span>- How to Cast Demons out of People</span> </span>",
       "region": "us"
     }
-  ]
+  ],
+  "lastManualUpdate": {
+    "at": "2026-08-07T00:34:49Z",
+    "note": "Deleted event 2026-08-23-everett-washington"
+  }
 }
