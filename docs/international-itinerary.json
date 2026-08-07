@@ -1,7 +1,7 @@
 {
   "title": "International Itinerary",
   "region": "international",
-  "generatedAt": "2026-08-06T23:47:22Z",
+  "generatedAt": "2026-08-07T00:00:36Z",
   "sourceUrl": "https://www.worldministries.org/international-itinerary.aspx",
   "introHtml": "<p>Due to the COVID restrictions which started immediately after I arrived back from Amsterdam, Netherlands, February 2, 2020, my international itinerary already scheduled for the rest of 2020 was cancelled as well as 2021. Only limited national ministry trips were taken.</p>",
   "eventCount": 384,
@@ -111,14 +111,27 @@
       "id": "2026-09-21-malawi",
       "year": 2026,
       "sort_date": "2026-09-21",
-      "date_text": "Sep 21 - 30, 2026",
+      "date_text": "Sep 21st - 30th, 2026",
+      "start_date": "2026-09-21",
+      "end_date": "2026-09-21",
+      "time_text": "",
       "place": "Malawi",
+      "city": "",
+      "country": "",
+      "event_name": "",
+      "event_type": "",
+      "speakers": [],
+      "hosts": [],
+      "venue": "",
+      "address_lines": [],
       "flag": "https://www.worldministries.org/Userfiles/Flags/Malawi-flag-M-anim.gif",
       "flag_alt": "Malawi flag M anim",
       "flyer": "",
-      "flyer_alt": "",
-      "body_html": "<p><strong><strong><strong>Malawi<br /></strong></strong></strong>Sep 21 - 30, 2026</p>",
-      "region": "international"
+      "flyer_alt": "Malawi",
+      "links": [],
+      "body_lines": [],
+      "region": "international",
+      "body_html": "<p><strong>Malawi<br /></strong>Sep 21st - 30th, 2026<br /></p>"
     },
     {
       "id": "2026-09-16-cape-town-south-africa",
@@ -5049,7 +5062,7 @@
     }
   ],
   "lastManualUpdate": {
-    "at": "2026-08-06T23:46:02Z",
-    "note": "Upsert event 2026-10-25-south-korea"
+    "at": "2026-08-07T00:00:36Z",
+    "note": "Upsert event 2026-09-21-malawi"
   }
 }
