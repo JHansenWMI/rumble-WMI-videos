@@ -264,26 +264,94 @@
     return box;
   }
 
+  function lightboxViewportSize() {
+    // Prefer visualViewport on mobile (accounts for browser chrome)
+    var vv = window.visualViewport;
+    var w = (vv && vv.width) || window.innerWidth || document.documentElement.clientWidth || 320;
+    var h = (vv && vv.height) || window.innerHeight || document.documentElement.clientHeight || 480;
+    return { w: w, h: h };
+  }
+
+  function fitLightboxImage(img) {
+    if (!img) return;
+    var vp = lightboxViewportSize();
+    // Leave room for padding + “click to close” hint
+    var maxW = Math.min(600, Math.max(120, vp.w - 24));
+    var maxH = Math.max(120, vp.h - 72);
+    var nw = img.naturalWidth || maxW;
+    var nh = img.naturalHeight || maxH;
+    if (!nw || !nh) {
+      img.style.cssText =
+        "display:block;width:auto;height:auto;" +
+        "max-width:" + maxW + "px;max-height:" + maxH + "px;" +
+        "object-fit:contain;pointer-events:none;";
+      return;
+    }
+    var scale = Math.min(maxW / nw, maxH / nh, 1);
+    var w = Math.max(1, Math.floor(nw * scale));
+    var h = Math.max(1, Math.floor(nh * scale));
+    img.removeAttribute("width");
+    img.removeAttribute("height");
+    img.style.cssText =
+      "display:block;width:" +
+      w +
+      "px;height:" +
+      h +
+      "px;max-width:" +
+      maxW +
+      "px;max-height:" +
+      maxH +
+      "px;object-fit:contain;pointer-events:none;" +
+      "border-radius:4px;box-shadow:0 12px 40px rgba(0,0,0,0.45);background:#111;";
+  }
+
   function openPosterLightbox(src, alt) {
     if (!src) return;
     var box = ensurePosterLightbox();
     var img = box.querySelector(".wmi-poster-lightbox-img");
     if (img) {
-      img.src = src;
+      img.onload = function () {
+        fitLightboxImage(img);
+      };
+      // Reset any previous forced size before load
+      img.removeAttribute("width");
+      img.removeAttribute("height");
+      img.style.cssText =
+        "display:block;width:auto;height:auto;max-width:min(600px,calc(100vw - 24px));" +
+        "max-height:calc(100svh - 72px);object-fit:contain;pointer-events:none;";
       img.alt = alt || "Event poster";
+      img.src = src;
+      // Cached images may not fire onload
+      if (img.complete && img.naturalWidth) {
+        fitLightboxImage(img);
+      }
     }
     posterLightboxOpenedAt = Date.now();
     box.classList.add("is-open");
     box.setAttribute("aria-hidden", "false");
-    // Inline styles beat aggressive CMS CSS
+    // Inline styles beat aggressive CMS CSS; overflow auto is a safety net
     box.style.cssText =
       "position:fixed;inset:0;top:0;left:0;right:0;bottom:0;" +
       "z-index:2147483646;display:flex;flex-direction:column;" +
-      "align-items:center;justify-content:center;gap:12px;padding:16px;" +
-      "box-sizing:border-box;background:rgba(12,14,16,0.84);cursor:zoom-out;";
+      "align-items:center;justify-content:center;gap:10px;padding:12px;" +
+      "box-sizing:border-box;background:rgba(12,14,16,0.84);cursor:zoom-out;" +
+      "overflow:auto;-webkit-overflow-scrolling:touch;";
     document.documentElement.classList.add("wmi-poster-lightbox-open");
     if (document.body) {
       document.body.classList.add("wmi-poster-lightbox-open");
+    }
+    // Re-fit if the mobile browser chrome shows/hides
+    if (!box._wmiResizeBound) {
+      box._wmiResizeBound = true;
+      var refit = function () {
+        if (!box.classList.contains("is-open")) return;
+        var im = box.querySelector(".wmi-poster-lightbox-img");
+        if (im && im.naturalWidth) fitLightboxImage(im);
+      };
+      window.addEventListener("resize", refit);
+      if (window.visualViewport) {
+        window.visualViewport.addEventListener("resize", refit);
+      }
     }
   }
 
