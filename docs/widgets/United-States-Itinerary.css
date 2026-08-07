@@ -1,0 +1,97 @@
+/* International Itinerary — events table (GitHub Pages) */
+
+.wmi-itinerary-loading,
+.wmi-itinerary-error,
+.wmi-itinerary-empty {
+  margin: 0.75em 0;
+}
+
+.wmi-itinerary-error {
+  color: #a11;
+}
+
+.wmi-itinerary-intro {
+  margin-bottom: 1em;
+}
+
+table.events-list.wmi-itinerary-table,
+table.wmi-itinerary-table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 0;
+}
+
+table.wmi-itinerary-table td {
+  vertical-align: top;
+  padding: 0.35em 0.5em 0.75em 0;
+  border: 0;
+}
+
+/* Flag column */
+table.wmi-itinerary-table tr.wmi-itinerary-event > td:first-child {
+  width: 64px;
+  padding-right: 10px;
+}
+
+table.wmi-itinerary-table img.wmi-itinerary-flag {
+  width: 48px;
+  height: auto;
+  max-width: 55px;
+  display: block;
+}
+
+/* Flyer images inside body (seed HTML often sets width; keep reasonable) */
+table.wmi-itinerary-table img.wmi-itinerary-flyer,
+table.wmi-itinerary-table td img[src*="Flyer"],
+table.wmi-itinerary-table td img[src*="flyer"] {
+  max-width: min(600px, 100%);
+  height: auto;
+}
+
+table.wmi-itinerary-table h3 {
+  margin: 1em 0 0.4em;
+}
+
+/* Year section: click whole row to expand/collapse */
+table.wmi-itinerary-table tr.wmi-itinerary-year {
+  cursor: pointer;
+  user-select: none;
+}
+
+table.wmi-itinerary-table tr.wmi-itinerary-year:hover td {
+  background: rgba(0, 0, 0, 0.04);
+}
+
+table.wmi-itinerary-table tr.wmi-itinerary-year:focus {
+  outline: 2px solid #4f2683;
+  outline-offset: 2px;
+}
+
+table.wmi-itinerary-table tr.wmi-itinerary-year td {
+  padding-top: 0.65em;
+  padding-bottom: 0.35em;
+}
+
+.wmi-itinerary-year-heading {
+  margin: 0.4em 0;
+  display: flex;
+  align-items: center;
+  gap: 0.35em;
+}
+
+.wmi-itinerary-year-indicator {
+  display: inline-block;
+  width: 1.1em;
+  font-size: 0.85em;
+  line-height: 1;
+  color: #4f2683;
+  font-weight: 700;
+}
+
+/* Must beat CMS rules like .events-list tr { display: table-row } */
+table.wmi-itinerary-table tr.wmi-itinerary-event.is-year-collapsed,
+table.events-list.wmi-itinerary-table tr.wmi-itinerary-event.is-year-collapsed,
+table.wmi-itinerary-table tr.wmi-itinerary-event[hidden],
+table.events-list tr.wmi-itinerary-event.is-year-collapsed {
+  display: none !important;
+}
