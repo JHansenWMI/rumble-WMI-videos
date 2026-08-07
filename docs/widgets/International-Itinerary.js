@@ -182,9 +182,23 @@
       src.indexOf("country-flags") >= 0 ||
       src.indexOf("state-flags") >= 0 ||
       src.indexOf("userfiles/flags") >= 0 ||
-      /\/flags\//.test(src)
+      // bare /Flags/ CMS path (not Flyer-jpegs)
+      src.indexOf("/flags/") >= 0
     ) {
       return false;
+    }
+    // Explicit flyer markers
+    if (
+      (img.classList &&
+        (img.classList.contains("wmi-itinerary-flyer") ||
+          img.classList.contains("wmi-itinerary-poster-thumb"))) ||
+      src.indexOf("flyer") >= 0 ||
+      src.indexOf("itinerary-assets/") >= 0
+    ) {
+      // itinerary-assets includes flags subfolders — already excluded above
+      if (src.indexOf("/flags/") < 0 && src.indexOf("country-flags") < 0 && src.indexOf("state-flags") < 0) {
+        return true;
+      }
     }
     var cell = img.closest ? img.closest("td") : null;
     // First column is the flag cell
@@ -195,36 +209,55 @@
     return !!row;
   }
 
+  var posterLightboxOpenedAt = 0;
+
   function ensurePosterLightbox() {
     var box = document.getElementById("wmi-poster-lightbox");
     if (box) return box;
     box = document.createElement("div");
     box.id = "wmi-poster-lightbox";
     box.className = "wmi-poster-lightbox";
-    box.setAttribute("hidden", "hidden");
     box.setAttribute("aria-hidden", "true");
     box.setAttribute("role", "dialog");
     box.setAttribute("aria-label", "Event poster");
     box.innerHTML =
       '<img class="wmi-poster-lightbox-img" alt="Event poster" src="" />' +
       '<p class="wmi-poster-lightbox-hint">Click anywhere to close</p>';
-    document.body.appendChild(box);
+    // Prefer <html> so CMS body transforms / overflow are less likely to trap fixed pos
+    (document.documentElement || document.body).appendChild(box);
 
-    function closeLightbox() {
-      box.setAttribute("hidden", "hidden");
+    function closeLightbox(e) {
+      // Ignore the same gesture that opened the lightbox (CMS + capture quirks)
+      if (Date.now() - posterLightboxOpenedAt < 450) return;
+      if (e) {
+        try {
+          e.preventDefault();
+          e.stopPropagation();
+          if (e.stopImmediatePropagation) e.stopImmediatePropagation();
+        } catch (err) {}
+      }
+      box.classList.remove("is-open");
       box.setAttribute("aria-hidden", "true");
+      box.style.display = "none";
       var img = box.querySelector(".wmi-poster-lightbox-img");
       if (img) img.removeAttribute("src");
       document.documentElement.classList.remove("wmi-poster-lightbox-open");
-      document.body.classList.remove("wmi-poster-lightbox-open");
+      if (document.body) {
+        document.body.classList.remove("wmi-poster-lightbox-open");
+      }
     }
 
-    box.addEventListener("click", function () {
-      closeLightbox();
-    });
+    // Capture phase so CMS bubble handlers cannot swallow the close click
+    box.addEventListener(
+      "click",
+      function (e) {
+        closeLightbox(e);
+      },
+      true
+    );
     document.addEventListener("keydown", function (e) {
-      if (e.key === "Escape" && !box.hasAttribute("hidden")) {
-        closeLightbox();
+      if (e.key === "Escape" && box.classList.contains("is-open")) {
+        closeLightbox(e);
       }
     });
     box._wmiClose = closeLightbox;
@@ -239,35 +272,50 @@
       img.src = src;
       img.alt = alt || "Event poster";
     }
-    box.removeAttribute("hidden");
+    posterLightboxOpenedAt = Date.now();
+    box.classList.add("is-open");
     box.setAttribute("aria-hidden", "false");
+    // Inline styles beat aggressive CMS CSS
+    box.style.cssText =
+      "position:fixed;inset:0;top:0;left:0;right:0;bottom:0;" +
+      "z-index:2147483646;display:flex;flex-direction:column;" +
+      "align-items:center;justify-content:center;gap:12px;padding:16px;" +
+      "box-sizing:border-box;background:rgba(12,14,16,0.84);cursor:zoom-out;";
     document.documentElement.classList.add("wmi-poster-lightbox-open");
-    document.body.classList.add("wmi-poster-lightbox-open");
+    if (document.body) {
+      document.body.classList.add("wmi-poster-lightbox-open");
+    }
+  }
+
+  function onPosterActivate(e, img) {
+    if (!img || !isEventPosterImage(img)) return false;
+    try {
+      e.preventDefault();
+      e.stopPropagation();
+      if (e.stopImmediatePropagation) e.stopImmediatePropagation();
+    } catch (err) {}
+    openPosterLightbox(
+      img.currentSrc || img.src || img.getAttribute("src"),
+      img.getAttribute("alt") || "Event poster"
+    );
+    return true;
   }
 
   function wireYearToggles(container) {
     var table = container.querySelector("table.wmi-itinerary-table");
     if (!table) return;
+    // Year collapse still uses bubble on table
     table.addEventListener("click", function (e) {
-      // Poster enlarge: body-cell images only (not flags)
-      var img = e.target && e.target.closest ? e.target.closest("img") : null;
-      if (img && table.contains(img) && isEventPosterImage(img)) {
-        e.preventDefault();
-        e.stopPropagation();
-        openPosterLightbox(
-          img.currentSrc || img.src,
-          img.getAttribute("alt") || "Event poster"
-        );
-        return;
-      }
       var row = e.target.closest
         ? e.target.closest("tr.wmi-itinerary-year")
         : null;
       if (!row || !table.contains(row)) return;
+      // Ignore if this click was on a poster (handled in capture)
+      var img = e.target.closest ? e.target.closest("img") : null;
+      if (img && isEventPosterImage(img)) return;
       e.preventDefault();
       toggleYear(table, row.getAttribute("data-year"));
     });
-    // Keyboard: Enter/Space on focused year row
     table.addEventListener("keydown", function (e) {
       if (e.key !== "Enter" && e.key !== " ") return;
       var row = e.target.closest
@@ -279,18 +327,56 @@
     });
   }
 
-  function markPosterThumbs(container) {
-    var imgs = container.querySelectorAll(
-      "tr.wmi-itinerary-event td:nth-child(2) img"
-    );
-    for (var i = 0; i < imgs.length; i++) {
-      if (isEventPosterImage(imgs[i])) {
-        imgs[i].classList.add("wmi-itinerary-poster-thumb");
-        if (!imgs[i].getAttribute("title")) {
-          imgs[i].setAttribute("title", "Click to enlarge poster");
-        }
+  function wirePosterLightbox(container) {
+    // 1) Direct handlers on each poster (most reliable vs CMS interceptors)
+    var rows = container.querySelectorAll("tr.wmi-itinerary-event");
+    for (var r = 0; r < rows.length; r++) {
+      var cells = rows[r].cells || rows[r].querySelectorAll("td");
+      var bodyCell =
+        cells && cells.length > 1
+          ? cells[1]
+          : rows[r].querySelector("td:last-child");
+      if (!bodyCell) continue;
+      var imgs = bodyCell.getElementsByTagName("img");
+      for (var i = 0; i < imgs.length; i++) {
+        (function (img) {
+          if (!isEventPosterImage(img)) return;
+          img.classList.add("wmi-itinerary-poster-thumb");
+          img.style.cursor = "zoom-in";
+          if (!img.getAttribute("title")) {
+            img.setAttribute("title", "Click to enlarge poster");
+          }
+          // Avoid double-binding if render is called again
+          if (img.getAttribute("data-wmi-poster-bound") === "1") return;
+          img.setAttribute("data-wmi-poster-bound", "1");
+          function handler(e) {
+            onPosterActivate(e, img);
+          }
+          // Capture-phase click only (avoid pointerup: can open then immediately close)
+          img.addEventListener("click", handler, true);
+        })(imgs[i]);
       }
     }
+
+    // 2) Capture-phase backup on the mount (runs before most CMS bubble handlers)
+    if (container.getAttribute("data-wmi-poster-capture") === "1") return;
+    container.setAttribute("data-wmi-poster-capture", "1");
+    container.addEventListener(
+      "click",
+      function (e) {
+        var t = e.target;
+        if (!t) return;
+        var img =
+          t.tagName && t.tagName.toLowerCase() === "img"
+            ? t
+            : t.closest
+              ? t.closest("img")
+              : null;
+        if (!img || !container.contains(img)) return;
+        onPosterActivate(e, img);
+      },
+      true
+    );
   }
 
   function render(container, data) {
@@ -385,7 +471,9 @@
 
     container.innerHTML = html.join("\n");
     container.classList.add("wmi-itinerary-ready");
-    markPosterThumbs(container);
+    // Allow rebinding posters after re-render
+    container.removeAttribute("data-wmi-poster-capture");
+    wirePosterLightbox(container);
     wireYearToggles(container);
   }
 
