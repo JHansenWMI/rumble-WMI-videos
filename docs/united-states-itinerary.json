@@ -1,7 +1,7 @@
 {
   "title": "United States Itinerary",
   "region": "us",
-  "generatedAt": "2026-08-07T00:43:06Z",
+  "generatedAt": "2026-08-07T16:07:14Z",
   "sourceUrl": "https://www.worldministries.org/united-states-itinerary.aspx",
   "introHtml": "",
   "eventCount": 254,
@@ -67,21 +67,27 @@
       "year": 2026,
       "sort_date": "2026-07-26",
       "date_text": "Sun, July 26th, 2026 - 11:00 AM",
-      "place": "Auburn Washington",
+      "start_date": "2026-07-26",
+      "end_date": "2026-07-26",
+      "time_text": "",
+      "place": "Auburn, Washington",
       "city": "",
       "state": "Washington",
       "country": "United States",
       "event_name": "",
+      "event_type": "",
       "speakers": [],
       "hosts": [],
       "venue": "",
       "address_lines": [],
       "flag": "https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/state-flags/washington.gif",
-      "flag_alt": "washington",
+      "flag_alt": "Washington",
       "flyer": "",
-      "flyer_alt": "",
-      "body_html": "<p><strong>Auburn Washington</strong><br />Rev. Dr. Jonathan Hansen &amp; Dr. Adalia Hansen<br />Host: Beyond Barriers Ministries<br />505 29th ST SE, Auburn WA<br />Sun, July 26th, 2026 - 11:00 AM</p>",
-      "region": "us"
+      "flyer_alt": "Auburn, Washington",
+      "links": [],
+      "body_lines": [],
+      "region": "us",
+      "body_html": "<p><strong>Auburn, Washington<br /></strong>Sun, July 26th, 2026 - 11:00 AM<br /></p>"
     },
     {
       "id": "2026-06-28-everett-washington",
@@ -5356,7 +5362,7 @@
     }
   ],
   "lastManualUpdate": {
-    "at": "2026-08-07T00:43:06Z",
-    "note": "Upsert event evt-000255"
+    "at": "2026-08-07T16:07:14Z",
+    "note": "Upsert event 2026-07-26-auburn-washington"
   }
 }
