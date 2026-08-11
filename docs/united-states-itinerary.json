@@ -1,7 +1,7 @@
 {
   "title": "United States Itinerary",
   "region": "us",
-  "generatedAt": "2026-08-11T17:13:37Z",
+  "generatedAt": "2026-08-11T17:19:17Z",
   "sourceUrl": "https://www.worldministries.org/united-states-itinerary.aspx",
   "introHtml": "",
   "eventCount": 254,
@@ -10,7 +10,7 @@
       "id": "evt-000255",
       "year": 2026,
       "sort_date": "2026-08-23",
-      "date_text": "Sun August 23, 2026",
+      "date_text": "Sun, August 23, 2026",
       "start_date": "2026-08-23",
       "end_date": "2026-08-24",
       "time_text": "11:00 AM (Main Service)",
@@ -39,7 +39,7 @@
       "links": [],
       "body_lines": [],
       "region": "us",
-      "body_html": "<p><strong><img src=\"https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/evt-000385.jpg\" style=\"width: 200px; height: auto;\" alt=\"Event flyer\" /><br />Everett, Washington<br /></strong>Sun August 23, 2026 — 11:00 AM (Main Service)<br />Dr. Jonathan Hansen, Dr. Adalia Hansen - Speaking<br />Host: Apostle Ken Flynn<br />Out of the Valley Church<br />7003 Evergreen Way<br />Everett, WA 98203<br /></p>"
+      "body_html": "<p><strong><img src=\"https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/evt-000385.jpg\" style=\"width: 200px; height: auto;\" alt=\"Event flyer\" /><br />Everett, Washington<br /></strong>Sun, August 23, 2026 — 11:00 AM (Main Service)<br />Dr. Jonathan Hansen, Dr. Adalia Hansen - Speaking<br />Host: Apostle Ken Flynn<br />Out of the Valley Church<br />7003 Evergreen Way<br />Everett, WA 98203<br /></p>"
     },
     {
       "id": "2026-08-16-spokane-washington",
@@ -5374,7 +5374,7 @@
     }
   ],
   "lastManualUpdate": {
-    "at": "2026-08-11T17:13:37Z",
+    "at": "2026-08-11T17:19:17Z",
     "note": "Upsert event evt-000255"
   }
 }
