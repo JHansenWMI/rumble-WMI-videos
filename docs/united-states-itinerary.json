@@ -1,7 +1,7 @@
 {
   "title": "United States Itinerary",
   "region": "us",
-  "generatedAt": "2026-08-07T16:07:14Z",
+  "generatedAt": "2026-08-11T17:10:36Z",
   "sourceUrl": "https://www.worldministries.org/united-states-itinerary.aspx",
   "introHtml": "",
   "eventCount": 254,
@@ -45,22 +45,34 @@
       "id": "2026-08-16-spokane-washington",
       "year": 2026,
       "sort_date": "2026-08-16",
-      "date_text": "115 E Pacific Ave, Spokane, WA 99202",
-      "place": "Spokane Washington",
-      "city": "",
+      "date_text": "Sun, August 16th, 2026",
+      "start_date": "2026-08-16",
+      "end_date": "2026-08-16",
+      "time_text": "10:00 AM",
+      "place": "Spokane, Washington",
+      "city": "Spokane",
       "state": "Washington",
       "country": "United States",
       "event_name": "",
-      "speakers": [],
-      "hosts": [],
-      "venue": "",
-      "address_lines": [],
+      "event_type": "",
+      "speakers": [
+        "Rev. Dr. Jonathan Hansen"
+      ],
+      "hosts": [
+        "Pastor Matt Shea"
+      ],
+      "venue": "On Fire Ministries",
+      "address_lines": [
+        "115 E Pacific Ave, Spokane, WA 99202"
+      ],
       "flag": "https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/state-flags/washington.gif",
-      "flag_alt": "washington",
+      "flag_alt": "Washington",
       "flyer": "",
-      "flyer_alt": "",
-      "body_html": "<strong>Spokane Washington</strong><br />Rev. Dr. Jonathan Hansen Speaking<br />Host: On Fire Ministries - Pastor Matt Shea<br />115 E Pacific Ave, Spokane, WA 99202<br />Sun, August 16th, 2026 - 10:00 AM",
-      "region": "us"
+      "flyer_alt": "Spokane, Washington",
+      "links": [],
+      "body_lines": [],
+      "region": "us",
+      "body_html": "<p><strong>Spokane, Washington<br /></strong>Sun, August 16th, 2026 — 10:00 AM<br />Rev. Dr. Jonathan Hansen - Speaking<br />Host: Pastor Matt Shea<br />On Fire Ministries<br />115 E Pacific Ave, Spokane, WA 99202<br /></p>"
     },
     {
       "id": "2026-07-26-auburn-washington",
@@ -5362,7 +5374,7 @@
     }
   ],
   "lastManualUpdate": {
-    "at": "2026-08-07T16:07:14Z",
-    "note": "Upsert event 2026-07-26-auburn-washington"
+    "at": "2026-08-11T17:10:36Z",
+    "note": "Upsert event 2026-08-16-spokane-washington"
   }
 }
