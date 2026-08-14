@@ -1,7 +1,7 @@
 {
   "title": "United States Itinerary",
   "region": "us",
-  "generatedAt": "2026-08-11T17:19:17Z",
+  "generatedAt": "2026-08-14T22:02:45Z",
   "sourceUrl": "https://www.worldministries.org/united-states-itinerary.aspx",
   "introHtml": "",
   "eventCount": 254,
@@ -63,7 +63,7 @@
       ],
       "venue": "On Fire Ministries",
       "address_lines": [
-        "115 E Pacific Ave, Spokane, WA 99202"
+        "7410 N. Division St., Spokane"
       ],
       "flag": "https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/state-flags/washington.gif",
       "flag_alt": "Washington",
@@ -72,7 +72,7 @@
       "links": [],
       "body_lines": [],
       "region": "us",
-      "body_html": "<p><strong>Spokane, Washington<br /></strong>Sun, August 16th, 2026 — 10:00 AM<br />Rev. Dr. Jonathan Hansen - Speaking<br />Host: Pastor Matt Shea<br />On Fire Ministries<br />115 E Pacific Ave, Spokane, WA 99202<br /></p>"
+      "body_html": "<p><strong>Spokane, Washington<br /></strong>Sun, August 16th, 2026 — 10:00 AM<br />Rev. Dr. Jonathan Hansen - Speaking<br />Host: Pastor Matt Shea<br />On Fire Ministries<br />7410 N. Division St., Spokane<br /></p>"
     },
     {
       "id": "2026-07-26-auburn-washington",
@@ -5374,7 +5374,7 @@
     }
   ],
   "lastManualUpdate": {
-    "at": "2026-08-11T17:19:17Z",
-    "note": "Upsert event evt-000255"
+    "at": "2026-08-14T22:02:45Z",
+    "note": "Upsert event 2026-08-16-spokane-washington"
   }
 }
