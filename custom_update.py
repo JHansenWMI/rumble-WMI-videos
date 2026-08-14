@@ -1,6 +1,7 @@
 REMOVE_GUIDS = {
     "434910718",  # Duplicate part listing
     "434910604",  # Duplicate part listing
+    "443372718",  # Sderot Israel Trip March 2012 Part 3 (deleted on Rumble)
 }
 
 OVERRIDES_BY_GUID = {
