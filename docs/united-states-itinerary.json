@@ -1,7 +1,7 @@
 {
   "title": "United States Itinerary",
   "region": "us",
-  "generatedAt": "2026-08-14T22:24:21Z",
+  "generatedAt": "2026-08-14T22:31:22Z",
   "sourceUrl": "https://www.worldministries.org/united-states-itinerary.aspx",
   "introHtml": "",
   "eventCount": 254,
@@ -39,7 +39,8 @@
       "links": [],
       "body_lines": [],
       "region": "us",
-      "body_html": "<p><strong><img src=\"https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/evt-000385.jpg\" style=\"width: 200px; height: auto;\" alt=\"Event flyer\" /><br />Everett, Washington<br /></strong>Sun, August 23, 2026 — 11:00 AM (Main Service)<br />Dr. Jonathan Hansen, Dr. Adalia Hansen - Speaking<br />Host: Apostle Ken Flynn<br />Out of the Valley Church<br />7003 Evergreen Way<br />Everett, WA 98203<br /></p>"
+      "body_html": "<p><strong><img src=\"https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/evt-000385.jpg\" style=\"width: 200px; height: auto;\" alt=\"Event flyer\" /><br />Everett, Washington<br /></strong>Sun, August 23, 2026 — 11:00 AM (Main Service)<br />Dr. Jonathan Hansen, Dr. Adalia Hansen - Speaking<br />Host: Apostle Ken Flynn<br />Out of the Valley Church<br />7003 Evergreen Way<br />Everett, WA 98203<br /></p>",
+      "speaker_verb": "speaking"
     },
     {
       "id": "2026-08-16-spokane-washington",
@@ -55,21 +56,23 @@
       "country": "United States",
       "event_name": "",
       "event_type": "",
-      "speakers": [],
-      "hosts": [],
-      "venue": "",
-      "address_lines": [],
+      "speakers": [
+        "Dr Jonathan & Dr Adalia Hansen"
+      ],
+      "speaker_verb": "ministering",
+      "hosts": [
+        "Pastor Matt Shea"
+      ],
+      "venue": "On Fire Ministries",
+      "address_lines": [
+        "7410 N. Division St., Spokane"
+      ],
       "flag": "https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/state-flags/washington.gif",
       "flag_alt": "Washington",
       "flyer": "",
       "flyer_alt": "Spokane, Washington",
       "links": [],
-      "body_lines": [
-        "Dr Jonathan & Dr Adalia Hansen ministering",
-        "Host: Pastor Matt Shea",
-        "On Fire Ministries",
-        "7410 N. Division St., Spokane"
-      ],
+      "body_lines": [],
       "region": "us",
       "body_html": "<p><strong>Spokane, Washington<br /></strong>Sun, August 16th, 2026 — 10:00 AM<br />Dr Jonathan &amp; Dr Adalia Hansen ministering<br />Host: Pastor Matt Shea<br />On Fire Ministries<br />7410 N. Division St., Spokane<br /></p>"
     },
@@ -5373,7 +5376,7 @@
     }
   ],
   "lastManualUpdate": {
-    "at": "2026-08-14T22:24:21Z",
+    "at": "2026-08-14T22:31:22Z",
     "note": "Upsert event 2026-08-16-spokane-washington"
   }
 }

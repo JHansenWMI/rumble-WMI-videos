@@ -91,7 +91,12 @@
       parts.push(escapeHtml(ev.time_text));
     }
     if (ev.speakers && ev.speakers.length) {
-      parts.push(escapeHtml(ev.speakers.join(", ")));
+      var verb = String(ev.speaker_verb || "speaking").toLowerCase();
+      if (verb === "ministering" || verb === "minister") {
+        parts.push(escapeHtml(ev.speakers.join(" & ")) + " ministering");
+      } else {
+        parts.push(escapeHtml(ev.speakers.join(", ")) + " - Speaking");
+      }
     }
     if (ev.hosts && ev.hosts.length) {
       parts.push("Host: " + escapeHtml(ev.hosts.join(", ")));
