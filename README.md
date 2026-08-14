@@ -30,7 +30,7 @@ Feeds:
   - One-time bulk population (e.g. initial history) can use `pages=N` in the URL list or higher `--pages` / direct runs.
   - After merge/enrichment, excess items beyond the active limit (default 90) are moved to the corresponding `*-archive.json`.
 - URL list syntax: `https://...` (1 page) or `https://... pages=3`.
-- Per-item `"updated"` (Pacific time) timestamps are stamped on records that change; `publish_rumble_feed.sh` uses these (via `feed_has_meaningful_change`) to decide whether a real content change warrants a git commit+push (replaced older generatedAt-only heuristic).
+- Per-item `"updated"` (Pacific time) timestamps are stamped on records that change; `publish_rumble_feed.sh` uses `feed_has_meaningful_change` (item add/remove vs HEAD, or a newer per-item `updated`) to decide whether a real content change warrants a git commit+push.
 - Archives (`docs/rumble-feed-archive.json`, and overcoming when present) are managed dynamically when they exist on disk.
 
 TV broadcast videos (for Warning TV Broadcasts / `Warning-TV-Broadcasts-cms.html`):
@@ -90,3 +90,10 @@ Channel metadata + inclusion:
   - Overcoming shorts excluded from the main social grid.
 - The default delay is intentionally slow, with jitter, to avoid hitting Rumble too quickly.
 - Custom overrides/filters live in `custom_update.py` (REMOVE_GUIDS, OVERRIDES_BY_GUID) and are applied after merge.
+- **Hide vs delete from the website feed:**
+  - **Hide** (`REMOVE_GUIDS` in `custom_update.py`): video is still on Rumble; we do not show it on the site. Next scrape would bring it back without this list. Then `./publish_rumble_feed.sh`.
+  - **Delete** (`delete_from_feed.py`): video was already deleted on Rumble. Purge our accumulated JSON (main, archive, TV). Do not add that guid to `REMOVE_GUIDS`.
+    ```bash
+    python delete_from_feed.py --dry-run GUID
+    python delete_from_feed.py GUID --publish
+    ```

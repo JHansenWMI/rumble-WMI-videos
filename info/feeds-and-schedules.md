@@ -69,10 +69,11 @@ Both are FetchRSS-style:
 
 - Scrape fresh items from configured sources.
 - Merge new discoveries into prior JSON history (`merge_fresh_into_accumulated` + `merge_scraped_with_existing` for embed ids etc.).
-- Apply `custom_update.py` (duplicate removal, title/date overrides).
+- Apply `custom_update.py` (hide list + title/date overrides). `REMOVE_GUIDS` hides a video that is still on Rumble. After a Rumble deletion, purge stored JSON with `delete_from_feed.py` instead of adding the guid there.
+- `feed_has_meaningful_change()` treats a changed guid/link set (add or delete) as a real update, not only a newer per-item `updated`.
 - Enrich channel details (cached).
 - Cap active list + archive excess.
-- `publish_rumble_feed.sh` pulls, runs the above for both feeds, then runs `generate_tv_feed.py` (TV-only subset, no extra scrape), then uses `feed_has_meaningful_change()` (per-item updated > file's last git commit) to decide commit+push. Only real changes trigger updates.
+- `publish_rumble_feed.sh` pulls, runs the above for both feeds, then runs `generate_tv_feed.py` (TV-only subset, no extra scrape), then uses `feed_has_meaningful_change()` to decide commit+push. Only real changes trigger updates.
 
 This replaced the old “always fully regenerate + crude generatedAt diff” approach.
 

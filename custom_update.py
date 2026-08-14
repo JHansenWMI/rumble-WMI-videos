@@ -1,7 +1,14 @@
+# Hide from the website while the video is still on Rumble (or may come back
+# on the next scrape). The generator accumulates history, so a live Rumble
+# video will reappear unless it stays in this set.
+#
+# If you already deleted the video on Rumble, do not add it here.
+# Purge our accumulated copy instead:
+#   python delete_from_feed.py GUID
+#   ./publish_rumble_feed.sh
 REMOVE_GUIDS = {
     "434910718",  # Duplicate part listing
     "434910604",  # Duplicate part listing
-    "443372718",  # Sderot Israel Trip March 2012 Part 3 (deleted on Rumble)
 }
 
 OVERRIDES_BY_GUID = {

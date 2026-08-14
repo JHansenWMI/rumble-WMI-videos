@@ -430,11 +430,51 @@ def parse_pacific_updated(s: str) -> datetime:
     return dt_naive.replace(tzinfo=PACIFIC)
 
 
-def feed_has_meaningful_change(path: str | Path) -> bool:
-    """True if any per-item 'updated' timestamp is newer than the file's last git commit.
+def item_identity_keys(items: list) -> set[tuple[str, str]]:
+    """Stable item identities for add/remove detection (guid and/or link)."""
+    keys: set[tuple[str, str]] = set()
+    for it in items:
+        if not isinstance(it, dict):
+            continue
+        guid = str(it.get("guid") or "").strip()
+        if guid:
+            keys.add(("guid", guid))
+        link = str(it.get("link") or "").strip()
+        if link:
+            keys.add(("link", link))
+    return keys
 
-    Used by publish_rumble_feed.sh to decide whether generated feed content
-    (beyond top-level timestamps) warrants a commit + push.
+
+def committed_feed_items(path: Path) -> list[dict] | None:
+    """Items array from HEAD for this feed file, or None if it cannot be read."""
+    try:
+        rel = path.as_posix()
+        if path.is_absolute():
+            root = subprocess.check_output(
+                ["git", "rev-parse", "--show-toplevel"],
+                text=True,
+                stderr=subprocess.DEVNULL,
+            ).strip()
+            rel = Path(path).resolve().relative_to(Path(root)).as_posix()
+        out = subprocess.check_output(
+            ["git", "show", f"HEAD:{rel}"],
+            text=True,
+            stderr=subprocess.DEVNULL,
+        )
+        data = json.loads(out)
+        return data.get("items", []) if isinstance(data, dict) else []
+    except Exception:
+        return None
+
+
+def feed_has_meaningful_change(path: str | Path) -> bool:
+    """True if generated feed content warrants a commit + push.
+
+    Detects:
+    - items added or removed (guid/link set vs HEAD)
+    - any per-item 'updated' newer than the file's last git commit
+
+    Used by publish_rumble_feed.sh. Top-level generatedAt/updated alone is not enough.
     """
     p = Path(path)
     if not p.exists():
@@ -454,13 +494,18 @@ def feed_has_meaningful_change(path: str | Path) -> bool:
     except Exception:
         return True  # untracked / git error → treat as worth committing
 
-    # Inspect current (generated) JSON for item updated times.
     try:
         data = json.loads(p.read_text(encoding="utf-8"))
     except Exception:
         return True
 
     items = data.get("items", []) if isinstance(data, dict) else []
+    committed = committed_feed_items(p)
+    if committed is None:
+        return True
+    if item_identity_keys(items) != item_identity_keys(committed):
+        return True
+
     for it in items:
         if not isinstance(it, dict):
             continue
