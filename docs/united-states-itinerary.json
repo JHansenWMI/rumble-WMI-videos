@@ -1,7 +1,7 @@
 {
   "title": "United States Itinerary",
   "region": "us",
-  "generatedAt": "2026-08-14T22:31:22Z",
+  "generatedAt": "2026-08-14T23:21:20Z",
   "sourceUrl": "https://www.worldministries.org/united-states-itinerary.aspx",
   "introHtml": "",
   "eventCount": 254,
@@ -69,12 +69,12 @@
       ],
       "flag": "https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/state-flags/washington.gif",
       "flag_alt": "Washington",
-      "flyer": "",
+      "flyer": "https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/2026-08-16-spokane-washington.jpg",
       "flyer_alt": "Spokane, Washington",
       "links": [],
       "body_lines": [],
       "region": "us",
-      "body_html": "<p><strong>Spokane, Washington<br /></strong>Sun, August 16th, 2026 — 10:00 AM<br />Dr Jonathan &amp; Dr Adalia Hansen ministering<br />Host: Pastor Matt Shea<br />On Fire Ministries<br />7410 N. Division St., Spokane<br /></p>"
+      "body_html": "<p><strong><img src=\"https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/2026-08-16-spokane-washington.jpg\" style=\"width: 200px; height: auto;\" alt=\"Spokane, Washington\" /><br />Spokane, Washington<br /></strong>Sun, August 16th, 2026 — 10:00 AM<br />Dr Jonathan &amp; Dr Adalia Hansen ministering<br />Host: Pastor Matt Shea<br />On Fire Ministries<br />7410 N. Division St., Spokane<br /></p>"
     },
     {
       "id": "2026-07-26-auburn-washington",
@@ -5376,7 +5376,7 @@
     }
   ],
   "lastManualUpdate": {
-    "at": "2026-08-14T22:31:22Z",
+    "at": "2026-08-14T23:21:20Z",
     "note": "Upsert event 2026-08-16-spokane-washington"
   }
 }
