@@ -51,7 +51,7 @@ TV schedule (for Warning TV Broadcasts widget):
 - Use `update_tv_schedule.py` (run on a machine that can see the file):
     python update_tv_schedule.py --xlsx "/Volumes/Office/Public/01 TV-Radio Spreadsheets/KAZQ.xlsx" --schedule docs/tv-schedule.txt
   It looks at the last few usable rows, converts the (Sunday) air date codes to actual Friday air dates, removes trailing title dates, and merges only new entries.
-- On the production Mac Mini this runs automatically every **Friday at 4:00am** via launchd (`update_tv_schedule.sh` + `com.jhansenwmi.tv-schedule.plist`).
+- On the production Mac Mini this runs automatically every **Friday at 4:20am** via launchd (`update_tv_schedule.sh` + `com.jhansenwmi.tv-schedule.plist`). That is after daily `rumble-feed` at 4:00 and radio at 4:10, so they do not share the git repo at the same minute.
   The wrapper handles git pull, runs the updater, and commits/pushes only if the schedule changed.
 - To install on the Mac Mini (or similar):
   1. `pip3 install openpyxl` (or ensure your `python3` has it)

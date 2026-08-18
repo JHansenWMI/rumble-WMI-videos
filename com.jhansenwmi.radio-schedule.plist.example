@@ -20,8 +20,8 @@
   <string>/Users/USERNAME/Library/Logs/radio-schedule.log</string>
 
   <!--
-  Friday 4:10am — 10 minutes after the TV schedule job (com.jhansenwmi.tv-schedule
-  at Friday 4:00am) so TV can finish its git push before this run pulls.
+  Friday 4:10am — after daily rumble-feed at 4:00. TV schedule is Friday 4:20
+  (com.jhansenwmi.tv-schedule) so these two do not share the git repo.
 
   launchd Weekday: 0=Sunday … 5=Friday, 6=Saturday.
   -->

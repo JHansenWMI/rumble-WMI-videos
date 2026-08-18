@@ -19,7 +19,7 @@
   <key>StandardErrorPath</key>
   <string>/Users/USERNAME/Library/Logs/tv-schedule.log</string>
 
-  <!-- Friday 4:00am. launchd Weekday: 0=Sunday … 5=Friday. Radio runs at 4:10 (see com.jhansenwmi.radio-schedule.plist.example). -->
+  <!-- Friday 4:20am. After rumble-feed (daily 4:00) and radio (Friday 4:10). Weekday: 0=Sunday … 5=Friday. -->
   <key>StartCalendarInterval</key>
   <array>
     <dict>
@@ -28,7 +28,7 @@
       <key>Hour</key>
       <integer>4</integer>
       <key>Minute</key>
-      <integer>0</integer>
+      <integer>20</integer>
     </dict>
   </array>
 
