@@ -1,7 +1,7 @@
 {
   "title": "United States Itinerary",
   "region": "us",
-  "generatedAt": "2026-08-19T18:30:24Z",
+  "generatedAt": "2026-08-19T18:35:28Z",
   "sourceUrl": "https://www.worldministries.org/united-states-itinerary.aspx",
   "introHtml": "",
   "eventCount": 255,
@@ -10,7 +10,7 @@
       "id": "evt-000256",
       "year": 2026,
       "sort_date": "2026-08-28",
-      "date_text": "Fri. Aug 28th: 10pm–2am",
+      "date_text": "Fri. Aug 28th: 10pm–2am and",
       "start_date": "2026-08-28",
       "end_date": "2026-08-30",
       "time_text": "Sun. Aug 30th: 11:40am–2:00pm and 4:00–7:00pm",
@@ -38,7 +38,7 @@
       "links": [],
       "body_lines": [],
       "region": "us",
-      "body_html": "<p><strong><img src=\"https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/2026-08-28-bellevue-global-connect.jpg\" style=\"width: 200px; height: auto;\" alt=\"Global Connect Conference — Bellevue, WA\" /><br />Bellevue, Washington<br /></strong>Fri. Aug 28th: 10pm–2am — Sun. Aug 30th: 11:40am–2:00pm and 4:00–7:00pm<br />Global Connect Conference<br />Dr. Jonathan Hansen - Speaking<br />Host: Pastor Blaise Nkurunziza<br />New Covenant Ministry<br />13646 NE 24TH ST. BELLEVUE, WA 98005<br /></p>"
+      "body_html": "<p><strong><img src=\"https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/2026-08-28-bellevue-global-connect.jpg\" style=\"width: 200px; height: auto;\" alt=\"Global Connect Conference — Bellevue, WA\" /><br />Bellevue, Washington<br /></strong>Fri. Aug 28th: 10pm–2am and — Sun. Aug 30th: 11:40am–2:00pm and 4:00–7:00pm<br />Global Connect Conference<br />Dr. Jonathan Hansen - Speaking<br />Host: Pastor Blaise Nkurunziza<br />New Covenant Ministry<br />13646 NE 24TH ST. BELLEVUE, WA 98005<br /></p>"
     },
     {
       "id": "evt-000255",
@@ -5410,7 +5410,7 @@
     }
   ],
   "lastManualUpdate": {
-    "at": "2026-08-19T18:30:24Z",
+    "at": "2026-08-19T18:35:28Z",
     "note": "Upsert event evt-000256"
   }
 }
