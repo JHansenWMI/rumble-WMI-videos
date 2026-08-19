@@ -1,10 +1,10 @@
 {
   "title": "International Itinerary",
   "region": "international",
-  "generatedAt": "2026-08-07T00:00:36Z",
+  "generatedAt": "2026-08-19T20:39:58Z",
   "sourceUrl": "https://www.worldministries.org/international-itinerary.aspx",
   "introHtml": "<p>Due to the COVID restrictions which started immediately after I arrived back from Amsterdam, Netherlands, February 2, 2020, my international itinerary already scheduled for the rest of 2020 was cancelled as well as 2021. Only limited national ministry trips were taken.</p>",
-  "eventCount": 384,
+  "eventCount": 385,
   "events": [
     {
       "id": "2026-10-25-south-korea",
@@ -145,6 +145,41 @@
       "flyer_alt": "Dominion Conference",
       "body_html": "<p><strong><strong><strong><img src=\"https://www.worldministries.org/Userfiles/Flyer-jpegs/2026-09-DominionConf.jpg\" style=\"width: 200px; height: auto;\" alt=\"Dominion Conference\" /><br />Cape Town, South Africa<br /></strong></strong></strong>Sep 16 - 17, 2026: 4pm<br /><span><span>Rev Dr. Jonathan Hansen &amp; </span>Rev. Dr. Adalia Hansen - Speaking<br />Host: Apostle Watson &amp; Prophetess Vicky Simfukwe<br />of Tabernacle of Glory For All Nations&nbsp;<br />Location: Cedar High School,&nbsp;<br />Cnr Spine &amp; Weltevreden Dr. Rocklands,<br />Mitchell's Plain, Cape Town, 7785<br /></span></p>",
       "region": "international"
+    },
+    {
+      "id": "evt-000385",
+      "year": 2026,
+      "sort_date": "2026-09-06",
+      "date_text": "Sun September 6th, 2026",
+      "start_date": "2026-09-06",
+      "end_date": "2026-09-06",
+      "time_text": "8:30 AM",
+      "place": "Mount Edgecombe, South Africa",
+      "city": "Mount Edgecombe",
+      "state": "",
+      "country": "South Africa",
+      "event_name": "The Church Must Be Silent No More & The Nine Faces of God",
+      "event_type": "church service",
+      "speakers": [
+        "Rev. Dr. Jonathan Hansen"
+      ],
+      "speaker_verb": "speaking",
+      "hosts": [
+        "Pastor Speedy Kisten"
+      ],
+      "venue": "Gateway Church",
+      "address_lines": [
+        "201 Golf Course Drive",
+        "Mount Edgecombe"
+      ],
+      "flag": "https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/country-flags/south-africa.gif",
+      "flag_alt": "South Africa",
+      "flyer": "",
+      "flyer_alt": "Mount Edgecombe, South Africa",
+      "links": [],
+      "body_lines": [],
+      "region": "international",
+      "body_html": "<p><strong>Mount Edgecombe, South Africa<br /></strong>Sun September 6th, 2026 — 8:30 AM<br />The Church Must Be Silent No More &amp; The Nine Faces of God<br />Rev. Dr. Jonathan Hansen - Speaking<br />Host: Pastor Speedy Kisten<br />Gateway Church<br />201 Golf Course Drive<br />Mount Edgecombe<br /></p>"
     },
     {
       "id": "2026-09-01-south-africa",
@@ -5062,7 +5097,7 @@
     }
   ],
   "lastManualUpdate": {
-    "at": "2026-08-07T00:00:36Z",
-    "note": "Upsert event 2026-09-21-malawi"
+    "at": "2026-08-19T20:39:58Z",
+    "note": "Upsert event evt-000385"
   }
 }
