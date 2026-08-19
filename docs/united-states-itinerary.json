@@ -1,11 +1,45 @@
 {
   "title": "United States Itinerary",
   "region": "us",
-  "generatedAt": "2026-08-14T23:21:20Z",
+  "generatedAt": "2026-08-19T17:29:44Z",
   "sourceUrl": "https://www.worldministries.org/united-states-itinerary.aspx",
   "introHtml": "",
-  "eventCount": 254,
+  "eventCount": 255,
   "events": [
+    {
+      "id": "evt-000256",
+      "year": 2026,
+      "sort_date": "2026-08-28",
+      "date_text": "Aug 28th: 10pm–2am; Aug 30th: 11:40am–2:00pm and 4:00pm–7:00pm",
+      "start_date": "2026-08-28",
+      "end_date": "2026-08-30",
+      "time_text": "",
+      "place": "Bellevue, Washington",
+      "city": "Bellevue",
+      "state": "Washington",
+      "country": "United States",
+      "event_name": "Global Connect Conference",
+      "event_type": "conference",
+      "speakers": [
+        "Dr. Jonathan Hansen"
+      ],
+      "speaker_verb": "speaking",
+      "hosts": [
+        "Pastor Blaise Nkurunziza"
+      ],
+      "venue": "New Covenant Ministry",
+      "address_lines": [
+        "13646 NE 24TH ST. BELLEVUE, WA 98005"
+      ],
+      "flag": "https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/state-flags/washington.gif",
+      "flag_alt": "Washington",
+      "flyer": "https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/2026-08-28-bellevue-global-connect.jpg",
+      "flyer_alt": "Global Connect Conference — Bellevue, WA",
+      "links": [],
+      "body_lines": [],
+      "region": "us",
+      "body_html": "<p><strong><img src=\"https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/2026-08-28-bellevue-global-connect.jpg\" style=\"width: 200px; height: auto;\" alt=\"Global Connect Conference — Bellevue, WA\" /><br />Bellevue, Washington<br /></strong>Aug 28th: 10pm–2am; Aug 30th: 11:40am–2:00pm and 4:00pm–7:00pm<br />Global Connect Conference<br />Dr. Jonathan Hansen - Speaking<br />Host: Pastor Blaise Nkurunziza<br />New Covenant Ministry<br />13646 NE 24TH ST. BELLEVUE, WA 98005<br /></p>"
+    },
     {
       "id": "evt-000255",
       "year": 2026,
@@ -24,6 +58,7 @@
         "Dr. Jonathan Hansen",
         "Dr. Adalia Hansen"
       ],
+      "speaker_verb": "speaking",
       "hosts": [
         "Apostle Ken Flynn"
       ],
@@ -34,13 +69,12 @@
       ],
       "flag": "https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/state-flags/washington.gif",
       "flag_alt": "Washington",
-      "flyer": "https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/evt-000385.jpg",
-      "flyer_alt": "Event flyer",
+      "flyer": "https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/2026-08-23-everett-washington.jpg",
+      "flyer_alt": "Everett, Washington",
       "links": [],
       "body_lines": [],
       "region": "us",
-      "body_html": "<p><strong><img src=\"https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/evt-000385.jpg\" style=\"width: 200px; height: auto;\" alt=\"Event flyer\" /><br />Everett, Washington<br /></strong>Sun, August 23, 2026 — 11:00 AM (Main Service)<br />Dr. Jonathan Hansen, Dr. Adalia Hansen - Speaking<br />Host: Apostle Ken Flynn<br />Out of the Valley Church<br />7003 Evergreen Way<br />Everett, WA 98203<br /></p>",
-      "speaker_verb": "speaking"
+      "body_html": "<p><strong><img src=\"https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/2026-08-23-everett-washington.jpg\" style=\"width: 200px; height: auto;\" alt=\"Everett, Washington\" /><br />Everett, Washington<br /></strong>Sun, August 23, 2026 — 11:00 AM (Main Service)<br />Dr. Jonathan Hansen, Dr. Adalia Hansen - Speaking<br />Host: Apostle Ken Flynn<br />Out of the Valley Church<br />7003 Evergreen Way<br />Everett, WA 98203<br /></p>"
     },
     {
       "id": "2026-08-16-spokane-washington",
@@ -5376,7 +5410,7 @@
     }
   ],
   "lastManualUpdate": {
-    "at": "2026-08-14T23:21:20Z",
-    "note": "Upsert event 2026-08-16-spokane-washington"
+    "at": "2026-08-19T17:29:44Z",
+    "note": "Upsert event evt-000256"
   }
 }
