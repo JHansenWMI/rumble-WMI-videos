@@ -145,11 +145,9 @@ Scheduled feed updates are paused until parser is repaired."
     fi
 
     # Scoped headless Grok attempt (development mode only).
-    # Goal: bounded investigation + limited fix attempt on the parser.
-    # Uses strict tool scoping, max turns, and explicit stop conditions so the
-    # run stays contained while the dev machine may be used for other work.
-    # On success: edits are left in the working tree for manual review/commit.
-    # On "too complicated": writes a short note in the sample dir and stops.
+    # Bounded investigation + limited parser fix (tool scope, max turns, stop conditions).
+    # Parser edits are copied into the sample dir as a diff, then the working tree
+    # is restored so the next scheduled run is not blocked by a dirty tree.
     log "Attempting scoped headless Grok parser fix for $iteration"
     PROMPT=$(cat <<'PROMPT_EOF'
 The Rumble parser in generate_rumble_feed.py hit "No Rumble items found. Rumble may have changed its page HTML."
@@ -212,7 +210,22 @@ PROMPT_EOF
       --deny 'Edit(*)' \
       > "samples/rumble-channel-pages/$iteration/grok-fix-output.json" 2>&1 || true
 
-    log "Headless Grok parser fix attempt for $iteration complete. Review any edits to generate_rumble_feed.py and the note (if written) in the sample directory before committing. The scheduled run will still exit with failure."
+    local sample_dir="samples/rumble-channel-pages/$iteration"
+    local parser="generate_rumble_feed.py"
+    local parser_diff="$sample_dir/generate_rumble_feed.py.diff"
+    git update-index -q --refresh
+    if ! git diff --quiet -- "$parser"; then
+      git diff -- "$parser" > "$parser_diff" || true
+      if [[ -f "$sample_dir/fix-attempt-note.md" ]]; then
+        log "Grok left uncommitted $parser edits; saved $parser_diff (see $sample_dir/fix-attempt-note.md)."
+      else
+        log "Grok left uncommitted $parser edits; saved $parser_diff."
+      fi
+      log "Restoring $parser so the next scheduled run is not blocked. Review $sample_dir (session rumble-parser-fix-$iteration) before committing a parser fix."
+      git restore -- "$parser"
+    fi
+
+    log "Headless Grok parser fix attempt for $iteration complete. The scheduled run will still exit with failure."
   fi
 }
 
