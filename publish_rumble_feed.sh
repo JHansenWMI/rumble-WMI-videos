@@ -123,8 +123,26 @@ fi
 
 sync_origin_main
 
+urls_from_list() {
+  python3 -c '
+from pathlib import Path
+from generate_rumble_feed import read_urls
+import sys
+for source in read_urls(Path(sys.argv[1])):
+    print(source.url)
+' "$1"
+}
+
 capture_on_parser_failure() {
-  local urls=("$@")
+  local list_file="$1"
+  local urls=() u
+  while IFS= read -r u; do
+    [[ -n $u ]] && urls+=("$u")
+  done < <(urls_from_list "$list_file")
+  if (( ${#urls[@]} == 0 )); then
+    log "Parser failure capture skipped (no URLs in $list_file)"
+    return 0
+  fi
   local iteration="auto-$(date '+%Y-%m-%d-%H%M')-rumble-html-change"
   log "Parser failure detected - auto-capturing sample to $iteration for later Grok fix"
   local captured=0
@@ -240,10 +258,7 @@ generate_all_feeds() {
   if [ $RUMBLE_STATUS -ne 0 ]; then
     if echo "$RUMBLE_OUT" | grep -q "Rumble may have changed its page HTML"; then
       if [ "$MODE" = "development" ]; then
-        capture_on_parser_failure \
-          "https://rumble.com/user/DrJonathanHansenWMI/videos" \
-          "https://rumble.com/user/DrJonathanHansenWMI/shorts" \
-          "https://rumble.com/user/DrJonathanHansenWMI/livestreams"
+        capture_on_parser_failure "$SCRIPT_DIR/docs/rumble-urls.txt"
       fi
     fi
     log "Rumble feed generation failed (exit $RUMBLE_STATUS)"
@@ -261,9 +276,7 @@ generate_all_feeds() {
   if [ $OVER_STATUS -ne 0 ]; then
     if echo "$OVER_OUT" | grep -q "Rumble may have changed its page HTML"; then
       if [ "$MODE" = "development" ]; then
-        capture_on_parser_failure \
-          "https://rumble.com/c/c-7899090/videos" \
-          "https://rumble.com/c/c-7899090/livestreams"
+        capture_on_parser_failure "$SCRIPT_DIR/docs/overcoming-urls.txt"
       fi
     fi
     log "Overcoming feed generation failed (exit $OVER_STATUS)"
