@@ -49,6 +49,9 @@ is_feed_json_path() {
   [[ "$p" == docs/*-feed.json || "$p" == docs/*-feed-archive.json ]]
 }
 
+# Recovery only drops local commits with this exact subject. Do not reword.
+FEED_JSON_COMMIT_SUBJECT="Update Rumble feed JSON files"
+
 # Drop unique local commits that are only feed JSON, then hard-reset to origin/main.
 # Returns 0 if reset happened. Does not merge. One caller-level retry only.
 # Caller must have fetched origin. Reset only when histories diverged (origin/main
@@ -77,7 +80,7 @@ recover_feed_json_divergence() {
     return 1
   fi
   while IFS= read -r s; do
-    if [[ "$s" != "Update Rumble feed JSON files" ]]; then
+    if [[ "$s" != "$FEED_JSON_COMMIT_SUBJECT" ]]; then
       log "JSON recovery skipped ($why; local commit is not a feed JSON update: $s)"
       return 1
     fi
@@ -159,7 +162,10 @@ See samples/rumble-channel-pages/$iteration/
 This provides the HTML snapshot needed for Grok to update generate_rumble_feed.py and test the fix.
 Scheduled feed updates are paused until parser is repaired."
       log "Pushing auto-captured sample"
-      git push origin main || true
+      if ! git push origin main; then
+        log "Sample capture push failed; not running Grok (sample not on origin). Local commit remains: $iteration"
+        return 0
+      fi
     fi
 
     # Scoped headless Grok attempt (development mode only).
@@ -355,7 +361,7 @@ sys.exit(0)
     return 0
   fi
 
-  git commit -m "Update Rumble feed JSON files"
+  git commit -m "$FEED_JSON_COMMIT_SUBJECT"
   COMMITTED=1
   return 0
 }
