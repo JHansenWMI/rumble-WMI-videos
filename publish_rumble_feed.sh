@@ -174,49 +174,23 @@ Scheduled feed updates are paused until parser is repaired."
     # is restored so the next scheduled run is not blocked by a dirty tree.
     log "Attempting scoped headless Grok parser fix for $iteration"
     PROMPT=$(cat <<'PROMPT_EOF'
-The Rumble parser in generate_rumble_feed.py hit "No Rumble items found. Rumble may have changed its page HTML."
+The parser in generate_rumble_feed.py returned zero items ("No Rumble items found. Rumble may have changed its page HTML.").
 
-A fresh sample has been captured to samples/rumble-channel-pages/ITERATION/
+A fresh sample is at samples/rumble-channel-pages/ITERATION/
 
-This directory contains:
-- Raw .html page response(s)
-- .items.json (structured listing data if the {"items":[ pattern was present)
-- capture-meta.json (marker counts showing the nature of the change)
+Update generate_rumble_feed.py so title, link, pubDate, thumb, id, and channel info extract from the new HTML. Prefer small changes to parse_items / parse_embedded_* / parse_channel_info. Keep old fallbacks.
 
-Task: Analyze the new data structure in the captured HTML and update the parser logic in generate_rumble_feed.py so the core fields (title, link, pubDate, thumb, id, and channel info when available) extract correctly.
-
-Use the existing verification commands for testing (adapt the slug/filename for shorts, livestreams, or overcoming sources as needed):
+Verify (adapt slug/filename for shorts, livestreams, or overcoming):
 
   python generate_rumble_feed.py --test-html samples/rumble-channel-pages/ITERATION/DrJonathanHansenWMI-videos.html \
     --test-source https://rumble.com/user/DrJonathanHansenWMI/videos \
     --compare-to-items samples/rumble-channel-pages/ITERATION/DrJonathanHansenWMI-videos.items.json
 
-Also run equivalent commands against the previous known-good sample (samples/rumble-channel-pages/2026-06-04-embedded-json-listing/) to protect against regressions.
+Also test samples/rumble-channel-pages/2026-06-04-embedded-json-listing/ so old HTML still works.
 
-Scope and focus (strict):
-- Work primarily inside generate_rumble_feed.py (the parse_items, parse_embedded_*, parse_channel_info functions and close helpers).
-- Prefer small, targeted additions or modifications to extraction logic.
-- Keep existing fallback paths if they remain useful.
-- Use the --test-html / --compare-to-items commands above for all verification.
-
-Stop conditions (do not ignore):
-- You have not identified a viable extraction strategy for the core fields after a modest number of steps, OR
-- The changes required appear significantly broader than focused updates inside generate_rumble_feed.py (e.g. large refactors, many new files, new infrastructure).
-
-If either stop condition is met:
-  STOP immediately.
-  Write a short, focused note to samples/rumble-channel-pages/ITERATION/fix-attempt-note.md with:
-    - What the new page structure appears to be (from the .html and .items.json)
-    - What extraction approaches you tried
-    - The specific complication
-    - Any partial findings useful for later human work
-  Then finish cleanly. Do not keep iterating or making further edits.
-
-Tool restrictions (enforced):
-- Allowed: reading relevant files, grep, the specific test commands shown above, editing generate_rumble_feed.py or the note file.
-- Everything else is disallowed (no web tools, no sub-agents, no broad shell or edits).
-
-You may use --session-id rumble-parser-fix-ITERATION for resumability if a human wants to continue later with full focus.
+If you cannot extract the core fields after a modest number of steps, or the fix is much larger than generate_rumble_feed.py:
+  STOP. Write samples/rumble-channel-pages/ITERATION/fix-attempt-note.md (new structure, what you tried, the complication). Do not keep editing.
+Do not commit or push.
 PROMPT_EOF
 )
     PROMPT=$(echo "$PROMPT" | sed "s|ITERATION|$iteration|g")

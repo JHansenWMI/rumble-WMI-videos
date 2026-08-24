@@ -53,12 +53,9 @@ Optional: `--slug DrJonathanHansenWMI-videos` overrides the output basename (def
 **Rich behavior** (set `RUMBLE_FEED_MODE=development` in the launchd plist on your dev MacBook):
 - Auto-captures to `samples/rumble-channel-pages/auto-YYYY-MM-DD-HHMM-rumble-html-change/`
 - Commits + pushes the sample.
-- Emits the full "ACTION REQUIRED" instructions.
-- Then runs a **scoped headless Grok attempt** (using `grok -p ... --yolo` with tight tool restrictions, --max-turns, --effort low, and explicit stop conditions).
-  - The agent is limited to reading the new sample + old good sample, running the `--test-html` verification commands, and editing only `generate_rumble_feed.py` (plus writing a note).
-  - Goal: contained diagnosis + small targeted parser fix.
-  - If it cannot produce a clean extraction path quickly, it writes a short `fix-attempt-note.md` describing the new structure, what it tried, and the complication, then stops.
-- Any source edits are left uncommitted for manual review (the run still exits with failure so no feed update occurs). You can resume the named session later with full focus when you have time.
+- Runs a bounded headless Grok attempt (`--max-turns`, `--effort low`, edit only `generate_rumble_feed.py`).
+  - If it cannot extract quickly, it writes `fix-attempt-note.md` and stops.
+- Parser edits are saved as `generate_rumble_feed.py.diff` in the sample dir, then the working tree is restored. The run still fails so no feed is published. Resume session `rumble-parser-fix-<iteration>` if needed.
 
 See the top-level README and the plist.example for setup details (the dev MacBook's launchd job runs `publish_rumble_feed.sh` in development mode to perform auto-capture and monitoring).
 
@@ -67,7 +64,7 @@ See the top-level README and the plist.example for setup details (the dev MacBoo
 On the **production Mac Mini** (default mode): the log will contain only a short failure message. No sample is auto-captured/pushed by that machine.
 
 On your **dev MacBook** (with `RUMBLE_FEED_MODE=development` in its plist, or when you run the sh/generate manually):
-- You will see the full instructions + (if using the sh) an auto-captured sample dir in git.
+- `publish_rumble_feed.sh` auto-captures a sample dir and may leave a `.diff` / note there.
 - Or manually capture:
   ```bash
   python samples/capture_rumble_channel_page.py \
@@ -81,7 +78,7 @@ On your **dev MacBook** (with `RUMBLE_FEED_MODE=development` in its plist, or wh
     --test-source https://rumble.com/user/DrJonathanHansenWMI/videos \
     --compare-to-items .../DrJonathanHansenWMI-videos.items.json
   ```
-- Give the Grok CLI (in this workspace) the prompt from the error output (or a concise version of it). It will inspect the new HTML (using grep/read_file/etc.), update the parser in `generate_rumble_feed.py`, use the `--test-html` commands to verify against the new + old sample, show a diff, and hand off for your review.
+- Review any `generate_rumble_feed.py.diff` / `fix-attempt-note.md` in the sample dir, or continue the named Grok session. Verify with `--test-html` against the new sample and `2026-06-04-embedded-json-listing/` before committing.
 
 Commit the parser fix from the dev machine. The prod mini will pick it up on its next pull.
 
