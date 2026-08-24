@@ -18,6 +18,90 @@ if [ "$MODE" = "production" ]; then
   PROD_FLAG="--production"
 fi
 
+# Unattended JSON recovery: Mini only, from ~/dev/thismac.env.
+# MACHINE_ROLE=mac-mini-server and hostname -s must match HOSTNAME (fifo).
+# Other Macs keep --ff-only with no reset. RUMBLE_FEED_MODE is parser/Grok only.
+THISMAC_ENV="${HOME}/dev/thismac.env"
+UNATTENDED_JSON_RECOVERY=0
+THISMAC_HOST="$(hostname -s)"
+# Identity keys only — thismac.env has unquoted paths with spaces, so do not source it.
+thismac_key() {
+  local key="$1" line
+  [[ -f "$THISMAC_ENV" ]] || return 0
+  line="$(grep -E "^${key}=" "$THISMAC_ENV" | tail -1 || true)"
+  print -r -- "${line#*=}"
+}
+MACHINE_ROLE="$(thismac_key MACHINE_ROLE)"
+ENV_HOSTNAME="$(thismac_key HOSTNAME)"
+if [[ -f "$THISMAC_ENV" ]]; then
+  if [[ "$MACHINE_ROLE" == "mac-mini-server" && -n "$ENV_HOSTNAME" && "$THISMAC_HOST" == "$ENV_HOSTNAME" ]]; then
+    UNATTENDED_JSON_RECOVERY=1
+    log "Unattended JSON recovery on (role=$MACHINE_ROLE host=$THISMAC_HOST)"
+  else
+    log "Unattended JSON recovery off (role=${MACHINE_ROLE:-unset} host=$THISMAC_HOST env-host=${ENV_HOSTNAME:-unset})"
+  fi
+else
+  log "Unattended JSON recovery off (no $THISMAC_ENV)"
+fi
+
+is_feed_json_path() {
+  local p="$1"
+  [[ "$p" == docs/*-feed.json || "$p" == docs/*-feed-archive.json ]]
+}
+
+# Drop unique local commits that are only feed JSON, then hard-reset to origin/main.
+# Returns 0 if reset happened. Does not merge. One caller-level retry only.
+recover_feed_json_divergence() {
+  local why="$1"
+  if [[ "$UNATTENDED_JSON_RECOVERY" != 1 ]]; then
+    log "JSON recovery skipped ($why; not Mini unattended host)"
+    return 1
+  fi
+  git update-index -q --refresh
+  if ! git diff --quiet || ! git diff --cached --quiet; then
+    log "JSON recovery skipped ($why; working tree not clean)"
+    return 1
+  fi
+
+  local n s f
+  n="$(git rev-list --count origin/main..HEAD)"
+  if [[ "$n" -eq 0 ]]; then
+    log "JSON recovery skipped ($why; no unique local commits)"
+    return 1
+  fi
+  while IFS= read -r s; do
+    if [[ "$s" != "Update Rumble feed JSON files" ]]; then
+      log "JSON recovery skipped ($why; local commit is not a feed JSON update: $s)"
+      return 1
+    fi
+  done < <(git log --format=%s origin/main..HEAD)
+
+  while IFS= read -r f; do
+    [[ -z "$f" ]] && continue
+    if ! is_feed_json_path "$f"; then
+      log "JSON recovery skipped ($why; local commit touches $f)"
+      return 1
+    fi
+  done < <(git diff --name-only origin/main..HEAD)
+
+  log "JSON recovery ($why): dropping $n local feed-JSON commit(s), reset --hard origin/main"
+  git reset --hard origin/main
+  return 0
+}
+
+sync_origin_main() {
+  log "Pulling latest origin/main"
+  git fetch origin
+  if git pull --ff-only origin main; then
+    return 0
+  fi
+  if recover_feed_json_divergence "pull"; then
+    return 0
+  fi
+  log "Cannot fast-forward onto origin/main. Aborting."
+  exit 1
+}
+
 if [ "$(git rev-parse --abbrev-ref HEAD)" != "main" ]; then
   log "Expected to run on branch main. Aborting."
   exit 1
@@ -30,9 +114,7 @@ if ! git diff --quiet || ! git diff --cached --quiet; then
   exit 1
 fi
 
-log "Pulling latest origin/main"
-git fetch origin
-git pull --ff-only origin main
+sync_origin_main
 
 capture_on_parser_failure() {
   local urls=("$@")
@@ -127,100 +209,104 @@ PROMPT_EOF
   fi
 }
 
-log "Generating feed (rumble)"
-set +e
-RUMBLE_OUT=$(python3 "$SCRIPT_DIR/generate_rumble_feed.py" $PROD_FLAG \
-  --input "$SCRIPT_DIR/docs/rumble-urls.txt" 2>&1)
-RUMBLE_STATUS=$?
-set -e
-print -r -- "$RUMBLE_OUT"
-if [ $RUMBLE_STATUS -ne 0 ]; then
-  if echo "$RUMBLE_OUT" | grep -q "Rumble may have changed its page HTML"; then
-    if [ "$MODE" = "development" ]; then
-      capture_on_parser_failure \
-        "https://rumble.com/user/DrJonathanHansenWMI/videos" \
-        "https://rumble.com/user/DrJonathanHansenWMI/shorts" \
-        "https://rumble.com/user/DrJonathanHansenWMI/livestreams"
+generate_all_feeds() {
+  log "Generating feed (rumble)"
+  set +e
+  RUMBLE_OUT=$(python3 "$SCRIPT_DIR/generate_rumble_feed.py" $PROD_FLAG \
+    --input "$SCRIPT_DIR/docs/rumble-urls.txt" 2>&1)
+  RUMBLE_STATUS=$?
+  set -e
+  print -r -- "$RUMBLE_OUT"
+  if [ $RUMBLE_STATUS -ne 0 ]; then
+    if echo "$RUMBLE_OUT" | grep -q "Rumble may have changed its page HTML"; then
+      if [ "$MODE" = "development" ]; then
+        capture_on_parser_failure \
+          "https://rumble.com/user/DrJonathanHansenWMI/videos" \
+          "https://rumble.com/user/DrJonathanHansenWMI/shorts" \
+          "https://rumble.com/user/DrJonathanHansenWMI/livestreams"
+      fi
     fi
+    log "Rumble feed generation failed (exit $RUMBLE_STATUS)"
+    exit $RUMBLE_STATUS
   fi
-  log "Rumble feed generation failed (exit $RUMBLE_STATUS)"
-  exit $RUMBLE_STATUS
-fi
 
-log "Generating feed (overcoming)"
-set +e
-OVER_OUT=$(python3 "$SCRIPT_DIR/generate_rumble_feed.py" $PROD_FLAG \
-  --input "$SCRIPT_DIR/docs/overcoming-urls.txt" \
-  --output "$SCRIPT_DIR/docs/overcoming-feed.json" 2>&1)
-OVER_STATUS=$?
-set -e
-print -r -- "$OVER_OUT"
-if [ $OVER_STATUS -ne 0 ]; then
-  if echo "$OVER_OUT" | grep -q "Rumble may have changed its page HTML"; then
-    if [ "$MODE" = "development" ]; then
-      capture_on_parser_failure \
-        "https://rumble.com/c/c-7899090/videos" \
-        "https://rumble.com/c/c-7899090/livestreams"
+  log "Generating feed (overcoming)"
+  set +e
+  OVER_OUT=$(python3 "$SCRIPT_DIR/generate_rumble_feed.py" $PROD_FLAG \
+    --input "$SCRIPT_DIR/docs/overcoming-urls.txt" \
+    --output "$SCRIPT_DIR/docs/overcoming-feed.json" 2>&1)
+  OVER_STATUS=$?
+  set -e
+  print -r -- "$OVER_OUT"
+  if [ $OVER_STATUS -ne 0 ]; then
+    if echo "$OVER_OUT" | grep -q "Rumble may have changed its page HTML"; then
+      if [ "$MODE" = "development" ]; then
+        capture_on_parser_failure \
+          "https://rumble.com/c/c-7899090/videos" \
+          "https://rumble.com/c/c-7899090/livestreams"
+      fi
     fi
+    log "Overcoming feed generation failed (exit $OVER_STATUS)"
+    exit $OVER_STATUS
   fi
-  log "Overcoming feed generation failed (exit $OVER_STATUS)"
-  exit $OVER_STATUS
-fi
 
-log "Generating feed (tv)"
-set +e
-TV_OUT=$(python3 "$SCRIPT_DIR/generate_tv_feed.py" $PROD_FLAG 2>&1)
-TV_STATUS=$?
-set -e
-print -r -- "$TV_OUT"
-if [ $TV_STATUS -ne 0 ]; then
-  log "TV feed generation failed (exit $TV_STATUS)"
-  exit $TV_STATUS
-fi
+  log "Generating feed (tv)"
+  set +e
+  TV_OUT=$(python3 "$SCRIPT_DIR/generate_tv_feed.py" $PROD_FLAG 2>&1)
+  TV_STATUS=$?
+  set -e
+  print -r -- "$TV_OUT"
+  if [ $TV_STATUS -ne 0 ]; then
+    log "TV feed generation failed (exit $TV_STATUS)"
+    exit $TV_STATUS
+  fi
+}
 
 # Determine which feed JSON files (and their archives) to manage for this run.
 # We load the list of *primary* feeds from Python (single source of truth)
 # and only include the corresponding archive if it actually exists on disk
 # (using the same get_archive_path logic the generator uses).
 # This avoids hardcoding non-existent files such as docs/overcoming-feed-archive.json.
-PRIMARY_FEEDS=()
-while IFS= read -r line; do
-    [[ -n $line ]] && PRIMARY_FEEDS+=("$line")
-done < <(python3 -c '
+collect_feed_files() {
+  PRIMARY_FEEDS=()
+  while IFS= read -r line; do
+      [[ -n $line ]] && PRIMARY_FEEDS+=("$line")
+  done < <(python3 -c '
 from generate_rumble_feed import PRIMARY_FEED_FILES
 for p in PRIMARY_FEED_FILES:
     print(p)
 ' )
 
-# Build the actual list of files to manage for this run.
-# Always include primaries. Include an archive only if it was created on disk
-# (using the exact same get_archive_path logic the generator uses).
-FEED_FILES=()
-FEED_FILES+=("docs/tv-feed.json")
+  FEED_FILES=()
+  FEED_FILES+=("docs/tv-feed.json")
 
-for primary in "${PRIMARY_FEEDS[@]}"; do
-    FEED_FILES+=("$primary")
-    archive=$(python3 -c '
+  local primary archive
+  for primary in "${PRIMARY_FEEDS[@]}"; do
+      FEED_FILES+=("$primary")
+      archive=$(python3 -c '
 from pathlib import Path
 from generate_rumble_feed import get_archive_path
 import sys
 print(get_archive_path(Path(sys.argv[1])))
 ' "$primary" 2>/dev/null || true)
-    if [[ -f $archive ]]; then
-        FEED_FILES+=("$archive")
-    fi
-done
+      if [[ -f $archive ]]; then
+          FEED_FILES+=("$archive")
+      fi
+  done
+}
 
-git add "${FEED_FILES[@]}" 2>/dev/null || true
+# Sets COMMITTED=1 if a feed JSON commit was made, else 0 (restores generated clocks).
+commit_feeds_if_changed() {
+  collect_feed_files
+  git add "${FEED_FILES[@]}" 2>/dev/null || true
 
-# Use per-item "updated" timestamps vs the file's last commit time.
-# A record only gets a fresh updated (in stamp_item_json) when its content actually changed.
-# This replaces the old --ignore-matching-lines git-diff heuristic.
-# The list of files is built dynamically above (primaries + archives that exist).
-paths_py=$(printf '"%s",' "${FEED_FILES[@]}")
-paths_py="[${paths_py%,}]"
+  # Use per-item "updated" timestamps vs the file's last commit time.
+  # A record only gets a fresh updated (in stamp_item_json) when its content actually changed.
+  local paths_py
+  paths_py=$(printf '"%s",' "${FEED_FILES[@]}")
+  paths_py="[${paths_py%,}]"
 
-if python3 -c "
+  if python3 -c "
 import sys
 sys.path.insert(0, '.')
 from generate_rumble_feed import feed_has_meaningful_change
@@ -229,13 +315,40 @@ if any(feed_has_meaningful_change(p) for p in paths):
     sys.exit(1)  # at least one file has a meaningfully newer record
 sys.exit(0)
 "; then
-  git restore --staged "${FEED_FILES[@]}" 2>/dev/null || true
-  git restore "${FEED_FILES[@]}" 2>/dev/null || true
-  echo "$(date '+%Y-%m-%d %H:%M:%S') feed files did not change. Nothing to commit."
-  exit 0
-fi
+    git restore --staged "${FEED_FILES[@]}" 2>/dev/null || true
+    git restore "${FEED_FILES[@]}" 2>/dev/null || true
+    log "feed files did not change. Nothing to commit."
+    COMMITTED=0
+    return 0
+  fi
 
-git commit -m "Update Rumble feed JSON files"
-log "Pushing to origin/main"
-git push origin main
+  git commit -m "Update Rumble feed JSON files"
+  COMMITTED=1
+  return 0
+}
+
+push_main() {
+  local attempt="$1"
+  log "Pushing to origin/main${attempt:+ ($attempt)}"
+  git push origin main
+}
+
+generate_all_feeds
+commit_feeds_if_changed
+if [[ "$COMMITTED" == 1 ]]; then
+  if ! git push origin main; then
+    log "Push rejected; fetching origin"
+    git fetch origin
+    if recover_feed_json_divergence "push"; then
+      generate_all_feeds
+      commit_feeds_if_changed
+      if [[ "$COMMITTED" == 1 ]]; then
+        push_main "after recovery"
+      fi
+    else
+      log "Push failed and JSON recovery did not apply. Aborting."
+      exit 1
+    fi
+  fi
+fi
 log "Done"
