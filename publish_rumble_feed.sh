@@ -51,6 +51,9 @@ is_feed_json_path() {
 
 # Drop unique local commits that are only feed JSON, then hard-reset to origin/main.
 # Returns 0 if reset happened. Does not merge. One caller-level retry only.
+# Caller must have fetched origin. Reset only when histories diverged (origin/main
+# is not an ancestor of HEAD). Ahead-only (failed push, origin unchanged) keeps
+# the unpublished scrape.
 recover_feed_json_divergence() {
   local why="$1"
   if [[ "$UNATTENDED_JSON_RECOVERY" != 1 ]]; then
@@ -67,6 +70,10 @@ recover_feed_json_divergence() {
   n="$(git rev-list --count origin/main..HEAD)"
   if [[ "$n" -eq 0 ]]; then
     log "JSON recovery skipped ($why; no unique local commits)"
+    return 1
+  fi
+  if git merge-base --is-ancestor origin/main HEAD; then
+    log "JSON recovery skipped ($why; not diverged from origin/main)"
     return 1
   fi
   while IFS= read -r s; do
