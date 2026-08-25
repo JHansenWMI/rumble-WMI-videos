@@ -21,7 +21,7 @@ Logic/style changes: edit `docs/widgets/*` and push (no CMS re-paste). Shell/chr
 ## Primary Rumble feeds (active / “latest”)
 
 - `rumble-feed.json`: Main feed (DrJonathanHansenWMI user account). Accumulates history from periodic first-page scrapes of `/videos`, `/shorts`, `/livestreams`. Capped at ~90 items; older ones move to the archive.
-- `overcoming-feed.json`: Dedicated feed for the Overcoming channel (`c/c-7899090` sources).
+- `overcoming-feed.json`: Dedicated feed for the Overcoming channel (`c/c-7899090` sources). After merge, history items no longer on the Overcoming listing are pruned if they now belong to another Rumble channel (checked via `rumble-feed.json`, then the video page). Recategorized videos are not archived. This is not **Warning TV Broadcasts** (`tv-feed.json`).
 
 Both are FetchRSS-style:
 
@@ -69,6 +69,7 @@ Both are FetchRSS-style:
 
 - Scrape fresh items from configured sources.
 - Merge new discoveries into prior JSON history (`merge_fresh_into_accumulated` + `merge_scraped_with_existing` for embed ids etc.).
+- Overcoming only: `prune_recategorized_overcoming_items` drops history that was recategorized off The Overcoming Women (still-listed page-1 items are kept).
 - Apply `custom_update.py` (hide list + title/date overrides). `REMOVE_GUIDS` hides a video that is still on Rumble. After a Rumble deletion, purge stored JSON with `delete_from_feed.py` instead of adding the guid there.
 - `feed_has_meaningful_change()` treats a changed guid/link set (add or delete) as a real update, not only a newer per-item `updated`.
 - Enrich channel details (cached).

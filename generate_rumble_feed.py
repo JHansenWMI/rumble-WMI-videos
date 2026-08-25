@@ -53,6 +53,13 @@ PRIMARY_FEED_FILES = [
     "docs/overcoming-feed.json",
 ]
 
+OVERCOMING_CHANNEL_NAME = "The Overcoming Women"
+OVERCOMING_CHANNEL_SLUG = "c-7899090"
+RUMBLE_CHANNEL_HINT_FILES = [
+    "docs/rumble-feed.json",
+    "docs/rumble-feed-archive.json",
+]
+
 
 CARD_RE = re.compile(
     r'<div\s+[^>]*class="[^"]*\bvideostream\b[^"]*"[^>]*data-video-id="(?P<id>\d+)"[^>]*>'
@@ -299,6 +306,74 @@ def merge_fresh_into_accumulated(fresh: list[FeedItem], previous: list[dict]) ->
 
     result.sort(key=lambda x: x.timestamp, reverse=True)
     return result
+
+
+def is_overcoming_feed_path(path: Path) -> bool:
+    return Path(path).name == "overcoming-feed.json"
+
+
+def is_overcoming_channel(name: str = "", url: str = "") -> bool:
+    if str(name or "").strip().casefold() == OVERCOMING_CHANNEL_NAME.casefold():
+        return True
+    return OVERCOMING_CHANNEL_SLUG in str(url or "").casefold()
+
+
+def load_rumble_channel_hints() -> dict[str, ChannelInfo]:
+    """Channel names from the main rumble feed (generated earlier in the same publish run)."""
+    hints: dict[str, ChannelInfo] = {}
+    for raw in RUMBLE_CHANNEL_HINT_FILES:
+        path = Path(raw)
+        if path.exists():
+            hints.update(load_channel_cache(path))
+    return hints
+
+
+def prune_recategorized_overcoming_items(
+    items: list[FeedItem],
+    fresh_links: set[str],
+    *,
+    channel_hints: dict[str, ChannelInfo] | None = None,
+    fetch_missing: bool = True,
+    delay: float = 2.0,
+) -> list[FeedItem]:
+    """Drop Overcoming history that now belongs to another Rumble channel.
+
+    Items still on this run's Overcoming listing pages stay. History-only
+    items are checked against rumble-feed channel fields, then the video
+    page if needed. A failed fetch keeps the item. Recategorized videos
+    are not archived.
+    """
+    hints = dict(channel_hints or {})
+    kept: list[FeedItem] = []
+    for item in items:
+        if item.link in fresh_links:
+            kept.append(item)
+            continue
+
+        channel = cached_channel_info(hints, item)
+        if channel is None and fetch_missing and item.link:
+            try:
+                polite_sleep(delay)
+                channel = parse_channel_info(fetch_html(item.link))
+            except (HTTPError, URLError, TimeoutError, OSError) as exc:
+                print(f"Warning: could not recheck channel for {item.link}: {exc}", file=sys.stderr)
+                kept.append(item)
+                continue
+            if channel and (channel.name or channel.url):
+                cache_channel_info(hints, item, channel)
+
+        if channel and (channel.name or channel.url) and not is_overcoming_channel(
+            channel.name, channel.url
+        ):
+            print(
+                f"Pruned recategorized video from overcoming feed: {item.title} "
+                f"(now {channel.name or channel.url})",
+                file=sys.stderr,
+            )
+            continue
+
+        kept.append(item)
+    return kept
 
 
 def get_archive_path(path: Path) -> Path:
@@ -1080,6 +1155,15 @@ def main() -> int:
     custom_update = load_custom_update_hook()
     if custom_update:
         items = custom_update(items, parse_datetime)
+
+    if is_overcoming_feed_path(output_path):
+        items = prune_recategorized_overcoming_items(
+            items,
+            {item.link for item in scraped if item.link},
+            channel_hints=load_rumble_channel_hints(),
+            fetch_missing=not args.no_channel_details,
+            delay=max(0, args.delay),
+        )
 
     limit = max(1, args.limit)
 

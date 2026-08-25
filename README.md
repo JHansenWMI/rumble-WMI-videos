@@ -27,6 +27,7 @@ Feeds:
 - `docs/rumble-feed.json` (main) is produced from `docs/rumble-urls.txt` (DrJonathanHansenWMI user account: videos/shorts/livestreams).
 - `docs/overcoming-feed.json` is produced from `docs/overcoming-urls.txt` (specific Overcoming channel).
 - **Current generation model (post reorg ~Jul 2026)**: Periodic runs scrape the configured sources (normally just page 1 of each URL for efficiency). Newly discovered items are *merged* into the existing history in the JSON (accumulate; do not replace/redo the whole list). Fresh scrape data is preferred for overlaps. Older items are kept until archiving.
+  - **Overcoming prune:** a video that left the Overcoming listing because it was recategorized (e.g. to **WARNING TV - Jonathan Hansen**) is dropped from `overcoming-feed.json`. Detection uses `rumble-feed.json` channel fields from the same run, then a video-page fetch if needed. Recategorized items are not written to the overcoming archive. Videos that only scrolled off page 1 but are still Overcoming stay in history. This does **not** put a video on **Warning TV Broadcasts** (`tv-feed.json`); that page is `TV{YYYYMMDD}` titles and **WMI TV Broadcast History** only.
   - One-time bulk population (e.g. initial history) can use `pages=N` in the URL list or higher `--pages` / direct runs.
   - After merge/enrichment, excess items beyond the active limit (default 90) are moved to the corresponding `*-archive.json`.
 - URL list syntax: `https://...` (1 page) or `https://... pages=3`.
