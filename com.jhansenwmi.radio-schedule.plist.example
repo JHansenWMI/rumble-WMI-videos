@@ -20,8 +20,8 @@
   <string>/Users/USERNAME/Library/Logs/radio-schedule.log</string>
 
   <!--
-  Friday 4:10am — after daily rumble-feed at 4:00. TV schedule is Friday 4:20
-  (com.jhansenwmi.tv-schedule) so these two do not share the git repo.
+  Friday 4:10am — after rumble full scrape at 4:05. TV schedule is Friday 4:15
+  (com.jhansenwmi.tv-schedule) so rumble's :20 tripwire is free.
 
   launchd Weekday: 0=Sunday … 5=Friday, 6=Saturday.
   -->

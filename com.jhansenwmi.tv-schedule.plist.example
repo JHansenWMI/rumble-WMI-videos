@@ -19,7 +19,7 @@
   <key>StandardErrorPath</key>
   <string>/Users/USERNAME/Library/Logs/tv-schedule.log</string>
 
-  <!-- Friday 4:20am. After rumble-feed (daily 4:00) and radio (Friday 4:10). Weekday: 0=Sunday … 5=Friday. -->
+  <!-- Friday 4:15am. After rumble full scrape 4:05 and radio 4:10 (Office already spinning). Weekday: 0=Sunday … 5=Friday. -->
   <key>StartCalendarInterval</key>
   <array>
     <dict>
@@ -28,7 +28,7 @@
       <key>Hour</key>
       <integer>4</integer>
       <key>Minute</key>
-      <integer>20</integer>
+      <integer>15</integer>
     </dict>
   </array>
 

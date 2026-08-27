@@ -9,4 +9,4 @@ When entering plan mode or writing a plan.md:
 - The user explicitly prefers concise plans over comprehensive ones.
 
 ## Project notes
-- Do not create GitHub Actions workflows (`.yml` files in `.github/workflows`). Rumble's bot protection blocks scrapers running from GitHub; scheduled automation is handled locally via launchd + `publish_rumble_feed.sh` on the Macs.
+- Do not create GitHub Actions workflows (`.yml` files in `.github/workflows`). Rumble's bot protection blocks scrapers running from GitHub; scheduled automation is handled locally via launchd + `rumble_feed_tick.sh` on the Macs.

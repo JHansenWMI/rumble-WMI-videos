@@ -8,6 +8,33 @@ log() {
   print -r -- "[$(date '+%Y-%m-%d %H:%M:%S')] $*"
 }
 
+# One full scrape at a time (tick vs manual vs overlapping launchd).
+LOCK_DIR="$SCRIPT_DIR/.publish.lock"
+acquire_publish_lock() {
+  if mkdir "$LOCK_DIR" 2>/dev/null; then
+    print -r -- "$$" > "$LOCK_DIR/pid"
+    return 0
+  fi
+  local oldpid
+  oldpid="$(cat "$LOCK_DIR/pid" 2>/dev/null || true)"
+  if [[ -n "$oldpid" ]] && kill -0 "$oldpid" 2>/dev/null; then
+    log "Another rumble publish is running (pid $oldpid). Skipping."
+    return 1
+  fi
+  log "Removing stale publish lock (pid ${oldpid:-unknown})"
+  rm -rf "$LOCK_DIR"
+  mkdir "$LOCK_DIR"
+  print -r -- "$$" > "$LOCK_DIR/pid"
+  return 0
+}
+release_publish_lock() {
+  rm -rf "$LOCK_DIR"
+}
+if ! acquire_publish_lock; then
+  exit 75
+fi
+trap release_publish_lock EXIT INT TERM
+
 # Default to "production" (safe/dumb mode) when unset.
 # Production Mac Mini can leave this unset after a plain pull.
 # Dev MacBook sets RUMBLE_FEED_MODE=development in its launchd plist

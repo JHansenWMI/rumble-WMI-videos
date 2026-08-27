@@ -1,6 +1,10 @@
 # macOS
 .DS_Store
 
+# Local scrape tick (not feed data)
+.publish.lock
+.rumble-tripwire-state
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]

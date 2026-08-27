@@ -77,10 +77,11 @@ Both are FetchRSS-style:
 - Enrich channel details (cached).
 - Cap active list + archive excess.
 - `publish_rumble_feed.sh` pulls, runs the above for both feeds, then runs `generate_tv_feed.py` (TV-only subset, no extra scrape), then uses `feed_has_meaningful_change()` to decide commit+push. Only real changes trigger updates.
+- Mini launchd runs `rumble_feed_tick.sh` at :05/:20/:35/:50. Most ticks only GET the user All page (`rumble_tripwire.py`). Full scrape at 4:05am / 8:05am / 5:05pm / 8:05pm Pacific, or when that fingerprint changes.
 
 This replaced the old “always fully regenerate + crude generatedAt diff” approach.
 
-See root [`README.md`](../README.md) for overall usage, production vs dev modes, and launchd setup. Implementation: `generate_rumble_feed.py`, `publish_rumble_feed.sh`.
+See root [`README.md`](../README.md) for overall usage, production vs dev modes, and launchd setup. Implementation: `generate_rumble_feed.py`, `publish_rumble_feed.sh`, `rumble_feed_tick.sh`.
 
 ## TV broadcast feed
 

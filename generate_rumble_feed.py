@@ -691,75 +691,114 @@ def polite_sleep(delay: float) -> None:
     time.sleep(delay * random.uniform(0.75, 1.25))
 
 
-def parse_embedded_listing_items(html: str, source_page: str) -> list[FeedItem]:
-    """Parse video cards from Rumble's embedded listing JSON (replaces videostream HTML)."""
-    items: list[FeedItem] = []
-    decoder = json.JSONDecoder()
+def iter_embedded_listing_arrays(html: str) -> list[list[dict]]:
+    """Every embedded ``{"items":[...]}`` video array on a Rumble listing page.
 
+    The user All page has more than one (a short top shelf, then a longer grid).
+    Full-feed parse still uses the first non-empty array; the tripwire fingerprints all of them.
+    """
+    arrays: list[list[dict]] = []
+    decoder = json.JSONDecoder()
     for match in re.finditer(r'\{"items":\[', html):
         try:
             payload, _ = decoder.raw_decode(html[match.start():])
         except json.JSONDecodeError:
             continue
-
         if not isinstance(payload, dict):
             continue
+        raw_items = payload.get("items")
+        if not isinstance(raw_items, list):
+            continue
+        videos = [
+            entry
+            for entry in raw_items
+            if isinstance(entry, dict)
+            and (not entry.get("object_type") or entry.get("object_type") == "video")
+        ]
+        if videos:
+            arrays.append(videos)
+    return arrays
 
-        for entry in payload.get("items", []):
-            if not isinstance(entry, dict):
-                continue
 
-            object_type = entry.get("object_type")
-            if object_type and object_type != "video":
-                continue
+def feeditems_from_listing_entries(entries: list[dict], source_page: str) -> list[FeedItem]:
+    items: list[FeedItem] = []
+    for entry in entries:
+        title = clean_text(str(entry.get("title") or ""))
+        raw_url = str(entry.get("url") or entry.get("relative_url") or "")
+        link = clean_link(raw_url) if raw_url else ""
+        thumb = str(entry.get("thumb") or "")
+        video_id = str(entry.get("id") or "")
+        video_code = str(entry.get("permalink_id") or "")
+        if not video_code and link:
+            m = re.search(r"/(v[a-z0-9]+)-", link)
+            if m:
+                video_code = m.group(1)
+        video_embed_id = ""
+        pub_date, timestamp = parse_datetime(str(entry.get("upload_date") or ""))
+        scheduled_time = listing_scheduled_time(entry)
 
-            title = clean_text(str(entry.get("title") or ""))
-            raw_url = str(entry.get("url") or entry.get("relative_url") or "")
-            link = clean_link(raw_url) if raw_url else ""
-            thumb = str(entry.get("thumb") or "")
-            video_id = str(entry.get("id") or "")
-            video_code = str(entry.get("permalink_id") or "")
-            if not video_code and link:
-                m = re.search(r'/(v[a-z0-9]+)-', link)
-                if m:
-                    video_code = m.group(1)
-            # video_embed_id (for player) is populated later from detail page only
-            video_embed_id = ""
-            pub_date, timestamp = parse_datetime(str(entry.get("upload_date") or ""))
-            scheduled_time = listing_scheduled_time(entry)
+        channel_name = ""
+        channel_url = ""
+        by = entry.get("by")
+        if isinstance(by, dict) and by.get("type") == "channel":
+            channel_name = clean_text(str(by.get("name") or by.get("title") or ""))
+            raw_channel_url = str(by.get("url") or by.get("relative_url") or "")
+            channel_url = clean_link(raw_channel_url) if raw_channel_url else ""
 
-            channel_name = ""
-            channel_url = ""
-            by = entry.get("by")
-            if isinstance(by, dict) and by.get("type") == "channel":
-                channel_name = clean_text(str(by.get("name") or by.get("title") or ""))
-                raw_channel_url = str(by.get("url") or by.get("relative_url") or "")
-                channel_url = clean_link(raw_channel_url) if raw_channel_url else ""
+        if not title or not link or not pub_date:
+            continue
 
-            if not title or not link or not pub_date:
-                continue
-
-            items.append(
-                FeedItem(
-                    title=title,
-                    link=link,
-                    pub_date=pub_date,
-                    thumb=thumb,
-                    source_page=source_page,
-                    video_id=video_id,
-                    timestamp=timestamp,
-                    channel_name=channel_name,
-                    channel_url=channel_url,
-                    video_code=video_code,
-                    video_embed_id=video_embed_id,
-                    scheduled_time=scheduled_time,
-                )
+        items.append(
+            FeedItem(
+                title=title,
+                link=link,
+                pub_date=pub_date,
+                thumb=thumb,
+                source_page=source_page,
+                video_id=video_id,
+                timestamp=timestamp,
+                channel_name=channel_name,
+                channel_url=channel_url,
+                video_code=video_code,
+                video_embed_id=video_embed_id,
+                scheduled_time=scheduled_time,
             )
+        )
+    return items
 
+
+def parse_embedded_listing_items(html: str, source_page: str) -> list[FeedItem]:
+    """Parse video cards from Rumble's embedded listing JSON (replaces videostream HTML)."""
+    for entries in iter_embedded_listing_arrays(html):
+        items = feeditems_from_listing_entries(entries, source_page)
         if items:
             return items
+    return []
 
-    return items
+
+def tripwire_fingerprint(html: str) -> str:
+    """Stable identity+schedule fingerprint of every listing video on the page.
+
+    Fields: id, title, live_datetime. Ignores views/comments so the cheap check
+    does not fire on watch-count churn.
+    """
+    seen: set[tuple[str, str, str]] = set()
+    lines: list[str] = []
+    for entries in iter_embedded_listing_arrays(html):
+        for entry in entries:
+            vid = str(entry.get("id") or "").strip()
+            title = clean_text(str(entry.get("title") or ""))
+            live_dt = entry.get("live_datetime")
+            live_s = "" if live_dt in (None, "", "null", "None") else str(live_dt)
+            key = (vid, title, live_s)
+            if not vid and not title:
+                continue
+            if key in seen:
+                continue
+            seen.add(key)
+            lines.append(f"{vid}\t{title}\t{live_s}")
+    lines.sort()
+    return "\n".join(lines) + ("\n" if lines else "")
 
 
 def parse_embedded_channel_info(html: str) -> ChannelInfo:

@@ -7,41 +7,31 @@
 
   <key>ProgramArguments</key>
   <array>
-    <string>/Users/USERNAME/PATH/TO/rumble-WMI-videos/publish_rumble_feed.sh</string>
+    <string>/bin/zsh</string>
+    <string>-lc</string>
+    <string>cd /Users/USERNAME/PATH/TO/rumble-WMI-videos &amp;&amp; ./rumble_feed_tick.sh</string>
   </array>
 
   <key>WorkingDirectory</key>
   <string>/Users/USERNAME/PATH/TO/rumble-WMI-videos</string>
 
   <!--
-  Environment variables for the scheduled job.
+  Tick: rumble_feed_tick.sh
+    :05 :20 :35 :50 every hour (offset +5 — uploads often land on the hour).
+    Full proven scrape at 4:05am, 8:05am, 5:05pm, 8:05pm Pacific.
+    Other ticks: one GET of rumble.com/user/DrJonathanHansenWMI; full scrape only if that fingerprint changed.
 
-  RUMBLE_FEED_MODE controls failure behavior for parser changes (Rumble HTML updates):
+  RUMBLE_FEED_MODE (optional EnvironmentVariables):
+    unset / production — Mini: safe parser failure, JSON-only unattended recovery.
+    development — laptop: sample capture + bounded Grok on parser failure.
 
-  - Unset or "production" (the DEFAULT): safe/dumb mode.
-    The production Mac Mini can simply `git pull` with its existing plist.
-    On "No Rumble items found" error: short message only, exit.
-    No auto-capture of samples, no git commit/push from this machine.
-
-  - "development": rich mode.
-    Use this on your dev MacBook so that when you (or its launchd) hit a parser
-    failure you get:
-    - auto-captured sample dir (pushed to git)
-    - a bounded headless Grok attempt (--max-turns, --effort low)
-    Parser edits are saved as a .diff in the sample dir, then the working tree
-    is restored. See samples/rumble-channel-pages/README.md.
-
-  After editing the installed plist, remember to unload/reload:
+  After editing the installed plist:
     launchctl unload ~/Library/LaunchAgents/com.jhansenwmi.rumble-feed.plist
     launchctl load   ~/Library/LaunchAgents/com.jhansenwmi.rumble-feed.plist
   -->
-  <!--
-  <key>EnvironmentVariables</key>
-  <dict>
-    <key>RUMBLE_FEED_MODE</key>
-    <string>development</string>
-  </dict>
-  -->
+
+  <key>Nice</key>
+  <integer>10</integer>
 
   <key>StandardOutPath</key>
   <string>/Users/USERNAME/Library/Logs/rumble-feed.log</string>
@@ -52,159 +42,20 @@
   <key>StartCalendarInterval</key>
   <array>
     <dict>
-      <key>Hour</key>
-      <integer>0</integer>
       <key>Minute</key>
-      <integer>0</integer>
+      <integer>5</integer>
     </dict>
     <dict>
-      <key>Hour</key>
-      <integer>2</integer>
       <key>Minute</key>
-      <integer>0</integer>
-    </dict>
-    <dict>
-      <key>Hour</key>
-      <integer>4</integer>
-      <key>Minute</key>
-      <integer>0</integer>
-    </dict>
-    <dict>
-      <key>Hour</key>
-      <integer>8</integer>
-      <key>Minute</key>
-      <integer>0</integer>
-    </dict>
-    <dict>
-      <key>Hour</key>
-      <integer>10</integer>
-      <key>Minute</key>
-      <integer>0</integer>
-    </dict>
-    <dict>
-      <key>Hour</key>
-      <integer>12</integer>
-      <key>Minute</key>
-      <integer>0</integer>
-    </dict>
-    <dict>
-      <key>Hour</key>
-      <integer>14</integer>
-      <key>Minute</key>
-      <integer>0</integer>
-    </dict>
-    <dict>
-      <key>Hour</key>
-      <integer>16</integer>
-      <key>Minute</key>
-      <integer>0</integer>
-    </dict>
-    <dict>
-      <key>Hour</key>
-      <integer>18</integer>
-      <key>Minute</key>
-      <integer>0</integer>
-    </dict>
-    <dict>
-      <key>Hour</key>
       <integer>20</integer>
-      <key>Minute</key>
-      <integer>0</integer>
     </dict>
     <dict>
-      <key>Hour</key>
-      <integer>22</integer>
       <key>Minute</key>
-      <integer>0</integer>
-    </dict>
-
-    <dict>
-      <key>Hour</key>
-      <integer>5</integer>
-      <key>Minute</key>
-      <integer>0</integer>
+      <integer>35</integer>
     </dict>
     <dict>
-      <key>Hour</key>
-      <integer>5</integer>
       <key>Minute</key>
-      <integer>15</integer>
-    </dict>
-    <dict>
-      <key>Hour</key>
-      <integer>5</integer>
-      <key>Minute</key>
-      <integer>30</integer>
-    </dict>
-    <dict>
-      <key>Hour</key>
-      <integer>5</integer>
-      <key>Minute</key>
-      <integer>45</integer>
-    </dict>
-    <dict>
-      <key>Hour</key>
-      <integer>6</integer>
-      <key>Minute</key>
-      <integer>0</integer>
-    </dict>
-
-    <dict>
-      <key>Weekday</key>
-      <integer>4</integer>
-      <key>Hour</key>
-      <integer>18</integer>
-      <key>Minute</key>
-      <integer>15</integer>
-    </dict>
-    <dict>
-      <key>Weekday</key>
-      <integer>4</integer>
-      <key>Hour</key>
-      <integer>18</integer>
-      <key>Minute</key>
-      <integer>30</integer>
-    </dict>
-    <dict>
-      <key>Weekday</key>
-      <integer>4</integer>
-      <key>Hour</key>
-      <integer>18</integer>
-      <key>Minute</key>
-      <integer>45</integer>
-    </dict>
-    <dict>
-      <key>Weekday</key>
-      <integer>4</integer>
-      <key>Hour</key>
-      <integer>19</integer>
-      <key>Minute</key>
-      <integer>0</integer>
-    </dict>
-    <dict>
-      <key>Weekday</key>
-      <integer>4</integer>
-      <key>Hour</key>
-      <integer>19</integer>
-      <key>Minute</key>
-      <integer>15</integer>
-    </dict>
-    <dict>
-      <key>Weekday</key>
-      <integer>4</integer>
-      <key>Hour</key>
-      <integer>19</integer>
-      <key>Minute</key>
-      <integer>30</integer>
-    </dict>
-
-    <dict>
-      <key>Weekday</key>
-      <integer>6</integer>
-      <key>Hour</key>
-      <integer>13</integer>
-      <key>Minute</key>
-      <integer>0</integer>
+      <integer>50</integer>
     </dict>
   </array>
 

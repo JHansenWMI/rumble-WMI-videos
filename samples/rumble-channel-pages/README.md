@@ -57,7 +57,7 @@ Optional: `--slug DrJonathanHansenWMI-videos` overrides the output basename (def
   - If it cannot extract quickly, it writes `fix-attempt-note.md` and stops.
 - Parser edits are saved as `generate_rumble_feed.py.diff` in the sample dir, then the working tree is restored. The run still fails so no feed is published. Resume session `rumble-parser-fix-<iteration>` if needed.
 
-See the top-level README and the plist.example for setup details (the dev MacBook's launchd job runs `publish_rumble_feed.sh` in development mode to perform auto-capture and monitoring).
+See the top-level README and the plist.example for setup details (the Mini launchd job runs `rumble_feed_tick.sh`; a full scrape still calls `publish_rumble_feed.sh`. Dev MacBook can set `RUMBLE_FEED_MODE=development` for auto-capture).
 
 ## Fixing the parser after a change (with Grok)
 

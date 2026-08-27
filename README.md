@@ -4,6 +4,8 @@ The main files are
 generate_rumble_feed.py
 generate_tv_feed.py
 publish_rumble_feed.sh
+rumble_feed_tick.sh
+rumble_tripwire.py
 
 - **`docs/`** — website data (feeds, schedules, match JSON). Short note: [docs/README.md](docs/README.md).
 - **`info/`** — longer project docs (not served as site data): [info/](info/).
@@ -43,6 +45,7 @@ TV broadcast videos (for Warning TV Broadcasts / `Warning-TV-Broadcasts-cms.html
   2. **CMS legacy** `https://www.worldministries.org/Userfiles/video-thumbs/{YYYYMMDD}.jpg`
   - Optional `#content` overrides: `data-thumb-base` (single base) or `data-thumb-bases` (comma-separated). See `docs/tv-thumbs/README.md`.
 - `publish_rumble_feed.sh` runs rumble feed → overcoming feed → TV feed, then commits/pushes if any feed changed.
+- **Mini tick** (`rumble_feed_tick.sh`, launchd): every **:05 :20 :35 :50**. Offset **+5** because uploads often land on the hour, so :05 usually sees them sooner than :00/:15. One GET of `https://rumble.com/user/DrJonathanHansenWMI` fingerprints id + title + `live_datetime` on every listing array. Unchanged → stop (no git). Changed or first run → full `publish_rumble_feed.sh`. **Always full scrape** at **4:05am, 8:05am, 5:05pm, 8:05pm** Pacific. Fetch/parse errors skip the full scrape. Overlapping publishes take a lock (`.publish.lock`). Manual `./publish_rumble_feed.sh` still works.
 
 TV schedule (for Warning TV Broadcasts widget):
 - docs/tv-schedule.txt contains the ordered list of upcoming/past TV broadcast entries.
@@ -52,7 +55,7 @@ TV schedule (for Warning TV Broadcasts widget):
 - Use `update_tv_schedule.py` (run on a machine that can see the file):
     python update_tv_schedule.py --xlsx "/Volumes/Office/Public/01 TV-Radio Spreadsheets/KAZQ.xlsx" --schedule docs/tv-schedule.txt
   It looks at the last few usable rows, converts the (Sunday) air date codes to actual Friday air dates, removes trailing title dates, and merges only new entries.
-- On the production Mac Mini this runs automatically every **Friday at 4:20am** via launchd (`update_tv_schedule.sh` + `com.jhansenwmi.tv-schedule.plist`). That is after daily `rumble-feed` at 4:00 and radio at 4:10, so they do not share the git repo at the same minute.
+- On the production Mac Mini this runs automatically every **Friday at 4:15am** via launchd (`update_tv_schedule.sh` + `com.jhansenwmi.tv-schedule.plist`). That is after rumble’s 4:05 full scrape and radio at 4:10 (Office already spinning); rumble’s :20 tripwire stays free.
   The wrapper handles git pull, runs the updater, and commits/pushes only if the schedule changed.
 - To install on the Mac Mini (or similar):
   1. `pip3 install openpyxl` (or ensure your `python3` has it)
@@ -66,7 +69,7 @@ Radio schedule (for Warning Radio Broadcast / `Warning-Radio-Broadcast-cms.html`
 - Widget (`docs/widgets/Warning-Radio-Broadcast.js`) fetches the schedule and pages client-side (50 items/page); highlights the next upcoming air date (Pacific, 12:30 cutoff).
 - Podbean match tooling still exists (`match_podbean_to_radio.py` → `docs/podbean-radio-matches*.json`) but is not wired into this schedule widget.
 - Run `update_radio_programs.py` (xlsx path in WorkToDo/Radio Program Parsing.MD); `--schedule-only` regenerates from existing CSV. Air dates capped at today + 10 days (Pacific).
-- On the production Mac Mini: **Friday at 4:10am** via launchd (`update_radio_schedule.sh` + `com.jhansenwmi.radio-schedule.plist.example`). Runs 10 minutes after the TV job so TV can push first; one shell script updates radio CSV, `docs/radio-schedule.txt`, and `docs/shortwave-schedule.txt` (shortwave is chained inside `update_radio_programs.py` — no separate Python master needed).
+- On the production Mac Mini: **Friday at 4:10am** via launchd (`update_radio_schedule.sh` + `com.jhansenwmi.radio-schedule.plist.example`). After rumble 4:05, before TV 4:15. One shell script updates radio CSV, `docs/radio-schedule.txt`, and `docs/shortwave-schedule.txt` (shortwave is chained inside `update_radio_programs.py` — no separate Python master needed).
 - See WorkToDo/Radio Program Parsing.MD for generation details and seed comparison.
 
 Shortwave schedule (for Shortwave Broadcasts / `Shortwave-Broadcasts-cms.html`):
