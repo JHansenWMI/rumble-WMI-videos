@@ -42,13 +42,15 @@ Both are FetchRSS-style:
       "channelName": "The Overcoming Women",
       "channelUrl": "https://rumble.com/c/c-7899090",
       "videoId": "v...",
+      "scheduledTime": "Thu, 27 Aug 2026 15:00:00 +0000",
       "updated": "2026-07-03 08:58:23 PDT"
     }
   ]
 }
 ```
 
-- Items are sorted newest-first by timestamp.
+- Items are sorted newest-first by timestamp (`pubDate` = Rumble `upload_date`).
+- `"scheduledTime"` is present only for upcoming premieres/livestreams (Rumble `live_datetime` / HTML `scheduled-time`). Widgets show an **UPCOMING** pill and “Starts …” until that time; after go-live the next scrape drops the field.
 - Per-item `"updated"` (Pacific) is used by the publish script to detect *real* content changes worth committing.
 - Channel fields are enriched from video detail pages (cached across runs). See root README / `generate_rumble_feed.py` for when detail pages are fetched.
 

@@ -82,6 +82,19 @@
   font-size: 13px;
 }
 
+.rw-badge--upcoming {
+  position: absolute;
+  z-index: 2;
+  right: 8px;
+  bottom: 8px;
+  background: #e8b923;
+  color: #1a1408;
+  font: 700 11px/1 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  letter-spacing: 0.04em;
+  padding: 6px 8px;
+  border-radius: 6px;
+}
+
 .rw-card:hover { filter: brightness(0.98); }
 .rw-card:active { filter: brightness(0.96); }
 

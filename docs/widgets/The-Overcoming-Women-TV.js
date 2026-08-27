@@ -68,6 +68,33 @@
     return item && item.pubDate ? String(item.pubDate) : "";
   }
 
+  function getScheduledTime(item) {
+    return item && item.scheduledTime ? String(item.scheduledTime) : "";
+  }
+
+  function isUpcoming(item) {
+    var raw = getScheduledTime(item);
+    if (!raw) return false;
+    var d = new Date(raw);
+    return !isNaN(d.getTime()) && d.getTime() > Date.now();
+  }
+
+  function formatStartsLA(scheduledStr) {
+    var d = new Date(scheduledStr);
+    if (isNaN(d.getTime())) return "";
+    var datePart = new Intl.DateTimeFormat("en-US", {
+      timeZone: "America/Los_Angeles",
+      month: "short",
+      day: "numeric",
+    }).format(d);
+    var timePart = new Intl.DateTimeFormat("en-US", {
+      timeZone: "America/Los_Angeles",
+      hour: "numeric",
+      minute: "2-digit",
+    }).format(d);
+    return "Starts " + datePart + ", " + timePart;
+  }
+
   function getTVDateMatch(item) {
     var text = item && item.title ? String(item.title) : "";
     var m = text.match(/TV(\d{4})(\d{2})(\d{2})\s*$/i);
@@ -95,6 +122,7 @@
   }
 
   function getTVAirDateStr(item) {
+    if (isUpcoming(item)) return formatStartsLA(getScheduledTime(item));
     var dt = getTVAirDate(item);
     if (!dt) return formatDateLA(getPubDate(item));
     return dateFmt.format(dt);
@@ -361,6 +389,7 @@
             var date = getTVAirDateStr(item);
             var videoId = getVideoId(item);
             var shortClass = isShort(item) ? " rw-card--short" : "";
+            var upcoming = isUpcoming(item);
             var thumbStyle = thumb
               ? ' style="--rw-thumb-bg: url(\'' +
                 escapeHtml(thumb) +
@@ -370,6 +399,7 @@
             return (
               '<div class="rw-card' +
               shortClass +
+              (upcoming ? " rw-card--upcoming" : "") +
               '" data-video-id="' +
               escapeHtml(videoId) +
               '" data-link="' +
@@ -380,6 +410,9 @@
               ">" +
               (thumb
                 ? '<img class="rw-thumb" src="' + escapeHtml(thumb) + '" >'
+                : "") +
+              (upcoming
+                ? '<span class="rw-badge rw-badge--upcoming">UPCOMING</span>'
                 : "") +
               "</div>" +
               '<div class="rw-meta">' +

@@ -82,6 +82,7 @@ class FeedItem:
     channel_url: str = ""
     video_code: str = ""  # slug from list page (e.g. v7bokoc in URL)
     video_embed_id: str = ""  # embed player id (e.g. v79hwo4) from detail page only
+    scheduled_time: str = ""  # premiere/livestream start (Rumble live_datetime)
 
     def as_json(self) -> dict[str, str]:
         item = {
@@ -100,6 +101,8 @@ class FeedItem:
             item["videoId"] = self.video_embed_id
         elif self.video_code:
             item["videoId"] = self.video_code  # fallback during transition
+        if self.scheduled_time:
+            item["scheduledTime"] = self.scheduled_time
         return item
 
 
@@ -253,6 +256,10 @@ def _dict_to_feeditem(d: dict) -> FeedItem | None:
         if raw_ch_url:
             channel_url = clean_link(str(raw_ch_url))
 
+        scheduled_time = str(d.get("scheduledTime") or "")
+        if scheduled_time:
+            scheduled_time, _ = parse_datetime(scheduled_time)
+
         return FeedItem(
             title=clean_text(str(d.get("title") or "")),
             link=link,
@@ -265,6 +272,7 @@ def _dict_to_feeditem(d: dict) -> FeedItem | None:
             channel_url=channel_url,
             video_code=video_code,
             video_embed_id=str(d.get("videoId") or ""),
+            scheduled_time=scheduled_time,
         )
     except Exception as exc:
         print(f"Warning: failed to reconstruct item from previous JSON: {exc}", file=sys.stderr)
@@ -634,6 +642,22 @@ def stamp_item_json(item: FeedItem, previous: dict | None, now_utc: datetime) ->
     return current
 
 
+def listing_scheduled_time(entry: dict) -> str:
+    """Premiere/livestream start from Rumble listing JSON, if present.
+
+    Upcoming premieres set live_datetime (ISO UTC) and often livestream_status=1
+    with live_placeholder=true. Finished livestreams typically have live_datetime
+    null. Browser HTML uses the same instant as scheduled-time= on the card.
+    """
+    raw = entry.get("live_datetime") or entry.get("scheduled_time") or ""
+    if raw is None:
+        return ""
+    formatted, ts = parse_datetime(str(raw))
+    if ts == float("-inf") or not formatted:
+        return ""
+    return formatted
+
+
 def parse_datetime(value: str) -> tuple[str, float]:
     """Return RFC 2822 pubDate and epoch seconds, always normalized to UTC (+0000)."""
     if not value:
@@ -702,6 +726,7 @@ def parse_embedded_listing_items(html: str, source_page: str) -> list[FeedItem]:
             # video_embed_id (for player) is populated later from detail page only
             video_embed_id = ""
             pub_date, timestamp = parse_datetime(str(entry.get("upload_date") or ""))
+            scheduled_time = listing_scheduled_time(entry)
 
             channel_name = ""
             channel_url = ""
@@ -727,6 +752,7 @@ def parse_embedded_listing_items(html: str, source_page: str) -> list[FeedItem]:
                     channel_url=channel_url,
                     video_code=video_code,
                     video_embed_id=video_embed_id,
+                    scheduled_time=scheduled_time,
                 )
             )
 
@@ -827,6 +853,8 @@ def parse_items(html: str, source_page: str) -> list[FeedItem]:
         link = clean_link(attr_value(link_tag, "href"))
         thumb = attr_value(img_tag, "src")
         pub_date, timestamp = parse_datetime(attr_value(time_tag, "datetime"))
+        scheduled_attr = attr_value(body, "scheduled-time")
+        scheduled_time, _ = parse_datetime(scheduled_attr) if scheduled_attr else ("", float("-inf"))
 
         video_code = ""
         if link:
@@ -849,9 +877,63 @@ def parse_items(html: str, source_page: str) -> list[FeedItem]:
                 timestamp=timestamp,
                 video_code=video_code,
                 video_embed_id=video_embed_id,
+                scheduled_time=scheduled_time,
             )
         )
 
+    footer_items = parse_thumbnail_footer_items(html, source_page)
+    return items or footer_items
+
+
+FOOTER_RE = re.compile(
+    r"<rum-video-thumbnail-footer\b(?P<attrs>[^>]*)>",
+    re.IGNORECASE,
+)
+
+
+def parse_thumbnail_footer_items(html: str, source_page: str) -> list[FeedItem]:
+    """Fallback for logged-in / Lit HTML cards (scheduled-time on the footer)."""
+    items: list[FeedItem] = []
+    for match in FOOTER_RE.finditer(html):
+        attrs = match.group("attrs")
+        title = clean_text(attr_value(attrs, "video-title"))
+        link = clean_link(attr_value(attrs, "url"))
+        pub_date, timestamp = parse_datetime(attr_value(attrs, "time"))
+        scheduled_time, sched_ts = parse_datetime(attr_value(attrs, "scheduled-time"))
+        if not pub_date and scheduled_time:
+            pub_date, timestamp = scheduled_time, sched_ts
+        video_id = attr_value(attrs, "video-id")
+        channel_name = clean_text(attr_value(attrs, "creator-name"))
+        channel_url = clean_link(attr_value(attrs, "creator-url"))
+        video_code = ""
+        if link:
+            m = re.search(r"/(v[a-z0-9]+)-", link)
+            if m:
+                video_code = m.group(1)
+        start = max(0, match.start() - 3000)
+        chunk = html[start:match.start()]
+        img_tag = extract_first(
+            r'(<img\b[^>]*\brum-video-thumbnail__image\b[^>]*>)',
+            chunk,
+        )
+        thumb = attr_value(img_tag, "src")
+        if not title or not link or not pub_date:
+            continue
+        items.append(
+            FeedItem(
+                title=title,
+                link=link,
+                pub_date=pub_date,
+                thumb=thumb,
+                source_page=source_page,
+                video_id=video_id,
+                timestamp=timestamp,
+                channel_name=channel_name,
+                channel_url=channel_url,
+                video_code=video_code,
+                scheduled_time=scheduled_time,
+            )
+        )
     return items
 
 
