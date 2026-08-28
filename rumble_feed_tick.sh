@@ -1,5 +1,5 @@
 #!/bin/zsh
-# Scheduled tick (Mini launchd): cheap All-page tripwire, or a full proven scrape.
+# Scheduled tick (Mini launchd): cheap All+shorts tripwire, or a full proven scrape.
 #
 # :05 / :20 / :35 / :50 every hour.
 # Offset +5 because videos are often posted on the hour; checking at :05

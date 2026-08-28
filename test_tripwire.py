@@ -6,7 +6,7 @@ from pathlib import Path
 from tempfile import TemporaryDirectory
 
 from generate_rumble_feed import parse_embedded_listing_items, tripwire_fingerprint
-from rumble_tripwire import load_state, save_state
+from rumble_tripwire import load_state, merge_fingerprints, save_state
 
 TWO_ARRAYS_HTML = """
 <html><body>
@@ -53,6 +53,24 @@ class TripwireFingerprintTests(unittest.TestCase):
             path = Path(tmp) / "state"
             save_state(path, fp)
             self.assertEqual(load_state(path), fp)
+
+    def test_merge_includes_shorts_not_in_all_ssr(self):
+        all_fp = tripwire_fingerprint(TWO_ARRAYS_HTML)
+        shorts_html = """
+        <html><body><script>
+        {"items":[{"object_type":"video","id":444441534,"title":"Pastor Hansen prays for the Jesso's to take the territory","url":"https://rumble.com/shorts/v7esa7o","upload_date":"2026-08-28T21:36:00+00:00","live_datetime":null,"is_short":true}]}
+        </script></body></html>
+        """
+        shorts_fp = tripwire_fingerprint(shorts_html)
+        merged = merge_fingerprints([all_fp, shorts_fp])
+        self.assertIn("1\tTop Shelf Upcoming\t2026-08-27T15:00:00+00:00", merged)
+        self.assertIn("444441534\tPastor Hansen prays for the Jesso's to take the territory\t", merged)
+        self.assertNotIn("444441534", all_fp)
+
+    def test_merge_dedupes_overlap(self):
+        fp = tripwire_fingerprint(TWO_ARRAYS_HTML)
+        merged = merge_fingerprints([fp, fp])
+        self.assertEqual(merged, fp)
 
 
 if __name__ == "__main__":

@@ -781,6 +781,10 @@ def tripwire_fingerprint(html: str) -> str:
 
     Fields: id, title, live_datetime. Ignores views/comments so the cheap check
     does not fire on watch-count churn.
+
+    The user All page SSR payload is regular videos only. Shorts on that page
+    live in ``<rum-shorts-row>`` and are fetched by the browser from ``/shorts``.
+    Callers that need shorts in the fingerprint must GET that listing too.
     """
     seen: set[tuple[str, str, str]] = set()
     lines: list[str] = []
