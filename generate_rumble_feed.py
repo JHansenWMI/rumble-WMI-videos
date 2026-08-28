@@ -35,7 +35,7 @@ from html import unescape
 from pathlib import Path
 from typing import Iterable
 from urllib.error import HTTPError, URLError
-from urllib.parse import parse_qsl, urlencode, urljoin, urlparse, urlunparse
+from urllib.parse import parse_qsl, quote, urlencode, urljoin, urlparse, urlunparse
 from urllib.request import Request, urlopen
 
 
@@ -99,7 +99,8 @@ class FeedItem:
             item["channelUrl"] = self.channel_url
         if self.video_embed_id:
             item["videoId"] = self.video_embed_id
-        elif self.video_code:
+        elif self.video_code and "/shorts/" not in (self.link or ""):
+            # List-page slug is not a valid embed id for shorts (embed/v… returns 410).
             item["videoId"] = self.video_code  # fallback during transition
         if self.scheduled_time:
             item["scheduledTime"] = self.scheduled_time
@@ -849,11 +850,46 @@ def parse_channel_info(html: str) -> ChannelInfo:
     return ChannelInfo(name=name, url=url)
 
 
+def parse_embed_id_from_iframe(html: str) -> str:
+    """Pull v… id from a rumble.com/embed/ iframe src (oEmbed html)."""
+    if not html:
+        return ""
+    m = re.search(r"rumble\.com/embed/(v[0-9a-z]+)/?", html, re.I)
+    return m.group(1) if m else ""
+
+
+def parse_oembed_embed_id(payload: str | dict) -> str:
+    """Embed id from a Rumble oEmbed JSON body or its html field."""
+    if isinstance(payload, str):
+        try:
+            payload = json.loads(payload)
+        except json.JSONDecodeError:
+            return parse_embed_id_from_iframe(payload)
+    if not isinstance(payload, dict):
+        return ""
+    return parse_embed_id_from_iframe(str(payload.get("html") or ""))
+
+
+def fetch_oembed_embed_id(page_url: str) -> str:
+    """Shorts pages have no Rumble('play') snippet; oEmbed has the real embed id."""
+    if not page_url:
+        return ""
+    oembed_url = (
+        "https://rumble.com/api/Media/oembed.json?url=" + quote(page_url, safe="")
+    )
+    try:
+        raw = fetch_html(oembed_url)
+    except (HTTPError, URLError, TimeoutError, OSError):
+        return ""
+    return parse_oembed_embed_id(raw)
+
+
 def parse_video_embed_id(html: str) -> str:
     """Extract the Rumble JS embed 'video' id (e.g. 'v79hwo4') from a *video detail page*.
 
     This is often different from the list-page slug (v... in the URL).
     Looks in common locations on the detail page.
+    Shorts pages typically have none of these; use fetch_oembed_embed_id.
     """
     if not html:
         return ""
@@ -1051,6 +1087,8 @@ def enrich_channel_details(
                     channel = parse_channel_info(detail_html)
                     if need_embed:
                         parsed_embed = parse_video_embed_id(detail_html)
+                        if not parsed_embed:
+                            parsed_embed = fetch_oembed_embed_id(item.link)
                         if parsed_embed:
                             embed_id = parsed_embed
                 except (HTTPError, URLError, TimeoutError) as exc:

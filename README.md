@@ -85,7 +85,7 @@ Rumble HTML samples:
 - `generate_rumble_feed.py --production` forces the short safe mode for direct runs. The `--test-html` etc. debug flags are always available.
 
 Channel metadata + inclusion:
-- `generate_rumble_feed.py` collects/enriches `channelName` and `channelUrl` (and `videoId` embed) by fetching detail pages for items that need it.
+- `generate_rumble_feed.py` collects/enriches `channelName` and `channelUrl` (and `videoId` embed) by fetching detail pages for items that need it. Shorts pages have no `Rumble("play")` snippet; embed id comes from Rumble oEmbed (`/embed/v…/`, not the `/shorts/v…` permalink).
 - Channel cache is loaded from the prior output JSON (keyed by link/guid) so later runs only re-fetch for new or missing videos. **Channel moves** (e.g. videos reassigned to **WMI TV Broadcast History** `c-7927034`) may need a re-enrich (cached channel fields otherwise stick until missing).
 - Main rumble feed accumulates videos from the DrJonathanHansenWMI account (which surfaces content across associated channels, tagged by channelName/Url in the items). A separate feed is maintained for the Overcoming channel.
 - **Display rules (widgets only; feed generator unchanged):**
@@ -93,7 +93,7 @@ Channel metadata + inclusion:
   - **WARNING TV - Jonathan Hansen** + `TV{date}`: show on main social grid (strip `TV{date}` for display; date from `pubDate`); also on TV Broadcasts (matched by air date).
   - Overcoming shorts excluded from the main social grid.
 - The default delay is intentionally slow, with jitter, to avoid hitting Rumble too quickly.
-- Custom overrides/filters live in `custom_update.py` (REMOVE_GUIDS, OVERRIDES_BY_GUID) and are applied after merge.
+- Custom overrides/filters live in `custom_update.py` (REMOVE_GUIDS, OVERRIDES_BY_GUID) and are applied after merge. `thumb` overrides Watch Warning `media:content` only (Rumble’s own thumbnail is unchanged).
 - **Hide vs delete from the website feed:**
   - **Hide** (`REMOVE_GUIDS` in `custom_update.py`): video is still on Rumble; we do not show it on the site. Next scrape would bring it back without this list. Then `./publish_rumble_feed.sh`.
   - **Delete** (`delete_from_feed.py`): video was already deleted on Rumble. Purge our accumulated JSON (main, archive, TV). Do not add that guid to `REMOVE_GUIDS`.
