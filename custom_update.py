@@ -6,10 +6,14 @@
 # Purge our accumulated copy instead:
 #   python delete_from_feed.py GUID
 #   ./publish_rumble_feed.sh
+from dataclasses import replace
+
 REMOVE_GUIDS = {
     "434910718",  # Duplicate part listing
     "434910604",  # Duplicate part listing
 }
+
+SITE_THUMB_BASE = "https://jhansenwmi.github.io/rumble-WMI-videos/site-thumbs/"
 
 OVERRIDES_BY_GUID = {
     "435104480": {
@@ -18,6 +22,23 @@ OVERRIDES_BY_GUID = {
     "434910266": {
         "title": "Reverends Dr. Jonathan Hansen & Dr Adalia Hansen - Deliverance Church Kitengala Kenya",
     },
+    # Watch Warning card only; Rumble keeps its own thumb.
+    "444441534": {
+        "thumb": SITE_THUMB_BASE + "take-the-territory-16x9.jpg",
+    },
+}
+
+_FEEDITEM_FIELDS = {
+    "title",
+    "link",
+    "pub_date",
+    "thumb",
+    "source_page",
+    "video_code",
+    "video_embed_id",
+    "channel_name",
+    "channel_url",
+    "scheduled_time",
 }
 
 
@@ -33,26 +54,14 @@ def apply_custom_updates(items, parse_datetime):
             fixed.append(item)
             continue
 
-        pub_date = overrides.get("pub_date", item.pub_date)
-        timestamp = item.timestamp
+        fields = {key: overrides[key] for key in _FEEDITEM_FIELDS if key in overrides}
         if "pub_date" in overrides:
-            pub_date, parsed_timestamp = parse_datetime(pub_date)
+            pub_date, parsed_timestamp = parse_datetime(overrides["pub_date"])
+            fields["pub_date"] = pub_date
             if parsed_timestamp != float("-inf"):
-                timestamp = parsed_timestamp
+                fields["timestamp"] = parsed_timestamp
 
-        fixed.append(
-            type(item)(
-                title=overrides.get("title", item.title),
-                link=overrides.get("link", item.link),
-                pub_date=pub_date,
-                thumb=overrides.get("thumb", item.thumb),
-                source_page=overrides.get("source_page", item.source_page),
-                video_id=item.video_id,
-                timestamp=timestamp,
-                video_code=overrides.get("video_code", item.video_code),
-                video_embed_id=overrides.get("video_embed_id", item.video_embed_id),
-            )
-        )
+        fixed.append(replace(item, **fields) if fields else item)
 
     fixed.sort(key=lambda item: item.timestamp, reverse=True)
     return fixed
