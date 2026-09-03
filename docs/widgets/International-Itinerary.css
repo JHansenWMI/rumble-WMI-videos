@@ -27,17 +27,56 @@ table.wmi-itinerary-table td {
   border: 0;
 }
 
-/* Flag column */
-table.wmi-itinerary-table tr.wmi-itinerary-event > td:first-child {
-  width: 64px;
-  padding-right: 10px;
+/*
+  CMS layout.css sets `.events-list tr { display: flex }`, which otherwise
+  gives the flag and schedule columns roughly equal width on phones.
+*/
+table.events-list.wmi-itinerary-table tr.wmi-itinerary-event,
+table.events-list.wmi-itinerary-table tr.wmi-itinerary-year,
+table.wmi-itinerary-table tr.wmi-itinerary-event,
+table.wmi-itinerary-table tr.wmi-itinerary-year {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+table.events-list.wmi-itinerary-table tr > td:first-child,
+table.wmi-itinerary-table tr > td:first-child {
+  flex: 0 0 36px;
+  width: 36px;
+  max-width: 36px;
+  padding: 0.65em 8px 0.75em 0;
+  box-sizing: content-box;
+}
+
+table.events-list.wmi-itinerary-table tr > td:nth-child(2),
+table.wmi-itinerary-table tr > td:nth-child(2) {
+  flex: 1 1 0%;
+  min-width: 0;
+  width: auto;
 }
 
 table.wmi-itinerary-table img.wmi-itinerary-flag {
-  width: 48px;
+  width: 32px;
   height: auto;
-  max-width: 55px;
+  max-width: 32px;
+  margin: 0;
   display: block;
+}
+
+@media (min-width: 700px) {
+  table.events-list.wmi-itinerary-table tr > td:first-child,
+  table.wmi-itinerary-table tr > td:first-child {
+    flex-basis: 52px;
+    width: 52px;
+    max-width: 52px;
+  }
+
+  table.wmi-itinerary-table img.wmi-itinerary-flag {
+    width: 44px;
+    max-width: 44px;
+  }
 }
 
 /* Flyer images inside body (seed HTML often sets width; keep reasonable) */

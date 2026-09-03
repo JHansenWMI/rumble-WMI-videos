@@ -14,6 +14,42 @@
   var DEFAULT_DATA =
     "https://jhansenwmi.github.io/rumble-WMI-videos/international-itinerary.json";
   var OPEN_YEAR_COUNT = 2;
+  var CSS_VERSION = "20260903a";
+  var CSS_ID = "wmi-international-itinerary-css";
+  var FLAG_TD_STYLE = "flex:0 0 auto;width:auto;padding-right:8px";
+  var BODY_TD_STYLE = "flex:1 1 0%;min-width:0;width:auto";
+
+  function currentScriptSrc() {
+    if (document.currentScript && document.currentScript.src) {
+      return document.currentScript.src;
+    }
+    var scripts = document.getElementsByTagName("script");
+    for (var i = 0; i < scripts.length; i++) {
+      var src = scripts[i].src || "";
+      if (src.indexOf("International-Itinerary.js") >= 0) return src;
+    }
+    return "";
+  }
+
+  /* CMS paste puts <link> inside #content; render() innerHTML would unload it. */
+  function ensureStylesheet() {
+    if (document.getElementById(CSS_ID)) return;
+    var src = currentScriptSrc();
+    var href = src
+      ? src.replace(
+          /International-Itinerary\.js(\?.*)?$/,
+          "International-Itinerary.css?v=" + CSS_VERSION
+        )
+      : "https://jhansenwmi.github.io/rumble-WMI-videos/widgets/International-Itinerary.css?v=" +
+        CSS_VERSION;
+    var link = document.createElement("link");
+    link.id = CSS_ID;
+    link.rel = "stylesheet";
+    link.href = href;
+    (document.head || document.documentElement).appendChild(link);
+  }
+
+  ensureStylesheet();
 
   function dataUrl(container) {
     return (
@@ -474,8 +510,12 @@
             '" role="button" tabindex="0" aria-expanded="' +
             (expanded ? "true" : "false") +
             '">' +
-            "<td>&nbsp;</td>" +
-            "<td>" +
+            '<td style="' +
+            FLAG_TD_STYLE +
+            '">&nbsp;</td>' +
+            '<td style="' +
+            BODY_TD_STYLE +
+            '">' +
             '<h3 class="wmi-itinerary-year-heading">' +
             '<span class="wmi-itinerary-year-indicator" aria-hidden="true">' +
             (expanded ? "\u25BE" : "\u25B8") +
@@ -508,7 +548,7 @@
           escapeHtml(ev.flag_alt || "") +
           '" src="' +
           escapeHtml(ev.flag) +
-          '" border="0" />';
+          '" border="0" style="margin:0" />';
       }
 
       var body = eventBodyHtml(ev);
@@ -522,10 +562,14 @@
           '"' +
           hideStyle +
           ">" +
-          "<td>" +
+          '<td style="' +
+          FLAG_TD_STYLE +
+          '">' +
           flagCell +
           "</td>" +
-          "<td>" +
+          '<td style="' +
+          BODY_TD_STYLE +
+          '">' +
           body +
           "</td>" +
           "</tr>"
