@@ -1,7 +1,7 @@
 {
   "title": "International Itinerary",
   "region": "international",
-  "generatedAt": "2026-09-03T06:09:39Z",
+  "generatedAt": "2026-09-03T06:27:47Z",
   "sourceUrl": "https://www.worldministries.org/international-itinerary.aspx",
   "introHtml": "<p>Due to the COVID restrictions which started immediately after I arrived back from Amsterdam, Netherlands, February 2, 2020, my international itinerary already scheduled for the rest of 2020 was cancelled as well as 2021. Only limited national ministry trips were taken.</p>",
   "eventCount": 386,
@@ -5137,7 +5137,7 @@
     }
   ],
   "lastManualUpdate": {
-    "at": "2026-09-03T06:09:39Z",
+    "at": "2026-09-03T06:27:47Z",
     "note": "Upsert event evt-000386"
   }
 }
