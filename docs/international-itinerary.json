@@ -1,10 +1,10 @@
 {
   "title": "International Itinerary",
   "region": "international",
-  "generatedAt": "2026-08-19T20:39:58Z",
+  "generatedAt": "2026-09-03T06:09:39Z",
   "sourceUrl": "https://www.worldministries.org/international-itinerary.aspx",
   "introHtml": "<p>Due to the COVID restrictions which started immediately after I arrived back from Amsterdam, Netherlands, February 2, 2020, my international itinerary already scheduled for the rest of 2020 was cancelled as well as 2021. Only limited national ministry trips were taken.</p>",
-  "eventCount": 385,
+  "eventCount": 386,
   "events": [
     {
       "id": "2026-10-25-south-korea",
@@ -180,6 +180,46 @@
       "body_lines": [],
       "region": "international",
       "body_html": "<p><strong>Mount Edgecombe, South Africa<br /></strong>Sun September 6th, 2026 — 8:30 AM<br />The Church Must Be Silent No More &amp; The Nine Faces of God<br />Rev. Dr. Jonathan Hansen - Speaking<br />Host: Pastor Speedy Kisten<br />Gateway Church<br />201 Golf Course Drive<br />Mount Edgecombe<br /></p>"
+    },
+    {
+      "id": "evt-000386",
+      "year": 2026,
+      "sort_date": "2026-09-02",
+      "date_text": "September 2 - 4, 2026",
+      "start_date": "2026-09-02",
+      "end_date": "2026-09-04",
+      "time_text": "",
+      "place": "Nelspruit & Barberton, South Africa",
+      "city": "Nelspruit & Barberton",
+      "state": "",
+      "country": "South Africa",
+      "event_name": "Healing Crusade",
+      "event_type": "crusade",
+      "speakers": [
+        "Rev. Dr. Jonathan Hansen",
+        "Rev. Dr. Adalia Hansen"
+      ],
+      "speaker_verb": "speaking",
+      "hosts": [
+        "Prophet Kofi Nyarko",
+        "Prophetess Beverly Nyarko"
+      ],
+      "venue": "Kingdom Fighters Chapel International",
+      "address_lines": [
+        "Wed, 2 Sept: Nelspruit — 65 Anderson Street",
+        "Thu 3 & Fri 4 Sept: Barberton — 61 Crown Street"
+      ],
+      "flag": "https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/country-flags/south-africa.gif",
+      "flag_alt": "South Africa",
+      "flyer": "https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/evt-000386.jpg",
+      "flyer_alt": "Healing Crusade — Kingdom Fighters Chapel International",
+      "links": [],
+      "body_lines": [
+        "Sunday 1st service: Barberton 9:00 AM",
+        "Sunday 2nd service: Nelspruit 11:30 AM"
+      ],
+      "region": "international",
+      "body_html": "<p><strong><img src=\"https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/evt-000386.jpg\" style=\"width: 200px; height: auto;\" alt=\"Healing Crusade — Kingdom Fighters Chapel International\" /><br />Nelspruit &amp; Barberton, South Africa<br /></strong>September 2 - 4, 2026<br />Healing Crusade<br />Rev. Dr. Jonathan Hansen, Rev. Dr. Adalia Hansen - Speaking<br />Host: Prophet Kofi Nyarko, Prophetess Beverly Nyarko<br />Kingdom Fighters Chapel International<br />Wed, 2 Sept: Nelspruit — 65 Anderson Street<br />Thu 3 &amp; Fri 4 Sept: Barberton — 61 Crown Street<br />Sunday 1st service: Barberton 9:00 AM<br />Sunday 2nd service: Nelspruit 11:30 AM<br /></p>"
     },
     {
       "id": "2026-09-01-south-africa",
@@ -5097,7 +5137,7 @@
     }
   ],
   "lastManualUpdate": {
-    "at": "2026-08-19T20:39:58Z",
-    "note": "Upsert event evt-000385"
+    "at": "2026-09-03T06:09:39Z",
+    "note": "Upsert event evt-000386"
   }
 }
