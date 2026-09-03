@@ -1,10 +1,10 @@
 {
   "title": "International Itinerary",
   "region": "international",
-  "generatedAt": "2026-09-03T06:27:47Z",
+  "generatedAt": "2026-09-03T18:06:50Z",
   "sourceUrl": "https://www.worldministries.org/international-itinerary.aspx",
   "introHtml": "<p>Due to the COVID restrictions which started immediately after I arrived back from Amsterdam, Netherlands, February 2, 2020, my international itinerary already scheduled for the rest of 2020 was cancelled as well as 2021. Only limited national ministry trips were taken.</p>",
-  "eventCount": 386,
+  "eventCount": 388,
   "events": [
     {
       "id": "2026-10-25-south-korea",
@@ -145,6 +145,79 @@
       "flyer_alt": "Dominion Conference",
       "body_html": "<p><strong><strong><strong><img src=\"https://www.worldministries.org/Userfiles/Flyer-jpegs/2026-09-DominionConf.jpg\" style=\"width: 200px; height: auto;\" alt=\"Dominion Conference\" /><br />Cape Town, South Africa<br /></strong></strong></strong>Sep 16 - 17, 2026: 4pm<br /><span><span>Rev Dr. Jonathan Hansen &amp; </span>Rev. Dr. Adalia Hansen - Speaking<br />Host: Apostle Watson &amp; Prophetess Vicky Simfukwe<br />of Tabernacle of Glory For All Nations&nbsp;<br />Location: Cedar High School,&nbsp;<br />Cnr Spine &amp; Weltevreden Dr. Rocklands,<br />Mitchell's Plain, Cape Town, 7785<br /></span></p>",
       "region": "international"
+    },
+    {
+      "id": "2026-09-11-restoration-weekend",
+      "year": 2026,
+      "sort_date": "2026-09-11",
+      "date_text": "Friday September 11 & Sunday September 13, 2026",
+      "start_date": "2026-09-11",
+      "end_date": "2026-09-13",
+      "time_text": "Fri 6:00 PM, Sun 10:30 AM",
+      "place": "South Africa",
+      "city": "",
+      "state": "",
+      "country": "South Africa",
+      "event_name": "Restoration Weekend",
+      "event_type": "conference",
+      "speakers": [
+        "Rev. Dr. Jonathan Hansen"
+      ],
+      "speaker_verb": "speaking",
+      "hosts": [
+        "Apostle Rodney Makube",
+        "Pastor Adelaide Makube"
+      ],
+      "venue": "Kingdom Restoration Church",
+      "address_lines": [
+        "Fri, 11 Sept: 6:00 PM",
+        "Sun, 13 Sept: 10:30 AM"
+      ],
+      "flag": "https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/country-flags/south-africa.gif",
+      "flag_alt": "South Africa",
+      "flyer": "https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/2026-09-11-restoration-weekend.jpg",
+      "flyer_alt": "Restoration Weekend — Kingdom Restoration Church",
+      "links": [],
+      "body_lines": [],
+      "region": "international",
+      "body_html": "<p><strong><img src=\"https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/2026-09-11-restoration-weekend.jpg\" style=\"width: 200px; height: auto;\" alt=\"Restoration Weekend — Kingdom Restoration Church\" /><br />South Africa<br /></strong>Friday September 11 &amp; Sunday September 13, 2026<br />Restoration Weekend<br />Rev. Dr. Jonathan Hansen - Speaking<br />Host: Apostle Rodney &amp; Pastor Adelaide Makube<br />Kingdom Restoration Church<br />Fri, 11 Sept: 6:00 PM<br />Sun, 13 Sept: 10:30 AM<br /></p>"
+    },
+    {
+      "id": "2026-09-11-giami-annual-revival",
+      "year": 2026,
+      "sort_date": "2026-09-11",
+      "date_text": "September 11 - 20, 2026",
+      "start_date": "2026-09-11",
+      "end_date": "2026-09-20",
+      "time_text": "6:00 PM daily",
+      "place": "Nelspruit, South Africa",
+      "city": "Nelspruit",
+      "state": "",
+      "country": "South Africa",
+      "event_name": "God Is Able Annual Revival",
+      "event_type": "revival",
+      "speakers": [
+        "Rev. Dr. Jonathan Hansen"
+      ],
+      "speaker_verb": "speaking",
+      "hosts": [
+        "Apostle Moses O'Reilly",
+        "Pastor Veronica O'Reilly"
+      ],
+      "venue": "GIAMI HQ",
+      "address_lines": [
+        "Kamagugu Road, Nelspruit"
+      ],
+      "flag": "https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/country-flags/south-africa.gif",
+      "flag_alt": "South Africa",
+      "flyer": "https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/2026-09-11-giami-annual-revival.jpg",
+      "flyer_alt": "God Is Able Annual Revival — GIAMI",
+      "links": [],
+      "body_lines": [
+        "Pastor Gibson Brown also speaking"
+      ],
+      "region": "international",
+      "body_html": "<p><strong><img src=\"https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/2026-09-11-giami-annual-revival.jpg\" style=\"width: 200px; height: auto;\" alt=\"God Is Able Annual Revival — GIAMI\" /><br />Nelspruit, South Africa<br /></strong>September 11 - 20, 2026 — 6:00 PM daily<br />God Is Able Annual Revival<br />Rev. Dr. Jonathan Hansen - Speaking<br />Host: Apostle Moses &amp; Pastor Veronica O'Reilly<br />GIAMI HQ<br />Kamagugu Road, Nelspruit<br /></p>"
     },
     {
       "id": "evt-000385",
@@ -5137,7 +5210,7 @@
     }
   ],
   "lastManualUpdate": {
-    "at": "2026-09-03T06:27:47Z",
-    "note": "Upsert event evt-000386"
+    "at": "2026-09-03T18:06:50Z",
+    "note": "Add Restoration Weekend and GIAMI Annual Revival (Sep 2026)"
   }
 }
