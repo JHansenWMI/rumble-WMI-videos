@@ -46,7 +46,7 @@ table.wmi-itinerary-table tr > td:first-child {
   flex: 0 0 36px;
   width: 36px;
   max-width: 36px;
-  padding: 0.65em 8px 0.75em 0;
+  padding: 0.35em 8px 0.75em 0;
   box-sizing: content-box;
 }
 
@@ -65,17 +65,30 @@ table.wmi-itinerary-table img.wmi-itinerary-flag {
   display: block;
 }
 
+/* Body copy / posters start at the same Y as the flag */
+table.wmi-itinerary-table tr.wmi-itinerary-event > td:nth-child(2) > *:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+table.wmi-itinerary-table tr.wmi-itinerary-event > td:nth-child(2) img {
+  margin-top: 0;
+  display: block;
+  vertical-align: top;
+}
+
 @media (min-width: 700px) {
   table.events-list.wmi-itinerary-table tr > td:first-child,
   table.wmi-itinerary-table tr > td:first-child {
-    flex-basis: 52px;
-    width: 52px;
-    max-width: 52px;
+    flex: 0 0 72px;
+    flex-basis: 72px;
+    width: 72px;
+    max-width: 72px;
   }
 
   table.wmi-itinerary-table img.wmi-itinerary-flag {
-    width: 44px;
-    max-width: 44px;
+    width: 52px;
+    max-width: 52px;
   }
 }
 
@@ -154,19 +167,27 @@ table.wmi-itinerary-table h3 {
   margin: 1em 0 0.4em;
 }
 
-/* Year section: click whole row to expand/collapse */
+/* Year section: click whole row to expand/collapse (no hover/focus chrome) */
 table.wmi-itinerary-table tr.wmi-itinerary-year {
   cursor: pointer;
   user-select: none;
+  outline: none !important;
+  box-shadow: none;
+  background: transparent;
+  -webkit-tap-highlight-color: transparent;
 }
 
-table.wmi-itinerary-table tr.wmi-itinerary-year:hover td {
-  background: rgba(0, 0, 0, 0.04);
-}
-
-table.wmi-itinerary-table tr.wmi-itinerary-year:focus {
-  outline: 2px solid #4f2683;
-  outline-offset: 2px;
+table.wmi-itinerary-table tr.wmi-itinerary-year:hover,
+table.wmi-itinerary-table tr.wmi-itinerary-year:hover td,
+table.wmi-itinerary-table tr.wmi-itinerary-year:focus,
+table.wmi-itinerary-table tr.wmi-itinerary-year:focus td,
+table.wmi-itinerary-table tr.wmi-itinerary-year:focus-visible,
+table.wmi-itinerary-table tr.wmi-itinerary-year:focus-visible td,
+table.wmi-itinerary-table tr.wmi-itinerary-year:active,
+table.wmi-itinerary-table tr.wmi-itinerary-year:active td {
+  background: transparent;
+  outline: none !important;
+  box-shadow: none;
 }
 
 table.wmi-itinerary-table tr.wmi-itinerary-year td {

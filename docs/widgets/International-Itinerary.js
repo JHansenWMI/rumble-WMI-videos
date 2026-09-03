@@ -14,10 +14,9 @@
   var DEFAULT_DATA =
     "https://jhansenwmi.github.io/rumble-WMI-videos/international-itinerary.json";
   var OPEN_YEAR_COUNT = 2;
-  var CSS_VERSION = "20260903a";
+  var CSS_VERSION = "20260903b";
   var CSS_ID = "wmi-international-itinerary-css";
-  var FLAG_TD_STYLE = "flex:0 0 auto;width:auto;padding-right:8px";
-  var BODY_TD_STYLE = "flex:1 1 0%;min-width:0;width:auto";
+  var BODY_TD_STYLE = "min-width:0";
 
   function currentScriptSrc() {
     if (document.currentScript && document.currentScript.src) {
@@ -510,9 +509,7 @@
             '" role="button" tabindex="0" aria-expanded="' +
             (expanded ? "true" : "false") +
             '">' +
-            '<td style="' +
-            FLAG_TD_STYLE +
-            '">&nbsp;</td>' +
+            "<td>&nbsp;</td>" +
             '<td style="' +
             BODY_TD_STYLE +
             '">' +
@@ -562,9 +559,7 @@
           '"' +
           hideStyle +
           ">" +
-          '<td style="' +
-          FLAG_TD_STYLE +
-          '">' +
+          "<td>" +
           flagCell +
           "</td>" +
           '<td style="' +
