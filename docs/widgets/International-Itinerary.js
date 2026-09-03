@@ -14,7 +14,7 @@
   var DEFAULT_DATA =
     "https://jhansenwmi.github.io/rumble-WMI-videos/international-itinerary.json";
   var OPEN_YEAR_COUNT = 2;
-  var CSS_VERSION = "20260903b";
+  var CSS_VERSION = "20260903c";
   var CSS_ID = "wmi-international-itinerary-css";
   var BODY_TD_STYLE = "min-width:0";
 
