@@ -102,7 +102,8 @@
   .rw-grid { grid-template-columns: 1fr; }
 }
 
-/* Rumble overlay player — portal to document.body (above site .fixed-top z-index: 2300) */
+/* Rumble overlay player — portal to document.body (above site .fixed-top z-index: 2300)
+   Width fits the viewport: as large as 16:9 (or 9:16 shorts) can go without overflowing. */
 #rumbleModal {
   position: fixed;
   inset: 0;
@@ -112,22 +113,43 @@
   align-items: center;
   justify-content: center;
   padding: 20px;
+  box-sizing: border-box;
 }
 
 #rumbleModal .rumbleModalContent {
   background: #0b0b0b;
   border-radius: 10px;
-  width: 100%;
-  max-width: 960px;
-  max-height: 92vh;
+  width: min(1280px, calc(100vw - 40px), calc((100vh - 80px) * 16 / 9));
+  max-width: 100%;
+  max-height: calc(100vh - 40px);
   overflow: hidden;
   position: relative;
+  display: flex;
+  flex-direction: column;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+}
+
+@supports (height: 100dvh) {
+  #rumbleModal .rumbleModalContent {
+    width: min(1280px, calc(100vw - 40px), calc((100dvh - 80px) * 16 / 9));
+    max-height: calc(100dvh - 40px);
+  }
+}
+
+#rumbleModal.rw-modal--short .rumbleModalContent {
+  width: min(420px, calc(100vw - 40px), calc((100vh - 80px) * 9 / 16));
+}
+
+@supports (height: 100dvh) {
+  #rumbleModal.rw-modal--short .rumbleModalContent {
+    width: min(420px, calc(100vw - 40px), calc((100dvh - 80px) * 9 / 16));
+  }
 }
 
 .rumbleModalBar {
   display: flex;
   justify-content: flex-end;
+  flex: 0 0 auto;
   padding: 6px 8px;
   background: #0b0b0b;
   position: relative;
@@ -148,9 +170,26 @@
 #rumblePlayerWrap {
   width: 100%;
   background: #000;
-  min-height: 420px;
+  min-height: 0;
+  flex: 0 0 auto;
+  aspect-ratio: 16 / 9;
+  position: relative;
 }
 
-@media (max-width: 600px) {
-  #rumblePlayerWrap { min-height: 280px; }
+#rumbleModal.rw-modal--short #rumblePlayerWrap {
+  aspect-ratio: 9 / 16;
+}
+
+#rumblePlayerWrap > [id^="rumble_embed_"] {
+  width: 100% !important;
+  max-width: none !important;
+  height: 100% !important;
+  min-height: 0 !important;
+  aspect-ratio: auto !important;
+  margin: 0;
+}
+
+#rumblePlayerWrap [id^="vid_"] {
+  width: 100% !important;
+  height: 100% !important;
 }

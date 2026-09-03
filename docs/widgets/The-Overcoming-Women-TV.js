@@ -258,10 +258,7 @@
     if (!wrap) return;
     var playerId =
       "rumble_embed_" + String(videoCode).replace(/[^a-z0-9]/gi, "");
-    wrap.innerHTML =
-      '<div id="' +
-      playerId +
-      '" style="width:100%; aspect-ratio:16/9; min-height: 300px;"></div>';
+    wrap.innerHTML = '<div id="' + playerId + '"></div>';
     modal.style.display = "flex";
     var doPlay = function () {
       if (window.Rumble && typeof window.Rumble === "function") {

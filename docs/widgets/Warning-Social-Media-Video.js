@@ -218,7 +218,10 @@
   function closeRumbleOverlay() {
     var modal = document.getElementById("rumbleModal");
     var wrap = document.getElementById("rumblePlayerWrap");
-    if (modal) modal.style.display = "none";
+    if (modal) {
+      modal.style.display = "none";
+      modal.classList.remove("rw-modal--short");
+    }
     if (wrap) wrap.innerHTML = "";
   }
 
@@ -253,13 +256,9 @@
     if (!wrap) return;
     var playerId =
       "rumble_embed_" + String(videoCode).replace(/[^a-z0-9]/gi, "");
-    var ratio = isShortVideo ? "9/16" : "16/9";
-    wrap.innerHTML =
-      '<div id="' +
-      playerId +
-      '" style="width:100%; max-width:min(100%, 420px); margin:0 auto; aspect-ratio:' +
-      ratio +
-      '; min-height: 300px;"></div>';
+    if (isShortVideo) modal.classList.add("rw-modal--short");
+    else modal.classList.remove("rw-modal--short");
+    wrap.innerHTML = '<div id="' + playerId + '"></div>';
     modal.style.display = "flex";
     var doPlay = function () {
       if (window.Rumble && typeof window.Rumble === "function") {
