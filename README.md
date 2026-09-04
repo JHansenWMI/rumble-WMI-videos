@@ -30,6 +30,7 @@ Feeds:
 - `docs/overcoming-feed.json` is produced from `docs/overcoming-urls.txt` (specific Overcoming channel).
 - **Current generation model (post reorg ~Jul 2026)**: Periodic runs scrape the configured sources (normally just page 1 of each URL for efficiency). Newly discovered items are *merged* into the existing history in the JSON (accumulate; do not replace/redo the whole list). Fresh scrape data is preferred for overlaps. Older items are kept until archiving.
   - **Overcoming prune:** a video that left the Overcoming listing because it was recategorized (e.g. to **WARNING TV - Jonathan Hansen**) is dropped from `overcoming-feed.json`. Detection uses `rumble-feed.json` channel fields from the same run, then a video-page fetch if needed. Recategorized items are not written to the overcoming archive. Videos that only scrolled off page 1 but are still Overcoming stay in history. This does **not** put a video on **Warning TV Broadcasts** (`tv-feed.json`); that page is `TV{YYYYMMDD}` titles and **WMI TV Broadcast History** only.
+  - **Deleted-on-Rumble prune:** a history item missing from this run’s listing pages, but still newer than the oldest freshly scraped item (so it should have been on page 1), is checked with a video-page fetch. HTTP **404/410** drops it from the active feed, archives, and the other feed JSON files. Typical case: a livestream/premiere is taken down and re-uploaded as a VOD with a new URL — the dead listing must not stay on Watch Warning. Older items that only scrolled off page 1 are kept. A failed or blocked fetch keeps the item. Use `delete_from_feed.py` for older deletions outside that page-1 window.
   - One-time bulk population (e.g. initial history) can use `pages=N` in the URL list or higher `--pages` / direct runs.
   - After merge/enrichment, excess items beyond the active limit (default 90) are moved to the corresponding `*-archive.json`.
 - URL list syntax: `https://...` (1 page) or `https://... pages=3`.
@@ -96,7 +97,7 @@ Channel metadata + inclusion:
 - Custom overrides/filters live in `custom_update.py` (REMOVE_GUIDS, OVERRIDES_BY_GUID) and are applied after merge. `thumb` overrides Watch Warning `media:content` only (Rumble’s own thumbnail is unchanged).
 - **Hide vs delete from the website feed:**
   - **Hide** (`REMOVE_GUIDS` in `custom_update.py`): video is still on Rumble; we do not show it on the site. Next scrape would bring it back without this list. Then `./publish_rumble_feed.sh`.
-  - **Delete** (`delete_from_feed.py`): video was already deleted on Rumble. Purge our accumulated JSON (main, archive, TV). Do not add that guid to `REMOVE_GUIDS`.
+  - **Delete** (`delete_from_feed.py`): video was already deleted on Rumble. Purge our accumulated JSON (main, archive, TV). Do not add that guid to `REMOVE_GUIDS`. Recent deletions in the current listing window are also dropped automatically on the next scrape (404/410). Use this script for older items that have already left page 1.
     ```bash
     python delete_from_feed.py --dry-run GUID
     python delete_from_feed.py GUID --publish

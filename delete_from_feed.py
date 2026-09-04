@@ -1,6 +1,10 @@
 #!/usr/bin/env python3
 """Purge a video from accumulated website feed JSON after it was deleted on Rumble.
 
+Recent deletions still in the page-1 listing window are also dropped
+automatically by generate_rumble_feed.py (HTTP 404/410). Use this script
+for older items that have already scrolled off the listing pages.
+
 This is not the same as REMOVE_GUIDS in custom_update.py:
 
   hide   (REMOVE_GUIDS)  video stays on Rumble; we keep it off the website.

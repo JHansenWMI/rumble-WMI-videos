@@ -53,6 +53,16 @@ PRIMARY_FEED_FILES = [
     "docs/overcoming-feed.json",
 ]
 
+# Active + TV feeds (archives derived via get_archive_path).
+ALL_FEED_JSON = [
+    "docs/rumble-feed.json",
+    "docs/overcoming-feed.json",
+    "docs/tv-feed.json",
+]
+
+# Rumble uses 410 for deleted videos; 404 appears on some embed/short URLs.
+GONE_HTTP_CODES = {404, 410}
+
 OVERCOMING_CHANNEL_NAME = "The Overcoming Women"
 OVERCOMING_CHANNEL_SLUG = "c-7899090"
 RUMBLE_CHANNEL_HINT_FILES = [
@@ -383,6 +393,142 @@ def prune_recategorized_overcoming_items(
 
         kept.append(item)
     return kept
+
+
+def rumble_video_page_is_gone(url: str) -> bool | None:
+    """True if Rumble says the video is gone, False if it exists, None if unknown."""
+    if not url:
+        return None
+    try:
+        fetch_html(url)
+        return False
+    except HTTPError as exc:
+        if getattr(exc, "code", None) in GONE_HTTP_CODES:
+            return True
+        return None
+    except (URLError, TimeoutError, OSError):
+        return None
+
+
+def fresh_listing_floor(fresh: list[FeedItem]) -> float | None:
+    """Oldest timestamp on this run's listing pages (page-1 window)."""
+    stamps = [item.timestamp for item in fresh if item.timestamp != float("-inf")]
+    if not stamps:
+        return None
+    return min(stamps)
+
+
+def prune_deleted_rumble_items(
+    items: list[FeedItem],
+    fresh: list[FeedItem],
+    *,
+    fetch_missing: bool = True,
+    delay: float = 2.0,
+) -> tuple[list[FeedItem], list[FeedItem]]:
+    """Drop accumulated items whose Rumble pages are gone (404/410).
+
+    History is kept when a video merely scrolled off page 1. Only items that
+    are missing from this scrape *and* still newer than the oldest freshly
+    scraped item are fetched. A failed or blocked fetch keeps the item.
+
+    Returns (kept, gone).
+    """
+    if not items or not fresh:
+        return list(items), []
+
+    fresh_links = {item.link for item in fresh if item.link}
+    floor = fresh_listing_floor(fresh)
+    if floor is None:
+        return list(items), []
+
+    kept: list[FeedItem] = []
+    gone: list[FeedItem] = []
+    for item in items:
+        if item.link in fresh_links or item.timestamp < floor:
+            kept.append(item)
+            continue
+        if not fetch_missing:
+            kept.append(item)
+            continue
+
+        polite_sleep(delay)
+        status = rumble_video_page_is_gone(item.link)
+        if status is True:
+            print(
+                f"Pruned deleted video from feed: {item.title} ({item.link})",
+                file=sys.stderr,
+            )
+            gone.append(item)
+            continue
+        kept.append(item)
+    return kept, gone
+
+
+def purge_gone_from_json_file(path: Path, gone_links: set[str], gone_guids: set[str]) -> int:
+    """Remove matching items from a feed JSON file. Returns how many were dropped."""
+    if not path.is_file() or not (gone_links or gone_guids):
+        return 0
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+    except Exception as exc:
+        print(f"Warning: failed to read {path} while purging deleted videos: {exc}", file=sys.stderr)
+        return 0
+    if not isinstance(data, dict):
+        return 0
+    items = data.get("items")
+    if not isinstance(items, list):
+        return 0
+
+    gone_links_norm = {lnk.split("?", 1)[0].rstrip("/") for lnk in gone_links if lnk}
+    kept: list = []
+    removed = 0
+    for it in items:
+        if isinstance(it, dict):
+            link = str(it.get("link") or "").split("?", 1)[0].rstrip("/")
+            guid = str(it.get("guid") or "").strip()
+            if (link and link in gone_links_norm) or (guid and guid in gone_guids):
+                removed += 1
+                continue
+        kept.append(it)
+    if not removed:
+        return 0
+
+    payload = {
+        "title": data.get("title") or "Rumble videos",
+        **feed_timestamps(),
+        "itemCount": len(kept),
+        "items": kept,
+    }
+    path.write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    return removed
+
+
+def purge_gone_from_other_feed_files(
+    gone_links: set[str],
+    gone_guids: set[str],
+    *,
+    skip: Path | None = None,
+) -> None:
+    """Drop confirmed-gone videos from archives, TV feed, and the other Rumble JSON."""
+    script_dir = Path(__file__).resolve().parent
+    skip_resolved = skip.resolve() if skip else None
+    seen: set[Path] = set()
+    for rel in ALL_FEED_JSON:
+        primary = script_dir / rel
+        for path in (primary, get_archive_path(primary)):
+            resolved = path.resolve()
+            if resolved in seen or not path.is_file():
+                continue
+            if skip_resolved and resolved == skip_resolved:
+                continue
+            seen.add(resolved)
+            n = purge_gone_from_json_file(path, gone_links, gone_guids)
+            if n:
+                try:
+                    shown = path.relative_to(script_dir)
+                except ValueError:
+                    shown = path
+                print(f"Purged {n} deleted video(s) from {shown}", file=sys.stderr)
 
 
 def get_archive_path(path: Path) -> Path:
@@ -1326,6 +1472,19 @@ def main() -> int:
             channel_hints=load_rumble_channel_hints(),
             fetch_missing=not args.no_channel_details,
             delay=max(0, args.delay),
+        )
+
+    items, gone = prune_deleted_rumble_items(
+        items,
+        scraped,
+        fetch_missing=not args.no_channel_details,
+        delay=max(0, args.delay),
+    )
+    if gone:
+        purge_gone_from_other_feed_files(
+            {item.link for item in gone if item.link},
+            {item.video_id for item in gone if item.video_id},
+            skip=output_path,
         )
 
     limit = max(1, args.limit)
