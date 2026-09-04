@@ -411,7 +411,7 @@ sys.exit(0)
 }
 
 push_main() {
-  local attempt="$1"
+  local attempt="${1:-}"
   log "Pushing to origin/main${attempt:+ ($attempt)}"
   if [[ "$USING_WORKTREE" == 1 ]]; then
     git push origin HEAD:main
