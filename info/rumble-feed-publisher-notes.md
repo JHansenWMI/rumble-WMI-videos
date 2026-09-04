@@ -2,7 +2,9 @@
 
 Copied from the Mini Desktop (`rumble-feed-publisher-notes.md`, 2026-08-23) so both machines have the same recovery story.
 
-**Status 2026-08-26:** Section 4 is implemented in `publish_rumble_feed.sh` (Mini-only unattended JSON recovery: unique `Update Rumble feed JSON files` commits, feed JSON paths only, then `reset --hard origin/main` and continue this run). Laptop still `--ff-only` with no reset. Sections 7–8 are historical (the script change already landed).
+**Status 2026-09-04:** Mini publishes from a sibling worktree at `origin/main` (`…/rumble-WMI-videos-publish`). Desktop WIP (itinerary, etc.) is left untouched. A rejected push retries once inside that worktree (`reset --hard origin/main`, scrape again). Laptop still `--ff-only` with no reset, and still requires a clean working tree.
+
+**Status 2026-08-26:** Section 4 (feed-JSON-only `reset --hard` on the Mini *checkout*) is superseded on Mini by the worktree. Laptop still never resets. Sections 7–8 are historical.
 
 Original notes follow.
 

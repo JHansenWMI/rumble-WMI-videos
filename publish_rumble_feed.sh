@@ -1,7 +1,8 @@
 #!/bin/zsh
 set -euo pipefail
 
-SCRIPT_DIR="${0:A:h}"
+HOME_REPO="${0:A:h}"
+SCRIPT_DIR="$HOME_REPO"
 cd "$SCRIPT_DIR"
 
 log() {
@@ -9,7 +10,8 @@ log() {
 }
 
 # One full scrape at a time (tick vs manual vs overlapping launchd).
-LOCK_DIR="$SCRIPT_DIR/.publish.lock"
+# Lock stays on the Desktop checkout even when Mini publishes from a worktree.
+LOCK_DIR="$HOME_REPO/.publish.lock"
 acquire_publish_lock() {
   if mkdir "$LOCK_DIR" 2>/dev/null; then
     print -r -- "$$" > "$LOCK_DIR/pid"
@@ -30,10 +32,25 @@ acquire_publish_lock() {
 release_publish_lock() {
   rm -rf "$LOCK_DIR"
 }
+
+# Mini publishes from a throwaway worktree at origin/main so itinerary (or any
+# other) WIP in the Desktop checkout cannot block or mix into the feed job.
+USING_WORKTREE=0
+PUBLISH_WORKTREE="${HOME_REPO:h}/rumble-WMI-videos-publish"
+
+cleanup_publish_worktree() {
+  if [[ "$USING_WORKTREE" != 1 ]]; then
+    return 0
+  fi
+  git -C "$HOME_REPO" worktree remove --force "$PUBLISH_WORKTREE" >/dev/null 2>&1 || rm -rf "$PUBLISH_WORKTREE"
+  git -C "$HOME_REPO" worktree prune >/dev/null 2>&1 || true
+  USING_WORKTREE=0
+}
+
 if ! acquire_publish_lock; then
   exit 75
 fi
-trap release_publish_lock EXIT INT TERM
+trap 'cleanup_publish_worktree; release_publish_lock' EXIT INT TERM
 
 # Default to "production" (safe/dumb mode) when unset.
 # Production Mac Mini can leave this unset after a plain pull.
@@ -139,19 +156,45 @@ sync_origin_main() {
   exit 1
 }
 
-if [ "$(git rev-parse --abbrev-ref HEAD)" != "main" ]; then
-  log "Expected to run on branch main. Aborting."
-  exit 1
+enter_publish_worktree() {
+  log "Fetching origin/main for an isolated publish checkout"
+  git -C "$HOME_REPO" fetch origin
+  if ! git -C "$HOME_REPO" rev-parse --verify origin/main >/dev/null 2>&1; then
+    log "origin/main is missing. Aborting."
+    exit 1
+  fi
+  git -C "$HOME_REPO" worktree prune >/dev/null 2>&1 || true
+  if [[ -e "$PUBLISH_WORKTREE" ]]; then
+    git -C "$HOME_REPO" worktree remove --force "$PUBLISH_WORKTREE" >/dev/null 2>&1 || rm -rf "$PUBLISH_WORKTREE"
+    git -C "$HOME_REPO" worktree prune >/dev/null 2>&1 || true
+  fi
+  if ! git -C "$HOME_REPO" worktree add --detach "$PUBLISH_WORKTREE" origin/main; then
+    log "Could not create publish worktree at $PUBLISH_WORKTREE. Desktop checkout was not changed. Aborting."
+    exit 1
+  fi
+  USING_WORKTREE=1
+  SCRIPT_DIR="$PUBLISH_WORKTREE"
+  cd "$SCRIPT_DIR"
+  log "Publishing from clean origin/main worktree. Desktop checkout left untouched."
+}
+
+if [[ "$UNATTENDED_JSON_RECOVERY" == 1 ]]; then
+  enter_publish_worktree
+else
+  if [ "$(git rev-parse --abbrev-ref HEAD)" != "main" ]; then
+    log "Expected to run on branch main. Aborting."
+    exit 1
+  fi
+
+  git update-index -q --refresh
+
+  if ! git diff --quiet || ! git diff --cached --quiet; then
+    log "Working tree is not clean. Aborting so local changes are not mixed into the scheduled run."
+    exit 1
+  fi
+
+  sync_origin_main
 fi
-
-git update-index -q --refresh
-
-if ! git diff --quiet || ! git diff --cached --quiet; then
-  log "Working tree is not clean. Aborting so local changes are not mixed into the scheduled run."
-  exit 1
-fi
-
-sync_origin_main
 
 urls_from_list() {
   python3 -c '
@@ -370,16 +413,33 @@ sys.exit(0)
 push_main() {
   local attempt="$1"
   log "Pushing to origin/main${attempt:+ ($attempt)}"
-  git push origin main
+  if [[ "$USING_WORKTREE" == 1 ]]; then
+    git push origin HEAD:main
+  else
+    git push origin main
+  fi
+}
+
+retry_worktree_after_push_reject() {
+  log "Push rejected; resetting worktree to origin/main and scraping once more"
+  git fetch origin
+  git reset --hard origin/main
+  generate_all_feeds
+  commit_feeds_if_changed
+  if [[ "$COMMITTED" == 1 ]]; then
+    push_main "after worktree recovery"
+  fi
 }
 
 generate_all_feeds
 commit_feeds_if_changed
 if [[ "$COMMITTED" == 1 ]]; then
-  if ! git push origin main; then
+  if ! push_main; then
     log "Push rejected; fetching origin"
     git fetch origin
-    if recover_feed_json_divergence "push"; then
+    if [[ "$USING_WORKTREE" == 1 ]]; then
+      retry_worktree_after_push_reject
+    elif recover_feed_json_divergence "push"; then
       generate_all_feeds
       commit_feeds_if_changed
       if [[ "$COMMITTED" == 1 ]]; then
