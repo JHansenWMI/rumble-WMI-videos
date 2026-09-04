@@ -10,3 +10,4 @@ When entering plan mode or writing a plan.md:
 
 ## Project notes
 - Do not create GitHub Actions workflows (`.yml` files in `.github/workflows`). Rumble's bot protection blocks scrapers running from GitHub; scheduled automation is handled locally via launchd + `rumble_feed_tick.sh` on the Macs.
+- On the Mini, MediaSite Website Update uses a **sibling** git worktree `rumble-WMI-videos-intranet`, not this Desktop clone. Leave this folder for the feed publisher.
