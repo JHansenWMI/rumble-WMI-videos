@@ -34,6 +34,12 @@ class CustomUpdateTests(unittest.TestCase):
         self.assertEqual(item.video_code, "v7esa7o")
         self.assertEqual(item.title, "Original")
 
+    def test_silent_no_more_promo_site_thumb(self):
+        out = apply_custom_updates([_item(video_id="445010476")], parse_datetime)
+        self.assertTrue(
+            out[0].thumb.endswith("site-thumbs/silent-no-more-promo-16x9.jpg")
+        )
+
 
 if __name__ == "__main__":
     unittest.main()

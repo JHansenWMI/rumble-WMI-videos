@@ -26,6 +26,9 @@ OVERRIDES_BY_GUID = {
     "444441534": {
         "thumb": SITE_THUMB_BASE + "take-the-territory-16x9.jpg",
     },
+    "445010476": {
+        "thumb": SITE_THUMB_BASE + "silent-no-more-promo-16x9.jpg",
+    },
 }
 
 _FEEDITEM_FIELDS = {
