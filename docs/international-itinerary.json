@@ -1,7 +1,7 @@
 {
   "title": "International Itinerary",
   "region": "international",
-  "generatedAt": "2026-09-03T20:30:00Z",
+  "generatedAt": "2026-09-05T18:17:46Z",
   "sourceUrl": "https://www.worldministries.org/international-itinerary.aspx",
   "introHtml": "<p>Due to the COVID restrictions which started immediately after I arrived back from Amsterdam, Netherlands, February 2, 2020, my international itinerary already scheduled for the rest of 2020 was cancelled as well as 2021. Only limited national ministry trips were taken.</p>",
   "eventCount": 388,
@@ -226,7 +226,7 @@
       "date_text": "Sun September 6th, 2026",
       "start_date": "2026-09-06",
       "end_date": "2026-09-06",
-      "time_text": "8:30 AM",
+      "time_text": "8:30 AM (one service only)",
       "place": "Mount Edgecombe, South Africa",
       "city": "Mount Edgecombe",
       "state": "",
@@ -247,12 +247,19 @@
       ],
       "flag": "https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/country-flags/south-africa.gif",
       "flag_alt": "South Africa",
-      "flyer": "",
-      "flyer_alt": "Mount Edgecombe, South Africa",
-      "links": [],
-      "body_lines": [],
+      "flyer": "https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/2026-09-06-gateway-church.jpg",
+      "flyer_alt": "Dr. Jonathan Hansen — Gateway Church",
+      "links": [
+        {
+          "label": "Facebook Live @GatewayChurcSA",
+          "url": "https://www.facebook.com/GatewayChurchSA/"
+        }
+      ],
+      "body_lines": [
+        "Facebook Live @GatewayChurcSA"
+      ],
       "region": "international",
-      "body_html": "<p><strong>Mount Edgecombe, South Africa<br /></strong>Sun September 6th, 2026 — 8:30 AM<br />The Church Must Be Silent No More &amp; The Nine Faces of God<br />Rev. Dr. Jonathan Hansen - Speaking<br />Host: Pastor Speedy Kisten<br />Gateway Church<br />201 Golf Course Drive<br />Mount Edgecombe<br /></p>"
+      "body_html": "<p><strong><img src=\"https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/2026-09-06-gateway-church.jpg\" style=\"width: 200px; height: auto;\" alt=\"Dr. Jonathan Hansen — Gateway Church\" /><br />Mount Edgecombe, South Africa<br /></strong>Sun September 6th, 2026 — 8:30 AM (one service only)<br />The Church Must Be Silent No More &amp; The Nine Faces of God<br />Rev. Dr. Jonathan Hansen - Speaking<br />Host: Pastor Speedy Kisten<br />Gateway Church<br />201 Golf Course Drive<br />Mount Edgecombe<br />Facebook Live @GatewayChurcSA<br /></p>"
     },
     {
       "id": "evt-000386",
