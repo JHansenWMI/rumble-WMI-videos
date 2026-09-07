@@ -40,6 +40,14 @@ class CustomUpdateTests(unittest.TestCase):
             out[0].thumb.endswith("site-thumbs/silent-no-more-promo-16x9.jpg")
         )
 
+    def test_baberton_nelspruit_sunday_service_site_thumb(self):
+        out = apply_custom_updates([_item(video_id="445132574")], parse_datetime)
+        self.assertTrue(
+            out[0].thumb.endswith(
+                "site-thumbs/baberton-nelspruit-sunday-service-16x9.jpg"
+            )
+        )
+
 
 if __name__ == "__main__":
     unittest.main()
