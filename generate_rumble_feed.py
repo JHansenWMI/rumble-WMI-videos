@@ -19,6 +19,7 @@ from __future__ import annotations
 
 import argparse
 import importlib.util
+import io
 import json
 import os
 import random
@@ -604,21 +605,44 @@ def page_url(base_url: str, page: int) -> str:
     return urlunparse(parsed._replace(query=urlencode(params)))
 
 
+_FETCH_UA = (
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
+    "AppleWebKit/537.36 (KHTML, like Gecko) "
+    "Chrome/124.0 Safari/537.36"
+)
+
+# Rumble shorts listing `thumb` is the 9:16 tile (`adyb` / `adyb.1`). A 16:9
+# sibling often exists as the same path with `OvCc` (keep `.1` if present).
+# Listing JSON does not include both URLs.
+_SHORT_TILE_VARIANT_RE = re.compile(
+    r"\.(adyb|aiEB)(\.\d+)?(?=-small-|\.jpg$)",
+    re.IGNORECASE,
+)
+
+
 def fetch_html(url: str, timeout: int = 30) -> str:
     req = Request(
         url,
         headers={
-            "User-Agent": (
-                "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
-                "AppleWebKit/537.36 (KHTML, like Gecko) "
-                "Chrome/124.0 Safari/537.36"
-            ),
+            "User-Agent": _FETCH_UA,
             "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
         },
     )
     with urlopen(req, timeout=timeout) as response:
         charset = response.headers.get_content_charset() or "utf-8"
         return response.read().decode(charset, errors="replace")
+
+
+def fetch_bytes(url: str, timeout: int = 20) -> bytes:
+    req = Request(
+        url,
+        headers={
+            "User-Agent": _FETCH_UA,
+            "Accept": "image/jpeg,image/*;q=0.9,*/*;q=0.8",
+        },
+    )
+    with urlopen(req, timeout=timeout) as response:
+        return response.read()
 
 
 def attr_value(fragment: str, attr: str) -> str:
@@ -1174,6 +1198,123 @@ def unique_by_link(items: Iterable[FeedItem]) -> list[FeedItem]:
     return unique
 
 
+def item_looks_like_short(item: FeedItem) -> bool:
+    blob = f"{item.link} {item.source_page} {item.title}".casefold()
+    return "/shorts" in blob or "#shorts" in blob
+
+
+def wide_short_thumb_url(thumb: str) -> str | None:
+    """Listing 9:16 `adyb` / `aiEB` → same-path 16:9 `OvCc` (keep `.1`)."""
+    if not thumb:
+        return None
+    new, n = _SHORT_TILE_VARIANT_RE.subn(r".OvCc\2", thumb, count=1)
+    if n != 1 or new == thumb:
+        return None
+    return new
+
+
+def jpeg_is_portrait_letterboxed(data: bytes) -> bool:
+    """True when a 9:16 still has black curtains on top and bottom.
+
+    That is Rumble fitting a wide custom thumb into the shorts tile.
+    A 9:16 poster or a vertical clip fills the frame and returns False.
+    """
+    try:
+        from PIL import Image
+    except ImportError:
+        return False
+    try:
+        im = Image.open(io.BytesIO(data)).convert("RGB")
+    except Exception:
+        return False
+    width, height = im.size
+    if width <= 0 or height <= 0 or width >= height:
+        return False
+    bar = max(2, int(round(height * 0.16)))
+    if height - 2 * bar < 8:
+        return False
+
+    def black_fraction(box: tuple[int, int, int, int]) -> float:
+        pixels = list(im.crop(box).getdata())
+        if not pixels:
+            return 0.0
+        dark = 0
+        for r, g, b in pixels:
+            if (0.2126 * r + 0.7152 * g + 0.0722 * b) <= 28:
+                dark += 1
+        return dark / len(pixels)
+
+    top = black_fraction((0, 0, width, bar))
+    bottom = black_fraction((0, height - bar, width, height))
+    middle = black_fraction((0, bar, width, height - bar))
+    return top >= 0.88 and bottom >= 0.88 and middle <= 0.55
+
+
+def jpeg_is_landscape(data: bytes) -> bool:
+    try:
+        from PIL import Image
+    except ImportError:
+        return False
+    try:
+        im = Image.open(io.BytesIO(data))
+    except Exception:
+        return False
+    width, height = im.size
+    return width > height > 0
+
+
+def prefer_wide_short_thumbs(
+    items: list[FeedItem],
+    *,
+    fetch=fetch_bytes,
+    verbose: bool = False,
+) -> list[FeedItem]:
+    """For shorts whose listing tile is letterboxed, use the 16:9 CDN sibling.
+
+    Do not swap a 9:16 poster or a native vertical clip — those `OvCc` files
+    are the same picture with black bars on the sides.
+    """
+    try:
+        import PIL.Image  # noqa: F401
+    except ImportError:
+        print(
+            "Warning: Pillow not installed; leaving shorts listing thumbs as-is.",
+            file=sys.stderr,
+        )
+        return items
+
+    out: list[FeedItem] = []
+    for item in items:
+        wide_url = wide_short_thumb_url(item.thumb) if item_looks_like_short(item) else None
+        if not wide_url:
+            out.append(item)
+            continue
+        try:
+            listing_jpeg = fetch(item.thumb)
+        except (HTTPError, URLError, TimeoutError, OSError) as exc:
+            if verbose:
+                print(f"Wide short thumb: listing fetch failed ({exc})", file=sys.stderr)
+            out.append(item)
+            continue
+        if not jpeg_is_portrait_letterboxed(listing_jpeg):
+            out.append(item)
+            continue
+        try:
+            wide_jpeg = fetch(wide_url)
+        except (HTTPError, URLError, TimeoutError, OSError) as exc:
+            if verbose:
+                print(f"Wide short thumb: OvCc fetch failed ({exc})", file=sys.stderr)
+            out.append(item)
+            continue
+        if jpeg_is_landscape(wide_jpeg):
+            if verbose:
+                print(f"Wide short thumb: {item.title[:60]} -> OvCc", file=sys.stderr)
+            out.append(replace(item, thumb=wide_url))
+        else:
+            out.append(item)
+    return out
+
+
 def cached_channel_info(cache: dict[str, ChannelInfo], item: FeedItem) -> ChannelInfo | None:
     for key in channel_cache_keys(item.link, item.video_id):
         channel = cache.get(key)
@@ -1427,6 +1568,8 @@ def main() -> int:
         return 2
 
     scraped = build_feed(urls, max_pages=max(1, args.pages), delay=max(0, args.delay), verbose=args.verbose)
+    if scraped:
+        scraped = prefer_wide_short_thumbs(scraped, verbose=args.verbose)
 
     # Accumulation (change for TV channel rules reorg):
     # Scrape only the first page (periodic behavior). Merge any new items into

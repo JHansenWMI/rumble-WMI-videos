@@ -71,6 +71,7 @@ Both are FetchRSS-style:
 
 - Scrape fresh items from configured sources.
 - Merge new discoveries into prior JSON history (`merge_fresh_into_accumulated` + `merge_scraped_with_existing` for embed ids etc.).
+- Shorts: if the listing 9:16 thumb (`adyb`) is letterboxed, prefer the 16:9 `OvCc` CDN sibling. Native 9:16 posters/clips stay on the listing still. `custom_update.py` `thumb` overrides still win.
 - Overcoming only: `prune_recategorized_overcoming_items` drops history that was recategorized off The Overcoming Women (still-listed page-1 items are kept).
 - Deleted videos: `prune_deleted_rumble_items` fetches history items that disappeared from the current listing window (newer than the oldest item on this scrape). HTTP 404/410 drops them from the active feed and other JSON (archives, TV). Items that only scrolled off page 1 are not fetched. Network errors keep the item.
 - Apply `custom_update.py` (hide list + title/date overrides). `REMOVE_GUIDS` hides a video that is still on Rumble. After a Rumble deletion outside the page-1 window, purge stored JSON with `delete_from_feed.py` instead of adding the guid there.
