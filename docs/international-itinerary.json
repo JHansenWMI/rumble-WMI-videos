@@ -1,7 +1,7 @@
 {
   "title": "International Itinerary",
   "region": "international",
-  "generatedAt": "2026-09-09T17:10:01Z",
+  "generatedAt": "2026-09-09T17:12:00Z",
   "sourceUrl": "https://www.worldministries.org/international-itinerary.aspx",
   "introHtml": "<p>Due to the COVID restrictions which started immediately after I arrived back from Amsterdam, Netherlands, February 2, 2020, my international itinerary already scheduled for the rest of 2020 was cancelled as well as 2021. Only limited national ministry trips were taken.</p>",
   "eventCount": 389,
@@ -137,7 +137,7 @@
       "id": "2026-09-16-cape-town-south-africa",
       "year": 2026,
       "sort_date": "2026-09-16",
-      "date_text": "Sep 16 - 17, 2026: 4pm",
+      "date_text": "September 16 - 17, 2026: 4pm",
       "start_date": "2026-09-16",
       "end_date": "2026-09-16",
       "time_text": "",
@@ -167,7 +167,7 @@
       "links": [],
       "body_lines": [],
       "region": "international",
-      "body_html": "<p><strong><img src=\"https://www.worldministries.org/Userfiles/Flyer-jpegs/2026-09-DominionConf.jpg\" style=\"width: 200px; height: auto;\" alt=\"Dominion Conference\" /><br />Cape Town, South Africa<br /></strong>Sep 16 - 17, 2026: 4pm<br />Rev. Dr. Jonathan &amp; Rev. Dr. Adalia Hansen - Speaking<br />Host: Apostle Watson &amp; Prophetess Vicky Simfukwe, Tabernacle of Glory For All Nations<br />Cedar High School<br />Cnr Spine &amp; Weltevreden Dr. Rocklands,<br />Mitchell's Plain, Cape Town, 7785<br /></p>"
+      "body_html": "<p><strong><img src=\"https://www.worldministries.org/Userfiles/Flyer-jpegs/2026-09-DominionConf.jpg\" style=\"width: 200px; height: auto;\" alt=\"Dominion Conference\" /><br />Cape Town, South Africa<br /></strong>September 16 - 17, 2026: 4pm<br />Rev. Dr. Jonathan &amp; Rev. Dr. Adalia Hansen - Speaking<br />Host: Apostle Watson &amp; Prophetess Vicky Simfukwe, Tabernacle of Glory For All Nations<br />Cedar High School<br />Cnr Spine &amp; Weltevreden Dr. Rocklands,<br />Mitchell's Plain, Cape Town, 7785<br /></p>"
     },
     {
       "id": "2026-09-11-giami-annual-revival",
@@ -5288,7 +5288,7 @@
     }
   ],
   "lastManualUpdate": {
-    "at": "2026-09-09T17:10:01Z",
+    "at": "2026-09-09T17:12:00Z",
     "note": "Upsert event 2026-09-16-cape-town-south-africa"
   }
 }
