@@ -1,7 +1,7 @@
 {
   "title": "International Itinerary",
   "region": "international",
-  "generatedAt": "2026-09-09T17:03:13Z",
+  "generatedAt": "2026-09-09T17:10:01Z",
   "sourceUrl": "https://www.worldministries.org/international-itinerary.aspx",
   "introHtml": "<p>Due to the COVID restrictions which started immediately after I arrived back from Amsterdam, Netherlands, February 2, 2020, my international itinerary already scheduled for the rest of 2020 was cancelled as well as 2021. Only limited national ministry trips were taken.</p>",
   "eventCount": 389,
@@ -138,13 +138,36 @@
       "year": 2026,
       "sort_date": "2026-09-16",
       "date_text": "Sep 16 - 17, 2026: 4pm",
+      "start_date": "2026-09-16",
+      "end_date": "2026-09-16",
+      "time_text": "",
       "place": "Cape Town, South Africa",
-      "flag": "https://www.worldministries.org/Userfiles/Flags/south-africa.gif",
-      "flag_alt": "south africa",
+      "city": "",
+      "state": "",
+      "country": "South Africa",
+      "event_name": "",
+      "event_type": "",
+      "speakers": [
+        "Rev. Dr. Jonathan & Rev. Dr. Adalia Hansen"
+      ],
+      "speaker_verb": "speaking",
+      "hosts": [
+        "Apostle Watson & Prophetess Vicky Simfukwe",
+        "Tabernacle of Glory For All Nations"
+      ],
+      "venue": "Cedar High School",
+      "address_lines": [
+        "Cnr Spine & Weltevreden Dr. Rocklands,",
+        "Mitchell's Plain, Cape Town, 7785"
+      ],
+      "flag": "https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/country-flags/south-africa.gif",
+      "flag_alt": "South Africa",
       "flyer": "https://www.worldministries.org/Userfiles/Flyer-jpegs/2026-09-DominionConf.jpg",
       "flyer_alt": "Dominion Conference",
-      "body_html": "<p><strong><strong><strong><img src=\"https://www.worldministries.org/Userfiles/Flyer-jpegs/2026-09-DominionConf.jpg\" style=\"width: 200px; height: auto;\" alt=\"Dominion Conference\" /><br />Cape Town, South Africa<br /></strong></strong></strong>Sep 16 - 17, 2026: 4pm<br /><span><span>Rev Dr. Jonathan Hansen &amp; </span>Rev. Dr. Adalia Hansen - Speaking<br />Host: Apostle Watson &amp; Prophetess Vicky Simfukwe<br />of Tabernacle of Glory For All Nations&nbsp;<br />Location: Cedar High School,&nbsp;<br />Cnr Spine &amp; Weltevreden Dr. Rocklands,<br />Mitchell's Plain, Cape Town, 7785<br /></span></p>",
-      "region": "international"
+      "links": [],
+      "body_lines": [],
+      "region": "international",
+      "body_html": "<p><strong><img src=\"https://www.worldministries.org/Userfiles/Flyer-jpegs/2026-09-DominionConf.jpg\" style=\"width: 200px; height: auto;\" alt=\"Dominion Conference\" /><br />Cape Town, South Africa<br /></strong>Sep 16 - 17, 2026: 4pm<br />Rev. Dr. Jonathan &amp; Rev. Dr. Adalia Hansen - Speaking<br />Host: Apostle Watson &amp; Prophetess Vicky Simfukwe, Tabernacle of Glory For All Nations<br />Cedar High School<br />Cnr Spine &amp; Weltevreden Dr. Rocklands,<br />Mitchell's Plain, Cape Town, 7785<br /></p>"
     },
     {
       "id": "2026-09-11-giami-annual-revival",
@@ -5265,7 +5288,7 @@
     }
   ],
   "lastManualUpdate": {
-    "at": "2026-09-09T17:03:13Z",
-    "note": "Upsert event 2026-09-11-restoration-weekend"
+    "at": "2026-09-09T17:10:01Z",
+    "note": "Upsert event 2026-09-16-cape-town-south-africa"
   }
 }
