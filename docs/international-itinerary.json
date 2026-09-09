@@ -1,7 +1,7 @@
 {
   "title": "International Itinerary",
   "region": "international",
-  "generatedAt": "2026-09-09T17:17:45Z",
+  "generatedAt": "2026-09-09T17:19:03Z",
   "sourceUrl": "https://www.worldministries.org/international-itinerary.aspx",
   "introHtml": "<p>Due to the COVID restrictions which started immediately after I arrived back from Amsterdam, Netherlands, February 2, 2020, my international itinerary already scheduled for the rest of 2020 was cancelled as well as 2021. Only limited national ministry trips were taken.</p>",
   "eventCount": 389,
@@ -10,16 +10,18 @@
       "id": "2026-10-25-south-korea",
       "year": 2026,
       "sort_date": "2026-10-25",
-      "date_text": "Oct 25 - 30, 2026",
+      "date_text": "October 25 - 30, 2026",
       "start_date": "2026-10-25",
       "end_date": "2026-10-25",
       "time_text": "",
       "place": "South Korea",
       "city": "",
+      "state": "",
       "country": "",
       "event_name": "",
       "event_type": "",
       "speakers": [],
+      "speaker_verb": "speaking",
       "hosts": [],
       "venue": "",
       "address_lines": [],
@@ -30,7 +32,7 @@
       "links": [],
       "body_lines": [],
       "region": "international",
-      "body_html": "<p><strong>South Korea<br /></strong>Oct 25 - 30, 2026<br /></p>"
+      "body_html": "<p><strong>South Korea<br /></strong>October 25 - 30, 2026<br /></p>"
     },
     {
       "id": "2026-10-04-tongaat-jonathan-hansen-preaching",
@@ -5309,7 +5311,7 @@
     }
   ],
   "lastManualUpdate": {
-    "at": "2026-09-09T17:17:45Z",
-    "note": "Upsert event 2026-10-04-tongaat-jonathan-hansen-preaching"
+    "at": "2026-09-09T17:19:03Z",
+    "note": "Upsert event 2026-10-25-south-korea"
   }
 }
