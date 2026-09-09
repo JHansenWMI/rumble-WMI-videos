@@ -1,7 +1,7 @@
 {
   "title": "International Itinerary",
   "region": "international",
-  "generatedAt": "2026-09-09T17:01:45Z",
+  "generatedAt": "2026-09-09T17:03:13Z",
   "sourceUrl": "https://www.worldministries.org/international-itinerary.aspx",
   "introHtml": "<p>Due to the COVID restrictions which started immediately after I arrived back from Amsterdam, Netherlands, February 2, 2020, my international itinerary already scheduled for the rest of 2020 was cancelled as well as 2021. Only limited national ministry trips were taken.</p>",
   "eventCount": 389,
@@ -147,42 +147,6 @@
       "region": "international"
     },
     {
-      "id": "2026-09-11-restoration-weekend",
-      "year": 2026,
-      "sort_date": "2026-09-11",
-      "date_text": "Friday September 11 & Sunday September 13, 2026",
-      "start_date": "2026-09-11",
-      "end_date": "2026-09-13",
-      "time_text": "Fri 6:00 PM, Sun 10:30 AM",
-      "place": "Vereeniging, South Africa",
-      "city": "Vereeniging",
-      "state": "",
-      "country": "South Africa",
-      "event_name": "Restoration Weekend",
-      "event_type": "conference",
-      "speakers": [
-        "Rev. Dr. Jonathan Hansen"
-      ],
-      "speaker_verb": "speaking",
-      "hosts": [
-        "Apostle Rodney Makube",
-        "Pastor Adelaide Makube"
-      ],
-      "venue": "Kingdom Restoration Church",
-      "address_lines": [
-        "Fri, 11 Sept: 6:00 PM",
-        "Sun, 13 Sept: 10:30 AM"
-      ],
-      "flag": "https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/country-flags/south-africa.gif",
-      "flag_alt": "South Africa",
-      "flyer": "https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/2026-09-11-restoration-weekend.jpg",
-      "flyer_alt": "Restoration Weekend — Kingdom Restoration Church",
-      "links": [],
-      "body_lines": [],
-      "region": "international",
-      "body_html": "<p><strong><img src=\"https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/2026-09-11-restoration-weekend.jpg\" style=\"width: 200px; height: auto;\" alt=\"Restoration Weekend — Kingdom Restoration Church\" /><br />Vereeniging, South Africa<br /></strong>Friday September 11 &amp; Sunday September 13, 2026<br />Restoration Weekend<br />Rev. Dr. Jonathan Hansen - Speaking<br />Host: Apostle Rodney &amp; Pastor Adelaide Makube<br />Kingdom Restoration Church<br />Fri, 11 Sept: 6:00 PM<br />Sun, 13 Sept: 10:30 AM<br /></p>"
-    },
-    {
       "id": "2026-09-11-giami-annual-revival",
       "year": 2026,
       "sort_date": "2026-09-11",
@@ -217,6 +181,41 @@
       ],
       "region": "international",
       "body_html": "<p><strong><img src=\"https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/2026-09-11-giami-annual-revival.jpg\" style=\"width: 200px; height: auto;\" alt=\"God Is Able Annual Revival — GIAMI\" /><br />Nelspruit, South Africa<br /></strong>September 11 - 20, 2026 — 6:00 PM daily<br />God Is Able Annual Revival<br />Rev. Dr. Jonathan Hansen - Speaking<br />Host: Apostle Moses &amp; Pastor Veronica O'Reilly<br />GIAMI HQ<br />Kamagugu Road, Nelspruit<br />Pastor Gibson Brown also speaking<br /></p>"
+    },
+    {
+      "id": "2026-09-11-restoration-weekend",
+      "year": 2026,
+      "sort_date": "2026-09-11",
+      "date_text": "Friday September 11 & Sunday September 13, 2026",
+      "start_date": "2026-09-11",
+      "end_date": "2026-09-13",
+      "time_text": "Fri 6:00 PM, Sun 10:30 AM",
+      "place": "Vereeniging, South Africa",
+      "city": "Vereeniging",
+      "state": "",
+      "country": "South Africa",
+      "event_name": "Restoration Weekend",
+      "event_type": "conference",
+      "speakers": [
+        "Rev. Dr. Jonathan Hansen"
+      ],
+      "speaker_verb": "speaking",
+      "hosts": [
+        "Apostle Rodney & Pastor Adelaide Makube"
+      ],
+      "venue": "Kingdom Restoration Church",
+      "address_lines": [
+        "Fri, 11 Sept: 6:00 PM",
+        "Sun, 13 Sept: 10:30 AM"
+      ],
+      "flag": "https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/country-flags/south-africa.gif",
+      "flag_alt": "South Africa",
+      "flyer": "https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/2026-09-11-restoration-weekend.jpg",
+      "flyer_alt": "Restoration Weekend — Kingdom Restoration Church",
+      "links": [],
+      "body_lines": [],
+      "region": "international",
+      "body_html": "<p><strong><img src=\"https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/2026-09-11-restoration-weekend.jpg\" style=\"width: 200px; height: auto;\" alt=\"Restoration Weekend — Kingdom Restoration Church\" /><br />Vereeniging, South Africa<br /></strong>Friday September 11 &amp; Sunday September 13, 2026 — Fri 6:00 PM, Sun 10:30 AM<br />Restoration Weekend<br />Rev. Dr. Jonathan Hansen - Speaking<br />Host: Apostle Rodney &amp; Pastor Adelaide Makube<br />Kingdom Restoration Church<br />Fri, 11 Sept: 6:00 PM<br />Sun, 13 Sept: 10:30 AM<br /></p>"
     },
     {
       "id": "2026-09-08-tuesday-teaching-service-cre",
@@ -5266,7 +5265,7 @@
     }
   ],
   "lastManualUpdate": {
-    "at": "2026-09-09T17:01:45Z",
-    "note": "Upsert event 2026-09-11-giami-annual-revival"
+    "at": "2026-09-09T17:03:13Z",
+    "note": "Upsert event 2026-09-11-restoration-weekend"
   }
 }
