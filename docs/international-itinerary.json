@@ -1,7 +1,7 @@
 {
   "title": "International Itinerary",
   "region": "international",
-  "generatedAt": "2026-09-08T12:46:16Z",
+  "generatedAt": "2026-09-09T16:52:38Z",
   "sourceUrl": "https://www.worldministries.org/international-itinerary.aspx",
   "introHtml": "<p>Due to the COVID restrictions which started immediately after I arrived back from Amsterdam, Netherlands, February 2, 2020, my international itinerary already scheduled for the rest of 2020 was cancelled as well as 2021. Only limited national ministry trips were taken.</p>",
   "eventCount": 389,
@@ -356,13 +356,35 @@
       "year": 2026,
       "sort_date": "2026-08-07",
       "date_text": "August 7 - 9, 2026: Fri 6pm, Sat 11 AM & 6pm, Sun 5:00 PM",
+      "start_date": "2026-08-07",
+      "end_date": "2026-08-07",
+      "time_text": "",
       "place": "Prince Rupert, B.C. Canada",
+      "city": "",
+      "state": "",
+      "country": "B.C. Canada",
+      "event_name": "",
+      "event_type": "",
+      "speakers": [
+        "Rev. Dr. Adalia & Rev. Dr. Jonathan Hansen"
+      ],
+      "speaker_verb": "speaking",
+      "hosts": [
+        "Pastor Irene Jesso"
+      ],
+      "venue": "High Liner Hotel & Conference Centre",
+      "address_lines": [
+        "815 1st Ave West,",
+        "Prince Rupert, BC  V8J 1A6"
+      ],
       "flag": "https://www.worldministries.org/Userfiles/Flags/canada.gif",
-      "flag_alt": "Canada Flag",
+      "flag_alt": "B.C. Canada",
       "flyer": "https://www.worldministries.org/Userfiles/Flyer-jpegs/2026-08-07-ChurchOnFire.JPG",
       "flyer_alt": "Church On Fire Conference",
-      "body_html": "<p><strong><strong><strong><img src=\"https://www.worldministries.org/Userfiles/Flyer-jpegs/2026-08-07-ChurchOnFire.JPG\" width=\"200\" style=\"width: 200px; height: auto;\" alt=\"Church On Fire Conference\" /><br />Prince Rupert, B.C. Canada<br /></strong></strong></strong>August 7 - 9, 2026: Fri 6pm, Sat 11 AM &amp; 6pm, Sun 5:00 PM<br /><span>Rev. Dr. Adalia Hansen &amp; Rev Dr. Jonathan Hansen - Speaking<br />Host: Pastor Irene Jesso&nbsp;<br />High Liner Hotel &amp; Conference Centre<br />815 1st Ave West, Prince Rupert, BC V8J 1A6</span></p>",
-      "region": "international"
+      "links": [],
+      "body_lines": [],
+      "region": "international",
+      "body_html": "<p><strong><img src=\"https://www.worldministries.org/Userfiles/Flyer-jpegs/2026-08-07-ChurchOnFire.JPG\" style=\"width: 200px; height: auto;\" alt=\"Church On Fire Conference\" /><br />Prince Rupert, B.C. Canada<br /></strong>August 7 - 9, 2026: Fri 6pm, Sat 11 AM &amp; 6pm, Sun 5:00 PM<br />Rev. Dr. Adalia &amp; Rev. Dr. Jonathan Hansen - Speaking<br />Host: Pastor Irene Jesso<br />High Liner Hotel &amp; Conference Centre<br />815 1st Ave West,<br />Prince Rupert, BC  V8J 1A6<br /></p>"
     },
     {
       "id": "2026-04-26-kitengela-kenya",
@@ -5254,7 +5276,7 @@
     }
   ],
   "lastManualUpdate": {
-    "at": "2026-09-03T20:30:00Z",
-    "note": "Restoration Weekend city: Vereeniging, South Africa"
+    "at": "2026-09-09T16:52:38Z",
+    "note": "Upsert event 2026-08-07-prince-rupert-b-c-canada"
   }
 }
