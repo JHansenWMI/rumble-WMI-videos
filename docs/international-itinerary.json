@@ -1,7 +1,7 @@
 {
   "title": "International Itinerary",
   "region": "international",
-  "generatedAt": "2026-09-09T16:52:38Z",
+  "generatedAt": "2026-09-09T16:55:25Z",
   "sourceUrl": "https://www.worldministries.org/international-itinerary.aspx",
   "introHtml": "<p>Due to the COVID restrictions which started immediately after I arrived back from Amsterdam, Netherlands, February 2, 2020, my international itinerary already scheduled for the rest of 2020 was cancelled as well as 2021. Only limited national ministry trips were taken.</p>",
   "eventCount": 389,
@@ -313,13 +313,11 @@
       "event_name": "Healing Crusade",
       "event_type": "crusade",
       "speakers": [
-        "Rev. Dr. Jonathan Hansen",
-        "Rev. Dr. Adalia Hansen"
+        "Rev. Dr. Jonathan & Rev. Dr. Adalia Hansen"
       ],
       "speaker_verb": "speaking",
       "hosts": [
-        "Prophet Kofi Nyarko",
-        "Prophetess Beverly Nyarko"
+        "Prophet Kofi & Prophetess Beverly Nyarko"
       ],
       "venue": "Kingdom Fighters Chapel International",
       "address_lines": [
@@ -336,7 +334,7 @@
         "Sunday 2nd service: Nelspruit 11:30 AM"
       ],
       "region": "international",
-      "body_html": "<p><strong><img src=\"https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/evt-000386.jpg\" style=\"width: 200px; height: auto;\" alt=\"Healing Crusade — Kingdom Fighters Chapel International\" /><br />Nelspruit &amp; Barberton, South Africa<br /></strong>September 2 - 4, 2026<br />Healing Crusade<br />Rev. Dr. Jonathan Hansen, Rev. Dr. Adalia Hansen - Speaking<br />Host: Prophet Kofi Nyarko, Prophetess Beverly Nyarko<br />Kingdom Fighters Chapel International<br />Wed, 2 Sept: Nelspruit — 65 Anderson Street<br />Thu 3 &amp; Fri 4 Sept: Barberton — 61 Crown Street<br />Sunday 1st service: Barberton 9:00 AM<br />Sunday 2nd service: Nelspruit 11:30 AM<br /></p>"
+      "body_html": "<p><strong><img src=\"https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/evt-000386.jpg\" style=\"width: 200px; height: auto;\" alt=\"Healing Crusade — Kingdom Fighters Chapel International\" /><br />Nelspruit &amp; Barberton, South Africa<br /></strong>September 2 - 4, 2026<br />Healing Crusade<br />Rev. Dr. Jonathan &amp; Rev. Dr. Adalia Hansen - Speaking<br />Host: Prophet Kofi &amp; Prophetess Beverly Nyarko<br />Kingdom Fighters Chapel International<br />Wed, 2 Sept: Nelspruit — 65 Anderson Street<br />Thu 3 &amp; Fri 4 Sept: Barberton — 61 Crown Street<br />Sunday 1st service: Barberton 9:00 AM<br />Sunday 2nd service: Nelspruit 11:30 AM<br /></p>"
     },
     {
       "id": "2026-09-01-south-africa",
@@ -5276,7 +5274,7 @@
     }
   ],
   "lastManualUpdate": {
-    "at": "2026-09-09T16:52:38Z",
-    "note": "Upsert event 2026-08-07-prince-rupert-b-c-canada"
+    "at": "2026-09-09T16:55:25Z",
+    "note": "Upsert event evt-000386"
   }
 }
