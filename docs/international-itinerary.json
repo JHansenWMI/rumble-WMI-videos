@@ -1,7 +1,7 @@
 {
   "title": "International Itinerary",
   "region": "international",
-  "generatedAt": "2026-09-09T17:00:07Z",
+  "generatedAt": "2026-09-09T17:01:45Z",
   "sourceUrl": "https://www.worldministries.org/international-itinerary.aspx",
   "introHtml": "<p>Due to the COVID restrictions which started immediately after I arrived back from Amsterdam, Netherlands, February 2, 2020, my international itinerary already scheduled for the rest of 2020 was cancelled as well as 2021. Only limited national ministry trips were taken.</p>",
   "eventCount": 389,
@@ -201,8 +201,7 @@
       ],
       "speaker_verb": "speaking",
       "hosts": [
-        "Apostle Moses O'Reilly",
-        "Pastor Veronica O'Reilly"
+        "Apostle Moses & Pastor Veronica O'Reilly"
       ],
       "venue": "GIAMI HQ",
       "address_lines": [
@@ -217,7 +216,7 @@
         "Pastor Gibson Brown also speaking"
       ],
       "region": "international",
-      "body_html": "<p><strong><img src=\"https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/2026-09-11-giami-annual-revival.jpg\" style=\"width: 200px; height: auto;\" alt=\"God Is Able Annual Revival — GIAMI\" /><br />Nelspruit, South Africa<br /></strong>September 11 - 20, 2026 — 6:00 PM daily<br />God Is Able Annual Revival<br />Rev. Dr. Jonathan Hansen - Speaking<br />Host: Apostle Moses &amp; Pastor Veronica O'Reilly<br />GIAMI HQ<br />Kamagugu Road, Nelspruit<br /></p>"
+      "body_html": "<p><strong><img src=\"https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/2026-09-11-giami-annual-revival.jpg\" style=\"width: 200px; height: auto;\" alt=\"God Is Able Annual Revival — GIAMI\" /><br />Nelspruit, South Africa<br /></strong>September 11 - 20, 2026 — 6:00 PM daily<br />God Is Able Annual Revival<br />Rev. Dr. Jonathan Hansen - Speaking<br />Host: Apostle Moses &amp; Pastor Veronica O'Reilly<br />GIAMI HQ<br />Kamagugu Road, Nelspruit<br />Pastor Gibson Brown also speaking<br /></p>"
     },
     {
       "id": "2026-09-08-tuesday-teaching-service-cre",
@@ -5267,7 +5266,7 @@
     }
   ],
   "lastManualUpdate": {
-    "at": "2026-09-09T17:00:07Z",
-    "note": "Upsert event 2026-09-08-tuesday-teaching-service-cre"
+    "at": "2026-09-09T17:01:45Z",
+    "note": "Upsert event 2026-09-11-giami-annual-revival"
   }
 }
