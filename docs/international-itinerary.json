@@ -1,7 +1,7 @@
 {
   "title": "International Itinerary",
   "region": "international",
-  "generatedAt": "2026-09-11T16:45:20Z",
+  "generatedAt": "2026-09-16T14:57:29Z",
   "sourceUrl": "https://www.worldministries.org/international-itinerary.aspx",
   "introHtml": "<p>Due to the COVID restrictions which started immediately after I arrived back from Amsterdam, Netherlands, February 2, 2020, my international itinerary already scheduled for the rest of 2020 was cancelled as well as 2021. Only limited national ministry trips were taken.</p>",
   "eventCount": 389,
@@ -87,7 +87,7 @@
       ],
       "speaker_verb": "speaking",
       "hosts": [],
-      "venue": "KZN Celebration Center",
+      "venue": "KZN Celebration Centre",
       "address_lines": [
         "33 High Street, Tongaat"
       ],
@@ -98,7 +98,7 @@
       "links": [],
       "body_lines": [],
       "region": "international",
-      "body_html": "<p><strong><img src=\"https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/2026-01-01-event-sisters-connect.jpg\" style=\"width: 200px; height: auto;\" alt=\"Sister Connect flyer\" /><br />Tongaat, South Africa<br /></strong>October 3rd, 2026 — 9:30 AM<br />Sisters Connect<br />Rev. Dr. Adalia Hansen - Speaking<br />KZN Celebration Center<br />33 High Street, Tongaat<br /></p>"
+      "body_html": "<p><strong><img src=\"https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/2026-01-01-event-sisters-connect.jpg\" style=\"width: 200px; height: auto;\" alt=\"Sister Connect flyer\" /><br />Tongaat, South Africa<br /></strong>October 3rd, 2026 — 9:30 AM<br />Sisters Connect<br />Rev. Dr. Adalia Hansen - Speaking<br />KZN Celebration Centre<br />33 High Street, Tongaat<br /></p>"
     },
     {
       "id": "2026-09-30-south-africa",
@@ -132,7 +132,7 @@
       "id": "2026-09-21-malawi",
       "year": 2026,
       "sort_date": "2026-09-21",
-      "date_text": "September 21st - 30th, 2026",
+      "date_text": "September 21 - 30, 2026",
       "start_date": "2026-09-21",
       "end_date": "2026-09-21",
       "time_text": "",
@@ -154,7 +154,7 @@
       "links": [],
       "body_lines": [],
       "region": "international",
-      "body_html": "<p><strong>Malawi<br /></strong>September 21st - 30th, 2026<br /></p>"
+      "body_html": "<p><strong>Malawi<br /></strong>September 21 - 30, 2026<br /></p>"
     },
     {
       "id": "2026-09-16-cape-town-south-africa",
@@ -5314,7 +5314,7 @@
     }
   ],
   "lastManualUpdate": {
-    "at": "2026-09-09T17:19:03Z",
-    "note": "Upsert event 2026-10-25-south-korea"
+    "at": "2026-09-16T14:57:29Z",
+    "note": "Upsert event 2026-09-21-malawi"
   }
 }
