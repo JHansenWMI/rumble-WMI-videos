@@ -48,6 +48,10 @@ class CustomUpdateTests(unittest.TestCase):
             )
         )
 
+    def test_nwo_tyranny_watch_warning_date_sep_15_pdt(self):
+        out = apply_custom_updates([_item(video_id="445756090")], parse_datetime)
+        self.assertEqual(out[0].pub_date, "Tue, 15 Sep 2026 23:00:00 +0000")
+
 
 if __name__ == "__main__":
     unittest.main()

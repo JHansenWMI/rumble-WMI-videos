@@ -32,6 +32,10 @@ OVERRIDES_BY_GUID = {
     "445132574": {
         "thumb": SITE_THUMB_BASE + "baberton-nelspruit-sunday-service-16x9.jpg",
     },
+    # Watch Warning date: 15 Sep 2026 PDT (16:00 PDT = 23:00 UTC)
+    "445756090": {
+        "pub_date": "Tue, 15 Sep 2026 23:00:00 +0000",
+    },
 }
 
 _FEEDITEM_FIELDS = {
