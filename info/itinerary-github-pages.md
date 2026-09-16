@@ -38,3 +38,5 @@ Host **website-facing** itinerary data the same way as TV/radio widgets:
 | `/website/itinerary/united-states` | United States page-preview editor |
 
 Publish stages both itinerary JSON trees, widgets, flags, and CMS shells via git push to this repo.
+
+If asked to post a flyer and that event is already in the local JSON, stop and tell the operator — do not add a duplicate.
