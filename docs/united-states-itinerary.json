@@ -1,7 +1,7 @@
 {
   "title": "United States Itinerary",
   "region": "us",
-  "generatedAt": "2026-09-17T18:06:13Z",
+  "generatedAt": "2026-09-17T18:10:33Z",
   "sourceUrl": "https://www.worldministries.org/united-states-itinerary.aspx",
   "introHtml": "",
   "eventCount": 255,
@@ -114,10 +114,10 @@
       "id": "2026-07-26-auburn-washington",
       "year": 2026,
       "sort_date": "2026-07-26",
-      "date_text": "Sun, July 26th, 2026 - 11:00 AM",
+      "date_text": "Sun, July 26, 2026",
       "start_date": "2026-07-26",
       "end_date": "2026-07-26",
-      "time_text": "",
+      "time_text": "11:00 am",
       "place": "Auburn, Washington",
       "city": "",
       "state": "Washington",
@@ -125,8 +125,9 @@
       "event_name": "",
       "event_type": "",
       "speakers": [],
+      "speaker_verb": "speaking",
       "hosts": [],
-      "venue": "",
+      "venue": "Beyond Barriers Ministry",
       "address_lines": [],
       "flag": "https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/state-flags/washington.gif",
       "flag_alt": "Washington",
@@ -135,7 +136,7 @@
       "links": [],
       "body_lines": [],
       "region": "us",
-      "body_html": "<p><strong>Auburn, Washington<br /></strong>Sun, July 26th, 2026 - 11:00 AM<br /></p>"
+      "body_html": "<p><strong>Auburn, Washington<br /></strong>Sun, July 26, 2026 — 11:00 am<br />Beyond Barriers Ministry<br /></p>"
     },
     {
       "id": "2026-06-28-everett-washington",
@@ -5466,7 +5467,7 @@
     }
   ],
   "lastManualUpdate": {
-    "at": "2026-09-17T18:06:13Z",
-    "note": "Upsert event 2026-06-28-everett-washington"
+    "at": "2026-09-17T18:10:33Z",
+    "note": "Upsert event 2026-07-26-auburn-washington"
   }
 }
