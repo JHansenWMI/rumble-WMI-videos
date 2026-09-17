@@ -1,7 +1,7 @@
 {
   "title": "International Itinerary",
   "region": "international",
-  "generatedAt": "2026-09-16T14:58:21Z",
+  "generatedAt": "2026-09-17T18:27:54Z",
   "sourceUrl": "https://www.worldministries.org/international-itinerary.aspx",
   "introHtml": "<p>Due to the COVID restrictions which started immediately after I arrived back from Amsterdam, Netherlands, February 2, 2020, my international itinerary already scheduled for the rest of 2020 was cancelled as well as 2021. Only limited national ministry trips were taken.</p>",
   "eventCount": 389,
@@ -610,14 +610,29 @@
       "id": "2026-04-01-kenya",
       "year": 2026,
       "sort_date": "2026-04-01",
-      "date_text": "April 1 - 28th, 2026",
+      "date_text": "April 1 - 28, 2026",
+      "start_date": "2026-04-01",
+      "end_date": "2026-04-01",
+      "time_text": "",
       "place": "Kenya",
+      "city": "",
+      "state": "",
+      "country": "",
+      "event_name": "",
+      "event_type": "",
+      "speakers": [],
+      "speaker_verb": "speaking",
+      "hosts": [],
+      "venue": "",
+      "address_lines": [],
       "flag": "https://www.worldministries.org/Userfiles/Flags/kenya.gif",
       "flag_alt": "kenya",
       "flyer": "",
-      "flyer_alt": "",
-      "body_html": "<p><strong><strong><strong>Kenya<br /></strong></strong></strong>April 1 - 28th, 2026</p>",
-      "region": "international"
+      "flyer_alt": "Kenya",
+      "links": [],
+      "body_lines": [],
+      "region": "international",
+      "body_html": "<p><strong>Kenya<br /></strong>April 1 - 28, 2026<br /></p>"
     },
     {
       "id": "2026-01-01-canada",
@@ -5314,7 +5329,7 @@
     }
   ],
   "lastManualUpdate": {
-    "at": "2026-09-16T14:58:21Z",
-    "note": "Upsert event 2026-10-03-KZNCC-sisters-connect"
+    "at": "2026-09-17T18:27:54Z",
+    "note": "Upsert event 2026-04-01-kenya"
   }
 }
