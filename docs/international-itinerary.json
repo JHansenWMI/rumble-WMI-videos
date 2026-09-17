@@ -1,7 +1,7 @@
 {
   "title": "International Itinerary",
   "region": "international",
-  "generatedAt": "2026-09-17T20:10:53Z",
+  "generatedAt": "2026-09-17T20:15:32Z",
   "sourceUrl": "https://www.worldministries.org/international-itinerary.aspx",
   "introHtml": "<p>Due to the COVID restrictions which started immediately after I arrived back from Amsterdam, Netherlands, February 2, 2020, my international itinerary already scheduled for the rest of 2020 was cancelled as well as 2021. Only limited national ministry trips were taken.</p>",
   "eventCount": 389,
@@ -546,13 +546,32 @@
       "year": 2026,
       "sort_date": "2026-04-13",
       "date_text": "April 13 - 17, 2026",
+      "start_date": "2026-04-13",
+      "end_date": "2026-04-13",
+      "time_text": "9:00 am - 6:30 pm",
       "place": "Kiambu, Kenya",
-      "flag": "https://www.worldministries.org/Userfiles/Flags/kenya.gif",
-      "flag_alt": "kenya",
+      "city": "",
+      "state": "",
+      "country": "Kenya",
+      "event_name": "Rebecca Arise Ladies Conference",
+      "event_type": "Conference",
+      "speakers": [
+        "Rev. Dr. Adalia Hansen"
+      ],
+      "speaker_verb": "speaking",
+      "hosts": [
+        "Bishop Dr. Thomas & Rev. Phyllis Muthee"
+      ],
+      "venue": "Word of Faith Church Kiambu",
+      "address_lines": [],
+      "flag": "https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/country-flags/kenya.gif",
+      "flag_alt": "Kenya",
       "flyer": "https://www.worldministries.org/Userfiles/Flyer-jpegs/2026-04-13-Kenya-Womens-conference.jpg",
       "flyer_alt": "2026 04 13 Kenya Womens conference",
-      "body_html": "<p><strong><strong><strong><img alt=\"2026 04 13 Kenya Womens conference\" src=\"https://www.worldministries.org/Userfiles/Flyer-jpegs/2026-04-13-Kenya-Womens-conference.jpg\" style=\"width: 200px; height: auto;\" width=\"200\" /><br /></strong></strong></strong><strong>Kiambu, Kenya<br /></strong>April 13 - 17, 2026<br />9:00 AM - 6:30 PM<br />Rev. Dr. Adalia Hansen Speaking at&nbsp;<br />Rebecca Arise Ladies Conference<br />Host Church: Word of Faith Church Kiambu - Bishop Dr. Thomas Muthee &amp; <strong></strong>Rev. Phyllis Muthee</p>",
-      "region": "international"
+      "links": [],
+      "body_lines": [],
+      "region": "international",
+      "body_html": "<p><strong><img src=\"https://www.worldministries.org/Userfiles/Flyer-jpegs/2026-04-13-Kenya-Womens-conference.jpg\" style=\"width: 200px; height: auto;\" alt=\"2026 04 13 Kenya Womens conference\" /><br />Kiambu, Kenya<br /></strong>April 13 - 17, 2026 — 9:00 am - 6:30 pm<br />Rebecca Arise Ladies Conference<br />Rev. Dr. Adalia Hansen - Speaking<br />Host: Bishop Dr. Thomas &amp; Rev. Phyllis Muthee<br />Word of Faith Church Kiambu<br /></p>"
     },
     {
       "id": "2026-04-12-kiambu-kenya",
@@ -5405,7 +5424,7 @@
     }
   ],
   "lastManualUpdate": {
-    "at": "2026-09-17T20:10:53Z",
-    "note": "Upsert event 2026-04-12-kiambu-kenya"
+    "at": "2026-09-17T20:15:32Z",
+    "note": "Upsert event 2026-04-13-kiambu-kenya"
   }
 }
