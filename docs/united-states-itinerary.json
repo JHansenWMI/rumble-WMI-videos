@@ -1,7 +1,7 @@
 {
   "title": "United States Itinerary",
   "region": "us",
-  "generatedAt": "2026-09-17T17:48:56Z",
+  "generatedAt": "2026-09-17T17:54:33Z",
   "sourceUrl": "https://www.worldministries.org/united-states-itinerary.aspx",
   "introHtml": "",
   "eventCount": 255,
@@ -180,27 +180,6 @@
       "region": "us"
     },
     {
-      "id": "2026-01-18-oahu-hawaii",
-      "year": 2026,
-      "sort_date": "2026-01-18",
-      "date_text": "91-431 Fort Weaver Road, EWA Beach, HI 96706",
-      "place": "Oahu, Hawaii",
-      "city": "",
-      "state": "Hawaii",
-      "country": "United States",
-      "event_name": "",
-      "speakers": [],
-      "hosts": [],
-      "venue": "",
-      "address_lines": [],
-      "flag": "https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/state-flags/hawaii.gif",
-      "flag_alt": "hawaii",
-      "flyer": "",
-      "flyer_alt": "",
-      "body_html": "<strong>Oahu, Hawaii</strong><br />Rev. Dr. Jonathan Hansen Speaking<br />Reflame Ministries International<br />Island Comfort with Bishop Luigi Figueroa<br />91-431 Fort Weaver Road, EWA Beach, HI 96706<br />Sun, Jan 18, 2026 - 1 pm<strong></strong>",
-      "region": "us"
-    },
-    {
       "id": "2026-01-18-waianae-hawaii",
       "year": 2026,
       "sort_date": "2026-01-18",
@@ -234,6 +213,41 @@
       "body_lines": [],
       "region": "us",
       "body_html": "<p><strong>Waianae, Hawaii<br /></strong>Sun, Jan 18, 2026 — 9:00 am<br />Rev. Dr. Jonathan Hansen - Speaking<br />Host: Sr Pastor (Chaplain) Ronaldo Pascua<br />Paradise Chapel Assembly of God<br />87-125 Maipalaoa Rd<br />Waianae, HI 96792<br /></p>"
+    },
+    {
+      "id": "2026-01-18-oahu-hawaii",
+      "year": 2026,
+      "sort_date": "2026-01-18",
+      "date_text": "Sun, Jan 18, 2026",
+      "start_date": "2026-01-18",
+      "end_date": "2026-01-18",
+      "time_text": "1 pm",
+      "place": "Oahu, Hawaii",
+      "city": "",
+      "state": "Hawaii",
+      "country": "United States",
+      "event_name": "",
+      "event_type": "",
+      "speakers": [
+        "Rev. Dr. Jonathan Hansen"
+      ],
+      "speaker_verb": "speaking",
+      "hosts": [
+        "Bishop Luigi Figueroa"
+      ],
+      "venue": "Reflame Ministries Int'l",
+      "address_lines": [
+        "91-431 Fort Weaver Road",
+        "Ewa Beach, HI 96706"
+      ],
+      "flag": "https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/state-flags/hawaii.gif",
+      "flag_alt": "Hawaii",
+      "flyer": "",
+      "flyer_alt": "Oahu, Hawaii",
+      "links": [],
+      "body_lines": [],
+      "region": "us",
+      "body_html": "<p><strong>Oahu, Hawaii<br /></strong>Sun, Jan 18, 2026 — 1 pm<br />Rev. Dr. Jonathan Hansen - Speaking<br />Host: Bishop Luigi Figueroa<br />Reflame Ministries Int'l<br />91-431 Fort Weaver Road<br />Ewa Beach, HI 96706<br /></p>"
     },
     {
       "id": "2026-01-17-oahu-hawaii",
@@ -5424,7 +5438,7 @@
     }
   ],
   "lastManualUpdate": {
-    "at": "2026-09-17T17:48:56Z",
-    "note": "Upsert event 2026-01-18-waianae-hawaii"
+    "at": "2026-09-17T17:54:33Z",
+    "note": "Upsert event 2026-01-18-oahu-hawaii"
   }
 }
