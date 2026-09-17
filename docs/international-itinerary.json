@@ -1,7 +1,7 @@
 {
   "title": "International Itinerary",
   "region": "international",
-  "generatedAt": "2026-09-17T18:27:54Z",
+  "generatedAt": "2026-09-17T18:31:34Z",
   "sourceUrl": "https://www.worldministries.org/international-itinerary.aspx",
   "introHtml": "<p>Due to the COVID restrictions which started immediately after I arrived back from Amsterdam, Netherlands, February 2, 2020, my international itinerary already scheduled for the rest of 2020 was cancelled as well as 2021. Only limited national ministry trips were taken.</p>",
   "eventCount": 389,
@@ -597,14 +597,31 @@
       "id": "2026-04-03-nairobi-kenya",
       "year": 2026,
       "sort_date": "2026-04-03",
-      "date_text": "April 3, 2026 - Interdenominational Ignite Conference",
+      "date_text": "April 3, 2026",
+      "start_date": "2026-04-03",
+      "end_date": "2026-04-03",
+      "time_text": "11:00 am - 3 pm",
       "place": "Nairobi, Kenya",
-      "flag": "https://www.worldministries.org/Userfiles/Flags/kenya.gif",
-      "flag_alt": "kenya",
+      "city": "",
+      "state": "",
+      "country": "Kenya",
+      "event_name": "Interdenominational Ignite Conference",
+      "event_type": "Conference",
+      "speakers": [
+        "Rev. Dr. Jonathan Hansen"
+      ],
+      "speaker_verb": "speaking",
+      "hosts": [],
+      "venue": "",
+      "address_lines": [],
+      "flag": "https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/country-flags/kenya.gif",
+      "flag_alt": "Kenya",
       "flyer": "https://www.worldministries.org/Userfiles/Flyer-jpegs/2026-04-03-Ignite.jpg",
       "flyer_alt": "Ignite Conference",
-      "body_html": "<p><span><strong><img src=\"https://www.worldministries.org/Userfiles/Flyer-jpegs/2026-04-03-Ignite.jpg\" width=\"434\" style=\"width: 200px; height: auto;\" alt=\"Ignite Conference\" height=\"600\" /><br />Nairobi, Kenya</strong><br /></span><span>April 3, 2026 - Interdenominational Ignite Conference</span><br /><span>11:00 AM to 3PM<br />Rev. Dr. Jonathan Hansen Speaking<br />Host: Church Army Carlile</span></p>",
-      "region": "international"
+      "links": [],
+      "body_lines": [],
+      "region": "international",
+      "body_html": "<p><strong><img src=\"https://www.worldministries.org/Userfiles/Flyer-jpegs/2026-04-03-Ignite.jpg\" style=\"width: 200px; height: auto;\" alt=\"Ignite Conference\" /><br />Nairobi, Kenya<br /></strong>April 3, 2026 — 11:00 am - 3 pm<br />Interdenominational Ignite Conference<br />Rev. Dr. Jonathan Hansen - Speaking<br /></p>"
     },
     {
       "id": "2026-04-01-kenya",
@@ -5329,7 +5346,7 @@
     }
   ],
   "lastManualUpdate": {
-    "at": "2026-09-17T18:27:54Z",
-    "note": "Upsert event 2026-04-01-kenya"
+    "at": "2026-09-17T18:31:34Z",
+    "note": "Upsert event 2026-04-03-nairobi-kenya"
   }
 }
