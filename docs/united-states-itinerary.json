@@ -1,7 +1,7 @@
 {
   "title": "United States Itinerary",
   "region": "us",
-  "generatedAt": "2026-09-17T17:42:42Z",
+  "generatedAt": "2026-09-17T17:46:40Z",
   "sourceUrl": "https://www.worldministries.org/united-states-itinerary.aspx",
   "introHtml": "",
   "eventCount": 255,
@@ -204,7 +204,7 @@
       "id": "2026-01-18-waianae-hawaii",
       "year": 2026,
       "sort_date": "2026-01-18",
-      "date_text": "Sun, January 18, 2026",
+      "date_text": "Sun, Jan 18, 2026",
       "start_date": "2026-01-18",
       "end_date": "2026-01-18",
       "time_text": "9:00 am",
@@ -234,7 +234,7 @@
       "links": [],
       "body_lines": [],
       "region": "us",
-      "body_html": "<p><strong>Waianae, Hawaii<br /></strong>Sun, January 18, 2026 — 9:00 am<br />Rev. Dr. Jonathan Hansen - Speaking<br />Host: Paradise Chapel Assembly of God, with Sr Pastor (Chaplain) Ronaldo Pascua<br />87-125 Maipalaoa Rd<br />Waianae, HI 96792<br /></p>"
+      "body_html": "<p><strong>Waianae, Hawaii<br /></strong>Sun, Jan 18, 2026 — 9:00 am<br />Rev. Dr. Jonathan Hansen - Speaking<br />Host: Paradise Chapel Assembly of God, with Sr Pastor (Chaplain) Ronaldo Pascua<br />87-125 Maipalaoa Rd<br />Waianae, HI 96792<br /></p>"
     },
     {
       "id": "2026-01-17-oahu-hawaii",
@@ -5425,7 +5425,7 @@
     }
   ],
   "lastManualUpdate": {
-    "at": "2026-09-17T17:42:42Z",
+    "at": "2026-09-17T17:46:40Z",
     "note": "Upsert event 2026-01-18-waianae-hawaii"
   }
 }
