@@ -1,7 +1,7 @@
 {
   "title": "United States Itinerary",
   "region": "us",
-  "generatedAt": "2026-09-17T18:10:33Z",
+  "generatedAt": "2026-09-17T18:13:13Z",
   "sourceUrl": "https://www.worldministries.org/united-states-itinerary.aspx",
   "introHtml": "",
   "eventCount": 255,
@@ -80,7 +80,7 @@
       "id": "2026-08-16-spokane-washington",
       "year": 2026,
       "sort_date": "2026-08-16",
-      "date_text": "Sun, August 16th, 2026",
+      "date_text": "Sun, Aug 16, 2026",
       "start_date": "2026-08-16",
       "end_date": "2026-08-16",
       "time_text": "10:00 AM",
@@ -91,7 +91,7 @@
       "event_name": "",
       "event_type": "",
       "speakers": [
-        "Dr Jonathan & Dr Adalia Hansen"
+        "Drs Jonathan & Adalia Hansen"
       ],
       "speaker_verb": "ministering",
       "hosts": [
@@ -99,7 +99,7 @@
       ],
       "venue": "On Fire Ministries",
       "address_lines": [
-        "7410 N. Division St., Spokane"
+        "7410 N. Division St., Spokane, WA"
       ],
       "flag": "https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/state-flags/washington.gif",
       "flag_alt": "Washington",
@@ -108,7 +108,7 @@
       "links": [],
       "body_lines": [],
       "region": "us",
-      "body_html": "<p><strong><img src=\"https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/2026-08-16-spokane-washington.jpg\" style=\"width: 200px; height: auto;\" alt=\"Spokane, Washington\" /><br />Spokane, Washington<br /></strong>Sun, August 16th, 2026 — 10:00 AM<br />Dr Jonathan &amp; Dr Adalia Hansen ministering<br />Host: Pastor Matt Shea<br />On Fire Ministries<br />7410 N. Division St., Spokane<br /></p>"
+      "body_html": "<p><strong><img src=\"https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/2026-08-16-spokane-washington.jpg\" style=\"width: 200px; height: auto;\" alt=\"Spokane, Washington\" /><br />Spokane, Washington<br /></strong>Sun, Aug 16, 2026 — 10:00 AM<br />Drs Jonathan &amp; Adalia Hansen ministering<br />Host: Pastor Matt Shea<br />On Fire Ministries<br />7410 N. Division St., Spokane, WA<br /></p>"
     },
     {
       "id": "2026-07-26-auburn-washington",
@@ -5467,7 +5467,7 @@
     }
   ],
   "lastManualUpdate": {
-    "at": "2026-09-17T18:10:33Z",
-    "note": "Upsert event 2026-07-26-auburn-washington"
+    "at": "2026-09-17T18:13:13Z",
+    "note": "Upsert event 2026-08-16-spokane-washington"
   }
 }
