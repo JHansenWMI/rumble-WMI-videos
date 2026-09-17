@@ -1,7 +1,7 @@
 {
   "title": "International Itinerary",
   "region": "international",
-  "generatedAt": "2026-09-17T20:04:37Z",
+  "generatedAt": "2026-09-17T20:07:14Z",
   "sourceUrl": "https://www.worldministries.org/international-itinerary.aspx",
   "introHtml": "<p>Due to the COVID restrictions which started immediately after I arrived back from Amsterdam, Netherlands, February 2, 2020, my international itinerary already scheduled for the rest of 2020 was cancelled as well as 2021. Only limited national ministry trips were taken.</p>",
   "eventCount": 389,
@@ -571,14 +571,31 @@
       "id": "2026-04-07-nairobi-kenya",
       "year": 2026,
       "sort_date": "2026-04-07",
-      "date_text": "April 7, 2026 - Kenya Coalition of Church Alliances and Ministries",
+      "date_text": "April 7, 2026",
+      "start_date": "2026-04-07",
+      "end_date": "2026-04-07",
+      "time_text": "9:00 am - 2 pm",
       "place": "Nairobi, Kenya",
-      "flag": "https://www.worldministries.org/Userfiles/Flags/kenya.gif",
-      "flag_alt": "kenya",
+      "city": "",
+      "state": "",
+      "country": "Kenya",
+      "event_name": "Kenya Coalition of Church Alliances and Ministries",
+      "event_type": "",
+      "speakers": [
+        "Rev. Dr. Jonathan Hansen"
+      ],
+      "speaker_verb": "speaking",
+      "hosts": [],
+      "venue": "",
+      "address_lines": [],
+      "flag": "https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/country-flags/kenya.gif",
+      "flag_alt": "Kenya",
       "flyer": "",
-      "flyer_alt": "",
-      "body_html": "<p><span><strong>Nairobi, Kenya</strong><br /></span><span>April 7, 2026 - Kenya Coalition of Church Alliances and Ministries</span><br /><span>9:00 AM - 2:00 PM<br />Rev. Dr. Jonathan Hansen Speaking</span></p>",
-      "region": "international"
+      "flyer_alt": "Nairobi, Kenya",
+      "links": [],
+      "body_lines": [],
+      "region": "international",
+      "body_html": "<p><strong>Nairobi, Kenya<br /></strong>April 7, 2026 — 9:00 am - 2 pm<br />Kenya Coalition of Church Alliances and Ministries<br />Rev. Dr. Jonathan Hansen - Speaking<br /></p>"
     },
     {
       "id": "2026-04-05-nairobi-kenya",
@@ -5369,7 +5386,7 @@
     }
   ],
   "lastManualUpdate": {
-    "at": "2026-09-17T20:04:37Z",
-    "note": "Upsert event 2026-04-05-nairobi-kenya"
+    "at": "2026-09-17T20:07:14Z",
+    "note": "Upsert event 2026-04-07-nairobi-kenya"
   }
 }
