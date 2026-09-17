@@ -1,7 +1,7 @@
 {
   "title": "United States Itinerary",
   "region": "us",
-  "generatedAt": "2026-09-17T17:54:33Z",
+  "generatedAt": "2026-09-17T18:06:13Z",
   "sourceUrl": "https://www.worldministries.org/united-states-itinerary.aspx",
   "introHtml": "",
   "eventCount": 255,
@@ -141,43 +141,71 @@
       "id": "2026-06-28-everett-washington",
       "year": 2026,
       "sort_date": "2026-06-28",
-      "date_text": "Rev. Dr. Adalia Hansen Speaking - Sun, June 28th, 4pm",
+      "date_text": "Fri, June 26 - Sun, 28, 2026",
+      "start_date": "2026-06-28",
+      "end_date": "2026-06-28",
+      "time_text": "",
       "place": "Everett, Washington",
       "city": "",
       "state": "Washington",
       "country": "United States",
-      "event_name": "",
-      "speakers": [],
-      "hosts": [],
-      "venue": "",
-      "address_lines": [],
+      "event_name": "Versatile Ladies Conference",
+      "event_type": "",
+      "speakers": [
+        "Rev. Dr. Adalia Hansen - 4 pm"
+      ],
+      "speaker_verb": "speaking",
+      "hosts": [
+        "Pastor Carol Muthiora"
+      ],
+      "venue": "Joybringers Church",
+      "address_lines": [
+        "111 SE Everett Mall Way, Building A",
+        "Everett, WA  98208"
+      ],
       "flag": "https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/state-flags/washington.gif",
-      "flag_alt": "washington",
+      "flag_alt": "Washington",
       "flyer": "",
-      "flyer_alt": "",
-      "body_html": "<strong><img src=\"https://www.worldministries.org/Userfiles/Flyer-jpegs/2026-06-19-Versatile-Ladies-Conference.jpg\" alt=\"Versatile Ladies Conference Flyer\" style=\"height: 200px; width: auto;\" height=\"200\" /><br />Everett, Washington</strong><br />Versatile Ladies Conference<br />Rev. Dr. Adalia Hansen Speaking - Sun, June 28th, 4pm<br />Host: Joybringers Church Everett - Pastor Carol Muthiora<br />111 SE Everett Mall Way Building A, Everett WA 98208<br />Fri, June 26th - Sun, June 28th, 2026",
-      "region": "us"
+      "flyer_alt": "Everett, Washington",
+      "links": [],
+      "body_lines": [],
+      "region": "us",
+      "body_html": "<p><strong>Everett, Washington<br /></strong>Fri, June 26 - Sun, 28, 2026<br />Versatile Ladies Conference<br />Rev. Dr. Adalia Hansen - 4 pm - Speaking<br />Host: Pastor Carol Muthiora<br />Joybringers Church<br />111 SE Everett Mall Way, Building A<br />Everett, WA  98208<br /></p>"
     },
     {
       "id": "2026-01-25-waianae-hawaii",
       "year": 2026,
       "sort_date": "2026-01-25",
-      "date_text": "87-112 Milikami St, Waianae, Hawaii 96792",
+      "date_text": "Sun, Jan 25, 2026",
+      "start_date": "2026-01-25",
+      "end_date": "2026-01-25",
+      "time_text": "10:30 am",
       "place": "Waianae, Hawaii",
       "city": "",
       "state": "Hawaii",
       "country": "United States",
       "event_name": "",
-      "speakers": [],
-      "hosts": [],
-      "venue": "",
-      "address_lines": [],
+      "event_type": "",
+      "speakers": [
+        "Rev. Dr. Jonathan Hansen"
+      ],
+      "speaker_verb": "speaking",
+      "hosts": [
+        "Pastor Annette L. Tupua"
+      ],
+      "venue": "Holy Hill of Zion Church Thy Dwelling Place",
+      "address_lines": [
+        "87-112 Milikami St",
+        "Waianae, HI  96792"
+      ],
       "flag": "https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/state-flags/hawaii.gif",
-      "flag_alt": "hawaii",
+      "flag_alt": "Hawaii",
       "flyer": "",
-      "flyer_alt": "",
-      "body_html": "<strong>Waianae, Hawaii</strong>  <br />Rev. Dr. Jonathan Hansen Speaking<br />Host: Holy Hill of Zion Church Thy Dwelling Place<br />  with Pastor Annette L. Tupua  <br />87-112 Milikami St, Waianae, Hawaii 96792<br />Sun,   Jan 25, 2026 - 10:30 am",
-      "region": "us"
+      "flyer_alt": "Waianae, Hawaii",
+      "links": [],
+      "body_lines": [],
+      "region": "us",
+      "body_html": "<p><strong>Waianae, Hawaii<br /></strong>Sun, Jan 25, 2026 — 10:30 am<br />Rev. Dr. Jonathan Hansen - Speaking<br />Host: Pastor Annette L. Tupua<br />Holy Hill of Zion Church Thy Dwelling Place<br />87-112 Milikami St<br />Waianae, HI  96792<br /></p>"
     },
     {
       "id": "2026-01-18-waianae-hawaii",
@@ -5438,7 +5466,7 @@
     }
   ],
   "lastManualUpdate": {
-    "at": "2026-09-17T17:54:33Z",
-    "note": "Upsert event 2026-01-18-oahu-hawaii"
+    "at": "2026-09-17T18:06:13Z",
+    "note": "Upsert event 2026-06-28-everett-washington"
   }
 }
