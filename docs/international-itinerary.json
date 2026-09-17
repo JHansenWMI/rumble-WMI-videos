@@ -1,7 +1,7 @@
 {
   "title": "International Itinerary",
   "region": "international",
-  "generatedAt": "2026-09-17T18:34:18Z",
+  "generatedAt": "2026-09-17T20:04:37Z",
   "sourceUrl": "https://www.worldministries.org/international-itinerary.aspx",
   "introHtml": "<p>Due to the COVID restrictions which started immediately after I arrived back from Amsterdam, Netherlands, February 2, 2020, my international itinerary already scheduled for the rest of 2020 was cancelled as well as 2021. Only limited national ministry trips were taken.</p>",
   "eventCount": 389,
@@ -584,14 +584,35 @@
       "id": "2026-04-05-nairobi-kenya",
       "year": 2026,
       "sort_date": "2026-04-05",
-      "date_text": "April 5, 2026 - Deliverance Church International Lang'ata",
+      "date_text": "April 5, 2026",
+      "start_date": "2026-04-05",
+      "end_date": "2026-04-05",
+      "time_text": "11:00 am",
       "place": "Nairobi, Kenya",
-      "flag": "https://www.worldministries.org/Userfiles/Flags/kenya.gif",
-      "flag_alt": "kenya",
+      "city": "",
+      "state": "",
+      "country": "Kenya",
+      "event_name": "",
+      "event_type": "",
+      "speakers": [
+        "Rev. Dr. Jonathan Hansen"
+      ],
+      "speaker_verb": "speaking",
+      "hosts": [
+        "Bishop Geoffrey Njuguna"
+      ],
+      "venue": "Deliverance Church International Lang'ata",
+      "address_lines": [
+        "Nairobi, Kenya"
+      ],
+      "flag": "https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/country-flags/kenya.gif",
+      "flag_alt": "Kenya",
       "flyer": "https://www.worldministries.org/Userfiles/Flyer-jpegs/2026-04-05-At-Deliverance-Church.jpg",
       "flyer_alt": "Dr. Jonathan Hansen poster with Bishop Njuguna",
-      "body_html": "<p><span><strong><img src=\"https://www.worldministries.org/Userfiles/Flyer-jpegs/2026-04-05-At-Deliverance-Church.jpg\" width=\"200\" style=\"width: 200px; height: auto;\" alt=\"Dr. Jonathan Hansen poster with Bishop Njuguna\" /><br />Nairobi, Kenya</strong><br /></span><span>April 5, 2026 - Deliverance Church International Lang'ata</span><br /><span>11:00 AM<br />Rev. Dr. Jonathan Hansen Speaking<br />Host: Bishop Geoffrey Njuguna</span><br /><span>Nairobi, Kenya</span></p>",
-      "region": "international"
+      "links": [],
+      "body_lines": [],
+      "region": "international",
+      "body_html": "<p><strong><img src=\"https://www.worldministries.org/Userfiles/Flyer-jpegs/2026-04-05-At-Deliverance-Church.jpg\" style=\"width: 200px; height: auto;\" alt=\"Dr. Jonathan Hansen poster with Bishop Njuguna\" /><br />Nairobi, Kenya<br /></strong>April 5, 2026 — 11:00 am<br />Rev. Dr. Jonathan Hansen - Speaking<br />Host: Bishop Geoffrey Njuguna<br />Deliverance Church International Lang'ata<br />Nairobi, Kenya<br /></p>"
     },
     {
       "id": "2026-04-03-nairobi-kenya",
@@ -5348,7 +5369,7 @@
     }
   ],
   "lastManualUpdate": {
-    "at": "2026-09-17T18:34:18Z",
-    "note": "Upsert event 2026-04-03-nairobi-kenya"
+    "at": "2026-09-17T20:04:37Z",
+    "note": "Upsert event 2026-04-05-nairobi-kenya"
   }
 }
