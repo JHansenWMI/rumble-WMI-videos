@@ -1,7 +1,7 @@
 {
   "title": "International Itinerary",
   "region": "international",
-  "generatedAt": "2026-09-17T20:07:14Z",
+  "generatedAt": "2026-09-17T20:10:53Z",
   "sourceUrl": "https://www.worldministries.org/international-itinerary.aspx",
   "introHtml": "<p>Due to the COVID restrictions which started immediately after I arrived back from Amsterdam, Netherlands, February 2, 2020, my international itinerary already scheduled for the rest of 2020 was cancelled as well as 2021. Only limited national ministry trips were taken.</p>",
   "eventCount": 389,
@@ -559,13 +559,32 @@
       "year": 2026,
       "sort_date": "2026-04-12",
       "date_text": "April 12, 2026",
+      "start_date": "2026-04-12",
+      "end_date": "2026-04-12",
+      "time_text": "8:00 am & 10:30 am",
       "place": "Kiambu, Kenya",
-      "flag": "https://www.worldministries.org/Userfiles/Flags/kenya.gif",
-      "flag_alt": "kenya",
+      "city": "",
+      "state": "",
+      "country": "Kenya",
+      "event_name": "",
+      "event_type": "",
+      "speakers": [
+        "Rev. Dr. Jonathan Hansen"
+      ],
+      "speaker_verb": "speaking",
+      "hosts": [
+        "Bishop Dr. Thomas Muthee"
+      ],
+      "venue": "Word of Faith Church",
+      "address_lines": [],
+      "flag": "https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/country-flags/kenya.gif",
+      "flag_alt": "Kenya",
       "flyer": "",
-      "flyer_alt": "",
-      "body_html": "<p><strong><strong><strong src=\"https://www.worldministries.org/Userfiles/Flyer-jpegs/2026-04-13-Kenya-Womens-conference.jpg\" border=\"0\">Kiambu, Kenya<br /></strong></strong></strong>April 12, 2026<br />8:00 AM and 10:30 AM<br />Rev. Dr. Jonathan Hansen Speaking<br />Word of Faith Church<br />Host: Bishop Dr. Thomas Muthee</p>",
-      "region": "international"
+      "flyer_alt": "Kiambu, Kenya",
+      "links": [],
+      "body_lines": [],
+      "region": "international",
+      "body_html": "<p><strong>Kiambu, Kenya<br /></strong>April 12, 2026 — 8:00 am &amp; 10:30 am<br />Rev. Dr. Jonathan Hansen - Speaking<br />Host: Bishop Dr. Thomas Muthee<br />Word of Faith Church<br /></p>"
     },
     {
       "id": "2026-04-07-nairobi-kenya",
@@ -5386,7 +5405,7 @@
     }
   ],
   "lastManualUpdate": {
-    "at": "2026-09-17T20:07:14Z",
-    "note": "Upsert event 2026-04-07-nairobi-kenya"
+    "at": "2026-09-17T20:10:53Z",
+    "note": "Upsert event 2026-04-12-kiambu-kenya"
   }
 }
