@@ -1,7 +1,7 @@
 {
   "title": "United States Itinerary",
   "region": "us",
-  "generatedAt": "2026-09-17T18:13:13Z",
+  "generatedAt": "2026-09-17T18:16:20Z",
   "sourceUrl": "https://www.worldministries.org/united-states-itinerary.aspx",
   "introHtml": "",
   "eventCount": 255,
@@ -44,7 +44,7 @@
       "id": "evt-000255",
       "year": 2026,
       "sort_date": "2026-08-23",
-      "date_text": "Sun, August 23, 2026",
+      "date_text": "Sun, Aug 23, 2026",
       "start_date": "2026-08-23",
       "end_date": "2026-08-24",
       "time_text": "11:00 AM (Main Service)",
@@ -55,8 +55,7 @@
       "event_name": "",
       "event_type": "",
       "speakers": [
-        "Dr. Jonathan Hansen",
-        "Dr. Adalia Hansen"
+        "Drs Jonathan & Adalia Hansen"
       ],
       "speaker_verb": "speaking",
       "hosts": [
@@ -74,7 +73,7 @@
       "links": [],
       "body_lines": [],
       "region": "us",
-      "body_html": "<p><strong><img src=\"https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/2026-08-23-everett-washington.jpg\" style=\"width: 200px; height: auto;\" alt=\"Everett, Washington\" /><br />Everett, Washington<br /></strong>Sun, August 23, 2026 — 11:00 AM (Main Service)<br />Dr. Jonathan Hansen, Dr. Adalia Hansen - Speaking<br />Host: Apostle Ken Flynn<br />Out of the Valley Church<br />7003 Evergreen Way<br />Everett, WA 98203<br /></p>"
+      "body_html": "<p><strong><img src=\"https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/2026-08-23-everett-washington.jpg\" style=\"width: 200px; height: auto;\" alt=\"Everett, Washington\" /><br />Everett, Washington<br /></strong>Sun, Aug 23, 2026 — 11:00 AM (Main Service)<br />Drs Jonathan &amp; Adalia Hansen - Speaking<br />Host: Apostle Ken Flynn<br />Out of the Valley Church<br />7003 Evergreen Way<br />Everett, WA 98203<br /></p>"
     },
     {
       "id": "2026-08-16-spokane-washington",
@@ -5467,7 +5466,7 @@
     }
   ],
   "lastManualUpdate": {
-    "at": "2026-09-17T18:13:13Z",
-    "note": "Upsert event 2026-08-16-spokane-washington"
+    "at": "2026-09-17T18:16:20Z",
+    "note": "Upsert event evt-000255"
   }
 }
