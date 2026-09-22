@@ -36,6 +36,11 @@ OVERRIDES_BY_GUID = {
     "445756090": {
         "pub_date": "Tue, 15 Sep 2026 23:00:00 +0000",
     },
+    # KRC worship. Rumble published 22 Sep; the service date is Sunday 20 Sep 2026
+    # (12:00 PDT = 19:00 UTC).
+    "446226758": {
+        "pub_date": "Sun, 20 Sep 2026 19:00:00 +0000",
+    },
 }
 
 _FEEDITEM_FIELDS = {

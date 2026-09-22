@@ -52,6 +52,10 @@ class CustomUpdateTests(unittest.TestCase):
         out = apply_custom_updates([_item(video_id="445756090")], parse_datetime)
         self.assertEqual(out[0].pub_date, "Tue, 15 Sep 2026 23:00:00 +0000")
 
+    def test_krc_worship_date_is_sunday_sep_20_pdt(self):
+        out = apply_custom_updates([_item(video_id="446226758")], parse_datetime)
+        self.assertEqual(out[0].pub_date, "Sun, 20 Sep 2026 19:00:00 +0000")
+
 
 if __name__ == "__main__":
     unittest.main()
