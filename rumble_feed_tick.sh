@@ -39,17 +39,37 @@ is_full_slot() {
 
 run_full() {
   local why="$1"
+  local pending="$SCRIPT_DIR/.rumble-tripwire-state.pending"
   log "Full scrape ($why)"
+  # A scheduled slot has no tripwire check in front of it. Snapshot the listing
+  # now. A tripwire-triggered run already wrote that pending file.
+  if [[ "$why" == scheduled* ]]; then
+    rm -f "$pending"
+    if ! python3 "$SCRIPT_DIR/rumble_tripwire.py" --snapshot; then
+      log "Tripwire snapshot failed. Scraping, and leaving tripwire state unsaved."
+    fi
+  fi
   set +e
   "$SCRIPT_DIR/publish_rumble_feed.sh"
   local rc=$?
   set -e
   if [[ $rc -eq 75 ]]; then
     log "Full scrape skipped (lock held). Leaving tripwire state unsaved."
+    rm -f "$pending"
     return 75
   fi
   if [[ $rc -eq 0 ]]; then
-    python3 "$SCRIPT_DIR/rumble_tripwire.py" --save || log "Tripwire state save failed (scrape already succeeded)"
+    set +e
+    python3 "$SCRIPT_DIR/rumble_tripwire.py" --save-if-matches
+    local save_rc=$?
+    set -e
+    if [[ $save_rc -eq 3 ]]; then
+      log "Listing changed during scrape. Tripwire state left unchanged so the next tick will scrape again."
+    elif [[ $save_rc -ne 0 ]]; then
+      log "Tripwire state save failed (exit $save_rc). Scrape already succeeded."
+    fi
+  else
+    rm -f "$pending"
   fi
   return $rc
 }

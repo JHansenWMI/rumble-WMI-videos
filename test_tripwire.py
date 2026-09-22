@@ -6,7 +6,7 @@ from pathlib import Path
 from tempfile import TemporaryDirectory
 
 from generate_rumble_feed import parse_embedded_listing_items, tripwire_fingerprint
-from rumble_tripwire import load_state, merge_fingerprints, save_state
+from rumble_tripwire import listing_matches, load_state, merge_fingerprints, save_state
 
 TWO_ARRAYS_HTML = """
 <html><body>
@@ -71,6 +71,11 @@ class TripwireFingerprintTests(unittest.TestCase):
         fp = tripwire_fingerprint(TWO_ARRAYS_HTML)
         merged = merge_fingerprints([fp, fp])
         self.assertEqual(merged, fp)
+
+    def test_save_only_when_listing_matches_pending(self):
+        self.assertTrue(listing_matches("a\n", "a\n"))
+        self.assertFalse(listing_matches("a\n", "a\nb\n"))
+        self.assertFalse(listing_matches("", "a\n"))
 
 
 if __name__ == "__main__":
