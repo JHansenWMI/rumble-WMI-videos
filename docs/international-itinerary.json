@@ -1,7 +1,7 @@
 {
   "title": "International Itinerary",
   "region": "international",
-  "generatedAt": "2026-09-24T19:36:08Z",
+  "generatedAt": "2026-09-24T19:42:42Z",
   "sourceUrl": "https://www.worldministries.org/international-itinerary.aspx",
   "introHtml": "<p>Due to the COVID restrictions which started immediately after I arrived back from Amsterdam, Netherlands, February 2, 2020, my international itinerary already scheduled for the rest of 2020 was cancelled as well as 2021. Only limited national ministry trips were taken.</p>",
   "eventCount": 390,
@@ -136,7 +136,7 @@
       "start_date": "2026-09-27",
       "end_date": "2026-09-27",
       "time_text": "8:00 AM",
-      "place": "Chigoneka, Malawi",
+      "place": "Lilongwe, Malawi",
       "city": "Chigoneka",
       "state": "",
       "country": "Malawi",
@@ -149,16 +149,18 @@
       "hosts": [
         "Rev. Dr. Matilda Matabwa"
       ],
-      "venue": "Malawi Assemblies of God - Area 47 Eagles Cathedral",
-      "address_lines": [],
+      "venue": "Malawi Assemblies of God - Eagles Cathedral",
+      "address_lines": [
+        "Area 47, Chigoneka St, Lilongwe, Malawi"
+      ],
       "flag": "https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/country-flags/Malawi-flag-M-anim.gif",
       "flag_alt": "Malawi",
-      "flyer": "",
+      "flyer": "https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/evt-000390.jpg",
       "flyer_alt": "Chigoneka, Malawi",
       "links": [],
       "body_lines": [],
       "region": "international",
-      "body_html": "<p><strong>Chigoneka, Malawi<br /></strong>Sept. 27, 2026 — 8:00 AM<br />Rev. Dr. Jonathan Hansen and Rev. Dr. Adalia Hansen - Speaking<br />Host: Rev. Dr. Matilda Matabwa<br />Malawi Assemblies of God - Area 47 Eagles Cathedral<br /></p>"
+      "body_html": "<p><strong><img src=\"https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/evt-000390.jpg\" style=\"width: 200px; height: auto;\" alt=\"Chigoneka, Malawi\" /><br />Lilongwe, Malawi<br /></strong>Sept. 27, 2026 — 8:00 AM<br />Rev. Dr. Jonathan Hansen and Rev. Dr. Adalia Hansen - Speaking<br />Host: Rev. Dr. Matilda Matabwa<br />Malawi Assemblies of God - Eagles Cathedral<br />Area 47, Chigoneka St, Lilongwe, Malawi<br /></p>"
     },
     {
       "id": "2026-09-21-malawi",
@@ -5452,7 +5454,7 @@
     }
   ],
   "lastManualUpdate": {
-    "at": "2026-09-24T19:36:08Z",
+    "at": "2026-09-24T19:42:42Z",
     "note": "Upsert event evt-000390"
   }
 }
