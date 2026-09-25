@@ -1,7 +1,7 @@
 {
   "title": "International Itinerary",
   "region": "international",
-  "generatedAt": "2026-09-24T19:42:42Z",
+  "generatedAt": "2026-09-25T22:01:13Z",
   "sourceUrl": "https://www.worldministries.org/international-itinerary.aspx",
   "introHtml": "<p>Due to the COVID restrictions which started immediately after I arrived back from Amsterdam, Netherlands, February 2, 2020, my international itinerary already scheduled for the rest of 2020 was cancelled as well as 2021. Only limited national ministry trips were taken.</p>",
   "eventCount": 390,
@@ -339,8 +339,8 @@
       "start_date": "2026-09-06",
       "end_date": "2026-09-06",
       "time_text": "8:30 AM (one service only)",
-      "place": "Mount Edgecombe, South Africa",
-      "city": "Mount Edgecombe",
+      "place": "Durbin, South Africa",
+      "city": "Durbin",
       "state": "",
       "country": "South Africa",
       "event_name": "The Church Must Be Silent No More & The Nine Faces of God",
@@ -355,7 +355,7 @@
       "venue": "Gateway Church",
       "address_lines": [
         "201 Golf Course Drive",
-        "Mount Edgecombe"
+        "Mount Edgecombe, Durbin, South Africa"
       ],
       "flag": "https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/country-flags/south-africa.gif",
       "flag_alt": "South Africa",
@@ -366,7 +366,7 @@
         "Facebook Live @GatewayChurcSA"
       ],
       "region": "international",
-      "body_html": "<p><strong><img src=\"https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/2026-09-06-gateway-church.jpg\" style=\"width: 200px; height: auto;\" alt=\"Dr. Jonathan Hansen — Gateway Church\" /><br />Mount Edgecombe, South Africa<br /></strong>Sun September 6, 2026 — 8:30 AM (one service only)<br />The Church Must Be Silent No More &amp; The Nine Faces of God<br />Rev. Dr. Jonathan Hansen - Speaking<br />Host: Pastor Speedy Kisten<br />Gateway Church<br />201 Golf Course Drive<br />Mount Edgecombe<br />Facebook Live @GatewayChurcSA<br /></p>"
+      "body_html": "<p><strong><img src=\"https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/2026-09-06-gateway-church.jpg\" style=\"width: 200px; height: auto;\" alt=\"Dr. Jonathan Hansen — Gateway Church\" /><br />Durbin, South Africa<br /></strong>Sun September 6, 2026 — 8:30 AM (one service only)<br />The Church Must Be Silent No More &amp; The Nine Faces of God<br />Rev. Dr. Jonathan Hansen - Speaking<br />Host: Pastor Speedy Kisten<br />Gateway Church<br />201 Golf Course Drive<br />Mount Edgecombe, Durbin, South Africa<br />Facebook Live @GatewayChurcSA<br /></p>"
     },
     {
       "id": "evt-000386",
@@ -5454,7 +5454,7 @@
     }
   ],
   "lastManualUpdate": {
-    "at": "2026-09-24T19:42:42Z",
-    "note": "Upsert event evt-000390"
+    "at": "2026-09-25T22:01:13Z",
+    "note": "Upsert event evt-000385"
   }
 }
