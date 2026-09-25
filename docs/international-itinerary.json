@@ -1,11 +1,43 @@
 {
   "title": "International Itinerary",
   "region": "international",
-  "generatedAt": "2026-09-25T22:01:13Z",
+  "generatedAt": "2026-09-25T22:10:08Z",
   "sourceUrl": "https://www.worldministries.org/international-itinerary.aspx",
   "introHtml": "<p>Due to the COVID restrictions which started immediately after I arrived back from Amsterdam, Netherlands, February 2, 2020, my international itinerary already scheduled for the rest of 2020 was cancelled as well as 2021. Only limited national ministry trips were taken.</p>",
-  "eventCount": 390,
+  "eventCount": 391,
   "events": [
+    {
+      "id": "evt-000391",
+      "year": null,
+      "sort_date": "",
+      "date_text": "Set. 12, 2026",
+      "start_date": "",
+      "end_date": "",
+      "time_text": "",
+      "place": "Gauteng, South Africa",
+      "city": "Gauteng",
+      "state": "",
+      "country": "South Africa",
+      "event_name": "South Africa Church Defenders meeting",
+      "event_type": "",
+      "speakers": [
+        "Rev. Dr. Jonathan Hansen"
+      ],
+      "speaker_verb": "speaking",
+      "hosts": [
+        "Pastor Mukhuba"
+      ],
+      "venue": "",
+      "address_lines": [],
+      "flag": "https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/country-flags/south-africa.gif",
+      "flag_alt": "South Africa",
+      "flyer": "",
+      "flyer_alt": "Gauteng, South Africa",
+      "links": [],
+      "body_lines": [],
+      "region": "international",
+      "body_html": "<p><strong>Gauteng, South Africa<br /></strong>Set. 12, 2026<br />South Africa Church Defenders meeting<br />Rev. Dr. Jonathan Hansen - Speaking<br />Host: Pastor Mukhuba<br /></p>"
+    },
     {
       "id": "2026-10-25-south-korea",
       "year": 2026,
@@ -5454,7 +5486,7 @@
     }
   ],
   "lastManualUpdate": {
-    "at": "2026-09-25T22:01:13Z",
-    "note": "Upsert event evt-000385"
+    "at": "2026-09-25T22:10:08Z",
+    "note": "Upsert event evt-000391"
   }
 }
