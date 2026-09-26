@@ -1,43 +1,11 @@
 {
   "title": "International Itinerary",
   "region": "international",
-  "generatedAt": "2026-09-25T22:27:02Z",
+  "generatedAt": "2026-09-26T16:46:33Z",
   "sourceUrl": "https://www.worldministries.org/international-itinerary.aspx",
   "introHtml": "<p>Due to the COVID restrictions which started immediately after I arrived back from Amsterdam, Netherlands, February 2, 2020, my international itinerary already scheduled for the rest of 2020 was cancelled as well as 2021. Only limited national ministry trips were taken.</p>",
   "eventCount": 392,
   "events": [
-    {
-      "id": "evt-000391",
-      "year": null,
-      "sort_date": "",
-      "date_text": "Set. 12, 2026",
-      "start_date": "",
-      "end_date": "",
-      "time_text": "",
-      "place": "Gauteng, South Africa",
-      "city": "Gauteng",
-      "state": "",
-      "country": "South Africa",
-      "event_name": "South Africa Church Defenders meeting",
-      "event_type": "",
-      "speakers": [
-        "Rev. Dr. Jonathan Hansen"
-      ],
-      "speaker_verb": "speaking",
-      "hosts": [
-        "Pastor Mukhuba"
-      ],
-      "venue": "",
-      "address_lines": [],
-      "flag": "https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/country-flags/south-africa.gif",
-      "flag_alt": "South Africa",
-      "flyer": "",
-      "flyer_alt": "Gauteng, South Africa",
-      "links": [],
-      "body_lines": [],
-      "region": "international",
-      "body_html": "<p><strong>Gauteng, South Africa<br /></strong>Set. 12, 2026<br />South Africa Church Defenders meeting<br />Rev. Dr. Jonathan Hansen - Speaking<br />Host: Pastor Mukhuba<br /></p>"
-    },
     {
       "id": "2026-10-25-south-korea",
       "year": 2026,
@@ -172,7 +140,7 @@
       "city": "Chigoneka",
       "state": "",
       "country": "Malawi",
-      "event_name": "",
+      "event_name": "Prophetic Sunday Service",
       "event_type": "speaking at church service",
       "speakers": [
         "Rev. Dr. Jonathan Hansen and Rev. Dr. Adalia Hansen"
@@ -192,7 +160,7 @@
       "links": [],
       "body_lines": [],
       "region": "international",
-      "body_html": "<p><strong><img src=\"https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/evt-000390.jpg\" style=\"width: 200px; height: auto;\" alt=\"Chigoneka, Malawi\" /><br />Lilongwe, Malawi<br /></strong>Sept. 27, 2026 — 8:00 AM<br />Rev. Dr. Jonathan Hansen and Rev. Dr. Adalia Hansen - Speaking<br />Host: Rev. Dr. Matilda Matabwa<br />Malawi Assemblies of God - Eagles Cathedral<br />Area 47, Chigoneka St, Lilongwe, Malawi<br /></p>"
+      "body_html": "<p><strong><img src=\"https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/evt-000390.jpg\" style=\"width: 200px; height: auto;\" alt=\"Chigoneka, Malawi\" /><br />Lilongwe, Malawi<br /></strong>Sept. 27, 2026 — 8:00 AM<br />Prophetic Sunday Service<br />Rev. Dr. Jonathan Hansen and Rev. Dr. Adalia Hansen - Speaking<br />Host: Rev. Dr. Matilda Matabwa<br />Malawi Assemblies of God - Eagles Cathedral<br />Area 47, Chigoneka St, Lilongwe, Malawi<br /></p>"
     },
     {
       "id": "2026-09-21-malawi",
@@ -291,6 +259,38 @@
       ],
       "region": "international",
       "body_html": "<p><strong>Cape Town, South Africa<br /></strong>Tues September 15, 2026 — Evening<br />Rev. Dr. Jonathan Hansen - Speaking<br />Host: Apostle Williams<br />I spoke on the qualities of an eagle which is totally loyal to protect the churches vision, so it can help save the nation.<br /></p>"
+    },
+    {
+      "id": "evt-000391",
+      "year": 2026,
+      "sort_date": "2026-09-12",
+      "date_text": "Sept. 12, 2026",
+      "start_date": "2026-09-12",
+      "end_date": "2026-09-12",
+      "time_text": "",
+      "place": "Gauteng, South Africa",
+      "city": "Gauteng",
+      "state": "",
+      "country": "South Africa",
+      "event_name": "South Africa Church Defenders meeting",
+      "event_type": "",
+      "speakers": [
+        "Rev. Dr. Jonathan Hansen"
+      ],
+      "speaker_verb": "speaking",
+      "hosts": [
+        "Pastor Mukhuba"
+      ],
+      "venue": "",
+      "address_lines": [],
+      "flag": "https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/country-flags/south-africa.gif",
+      "flag_alt": "South Africa",
+      "flyer": "",
+      "flyer_alt": "Gauteng, South Africa",
+      "links": [],
+      "body_lines": [],
+      "region": "international",
+      "body_html": "<p><strong>Gauteng, South Africa<br /></strong>Sept. 12, 2026<br />South Africa Church Defenders meeting<br />Rev. Dr. Jonathan Hansen - Speaking<br />Host: Pastor Mukhuba<br /></p>"
     },
     {
       "id": "2026-09-11-giami-annual-revival",
@@ -5523,7 +5523,7 @@
     }
   ],
   "lastManualUpdate": {
-    "at": "2026-09-25T22:27:02Z",
-    "note": "Upsert event evt-000392"
+    "at": "2026-09-26T16:46:33Z",
+    "note": "Upsert event evt-000390"
   }
 }
