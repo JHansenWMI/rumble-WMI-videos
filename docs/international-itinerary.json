@@ -1,10 +1,10 @@
 {
   "title": "International Itinerary",
   "region": "international",
-  "generatedAt": "2026-09-26T16:46:33Z",
+  "generatedAt": "2026-09-26T17:21:41Z",
   "sourceUrl": "https://www.worldministries.org/international-itinerary.aspx",
   "introHtml": "<p>Due to the COVID restrictions which started immediately after I arrived back from Amsterdam, Netherlands, February 2, 2020, my international itinerary already scheduled for the rest of 2020 was cancelled as well as 2021. Only limited national ministry trips were taken.</p>",
-  "eventCount": 392,
+  "eventCount": 393,
   "events": [
     {
       "id": "2026-10-25-south-korea",
@@ -127,6 +127,42 @@
       "body_lines": [],
       "region": "international",
       "body_html": "<p><strong>South Africa<br /></strong>September 30 - October 6, 2026<br /></p>"
+    },
+    {
+      "id": "evt-000393",
+      "year": 2026,
+      "sort_date": "2026-09-29",
+      "date_text": "Sunday, September 29, 2026",
+      "start_date": "2026-09-29",
+      "end_date": "2026-09-29",
+      "time_text": "6:00 PM",
+      "place": "Pretoria, South Africa",
+      "city": "Pretoria",
+      "state": "",
+      "country": "South Africa",
+      "event_name": "1 Day Encounter With the Lord",
+      "event_type": "church service",
+      "speakers": [
+        "Rev. Dr. Jonathan Hansen and Rev. Dr. Adalia Hansen"
+      ],
+      "speaker_verb": "speaking",
+      "hosts": [
+        "Apostle Williams & Pastor Lebogang Thumba"
+      ],
+      "venue": "International Ministries",
+      "address_lines": [
+        "2557 METEORITE STREET,",
+        "ROSSLYN GARDENS, PRETORIA, SOUTH AFRICA"
+      ],
+      "flag": "https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/country-flags/south-africa.gif",
+      "flag_alt": "South Africa",
+      "flyer": "https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/evt-000393.jpg",
+      "flyer_alt": "Pretoria, South Africa",
+      "links": [],
+      "body_lines": [],
+      "region": "international",
+      "flyer_cb": "1790442961",
+      "body_html": "<p><strong><img src=\"https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/evt-000393.jpg\" style=\"width: 200px; height: auto;\" alt=\"Pretoria, South Africa\" /><br />Pretoria, South Africa<br /></strong>Sunday, September 29, 2026 — 6:00 PM<br />1 Day Encounter With the Lord<br />Rev. Dr. Jonathan Hansen and Rev. Dr. Adalia Hansen - Speaking<br />Host: Apostle Williams &amp; Pastor Lebogang Thumba<br />International Ministries<br />2557 METEORITE STREET,<br />ROSSLYN GARDENS, PRETORIA, SOUTH AFRICA<br /></p>"
     },
     {
       "id": "evt-000390",
@@ -5523,7 +5559,7 @@
     }
   ],
   "lastManualUpdate": {
-    "at": "2026-09-26T16:46:33Z",
-    "note": "Upsert event evt-000390"
+    "at": "2026-09-26T17:21:41Z",
+    "note": "Upsert event evt-000393"
   }
 }
