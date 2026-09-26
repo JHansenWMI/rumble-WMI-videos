@@ -1,6 +1,6 @@
 # Side note: Itinerary data on GitHub Pages
 
-**Hub plan:** `~/dev/WMIMediaOperations/PLAN_Itinerary_Website_Update.md`  
+**Hub plan:** `~/dev/WMIMediaOperations/plans/PLAN_Itinerary_Website_Update.md`  
 **Status:** International + United States seed JSON, widgets, CMS shells, and MediaSite editors.
 
 ## Role of this repo
