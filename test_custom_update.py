@@ -48,6 +48,15 @@ class CustomUpdateTests(unittest.TestCase):
             )
         )
 
+    def test_we_behold_him_site_thumb(self):
+        out = apply_custom_updates([_item(video_id="446666834")], parse_datetime)
+        self.assertTrue(
+            out[0].thumb.endswith(
+                "site-thumbs/we-behold-him-and-are-transformed-16x9.jpg"
+            )
+        )
+        self.assertEqual(out[0].title, "Original")
+
     def test_nwo_tyranny_watch_warning_date_sep_15_pdt(self):
         out = apply_custom_updates([_item(video_id="445756090")], parse_datetime)
         self.assertEqual(out[0].pub_date, "Tue, 15 Sep 2026 23:00:00 +0000")
