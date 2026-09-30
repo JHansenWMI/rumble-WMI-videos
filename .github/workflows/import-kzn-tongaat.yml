@@ -5,6 +5,7 @@ on:
       - "docs/scripts/apply-kzn-tongaat-patch.py"
       - "docs/itinerary-assets/*.jpg.b64"
       - "docs/kzn-tongaat-events-patch.json"
+      - "docs/kzn-tongaat-events-patch.json.p*"
   workflow_dispatch:
 permissions:
   contents: write
@@ -13,6 +14,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Assemble patch parts if present
+        run: |
+          set -euo pipefail
+          shopt -s nullglob
+          parts=(docs/kzn-tongaat-events-patch.json.p*)
+          if [ ${#parts[@]} -gt 0 ]; then
+            cat $(ls docs/kzn-tongaat-events-patch.json.p* | sort) > docs/kzn-tongaat-events-patch.json
+            rm -f docs/kzn-tongaat-events-patch.json.p*
+            echo "Assembled patch ($(wc -c < docs/kzn-tongaat-events-patch.json) bytes)"
+          fi
       - name: Decode flyers and merge event patch
         run: python3 docs/scripts/apply-kzn-tongaat-patch.py
       - name: Commit published itinerary and flyers
@@ -21,7 +32,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add docs/international-itinerary.json docs/itinerary-assets/*.jpg || true
-          git add -u docs/itinerary-assets docs/kzn-tongaat-events-patch.json || true
+          git add -u docs/itinerary-assets docs/kzn-tongaat-events-patch.json docs/kzn-tongaat-events-patch.json.p* || true
           if git diff --cached --quiet; then
             echo "Nothing to commit"
             exit 0
