@@ -4,6 +4,7 @@ on:
     paths:
       - "docs/scripts/apply-kzn-tongaat-patch.py"
       - "docs/itinerary-assets/*.jpg.b64"
+      - "docs/itinerary-assets/*.jpg.b64.c*"
       - "docs/kzn-tongaat-events-patch.json"
       - "docs/kzn-tongaat-events-patch.json.p*"
   workflow_dispatch:
@@ -14,16 +15,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Assemble patch parts if present
-        run: |
-          set -euo pipefail
-          shopt -s nullglob
-          parts=(docs/kzn-tongaat-events-patch.json.p*)
-          if [ ${#parts[@]} -gt 0 ]; then
-            cat $(ls docs/kzn-tongaat-events-patch.json.p* | sort) > docs/kzn-tongaat-events-patch.json
-            rm -f docs/kzn-tongaat-events-patch.json.p*
-            echo "Assembled patch ($(wc -c < docs/kzn-tongaat-events-patch.json) bytes)"
-          fi
       - name: Decode flyers and merge event patch
         run: python3 docs/scripts/apply-kzn-tongaat-patch.py
       - name: Commit published itinerary and flyers
@@ -37,5 +28,5 @@ jobs:
             echo "Nothing to commit"
             exit 0
           fi
-          git commit -m "Add KZN Celebration Centre Tongaat events 30 Sep–4 Oct 2026"
+          git commit -m "Add KZN Celebration Centre Tongaat flyer images 30 Sep–4 Oct 2026"
           git push

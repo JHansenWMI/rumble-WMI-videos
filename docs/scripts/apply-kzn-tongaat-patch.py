@@ -2,6 +2,7 @@
 import base64
 import html
 import json
+from collections import defaultdict
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -9,6 +10,36 @@ root = Path(__file__).resolve().parents[2]
 itinerary_path = root / "docs/international-itinerary.json"
 patch_path = root / "docs/kzn-tongaat-events-patch.json"
 assets = root / "docs/itinerary-assets"
+
+# Assemble base64 chunks: name.jpg.b64.c00 + c01 + ... -> name.jpg.b64
+chunk_map = defaultdict(list)
+for f in sorted(assets.glob("*.jpg.b64.c*")):
+    base = f.name.rsplit(".c", 1)[0]
+    chunk_map[base].append(f)
+for base, files in chunk_map.items():
+    out = assets / base
+    out.write_text("".join(p.read_text() for p in files))
+    for p in files:
+        p.unlink()
+    print(f"Assembled {out.name} from {len(files)} chunks")
+
+for f in sorted(assets.glob("*.jpg.b64")):
+    out = assets / f.name[:-4]
+    out.write_bytes(base64.b64decode(f.read_text()))
+    f.unlink()
+    print(f"Decoded {out.name} ({out.stat().st_size} bytes)")
+
+# Assemble patch parts if needed
+parts = sorted(root.glob("docs/kzn-tongaat-events-patch.json.p*"))
+if parts and not patch_path.exists():
+    patch_path.write_text("".join(p.read_text() for p in parts))
+    for p in parts:
+        p.unlink()
+    print("Assembled patch from parts")
+
+if not patch_path.exists():
+    print("No event patch present; flyer decode only")
+    raise SystemExit(0)
 
 def rebuild_body_html(ev):
     flyer = ev.get("flyer") or ""
@@ -36,20 +67,6 @@ def rebuild_body_html(ev):
         lines.append(html.escape(b))
     img = f'<img src="{flyer}" style="width: 200px; height: auto;" alt="{html.escape(flyer_alt)}" /><br />' if flyer else ""
     return "<p><strong>" + img + f"{html.escape(place)}<br /></strong>{dt}<br />" + "".join(l + "<br />" for l in lines) + "</p>"
-
-for f in sorted(assets.glob("*.jpg.b64")):
-    out = assets / f.name[:-4]
-    out.write_bytes(base64.b64decode(f.read_text()))
-    f.unlink()
-    print(f"Decoded {out.name} ({out.stat().st_size} bytes)")
-
-# Assemble patch parts if needed
-parts = sorted(root.glob("docs/kzn-tongaat-events-patch.json.p*"))
-if parts and not patch_path.exists():
-    patch_path.write_text("".join(p.read_text() for p in parts))
-    for p in parts:
-        p.unlink()
-    print("Assembled patch from parts")
 
 data = json.loads(itinerary_path.read_text())
 patch = json.loads(patch_path.read_text())
