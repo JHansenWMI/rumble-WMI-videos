@@ -2,8 +2,9 @@ name: Import KZN Tongaat itinerary update
 on:
   push:
     paths:
-      - "docs/kzn-tongaat-events-patch.json"
+      - "docs/scripts/apply-kzn-tongaat-patch.py"
       - "docs/itinerary-assets/*.jpg.b64"
+      - "docs/kzn-tongaat-events-patch.json"
   workflow_dispatch:
 permissions:
   contents: write
@@ -19,7 +20,7 @@ jobs:
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add docs/international-itinerary.json docs/itinerary-assets/*.jpg docs/scripts/apply-kzn-tongaat-patch.py || true
+          git add docs/international-itinerary.json docs/itinerary-assets/*.jpg || true
           git add -u docs/itinerary-assets docs/kzn-tongaat-events-patch.json || true
           if git diff --cached --quiet; then
             echo "Nothing to commit"
