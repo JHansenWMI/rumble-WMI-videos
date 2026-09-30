@@ -4,7 +4,6 @@ on:
     paths:
       - "docs/scripts/apply-kzn-tongaat-patch.py"
       - "docs/itinerary-assets/*.jpg.b64"
-      - "docs/itinerary-assets/*.jpg.b64.c*"
       - "docs/kzn-tongaat-events-patch.json"
       - "docs/kzn-tongaat-events-patch.json.p*"
   workflow_dispatch:
