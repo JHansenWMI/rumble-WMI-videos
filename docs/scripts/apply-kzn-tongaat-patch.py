@@ -25,7 +25,13 @@ for base, files in chunk_map.items():
     print(f"Assembled {out.name} from {len(files)} chunks")
 
 for f in sorted(assets.glob("*.jpg.b64")):
-    raw = base64.b64decode(f.read_text().strip())
+    text = f.read_text().strip()
+    try:
+        raw = base64.b64decode(text, validate=True)
+    except Exception as e:
+        print(f"Skipping invalid sidecar {f.name} ({len(text)} chars): {e}")
+        f.unlink()
+        continue
     if (not raw.startswith(b"\xff\xd8\xff")) or len(raw) < 5000:
         print(f"Skipping corrupt sidecar {f.name} ({len(raw)} bytes)")
         f.unlink()
@@ -36,6 +42,7 @@ for f in sorted(assets.glob("*.jpg.b64")):
     print(f"Decoded {out.name} ({out.stat().st_size} bytes)")
 
 # If Oct4 was corrupted by a truncated staging upload, restore last known-good binary
+# Only when missing or under 5000 bytes — a freshly decoded valid JPEG (>=5000) must win.
 GOOD_OCT4_URL = (
     "https://raw.githubusercontent.com/JHansenWMI/rumble-WMI-videos/"
     "3a2d9cd9c257c53d2686e05d7b28735621a68042/"
@@ -49,6 +56,8 @@ if (not oct4.exists()) or oct4.stat().st_size < 5000:
         raise SystemExit(f"Good Oct4 restore fetch failed ({len(data)} bytes)")
     oct4.write_bytes(data)
     print(f"Restored {oct4.name} from known-good commit ({len(data)} bytes)")
+else:
+    print(f"Keeping existing {oct4.name} ({oct4.stat().st_size} bytes)")
 
 # Assemble patch parts if needed
 parts = sorted(root.glob("docs/kzn-tongaat-events-patch.json.p*"))
