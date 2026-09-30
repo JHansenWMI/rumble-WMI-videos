@@ -2,7 +2,7 @@
 import base64
 import html
 import json
-import subprocess
+import urllib.request
 from collections import defaultdict
 from datetime import datetime, timezone
 from pathlib import Path
@@ -28,19 +28,27 @@ for f in sorted(assets.glob("*.jpg.b64")):
     raw = base64.b64decode(f.read_text().strip())
     if not raw.startswith(b"\xff\xd8\xff"):
         raise SystemExit(f"Refusing to write non-JPEG from {f.name} ({len(raw)} bytes)")
+    if len(raw) < 5000:
+        raise SystemExit(f"Refusing tiny/corrupt JPEG from {f.name} ({len(raw)} bytes)")
     out = assets / f.name[:-4]
     out.write_bytes(raw)
     f.unlink()
     print(f"Decoded {out.name} ({out.stat().st_size} bytes)")
 
 # If Oct4 was corrupted by a truncated staging upload, restore last known-good binary
-GOOD_OCT4 = "3a2d9cd9c257c53d2686e05d7b28735621a68042:docs/itinerary-assets/2026-10-04-tongaat-jonathan-hansen.jpg"
+GOOD_OCT4_URL = (
+    "https://raw.githubusercontent.com/JHansenWMI/rumble-WMI-videos/"
+    "3a2d9cd9c257c53d2686e05d7b28735621a68042/"
+    "docs/itinerary-assets/2026-10-04-tongaat-jonathan-hansen.jpg"
+)
 oct4 = assets / "2026-10-04-tongaat-jonathan-hansen.jpg"
 if oct4.exists() and oct4.stat().st_size < 5000:
-    data = subprocess.check_output(["git", "show", GOOD_OCT4])
-    if data.startswith(b"\xff\xd8\xff"):
-        oct4.write_bytes(data)
-        print(f"Restored {oct4.name} from {GOOD_OCT4.split(':')[0]} ({len(data)} bytes)")
+    with urllib.request.urlopen(GOOD_OCT4_URL) as resp:
+        data = resp.read()
+    if not data.startswith(b"\xff\xd8\xff") or len(data) < 5000:
+        raise SystemExit(f"Good Oct4 restore fetch failed ({len(data)} bytes)")
+    oct4.write_bytes(data)
+    print(f"Restored {oct4.name} from known-good commit ({len(data)} bytes)")
 
 # Assemble patch parts if needed
 parts = sorted(root.glob("docs/kzn-tongaat-events-patch.json.p*"))
