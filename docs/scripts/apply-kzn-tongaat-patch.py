@@ -26,10 +26,10 @@ for base, files in chunk_map.items():
 
 for f in sorted(assets.glob("*.jpg.b64")):
     raw = base64.b64decode(f.read_text().strip())
-    if not raw.startswith(b"\xff\xd8\xff"):
-        raise SystemExit(f"Refusing to write non-JPEG from {f.name} ({len(raw)} bytes)")
-    if len(raw) < 5000:
-        raise SystemExit(f"Refusing tiny/corrupt JPEG from {f.name} ({len(raw)} bytes)")
+    if (not raw.startswith(b"\xff\xd8\xff")) or len(raw) < 5000:
+        print(f"Skipping corrupt sidecar {f.name} ({len(raw)} bytes)")
+        f.unlink()
+        continue
     out = assets / f.name[:-4]
     out.write_bytes(raw)
     f.unlink()
@@ -42,7 +42,7 @@ GOOD_OCT4_URL = (
     "docs/itinerary-assets/2026-10-04-tongaat-jonathan-hansen.jpg"
 )
 oct4 = assets / "2026-10-04-tongaat-jonathan-hansen.jpg"
-if oct4.exists() and oct4.stat().st_size < 5000:
+if (not oct4.exists()) or oct4.stat().st_size < 5000:
     with urllib.request.urlopen(GOOD_OCT4_URL) as resp:
         data = resp.read()
     if not data.startswith(b"\xff\xd8\xff") or len(data) < 5000:
