@@ -61,6 +61,24 @@ if need_oct3 and not list(assets.glob("2026-10-03-tongaat-sisters-connect.jpg.b6
     oct3.write_bytes(raw)
     print(f"Rebuilt {oct3.name} from verified chunk commits ({len(raw)} bytes)")
 
+
+# Rebuild Oct4 flyer from SHA-verified chunk commits if size wrong
+oct4_new = assets / "2026-10-04-tongaat-jonathan-hansen.jpg"
+oct4_chunks = [
+    ("995bd06e54c3ed6049de9aa1d933ee0a4f6819ae", "docs/itinerary-assets/2026-10-04-tongaat-jonathan-hansen.jpg.b64.c00"),
+    ("5c408b5cf9349fc41cac4f8c51a6231028b2f1e6", "docs/itinerary-assets/2026-10-04-tongaat-jonathan-hansen.jpg.b64.c01"),
+    ("afe3472acfc37f017e8b48d8113c3a5dd730b93f", "docs/itinerary-assets/2026-10-04-tongaat-jonathan-hansen.jpg.b64.c02"),
+    ("62111e52fb1b5f7fe41ddd99a4f36f22b8ebe2c4", "docs/itinerary-assets/2026-10-04-tongaat-jonathan-hansen.jpg.b64.c03"),
+]
+need_oct4 = (not oct4_new.exists()) or oct4_new.stat().st_size != 11987
+if need_oct4 and not list(assets.glob("2026-10-04-tongaat-jonathan-hansen.jpg.b64*")):
+    text = "".join(fetch_text(f"{RAW}/{sha}/{path}") for sha, path in oct4_chunks)
+    raw = base64.b64decode(text.strip(), validate=True)
+    if not raw.startswith(b"\xff\xd8\xff") or len(raw) != 11987:
+        raise SystemExit(f"Oct4 rebuild failed ({len(raw)} bytes)")
+    oct4_new.write_bytes(raw)
+    print(f"Rebuilt {oct4_new.name} from verified chunk commits ({len(raw)} bytes)")
+
 # Assemble base64 chunks: name.jpg.b64.c00 + c01 + ... -> name.jpg.b64
 chunk_map = defaultdict(list)
 for f in sorted(assets.glob("*.jpg.b64.c*")):
@@ -117,6 +135,17 @@ if oct3.exists() and oct3.stat().st_size != 12867:
         raise SystemExit(f"Oct3 force rebuild failed ({len(raw)} bytes)")
     oct3.write_bytes(raw)
     print(f"Force-rebuilt {oct3.name} ({len(raw)} bytes)")
+
+
+# Force-correct Oct4 if wrong size after sidecar decode (new Fred poster is 11987)
+oct4 = assets / "2026-10-04-tongaat-jonathan-hansen.jpg"
+if oct4.exists() and oct4.stat().st_size != 11987:
+    text = "".join(fetch_text(f"{RAW}/{sha}/{path}") for sha, path in oct4_chunks)
+    raw = base64.b64decode(text.strip(), validate=True)
+    if not raw.startswith(b"\xff\xd8\xff") or len(raw) != 11987:
+        raise SystemExit(f"Oct4 force rebuild failed ({len(raw)} bytes)")
+    oct4.write_bytes(raw)
+    print(f"Force-rebuilt {oct4.name} ({len(raw)} bytes)")
 
 # If Oct4 was corrupted by a truncated staging upload, restore last known-good binary
 # Only when missing or under 5000 bytes — a freshly decoded valid JPEG (>=5000) must win.
