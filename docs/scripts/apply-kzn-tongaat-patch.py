@@ -19,7 +19,19 @@ for f in sorted(assets.glob("*.jpg.b64.c*")):
     chunk_map[base].append(f)
 for base, files in chunk_map.items():
     out = assets / base
-    out.write_text("".join(p.read_text() for p in files))
+    text = "".join(p.read_text() for p in files)
+    # Repair known single-char MCP transcription errors
+    repairs = {
+        "2026-09-30-tongaat-powerful-word.jpg.b64": [
+            ("MCsMPEyKPTzd+ypGHCQq", "MCsMPEyKPTqd+ypGHCQq"),
+            ("tvYvirg+H4fl5", "tvYfix+H4fl5"),
+        ],
+    }
+    for bad, good in repairs.get(out.name, []):
+        if bad in text:
+            text = text.replace(bad, good, 1)
+            print(f"Repaired transcription in {out.name}: {bad!r} -> {good!r}")
+    out.write_text(text)
     for p in files:
         p.unlink()
     print(f"Assembled {out.name} from {len(files)} chunks")
