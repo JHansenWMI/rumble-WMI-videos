@@ -1,0 +1,43 @@
+name: Import itinerary flyer binaries
+on:
+  push:
+    paths:
+      - "docs/itinerary-assets/*.jpg.b64"
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  decode:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Decode base64 flyer sidecars to JPEG
+        run: |
+          set -euo pipefail
+          shopt -s nullglob
+          decoded=0
+          for f in docs/itinerary-assets/*.jpg.b64; do
+            out="${f%.b64}"
+            base64 -d "$f" > "$out"
+            rm "$f"
+            echo "Decoded $out ($(wc -c < "$out") bytes)"
+            decoded=$((decoded+1))
+          done
+          echo "decoded_count=$decoded" >> "$GITHUB_ENV"
+          if [ "$decoded" -eq 0 ]; then
+            echo "No sidecars to decode"
+          fi
+      - name: Commit decoded JPEGs
+        if: env.decoded_count != '0'
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/itinerary-assets/*.jpg || true
+          git add -u docs/itinerary-assets/*.jpg.b64 || true
+          if git diff --cached --quiet; then
+            echo "Nothing to commit"
+            exit 0
+          fi
+          git commit -m "Decode KZN Tongaat flyer JPGs from base64 sidecars"
+          git push
