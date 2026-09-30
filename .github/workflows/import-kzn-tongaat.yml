@@ -1,0 +1,29 @@
+name: Import KZN Tongaat itinerary update
+on:
+  push:
+    paths:
+      - "docs/kzn-tongaat-events-patch.json"
+      - "docs/itinerary-assets/*.jpg.b64"
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Decode flyers and merge event patch
+        run: python3 docs/scripts/apply-kzn-tongaat-patch.py
+      - name: Commit published itinerary and flyers
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/international-itinerary.json docs/itinerary-assets/*.jpg docs/scripts/apply-kzn-tongaat-patch.py || true
+          git add -u docs/itinerary-assets docs/kzn-tongaat-events-patch.json || true
+          if git diff --cached --quiet; then
+            echo "Nothing to commit"
+            exit 0
+          fi
+          git commit -m "Add KZN Celebration Centre Tongaat events 30 Sep–4 Oct 2026"
+          git push
