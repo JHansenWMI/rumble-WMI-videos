@@ -1,7 +1,7 @@
 {
   "title": "International Itinerary",
   "region": "international",
-  "generatedAt": "2026-09-30T15:12:14Z",
+  "generatedAt": "2026-09-30T16:40:41Z",
   "sourceUrl": "https://www.worldministries.org/international-itinerary.aspx",
   "introHtml": "<p>Due to the COVID restrictions which started immediately after I arrived back from Amsterdam, Netherlands, February 2, 2020, my international itinerary already scheduled for the rest of 2020 was cancelled as well as 2021. Only limited national ministry trips were taken.</p>",
   "eventCount": 395,
@@ -140,13 +140,13 @@
       "flyer_alt": "Workforce Meeting — KZN Celebration Centre",
       "links": [],
       "body_lines": [
-        "Guest speakers: Dr J and A Hansen",
+        "Guest speakers: Drs Jonathan and Adalia Hansen",
         "Livestream @AFMTONGAAT",
         "Email: AFMTGT@IAFRICA.COM",
         "Tel: 032 945 6564 / 032 945 0118"
       ],
       "region": "international",
-      "body_html": "<p><strong><img src=\"https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/2026-10-02-tongaat-workforce-meeting.jpg\" style=\"width: 200px; height: auto;\" alt=\"Workforce Meeting — KZN Celebration Centre\" /><br />Tongaat, South Africa<br /></strong>Friday, October 2, 2026 — 7:00 PM<br />Workforce Meeting<br />Rev. Dr. Jonathan Hansen and Rev. Dr. Adalia Hansen - Speaking<br />Host: AFM Tongaat<br />KZN Celebration Centre<br />33 High Street, Tongaat<br />Guest speakers: Dr J and A Hansen<br />Livestream @AFMTONGAAT<br />Email: AFMTGT@IAFRICA.COM<br />Tel: 032 945 6564 / 032 945 0118<br /></p>"
+      "body_html": "<p><strong><img src=\"https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/2026-10-02-tongaat-workforce-meeting.jpg\" style=\"width: 200px; height: auto;\" alt=\"Workforce Meeting — KZN Celebration Centre\" /><br />Tongaat, South Africa<br /></strong>Friday, October 2, 2026 — 7:00 PM<br />Workforce Meeting<br />Rev. Dr. Jonathan Hansen and Rev. Dr. Adalia Hansen - Speaking<br />Host: AFM Tongaat<br />KZN Celebration Centre<br />33 High Street, Tongaat<br />Guest speakers: Drs Jonathan and Adalia Hansen<br />Livestream @AFMTONGAAT<br />Email: AFMTGT@IAFRICA.COM<br />Tel: 032 945 6564 / 032 945 0118<br /></p>"
     },
     {
       "id": "2026-09-30-tongaat-powerful-word",
@@ -5646,7 +5646,7 @@
     }
   ],
   "lastManualUpdate": {
-    "at": "2026-09-30T15:12:14Z",
-    "note": "Upsert KZN Celebration Centre Tongaat events 30 Sep–4 Oct 2026"
+    "at": "2026-09-30T16:40:41Z",
+    "note": "Upsert event 2026-10-02-tongaat-workforce-meeting"
   }
 }
