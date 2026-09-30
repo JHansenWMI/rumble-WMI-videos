@@ -11,6 +11,34 @@ root = Path(__file__).resolve().parents[2]
 itinerary_path = root / "docs/international-itinerary.json"
 patch_path = root / "docs/kzn-tongaat-events-patch.json"
 assets = root / "docs/itinerary-assets"
+RAW = "https://raw.githubusercontent.com/JHansenWMI/rumble-WMI-videos"
+
+def fetch(url: str) -> bytes:
+    with urllib.request.urlopen(url) as resp:
+        return resp.read()
+
+def fetch_text(url: str) -> str:
+    return fetch(url).decode("utf-8")
+
+# Rebuild Sep30 flyer from SHA-verified chunk commits if sidecar/chunks absent
+sep30 = assets / "2026-09-30-tongaat-powerful-word.jpg"
+sep30_chunks = [
+    ("683cea7b2becaf0582e0ddab82bf30cfdca366ea", "docs/itinerary-assets/2026-09-30-tongaat-powerful-word.jpg.b64.c00"),
+    ("6ee4f9aa8c18460e192d8d9a43e42c68965dba8a", "docs/itinerary-assets/2026-09-30-tongaat-powerful-word.jpg.b64.c01"),
+    ("80dc8be31efda0767c9a5e1746ce211b8c895b7a", "docs/itinerary-assets/2026-09-30-tongaat-powerful-word.jpg.b64.c02"),
+    ("9410bf71a17aa31747fbb5b39779f084030edc58", "docs/itinerary-assets/2026-09-30-tongaat-powerful-word.jpg.b64.c03"),
+    ("11ebacd0cf72de61a7060c25b8235cae8c429b53", "docs/itinerary-assets/2026-09-30-tongaat-powerful-word.jpg.b64.c04"),
+]
+need_sep30 = (not sep30.exists()) or sep30.stat().st_size != 13023
+if need_sep30 and not list(assets.glob("2026-09-30-tongaat-powerful-word.jpg.b64*")):
+    text = "".join(fetch_text(f"{RAW}/{sha}/{path}") for sha, path in sep30_chunks)
+    text = text.replace("MCsMPEyKPTzd+ypGHCQq", "MCsMPEyKPTqd+ypGHCQq", 1)
+    text = text.replace("tvYvirg+H4fl5", "tvYfix+H4fl5", 1)
+    raw = base64.b64decode(text.strip(), validate=True)
+    if not raw.startswith(b"\xff\xd8\xff") or len(raw) != 13023:
+        raise SystemExit(f"Sep30 rebuild failed ({len(raw)} bytes)")
+    sep30.write_bytes(raw)
+    print(f"Rebuilt {sep30.name} from verified chunk commits ({len(raw)} bytes)")
 
 # Assemble base64 chunks: name.jpg.b64.c00 + c01 + ... -> name.jpg.b64
 chunk_map = defaultdict(list)
@@ -20,7 +48,6 @@ for f in sorted(assets.glob("*.jpg.b64.c*")):
 for base, files in chunk_map.items():
     out = assets / base
     text = "".join(p.read_text() for p in files)
-    # Repair known single-char MCP transcription errors
     repairs = {
         "2026-09-30-tongaat-powerful-word.jpg.b64": [
             ("MCsMPEyKPTzd+ypGHCQq", "MCsMPEyKPTqd+ypGHCQq"),
@@ -56,14 +83,12 @@ for f in sorted(assets.glob("*.jpg.b64")):
 # If Oct4 was corrupted by a truncated staging upload, restore last known-good binary
 # Only when missing or under 5000 bytes — a freshly decoded valid JPEG (>=5000) must win.
 GOOD_OCT4_URL = (
-    "https://raw.githubusercontent.com/JHansenWMI/rumble-WMI-videos/"
-    "3a2d9cd9c257c53d2686e05d7b28735621a68042/"
+    f"{RAW}/3a2d9cd9c257c53d2686e05d7b28735621a68042/"
     "docs/itinerary-assets/2026-10-04-tongaat-jonathan-hansen.jpg"
 )
 oct4 = assets / "2026-10-04-tongaat-jonathan-hansen.jpg"
 if (not oct4.exists()) or oct4.stat().st_size < 5000:
-    with urllib.request.urlopen(GOOD_OCT4_URL) as resp:
-        data = resp.read()
+    data = fetch(GOOD_OCT4_URL)
     if not data.startswith(b"\xff\xd8\xff") or len(data) < 5000:
         raise SystemExit(f"Good Oct4 restore fetch failed ({len(data)} bytes)")
     oct4.write_bytes(data)
