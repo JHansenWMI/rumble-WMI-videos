@@ -1,7 +1,7 @@
 {
   "title": "International Itinerary",
   "region": "international",
-  "generatedAt": "2026-09-30T16:40:41Z",
+  "generatedAt": "2026-09-30T17:11:40Z",
   "sourceUrl": "https://www.worldministries.org/international-itinerary.aspx",
   "introHtml": "<p>Due to the COVID restrictions which started immediately after I arrived back from Amsterdam, Netherlands, February 2, 2020, my international itinerary already scheduled for the rest of 2020 was cancelled as well as 2021. Only limited national ministry trips were taken.</p>",
   "eventCount": 395,
@@ -64,21 +64,15 @@
       "flyer": "https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/2026-10-04-tongaat-jonathan-hansen.jpg",
       "flyer_alt": "Dr. Jonathan Hansen Preaching — KZN Celebration Centre",
       "links": [],
-      "body_lines": [
-        "Join us for a powerful time of worship & the word",
-        "From USA — President of World Ministries International / Eagles Saving Nation",
-        "Livestream @AFMTONGAAT",
-        "Email: AFMTGT@IAFRICA.COM",
-        "Tel: 032 945 6564 / 032 945 0118"
-      ],
+      "body_lines": [],
       "region": "international",
-      "body_html": "<p><strong><img src=\"https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/2026-10-04-tongaat-jonathan-hansen.jpg\" style=\"width: 200px; height: auto;\" alt=\"Dr. Jonathan Hansen Preaching — KZN Celebration Centre\" /><br />Tongaat, South Africa<br /></strong>October 4, 2026<br />Rev. Dr. Jonathan Hansen - Speaking<br />Host: AFM Tongaat<br />KZN Celebration Centre<br />33 High Street, Tongaat<br />Join us for a powerful time of worship &amp; the word<br />From USA — President of World Ministries International / Eagles Saving Nation<br />Livestream @AFMTONGAAT<br />Email: AFMTGT@IAFRICA.COM<br />Tel: 032 945 6564 / 032 945 0118<br /></p>"
+      "body_html": "<p><strong><img src=\"https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/2026-10-04-tongaat-jonathan-hansen.jpg\" style=\"width: 200px; height: auto;\" alt=\"Dr. Jonathan Hansen Preaching — KZN Celebration Centre\" /><br />Tongaat, South Africa<br /></strong>October 4, 2026<br />Rev. Dr. Jonathan Hansen - Speaking<br />Host: AFM Tongaat<br />KZN Celebration Centre<br />33 High Street, Tongaat<br /></p>"
     },
     {
       "id": "2026-10-03-KZNCC-sisters-connect",
       "year": 2026,
       "sort_date": "2026-10-03",
-      "date_text": "Saturday, October 3, 2026",
+      "date_text": "October 3, 2026",
       "start_date": "2026-10-03",
       "end_date": "2026-10-03",
       "time_text": "9:30 AM",
@@ -99,21 +93,18 @@
       ],
       "flag": "https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/country-flags/south-africa.gif",
       "flag_alt": "South Africa",
-      "flyer": "https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/2026-10-03-tongaat-sisters-connect.jpg",
-      "flyer_alt": "Sisters Connect — KZN Celebration Centre",
+      "flyer": "https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/2026-01-01-event-sisters-connect.jpg",
+      "flyer_alt": "Sister Connect flyer",
       "links": [],
-      "body_lines": [
-        "Guest speaker Rev. Dr. Adalia Hansen from the USA",
-        "Contact: Chanel 082 086 0305 / Nadika 072 390 0178"
-      ],
+      "body_lines": [],
       "region": "international",
-      "body_html": "<p><strong><img src=\"https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/2026-10-03-tongaat-sisters-connect.jpg\" style=\"width: 200px; height: auto;\" alt=\"Sisters Connect — KZN Celebration Centre\" /><br />Tongaat, South Africa<br /></strong>Saturday, October 3, 2026 — 9:30 AM<br />Sisters Connect<br />Rev. Dr. Adalia Hansen - Speaking<br />KZN Celebration Centre<br />33 High Street, Tongaat<br />Guest speaker Rev. Dr. Adalia Hansen from the USA<br />Contact: Chanel 082 086 0305 / Nadika 072 390 0178<br /></p>"
+      "body_html": "<p><strong><img src=\"https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/2026-01-01-event-sisters-connect.jpg\" style=\"width: 200px; height: auto;\" alt=\"Sister Connect flyer\" /><br />Tongaat, South Africa<br /></strong>October 3, 2026 — 9:30 AM<br />Sisters Connect<br />Rev. Dr. Adalia Hansen - Speaking<br />KZN Celebration Centre<br />33 High Street, Tongaat<br /></p>"
     },
     {
       "id": "2026-10-02-tongaat-workforce-meeting",
       "year": 2026,
       "sort_date": "2026-10-02",
-      "date_text": "Friday, October 2, 2026",
+      "date_text": "October 2, 2026",
       "start_date": "2026-10-02",
       "end_date": "2026-10-02",
       "time_text": "7:00 PM",
@@ -122,7 +113,7 @@
       "state": "",
       "country": "South Africa",
       "event_name": "Workforce Meeting",
-      "event_type": "church service",
+      "event_type": "",
       "speakers": [
         "Rev. Dr. Jonathan Hansen and Rev. Dr. Adalia Hansen"
       ],
@@ -139,20 +130,16 @@
       "flyer": "https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/2026-10-02-tongaat-workforce-meeting.jpg",
       "flyer_alt": "Workforce Meeting — KZN Celebration Centre",
       "links": [],
-      "body_lines": [
-        "Guest speakers: Drs Jonathan and Adalia Hansen",
-        "Livestream @AFMTONGAAT",
-        "Email: AFMTGT@IAFRICA.COM",
-        "Tel: 032 945 6564 / 032 945 0118"
-      ],
+      "body_lines": [],
       "region": "international",
-      "body_html": "<p><strong><img src=\"https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/2026-10-02-tongaat-workforce-meeting.jpg\" style=\"width: 200px; height: auto;\" alt=\"Workforce Meeting — KZN Celebration Centre\" /><br />Tongaat, South Africa<br /></strong>Friday, October 2, 2026 — 7:00 PM<br />Workforce Meeting<br />Rev. Dr. Jonathan Hansen and Rev. Dr. Adalia Hansen - Speaking<br />Host: AFM Tongaat<br />KZN Celebration Centre<br />33 High Street, Tongaat<br />Guest speakers: Drs Jonathan and Adalia Hansen<br />Livestream @AFMTONGAAT<br />Email: AFMTGT@IAFRICA.COM<br />Tel: 032 945 6564 / 032 945 0118<br /></p>"
+      "flyer_cb": "1790788300",
+      "body_html": "<p><strong><img src=\"https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/2026-10-02-tongaat-workforce-meeting.jpg\" style=\"width: 200px; height: auto;\" alt=\"Workforce Meeting — KZN Celebration Centre\" /><br />Tongaat, South Africa<br /></strong>October 2, 2026 — 7:00 PM<br />Workforce Meeting<br />Rev. Dr. Jonathan Hansen and Rev. Dr. Adalia Hansen - Speaking<br />Host: AFM Tongaat<br />KZN Celebration Centre<br />33 High Street, Tongaat<br /></p>"
     },
     {
-      "id": "2026-09-30-tongaat-powerful-word",
+      "id": "2026-09-30-tongaat-jonathan-hansen",
       "year": 2026,
       "sort_date": "2026-09-30",
-      "date_text": "Wednesday, September 30, 2026",
+      "date_text": "September 30, 2026",
       "start_date": "2026-09-30",
       "end_date": "2026-09-30",
       "time_text": "7:00 PM",
@@ -160,8 +147,8 @@
       "city": "Tongaat",
       "state": "",
       "country": "South Africa",
-      "event_name": "A Powerful Word From God",
-      "event_type": "church service",
+      "event_name": "",
+      "event_type": "non-titled, speaking at church service",
       "speakers": [
         "Rev. Dr. Jonathan Hansen"
       ],
@@ -175,17 +162,13 @@
       ],
       "flag": "https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/country-flags/south-africa.gif",
       "flag_alt": "South Africa",
-      "flyer": "https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/2026-09-30-tongaat-powerful-word.jpg",
-      "flyer_alt": "A Powerful Word From God — KZN Celebration Centre",
+      "flyer": "https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/2026-09-30-tongaat-jonathan-hansen.jpg",
+      "flyer_alt": "Dr. Jonathan Hansen — KZN Celebration Centre",
       "links": [],
-      "body_lines": [
-        "Join us for a powerful word from God. Come expecting God to move!",
-        "Livestream @AFMTONGAAT",
-        "Email: AFMTGT@IAFRICA.COM",
-        "Tel: 032 945 6564 / 032 945 0118"
-      ],
+      "body_lines": [],
       "region": "international",
-      "body_html": "<p><strong><img src=\"https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/2026-09-30-tongaat-powerful-word.jpg\" style=\"width: 200px; height: auto;\" alt=\"A Powerful Word From God — KZN Celebration Centre\" /><br />Tongaat, South Africa<br /></strong>Wednesday, September 30, 2026 — 7:00 PM<br />A Powerful Word From God<br />Rev. Dr. Jonathan Hansen - Speaking<br />Host: AFM Tongaat<br />KZN Celebration Centre<br />33 High Street, Tongaat<br />Join us for a powerful word from God. Come expecting God to move!<br />Livestream @AFMTONGAAT<br />Email: AFMTGT@IAFRICA.COM<br />Tel: 032 945 6564 / 032 945 0118<br /></p>"
+      "flyer_cb": "1790788300",
+      "body_html": "<p><strong><img src=\"https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/2026-09-30-tongaat-jonathan-hansen.jpg\" style=\"width: 200px; height: auto;\" alt=\"Dr. Jonathan Hansen — KZN Celebration Centre\" /><br />Tongaat, South Africa<br /></strong>September 30, 2026 — 7:00 PM<br />Rev. Dr. Jonathan Hansen - Speaking<br />Host: AFM Tongaat<br />KZN Celebration Centre<br />33 High Street, Tongaat<br /></p>"
     },
     {
       "id": "2026-09-30-south-africa",
@@ -5646,7 +5629,7 @@
     }
   ],
   "lastManualUpdate": {
-    "at": "2026-09-30T16:40:41Z",
-    "note": "Upsert event 2026-10-02-tongaat-workforce-meeting"
+    "at": "2026-09-30T17:11:40Z",
+    "note": "Restore pre-morning KZN Tongaat Oct 3–4; add sparse Sep 30 + Oct 2"
   }
 }
