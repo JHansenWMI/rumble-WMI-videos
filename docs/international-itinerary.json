@@ -1,10 +1,10 @@
 {
   "title": "International Itinerary",
   "region": "international",
-  "generatedAt": "2026-09-26T17:21:41Z",
+  "generatedAt": "2026-09-30T14:49:02Z",
   "sourceUrl": "https://www.worldministries.org/international-itinerary.aspx",
   "introHtml": "<p>Due to the COVID restrictions which started immediately after I arrived back from Amsterdam, Netherlands, February 2, 2020, my international itinerary already scheduled for the rest of 2020 was cancelled as well as 2021. Only limited national ministry trips were taken.</p>",
-  "eventCount": 393,
+  "eventCount": 395,
   "events": [
     {
       "id": "2026-10-25-south-korea",
@@ -64,15 +64,21 @@
       "flyer": "https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/2026-10-04-tongaat-jonathan-hansen.jpg",
       "flyer_alt": "Dr. Jonathan Hansen Preaching — KZN Celebration Centre",
       "links": [],
-      "body_lines": [],
+      "body_lines": [
+        "Join us for a powerful time of worship & the word",
+        "From USA — President of World Ministries International / Eagles Saving Nation",
+        "Livestream @AFMTONGAAT",
+        "Email: AFMTGT@IAFRICA.COM",
+        "Tel: 032 945 6564 / 032 945 0118"
+      ],
       "region": "international",
-      "body_html": "<p><strong><img src=\"https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/2026-10-04-tongaat-jonathan-hansen.jpg\" style=\"width: 200px; height: auto;\" alt=\"Dr. Jonathan Hansen Preaching — KZN Celebration Centre\" /><br />Tongaat, South Africa<br /></strong>October 4, 2026<br />Rev. Dr. Jonathan Hansen - Speaking<br />Host: AFM Tongaat<br />KZN Celebration Centre<br />33 High Street, Tongaat<br /></p>"
+      "body_html": "<p><strong><img src=\"https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/2026-10-04-tongaat-jonathan-hansen.jpg\" style=\"width: 200px; height: auto;\" alt=\"Dr. Jonathan Hansen Preaching — KZN Celebration Centre\" /><br />Tongaat, South Africa<br /></strong>October 4, 2026<br />Rev. Dr. Jonathan Hansen - Speaking<br />Host: AFM Tongaat<br />KZN Celebration Centre<br />33 High Street, Tongaat<br />Join us for a powerful time of worship &amp; the word<br />From USA — President of World Ministries International / Eagles Saving Nation<br />Livestream @AFMTONGAAT<br />Email: AFMTGT@IAFRICA.COM<br />Tel: 032 945 6564 / 032 945 0118<br /></p>"
     },
     {
       "id": "2026-10-03-KZNCC-sisters-connect",
       "year": 2026,
       "sort_date": "2026-10-03",
-      "date_text": "October 3, 2026",
+      "date_text": "Saturday, October 3, 2026",
       "start_date": "2026-10-03",
       "end_date": "2026-10-03",
       "time_text": "9:30 AM",
@@ -93,12 +99,93 @@
       ],
       "flag": "https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/country-flags/south-africa.gif",
       "flag_alt": "South Africa",
-      "flyer": "https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/2026-01-01-event-sisters-connect.jpg",
-      "flyer_alt": "Sister Connect flyer",
+      "flyer": "https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/2026-10-03-tongaat-sisters-connect.jpg",
+      "flyer_alt": "Sisters Connect — KZN Celebration Centre",
       "links": [],
-      "body_lines": [],
+      "body_lines": [
+        "Guest speaker Rev. Dr. Adalia Hansen from the USA",
+        "Contact: Chanel 082 086 0305 / Nadika 072 390 0178"
+      ],
       "region": "international",
-      "body_html": "<p><strong><img src=\"https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/2026-01-01-event-sisters-connect.jpg\" style=\"width: 200px; height: auto;\" alt=\"Sister Connect flyer\" /><br />Tongaat, South Africa<br /></strong>October 3, 2026 — 9:30 AM<br />Sisters Connect<br />Rev. Dr. Adalia Hansen - Speaking<br />KZN Celebration Centre<br />33 High Street, Tongaat<br /></p>"
+      "body_html": "<p><strong><img src=\"https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/2026-10-03-tongaat-sisters-connect.jpg\" style=\"width: 200px; height: auto;\" alt=\"Sisters Connect — KZN Celebration Centre\" /><br />Tongaat, South Africa<br /></strong>Saturday, October 3, 2026 — 9:30 AM<br />Sisters Connect<br />Rev. Dr. Adalia Hansen - Speaking<br />KZN Celebration Centre<br />33 High Street, Tongaat<br />Guest speaker Rev. Dr. Adalia Hansen from the USA<br />Contact: Chanel 082 086 0305 / Nadika 072 390 0178<br /></p>"
+    },
+    {
+      "id": "2026-10-02-tongaat-workforce-meeting",
+      "year": 2026,
+      "sort_date": "2026-10-02",
+      "date_text": "Friday, October 2, 2026",
+      "start_date": "2026-10-02",
+      "end_date": "2026-10-02",
+      "time_text": "7:00 PM",
+      "place": "Tongaat, South Africa",
+      "city": "Tongaat",
+      "state": "",
+      "country": "South Africa",
+      "event_name": "Workforce Meeting",
+      "event_type": "church service",
+      "speakers": [
+        "Rev. Dr. Jonathan Hansen and Rev. Dr. Adalia Hansen"
+      ],
+      "speaker_verb": "speaking",
+      "hosts": [
+        "AFM Tongaat"
+      ],
+      "venue": "KZN Celebration Centre",
+      "address_lines": [
+        "33 High Street, Tongaat"
+      ],
+      "flag": "https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/country-flags/south-africa.gif",
+      "flag_alt": "South Africa",
+      "flyer": "https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/2026-10-02-tongaat-workforce-meeting.jpg",
+      "flyer_alt": "Workforce Meeting — KZN Celebration Centre",
+      "links": [],
+      "body_lines": [
+        "Guest speakers: Dr J and A Hansen",
+        "Livestream @AFMTONGAAT",
+        "Email: AFMTGT@IAFRICA.COM",
+        "Tel: 032 945 6564 / 032 945 0118"
+      ],
+      "region": "international",
+      "body_html": "<p><strong><img src=\"https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/2026-10-02-tongaat-workforce-meeting.jpg\" style=\"width: 200px; height: auto;\" alt=\"Workforce Meeting — KZN Celebration Centre\" /><br />Tongaat, South Africa<br /></strong>Friday, October 2, 2026 — 7:00 PM<br />Workforce Meeting<br />Rev. Dr. Jonathan Hansen and Rev. Dr. Adalia Hansen - Speaking<br />Host: AFM Tongaat<br />KZN Celebration Centre<br />33 High Street, Tongaat<br />Guest speakers: Dr J and A Hansen<br />Livestream @AFMTONGAAT<br />Email: AFMTGT@IAFRICA.COM<br />Tel: 032 945 6564 / 032 945 0118<br /></p>"
+    },
+    {
+      "id": "2026-09-30-tongaat-powerful-word",
+      "year": 2026,
+      "sort_date": "2026-09-30",
+      "date_text": "Wednesday, September 30, 2026",
+      "start_date": "2026-09-30",
+      "end_date": "2026-09-30",
+      "time_text": "7:00 PM",
+      "place": "Tongaat, South Africa",
+      "city": "Tongaat",
+      "state": "",
+      "country": "South Africa",
+      "event_name": "A Powerful Word From God",
+      "event_type": "church service",
+      "speakers": [
+        "Rev. Dr. Jonathan Hansen"
+      ],
+      "speaker_verb": "speaking",
+      "hosts": [
+        "AFM Tongaat"
+      ],
+      "venue": "KZN Celebration Centre",
+      "address_lines": [
+        "33 High Street, Tongaat"
+      ],
+      "flag": "https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/country-flags/south-africa.gif",
+      "flag_alt": "South Africa",
+      "flyer": "https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/2026-09-30-tongaat-powerful-word.jpg",
+      "flyer_alt": "A Powerful Word From God — KZN Celebration Centre",
+      "links": [],
+      "body_lines": [
+        "Join us for a powerful word from God. Come expecting God to move!",
+        "Livestream @AFMTONGAAT",
+        "Email: AFMTGT@IAFRICA.COM",
+        "Tel: 032 945 6564 / 032 945 0118"
+      ],
+      "region": "international",
+      "body_html": "<p><strong><img src=\"https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/2026-09-30-tongaat-powerful-word.jpg\" style=\"width: 200px; height: auto;\" alt=\"A Powerful Word From God — KZN Celebration Centre\" /><br />Tongaat, South Africa<br /></strong>Wednesday, September 30, 2026 — 7:00 PM<br />A Powerful Word From God<br />Rev. Dr. Jonathan Hansen - Speaking<br />Host: AFM Tongaat<br />KZN Celebration Centre<br />33 High Street, Tongaat<br />Join us for a powerful word from God. Come expecting God to move!<br />Livestream @AFMTONGAAT<br />Email: AFMTGT@IAFRICA.COM<br />Tel: 032 945 6564 / 032 945 0118<br /></p>"
     },
     {
       "id": "2026-09-30-south-africa",
@@ -329,42 +416,6 @@
       "body_html": "<p><strong>Gauteng, South Africa<br /></strong>Sept. 12, 2026<br />South Africa Church Defenders meeting<br />Rev. Dr. Jonathan Hansen - Speaking<br />Host: Pastor Mukhuba<br /></p>"
     },
     {
-      "id": "2026-09-11-giami-annual-revival",
-      "year": 2026,
-      "sort_date": "2026-09-11",
-      "date_text": "September 11 - 20, 2026",
-      "start_date": "2026-09-11",
-      "end_date": "2026-09-20",
-      "time_text": "6:00 PM daily",
-      "place": "Nelspruit, South Africa",
-      "city": "Nelspruit",
-      "state": "",
-      "country": "South Africa",
-      "event_name": "God Is Able Annual Revival",
-      "event_type": "revival",
-      "speakers": [
-        "Rev. Dr. Jonathan Hansen"
-      ],
-      "speaker_verb": "speaking",
-      "hosts": [
-        "Apostle Moses & Pastor Veronica O'Reilly"
-      ],
-      "venue": "GIAMI HQ",
-      "address_lines": [
-        "Kamagugu Road, Nelspruit"
-      ],
-      "flag": "https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/country-flags/south-africa.gif",
-      "flag_alt": "South Africa",
-      "flyer": "https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/2026-09-11-giami-annual-revival.jpg",
-      "flyer_alt": "God Is Able Annual Revival — GIAMI",
-      "links": [],
-      "body_lines": [
-        "Pastor Gibson Brown also speaking"
-      ],
-      "region": "international",
-      "body_html": "<p><strong><img src=\"https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/2026-09-11-giami-annual-revival.jpg\" style=\"width: 200px; height: auto;\" alt=\"God Is Able Annual Revival — GIAMI\" /><br />Nelspruit, South Africa<br /></strong>September 11 - 20, 2026 — 6:00 PM daily<br />God Is Able Annual Revival<br />Rev. Dr. Jonathan Hansen - Speaking<br />Host: Apostle Moses &amp; Pastor Veronica O'Reilly<br />GIAMI HQ<br />Kamagugu Road, Nelspruit<br />Pastor Gibson Brown also speaking<br /></p>"
-    },
-    {
       "id": "2026-09-11-restoration-weekend",
       "year": 2026,
       "sort_date": "2026-09-11",
@@ -401,6 +452,42 @@
       ],
       "region": "international",
       "body_html": "<p><strong><img src=\"https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/2026-09-11-restoration-weekend.jpg\" style=\"width: 200px; height: auto;\" alt=\"Restoration Weekend — Kingdom Restoration Church\" /><br />Vereeniging &amp; Sasolburg, South Africa<br /></strong>Friday September 11 &amp; Sunday September 13, 2026 — Fri 6:00 PM, Sun 10:30 AM<br />Restoration Weekend<br />Rev. Dr. Jonathan Hansen - Speaking<br />Host: Apostle Rodney &amp; Pastor Adelaide Makube<br />Kingdom Restoration Church<br />Fri, 11 Sept: 6:00 PM<br />Sun, 13 Sept: 10:30 AM<br />Friday at Vereeniging, South Africa<br />Sunday at Sasolburg, South Africa<br /></p>"
+    },
+    {
+      "id": "2026-09-11-giami-annual-revival",
+      "year": 2026,
+      "sort_date": "2026-09-11",
+      "date_text": "September 11 - 20, 2026",
+      "start_date": "2026-09-11",
+      "end_date": "2026-09-20",
+      "time_text": "6:00 PM daily",
+      "place": "Nelspruit, South Africa",
+      "city": "Nelspruit",
+      "state": "",
+      "country": "South Africa",
+      "event_name": "God Is Able Annual Revival",
+      "event_type": "revival",
+      "speakers": [
+        "Rev. Dr. Jonathan Hansen"
+      ],
+      "speaker_verb": "speaking",
+      "hosts": [
+        "Apostle Moses & Pastor Veronica O'Reilly"
+      ],
+      "venue": "GIAMI HQ",
+      "address_lines": [
+        "Kamagugu Road, Nelspruit"
+      ],
+      "flag": "https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/country-flags/south-africa.gif",
+      "flag_alt": "South Africa",
+      "flyer": "https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/2026-09-11-giami-annual-revival.jpg",
+      "flyer_alt": "God Is Able Annual Revival — GIAMI",
+      "links": [],
+      "body_lines": [
+        "Pastor Gibson Brown also speaking"
+      ],
+      "region": "international",
+      "body_html": "<p><strong><img src=\"https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/2026-09-11-giami-annual-revival.jpg\" style=\"width: 200px; height: auto;\" alt=\"God Is Able Annual Revival — GIAMI\" /><br />Nelspruit, South Africa<br /></strong>September 11 - 20, 2026 — 6:00 PM daily<br />God Is Able Annual Revival<br />Rev. Dr. Jonathan Hansen - Speaking<br />Host: Apostle Moses &amp; Pastor Veronica O'Reilly<br />GIAMI HQ<br />Kamagugu Road, Nelspruit<br />Pastor Gibson Brown also speaking<br /></p>"
     },
     {
       "id": "2026-09-08-tuesday-teaching-service-cre",
@@ -878,58 +965,6 @@
       "region": "international"
     },
     {
-      "id": "2025-01-01-philippines",
-      "year": 2025,
-      "sort_date": "2025-01-01",
-      "date_text": "",
-      "place": "Philippines",
-      "flag": "https://www.worldministries.org/Userfiles/Flags/philippines.gif",
-      "flag_alt": "philippines",
-      "flyer": "",
-      "flyer_alt": "",
-      "body_html": "<p><strong>Philippines</strong></p>\r\n<p><span></span>Dec 1 Monday 3pm - Bishop's 40th Ministry Anniversary Celebration<br />Dec 2 Tuesday 10am - Pastor's Convention at JCTD</p>",
-      "region": "international"
-    },
-    {
-      "id": "2025-01-01-philippines",
-      "year": 2025,
-      "sort_date": "2025-01-01",
-      "date_text": "",
-      "place": "Philippines",
-      "flag": "https://www.worldministries.org/Userfiles/Flags/philippines.gif",
-      "flag_alt": "philippines",
-      "flyer": "https://www.worldministries.org/Userfiles/Flyer-jpegs/2025-11-29-LFCI-PastorsConf.jpeg",
-      "flyer_alt": "2025 11 29 LFCI PastorsConf",
-      "body_html": "<p><span><strong><span><img alt=\"2025 11 29 LFCI PastorsConf\" src=\"https://www.worldministries.org/Userfiles/Flyer-jpegs/2025-11-29-LFCI-PastorsConf.jpeg\" style=\"width: 200px; height: auto;\" width=\"200\" /><br /></span>Philippines<br /></strong>Love Fellowship Church International - Calizon, Calumpit Bulacan 3003</span></p>\r\n<p>November 29 Saturday - 10AM to 2PM - All Pastors and Workers Conference<br />November 30 Sunday service</p>",
-      "region": "international"
-    },
-    {
-      "id": "2025-01-01-philippines",
-      "year": 2025,
-      "sort_date": "2025-01-01",
-      "date_text": "",
-      "place": "Philippines",
-      "flag": "https://www.worldministries.org/Userfiles/Flags/philippines.gif",
-      "flag_alt": "philippines",
-      "flyer": "",
-      "flyer_alt": "",
-      "body_html": "<p><span><strong>Philippines</strong></span></p>\r\n<p>TBD Prison Ministry<br />TBD Meysulao - flood relief giving</p>",
-      "region": "international"
-    },
-    {
-      "id": "2025-01-01-philippines",
-      "year": 2025,
-      "sort_date": "2025-01-01",
-      "date_text": "",
-      "place": "Philippines",
-      "flag": "https://www.worldministries.org/Userfiles/Flags/philippines.gif",
-      "flag_alt": "philippines",
-      "flyer": "https://www.worldministries.org/Userfiles/Flyer-jpegs/2025-11-22-LFCI.jpg",
-      "flyer_alt": "Love Fellowship Church - Healing Crusade II",
-      "body_html": "<img src=\"https://www.worldministries.org/Userfiles/Flyer-jpegs/2025-11-22-LFCI.jpg\" alt=\"Love Fellowship Church - Healing Crusade II\" style=\"width: 200px; height: auto;\" width=\"200\" />\r\n<p>&nbsp;</p>\r\n<p><strong><span>Philippines</span></strong></p>\r\n<p><strong><span></span></strong>November 22 - Saturday Morning -&nbsp;Nueva Ecija Evangelistic Crusade<br />November 22 - 4 PM Healing Crusade II -&nbsp;Gym Palayan City, <br /><span>November 23 - Sunday Service 4 PM - LFCI -&nbsp;</span>Olympia Village, Caballeros, Palayan</p>",
-      "region": "international"
-    },
-    {
       "id": "2025-11-19-philippines",
       "year": 2025,
       "sort_date": "2025-11-19",
@@ -1047,19 +1082,6 @@
       "region": "international"
     },
     {
-      "id": "2025-01-01-kenya",
-      "year": 2025,
-      "sort_date": "2025-01-01",
-      "date_text": "September 4 - 8, 15 - 17, 2025",
-      "place": "Kenya",
-      "flag": "https://www.worldministries.org/Userfiles/Flags/kenya.gif",
-      "flag_alt": "kenya",
-      "flyer": "",
-      "flyer_alt": "",
-      "body_html": "<p><strong><strong><strong>Kenya<br /></strong></strong></strong>September 4 - 8, 15 - 17, 2025</p>",
-      "region": "international"
-    },
-    {
       "id": "2025-06-12-israel",
       "year": 2025,
       "sort_date": "2025-06-12",
@@ -1109,19 +1131,6 @@
       "flyer": "",
       "flyer_alt": "",
       "body_html": "<p><strong><strong><strong>Visjonskirken in Drammen, Norway<br /></strong></strong></strong>Sunday, April 6, 2025<br />11:00 AM CET<strong><strong><strong><br /></strong></strong></strong>LIVE TV Coverage at <a href=\"https://visjonnorge.com/nor/live/\">https://visjonnorge.com/nor/live/</a></p>",
-      "region": "international"
-    },
-    {
-      "id": "2025-01-01-jerusalem-prayer-breakfast",
-      "year": 2025,
-      "sort_date": "2025-01-01",
-      "date_text": "Thursday & Friday, April 3 & 4, 2025",
-      "place": "Jerusalem Prayer Breakfast",
-      "flag": "https://www.worldministries.org/Userfiles/Flags/norway.gif",
-      "flag_alt": "norway",
-      "flyer": "",
-      "flyer_alt": "",
-      "body_html": "<p><strong><strong><strong>Jerusalem Prayer Breakfast<br /></strong></strong></strong>Thursday &amp; Friday, April 3 &amp; 4, 2025<br />Radisson Blu Hotel &amp; Conference Center, Oslo, Alna<br />Tevlingveien 21 Alna, 1081 Oslo, Norway<br />Dr. Hansen spoke at 3:50 PM, April 3, 2025</p>",
       "region": "international"
     },
     {
@@ -1242,6 +1251,97 @@
       "region": "international"
     },
     {
+      "id": "2025-01-01-philippines",
+      "year": 2025,
+      "sort_date": "2025-01-01",
+      "date_text": "",
+      "place": "Philippines",
+      "flag": "https://www.worldministries.org/Userfiles/Flags/philippines.gif",
+      "flag_alt": "philippines",
+      "flyer": "",
+      "flyer_alt": "",
+      "body_html": "<p><strong>Philippines</strong></p>\r\n<p><span></span>Dec 1 Monday 3pm - Bishop's 40th Ministry Anniversary Celebration<br />Dec 2 Tuesday 10am - Pastor's Convention at JCTD</p>",
+      "region": "international"
+    },
+    {
+      "id": "2025-01-01-philippines",
+      "year": 2025,
+      "sort_date": "2025-01-01",
+      "date_text": "",
+      "place": "Philippines",
+      "flag": "https://www.worldministries.org/Userfiles/Flags/philippines.gif",
+      "flag_alt": "philippines",
+      "flyer": "https://www.worldministries.org/Userfiles/Flyer-jpegs/2025-11-29-LFCI-PastorsConf.jpeg",
+      "flyer_alt": "2025 11 29 LFCI PastorsConf",
+      "body_html": "<p><span><strong><span><img alt=\"2025 11 29 LFCI PastorsConf\" src=\"https://www.worldministries.org/Userfiles/Flyer-jpegs/2025-11-29-LFCI-PastorsConf.jpeg\" style=\"width: 200px; height: auto;\" width=\"200\" /><br /></span>Philippines<br /></strong>Love Fellowship Church International - Calizon, Calumpit Bulacan 3003</span></p>\r\n<p>November 29 Saturday - 10AM to 2PM - All Pastors and Workers Conference<br />November 30 Sunday service</p>",
+      "region": "international"
+    },
+    {
+      "id": "2025-01-01-philippines",
+      "year": 2025,
+      "sort_date": "2025-01-01",
+      "date_text": "",
+      "place": "Philippines",
+      "flag": "https://www.worldministries.org/Userfiles/Flags/philippines.gif",
+      "flag_alt": "philippines",
+      "flyer": "",
+      "flyer_alt": "",
+      "body_html": "<p><span><strong>Philippines</strong></span></p>\r\n<p>TBD Prison Ministry<br />TBD Meysulao - flood relief giving</p>",
+      "region": "international"
+    },
+    {
+      "id": "2025-01-01-philippines",
+      "year": 2025,
+      "sort_date": "2025-01-01",
+      "date_text": "",
+      "place": "Philippines",
+      "flag": "https://www.worldministries.org/Userfiles/Flags/philippines.gif",
+      "flag_alt": "philippines",
+      "flyer": "https://www.worldministries.org/Userfiles/Flyer-jpegs/2025-11-22-LFCI.jpg",
+      "flyer_alt": "Love Fellowship Church - Healing Crusade II",
+      "body_html": "<img src=\"https://www.worldministries.org/Userfiles/Flyer-jpegs/2025-11-22-LFCI.jpg\" alt=\"Love Fellowship Church - Healing Crusade II\" style=\"width: 200px; height: auto;\" width=\"200\" />\r\n<p>&nbsp;</p>\r\n<p><strong><span>Philippines</span></strong></p>\r\n<p><strong><span></span></strong>November 22 - Saturday Morning -&nbsp;Nueva Ecija Evangelistic Crusade<br />November 22 - 4 PM Healing Crusade II -&nbsp;Gym Palayan City, <br /><span>November 23 - Sunday Service 4 PM - LFCI -&nbsp;</span>Olympia Village, Caballeros, Palayan</p>",
+      "region": "international"
+    },
+    {
+      "id": "2025-01-01-kenya",
+      "year": 2025,
+      "sort_date": "2025-01-01",
+      "date_text": "September 4 - 8, 15 - 17, 2025",
+      "place": "Kenya",
+      "flag": "https://www.worldministries.org/Userfiles/Flags/kenya.gif",
+      "flag_alt": "kenya",
+      "flyer": "",
+      "flyer_alt": "",
+      "body_html": "<p><strong><strong><strong>Kenya<br /></strong></strong></strong>September 4 - 8, 15 - 17, 2025</p>",
+      "region": "international"
+    },
+    {
+      "id": "2025-01-01-jerusalem-prayer-breakfast",
+      "year": 2025,
+      "sort_date": "2025-01-01",
+      "date_text": "Thursday & Friday, April 3 & 4, 2025",
+      "place": "Jerusalem Prayer Breakfast",
+      "flag": "https://www.worldministries.org/Userfiles/Flags/norway.gif",
+      "flag_alt": "norway",
+      "flyer": "",
+      "flyer_alt": "",
+      "body_html": "<p><strong><strong><strong>Jerusalem Prayer Breakfast<br /></strong></strong></strong>Thursday &amp; Friday, April 3 &amp; 4, 2025<br />Radisson Blu Hotel &amp; Conference Center, Oslo, Alna<br />Tevlingveien 21 Alna, 1081 Oslo, Norway<br />Dr. Hansen spoke at 3:50 PM, April 3, 2025</p>",
+      "region": "international"
+    },
+    {
+      "id": "2024-03-19-colombia-south-america",
+      "year": 2024,
+      "sort_date": "2024-03-19",
+      "date_text": "Tuesday, March 12 - Tuesday March 19, 2024",
+      "place": "Colombia, South America",
+      "flag": "https://www.worldministries.org/Userfiles/Flags/colombia.gif",
+      "flag_alt": "colombia",
+      "flyer": "",
+      "flyer_alt": "",
+      "body_html": "<p><strong>Colombia, South America<br /></strong>Tuesday, March 12 - Tuesday March 19, 2024<strong></strong></p>",
+      "region": "international"
+    },
+    {
       "id": "2024-03-18-bogota-colombia",
       "year": 2024,
       "sort_date": "2024-03-18",
@@ -1307,19 +1407,6 @@
       "region": "international"
     },
     {
-      "id": "2024-03-19-colombia-south-america",
-      "year": 2024,
-      "sort_date": "2024-03-19",
-      "date_text": "Tuesday, March 12 - Tuesday March 19, 2024",
-      "place": "Colombia, South America",
-      "flag": "https://www.worldministries.org/Userfiles/Flags/colombia.gif",
-      "flag_alt": "colombia",
-      "flyer": "",
-      "flyer_alt": "",
-      "body_html": "<p><strong>Colombia, South America<br /></strong>Tuesday, March 12 - Tuesday March 19, 2024<strong></strong></p>",
-      "region": "international"
-    },
-    {
       "id": "2024-01-29-nairobi-kenya",
       "year": 2024,
       "sort_date": "2024-01-29",
@@ -1330,19 +1417,6 @@
       "flyer": "",
       "flyer_alt": "",
       "body_html": "<p><strong>Nairobi, Kenya<br /></strong>Monday, January 29, 2024<br />Meeting with <span class=\"x193iq5w xeuugli x13faqbe x1vvkbs xlh3980 xvmahel x1n0sxbx x1lliihq x1s928wv xhkezso x1gmr53x x1cpjm7i x1fgarty x1943h6x xudqn12 x3x7a5m x6prxxf xvq8zen xo1l8bm xzsf02u x1yc453h\" dir=\"auto\">former Vice President of Kenya<br />The Honorable Stephen Kolonzo Musyoka</span></p>",
-      "region": "international"
-    },
-    {
-      "id": "2024-01-01-nairobi-kenya",
-      "year": 2024,
-      "sort_date": "2024-01-01",
-      "date_text": "",
-      "place": "Nairobi, Kenya",
-      "flag": "https://www.worldministries.org/Userfiles/Flags/kenya.gif",
-      "flag_alt": "kenya",
-      "flyer": "",
-      "flyer_alt": "",
-      "body_html": "<p><strong><strong>Nairobi, Kenya<br /></strong></strong>Monday, January 29<br />Meeting with <span class=\"x193iq5w xeuugli x13faqbe x1vvkbs xlh3980 xvmahel x1n0sxbx x1lliihq x1s928wv xhkezso x1gmr53x x1cpjm7i x1fgarty x1943h6x xudqn12 x3x7a5m x6prxxf xvq8zen xo1l8bm xzsf02u x1yc453h\" dir=\"auto\">Bishop Mike Adipo<br /><span class=\"x193iq5w xeuugli x13faqbe x1vvkbs xlh3980 xvmahel x1n0sxbx x1lliihq x1s928wv xhkezso x1gmr53x x1cpjm7i x1fgarty x1943h6x xudqn12 x3x7a5m x6prxxf xvq8zen xo1l8bm xzsf02u x1yc453h\" dir=\"auto\">General Secretary Nairobi County for the Evangelical Alliance of Kenya<br />Deputy Chairman on the Council of Elders for KEGMA<br />Chairman of Ark Ambassadors Society</span></span><strong></strong></p>",
       "region": "international"
     },
     {
@@ -1359,19 +1433,6 @@
       "region": "international"
     },
     {
-      "id": "2024-01-28-nairobi-kenya",
-      "year": 2024,
-      "sort_date": "2024-01-28",
-      "date_text": "Sunday, January 28, 2024",
-      "place": "Nairobi, Kenya",
-      "flag": "https://www.worldministries.org/Userfiles/Flags/kenya.gif",
-      "flag_alt": "kenya",
-      "flyer": "",
-      "flyer_alt": "",
-      "body_html": "<p><strong>Nairobi, Kenya<br /></strong>Sunday, January 28, 2024<br />Met with Dr. Ben Sterciuc, Vital Solutions<br />We discussed and are giving dental equipment and other<br />supplies in a 40 foot container to Dr. Ben to be used in<br />Tanzania, East Africa.</p>",
-      "region": "international"
-    },
-    {
       "id": "2024-01-28-thika-kenya",
       "year": 2024,
       "sort_date": "2024-01-28",
@@ -1382,6 +1443,19 @@
       "flyer": "",
       "flyer_alt": "",
       "body_html": "<p><strong>Thika, Kenya<br /></strong>Sunday, January 28, 2024 - Share the Love Centre Arena<br />10:00 am<br />Bishop John Loot (John CW)<br />between Kenol and Kabati next to Ola Petrol Station<strong></strong></p>",
+      "region": "international"
+    },
+    {
+      "id": "2024-01-28-nairobi-kenya",
+      "year": 2024,
+      "sort_date": "2024-01-28",
+      "date_text": "Sunday, January 28, 2024",
+      "place": "Nairobi, Kenya",
+      "flag": "https://www.worldministries.org/Userfiles/Flags/kenya.gif",
+      "flag_alt": "kenya",
+      "flyer": "",
+      "flyer_alt": "",
+      "body_html": "<p><strong>Nairobi, Kenya<br /></strong>Sunday, January 28, 2024<br />Met with Dr. Ben Sterciuc, Vital Solutions<br />We discussed and are giving dental equipment and other<br />supplies in a 40 foot container to Dr. Ben to be used in<br />Tanzania, East Africa.</p>",
       "region": "international"
     },
     {
@@ -1567,19 +1641,6 @@
       "region": "international"
     },
     {
-      "id": "2024-01-12-amsterdam-netherlands-to-nairobi-kenya",
-      "year": 2024,
-      "sort_date": "2024-01-12",
-      "date_text": "Friday, January 12, 2024",
-      "place": "Amsterdam, Netherlands to Nairobi, Kenya",
-      "flag": "https://www.worldministries.org/Userfiles/Flags/kenya.gif",
-      "flag_alt": "kenya",
-      "flyer": "",
-      "flyer_alt": "",
-      "body_html": "<p><strong><span class=\"x193iq5w xeuugli x13faqbe x1vvkbs xlh3980 xvmahel x1n0sxbx x1lliihq x1s928wv xhkezso x1gmr53x x1cpjm7i x1fgarty x1943h6x xudqn12 x3x7a5m x6prxxf xvq8zen xo1l8bm xzsf02u x1yc453h\" dir=\"auto\">Amsterdam, Netherlands to Nairobi, Kenya<br /></span></strong>Friday, January 12, 2024<strong><br /></strong><span class=\"x193iq5w xeuugli x13faqbe x1vvkbs xlh3980 xvmahel x1n0sxbx x1lliihq x1s928wv xhkezso x1gmr53x x1cpjm7i x1fgarty x1943h6x xudqn12 x3x7a5m x6prxxf xvq8zen xo1l8bm xzsf02u x1yc453h\" dir=\"auto\">Timothy Merama</span>, discussed the situation in the world and prayed<br /><span class=\"x193iq5w xeuugli x13faqbe x1vvkbs xlh3980 xvmahel x1n0sxbx x1lliihq x1s928wv xhkezso x1gmr53x x1cpjm7i x1fgarty x1943h6x xudqn12 x3x7a5m x6prxxf xvq8zen xo1l8bm xzsf02u x1yc453h\" dir=\"auto\">We sat next to each other on the flight and he said he watches me on TV<br /></span></p>",
-      "region": "international"
-    },
-    {
       "id": "2024-01-12-seattle-wa-nairobi-kenya",
       "year": 2024,
       "sort_date": "2024-01-12",
@@ -1593,6 +1654,19 @@
       "region": "international"
     },
     {
+      "id": "2024-01-12-amsterdam-netherlands-to-nairobi-kenya",
+      "year": 2024,
+      "sort_date": "2024-01-12",
+      "date_text": "Friday, January 12, 2024",
+      "place": "Amsterdam, Netherlands to Nairobi, Kenya",
+      "flag": "https://www.worldministries.org/Userfiles/Flags/kenya.gif",
+      "flag_alt": "kenya",
+      "flyer": "",
+      "flyer_alt": "",
+      "body_html": "<p><strong><span class=\"x193iq5w xeuugli x13faqbe x1vvkbs xlh3980 xvmahel x1n0sxbx x1lliihq x1s928wv xhkezso x1gmr53x x1cpjm7i x1fgarty x1943h6x xudqn12 x3x7a5m x6prxxf xvq8zen xo1l8bm xzsf02u x1yc453h\" dir=\"auto\">Amsterdam, Netherlands to Nairobi, Kenya<br /></span></strong>Friday, January 12, 2024<strong><br /></strong><span class=\"x193iq5w xeuugli x13faqbe x1vvkbs xlh3980 xvmahel x1n0sxbx x1lliihq x1s928wv xhkezso x1gmr53x x1cpjm7i x1fgarty x1943h6x xudqn12 x3x7a5m x6prxxf xvq8zen xo1l8bm xzsf02u x1yc453h\" dir=\"auto\">Timothy Merama</span>, discussed the situation in the world and prayed<br /><span class=\"x193iq5w xeuugli x13faqbe x1vvkbs xlh3980 xvmahel x1n0sxbx x1lliihq x1s928wv xhkezso x1gmr53x x1cpjm7i x1fgarty x1943h6x xudqn12 x3x7a5m x6prxxf xvq8zen xo1l8bm xzsf02u x1yc453h\" dir=\"auto\">We sat next to each other on the flight and he said he watches me on TV<br /></span></p>",
+      "region": "international"
+    },
+    {
       "id": "2024-01-11-kenya-east-africa",
       "year": 2024,
       "sort_date": "2024-01-11",
@@ -1603,6 +1677,19 @@
       "flyer": "",
       "flyer_alt": "",
       "body_html": "<p><strong>Kenya, East Africa<br /></strong>Dr. Jonathan &amp; Rev. Adalia Hansen<br />January 11-30, 2024</p>",
+      "region": "international"
+    },
+    {
+      "id": "2024-01-01-nairobi-kenya",
+      "year": 2024,
+      "sort_date": "2024-01-01",
+      "date_text": "",
+      "place": "Nairobi, Kenya",
+      "flag": "https://www.worldministries.org/Userfiles/Flags/kenya.gif",
+      "flag_alt": "kenya",
+      "flyer": "",
+      "flyer_alt": "",
+      "body_html": "<p><strong><strong>Nairobi, Kenya<br /></strong></strong>Monday, January 29<br />Meeting with <span class=\"x193iq5w xeuugli x13faqbe x1vvkbs xlh3980 xvmahel x1n0sxbx x1lliihq x1s928wv xhkezso x1gmr53x x1cpjm7i x1fgarty x1943h6x xudqn12 x3x7a5m x6prxxf xvq8zen xo1l8bm xzsf02u x1yc453h\" dir=\"auto\">Bishop Mike Adipo<br /><span class=\"x193iq5w xeuugli x13faqbe x1vvkbs xlh3980 xvmahel x1n0sxbx x1lliihq x1s928wv xhkezso x1gmr53x x1cpjm7i x1fgarty x1943h6x xudqn12 x3x7a5m x6prxxf xvq8zen xo1l8bm xzsf02u x1yc453h\" dir=\"auto\">General Secretary Nairobi County for the Evangelical Alliance of Kenya<br />Deputy Chairman on the Council of Elders for KEGMA<br />Chairman of Ark Ambassadors Society</span></span><strong></strong></p>",
       "region": "international"
     },
     {
@@ -2373,19 +2460,6 @@
       "region": "international"
     },
     {
-      "id": "2013-01-16-nairobi-kenya",
-      "year": 2013,
-      "sort_date": "2013-01-16",
-      "date_text": "January 16-24, 2013",
-      "place": "Nairobi, Kenya",
-      "flag": "https://www.worldministries.org/Userfiles/Flags/kenya.gif",
-      "flag_alt": "Kenya Flag",
-      "flyer": "",
-      "flyer_alt": "",
-      "body_html": "<strong>Nairobi, Kenya</strong><br />January 16-24, 2013",
-      "region": "international"
-    },
-    {
       "id": "2013-01-20-kiambu-kenya",
       "year": 2013,
       "sort_date": "2013-01-20",
@@ -2396,6 +2470,19 @@
       "flyer": "",
       "flyer_alt": "",
       "body_html": "<strong>Kiambu, Kenya</strong><br />January 20, 2013<br />Word of Faith Church<br />Bishop Thomas Muthee<br />Kiambu, Kenya",
+      "region": "international"
+    },
+    {
+      "id": "2013-01-16-nairobi-kenya",
+      "year": 2013,
+      "sort_date": "2013-01-16",
+      "date_text": "January 16-24, 2013",
+      "place": "Nairobi, Kenya",
+      "flag": "https://www.worldministries.org/Userfiles/Flags/kenya.gif",
+      "flag_alt": "Kenya Flag",
+      "flyer": "",
+      "flyer_alt": "",
+      "body_html": "<strong>Nairobi, Kenya</strong><br />January 16-24, 2013",
       "region": "international"
     },
     {
@@ -3036,19 +3123,6 @@
       "region": "international"
     },
     {
-      "id": "2000-06-07-austria",
-      "year": 2000,
-      "sort_date": "2000-06-07",
-      "date_text": "June 7-8, 2000",
-      "place": "Austria",
-      "flag": "https://www.worldministries.org/Userfiles/Flags/austria.gif",
-      "flag_alt": "Austria Flag",
-      "flyer": "",
-      "flyer_alt": "",
-      "body_html": "<strong>Austria</strong><br />June 7-8, 2000",
-      "region": "international"
-    },
-    {
       "id": "2000-06-07-slovak-republic",
       "year": 2000,
       "sort_date": "2000-06-07",
@@ -3072,6 +3146,19 @@
       "flyer": "",
       "flyer_alt": "",
       "body_html": "<strong>Czech Republic</strong><br />June 7, 2000",
+      "region": "international"
+    },
+    {
+      "id": "2000-06-07-austria",
+      "year": 2000,
+      "sort_date": "2000-06-07",
+      "date_text": "June 7-8, 2000",
+      "place": "Austria",
+      "flag": "https://www.worldministries.org/Userfiles/Flags/austria.gif",
+      "flag_alt": "Austria Flag",
+      "flyer": "",
+      "flyer_alt": "",
+      "body_html": "<strong>Austria</strong><br />June 7-8, 2000",
       "region": "international"
     },
     {
@@ -3270,19 +3357,6 @@
       "region": "international"
     },
     {
-      "id": "1998-07-29-kenya",
-      "year": 1998,
-      "sort_date": "1998-07-29",
-      "date_text": "July 29 - August 20, 1998",
-      "place": "Kenya",
-      "flag": "https://www.worldministries.org/Userfiles/Flags/6799487.gif",
-      "flag_alt": "Kenya Flag",
-      "flyer": "",
-      "flyer_alt": "",
-      "body_html": "<strong>Kenya</strong><br />July 29 - August 20, 1998",
-      "region": "international"
-    },
-    {
       "id": "1998-07-29-netherlands",
       "year": 1998,
       "sort_date": "1998-07-29",
@@ -3293,6 +3367,19 @@
       "flyer": "",
       "flyer_alt": "",
       "body_html": "<strong>Netherlands</strong><br />July 29, 1998",
+      "region": "international"
+    },
+    {
+      "id": "1998-07-29-kenya",
+      "year": 1998,
+      "sort_date": "1998-07-29",
+      "date_text": "July 29 - August 20, 1998",
+      "place": "Kenya",
+      "flag": "https://www.worldministries.org/Userfiles/Flags/6799487.gif",
+      "flag_alt": "Kenya Flag",
+      "flyer": "",
+      "flyer_alt": "",
+      "body_html": "<strong>Kenya</strong><br />July 29 - August 20, 1998",
       "region": "international"
     },
     {
@@ -3634,19 +3721,6 @@
       "region": "international"
     },
     {
-      "id": "1996-09-10-johor-bahru-malaysia",
-      "year": 1996,
-      "sort_date": "1996-09-10",
-      "date_text": "September 10-14, 1996",
-      "place": "Johor Bahru, Malaysia",
-      "flag": "https://www.worldministries.org/Userfiles/Flags/malaysia.gif",
-      "flag_alt": "Malaysia Flag",
-      "flyer": "",
-      "flyer_alt": "",
-      "body_html": "<strong>Johor Bahru, Malaysia</strong><br />September 10-14, 1996",
-      "region": "international"
-    },
-    {
       "id": "1996-09-10-singapore",
       "year": 1996,
       "sort_date": "1996-09-10",
@@ -3657,6 +3731,19 @@
       "flyer": "",
       "flyer_alt": "",
       "body_html": "<strong>Singapore</strong><br />September 10, 1996",
+      "region": "international"
+    },
+    {
+      "id": "1996-09-10-johor-bahru-malaysia",
+      "year": 1996,
+      "sort_date": "1996-09-10",
+      "date_text": "September 10-14, 1996",
+      "place": "Johor Bahru, Malaysia",
+      "flag": "https://www.worldministries.org/Userfiles/Flags/malaysia.gif",
+      "flag_alt": "Malaysia Flag",
+      "flyer": "",
+      "flyer_alt": "",
+      "body_html": "<strong>Johor Bahru, Malaysia</strong><br />September 10-14, 1996",
       "region": "international"
     },
     {
@@ -3959,6 +4046,19 @@
       "region": "international"
     },
     {
+      "id": "1995-05-15-dubai-united-arab-emirates",
+      "year": 1995,
+      "sort_date": "1995-05-15",
+      "date_text": "May 15, 1995",
+      "place": "Dubai, United Arab Emirates",
+      "flag": "https://www.worldministries.org/Userfiles/Flags/united_arab_emirates.gif",
+      "flag_alt": "United Arab Emirates Flag",
+      "flyer": "",
+      "flyer_alt": "",
+      "body_html": "<strong>Dubai, United Arab Emirates</strong><br />May 15, 1995",
+      "region": "international"
+    },
+    {
       "id": "1995-05-15-addis-ababa-ethiopia",
       "year": 1995,
       "sort_date": "1995-05-15",
@@ -3982,19 +4082,6 @@
       "flyer": "",
       "flyer_alt": "",
       "body_html": "<strong>Bangkok, Thailand</strong><br />May 14, 1995",
-      "region": "international"
-    },
-    {
-      "id": "1995-05-15-dubai-united-arab-emirates",
-      "year": 1995,
-      "sort_date": "1995-05-15",
-      "date_text": "May 15, 1995",
-      "place": "Dubai, United Arab Emirates",
-      "flag": "https://www.worldministries.org/Userfiles/Flags/united_arab_emirates.gif",
-      "flag_alt": "United Arab Emirates Flag",
-      "flyer": "",
-      "flyer_alt": "",
-      "body_html": "<strong>Dubai, United Arab Emirates</strong><br />May 15, 1995",
       "region": "international"
     },
     {
@@ -4297,19 +4384,6 @@
       "region": "international"
     },
     {
-      "id": "1994-09-28-hong-kong",
-      "year": 1994,
-      "sort_date": "1994-09-28",
-      "date_text": "September 28 - October 3, 1994",
-      "place": "Hong Kong",
-      "flag": "https://www.worldministries.org/Userfiles/Flags/hong_kong.gif",
-      "flag_alt": "Hong Kong Flag",
-      "flyer": "",
-      "flyer_alt": "",
-      "body_html": "<strong>Hong Kong</strong><br />September 28 - October 3, 1994",
-      "region": "international"
-    },
-    {
       "id": "1994-09-28-singapore",
       "year": 1994,
       "sort_date": "1994-09-28",
@@ -4320,6 +4394,19 @@
       "flyer": "",
       "flyer_alt": "",
       "body_html": "<strong>Singapore</strong><br />September 28, 1994",
+      "region": "international"
+    },
+    {
+      "id": "1994-09-28-hong-kong",
+      "year": 1994,
+      "sort_date": "1994-09-28",
+      "date_text": "September 28 - October 3, 1994",
+      "place": "Hong Kong",
+      "flag": "https://www.worldministries.org/Userfiles/Flags/hong_kong.gif",
+      "flag_alt": "Hong Kong Flag",
+      "flyer": "",
+      "flyer_alt": "",
+      "body_html": "<strong>Hong Kong</strong><br />September 28 - October 3, 1994",
       "region": "international"
     },
     {
@@ -4622,19 +4709,6 @@
       "region": "international"
     },
     {
-      "id": "1994-02-07-kenya",
-      "year": 1994,
-      "sort_date": "1994-02-07",
-      "date_text": "February 7-11, 1994",
-      "place": "Kenya",
-      "flag": "https://www.worldministries.org/Userfiles/Flags/6799487.gif",
-      "flag_alt": "Kenya Flag",
-      "flyer": "",
-      "flyer_alt": "",
-      "body_html": "<strong>Kenya</strong><br />February 7-11, 1994",
-      "region": "international"
-    },
-    {
       "id": "1994-02-07-seychelles",
       "year": 1994,
       "sort_date": "1994-02-07",
@@ -4645,6 +4719,19 @@
       "flyer": "",
       "flyer_alt": "",
       "body_html": "<strong>Seychelles</strong><br />February 7, 1994",
+      "region": "international"
+    },
+    {
+      "id": "1994-02-07-kenya",
+      "year": 1994,
+      "sort_date": "1994-02-07",
+      "date_text": "February 7-11, 1994",
+      "place": "Kenya",
+      "flag": "https://www.worldministries.org/Userfiles/Flags/6799487.gif",
+      "flag_alt": "Kenya Flag",
+      "flyer": "",
+      "flyer_alt": "",
+      "body_html": "<strong>Kenya</strong><br />February 7-11, 1994",
       "region": "international"
     },
     {
@@ -4661,19 +4748,6 @@
       "region": "international"
     },
     {
-      "id": "1994-02-02-jakarta-indonesia",
-      "year": 1994,
-      "sort_date": "1994-02-02",
-      "date_text": "February 2-6, 1994",
-      "place": "Jakarta, Indonesia",
-      "flag": "https://www.worldministries.org/Userfiles/Flags/indonesia.gif",
-      "flag_alt": "Indonesia Flag",
-      "flyer": "",
-      "flyer_alt": "",
-      "body_html": "<strong>Jakarta, Indonesia</strong><br />February 2-6, 1994",
-      "region": "international"
-    },
-    {
       "id": "1994-02-02-singapore",
       "year": 1994,
       "sort_date": "1994-02-02",
@@ -4684,6 +4758,19 @@
       "flyer": "",
       "flyer_alt": "",
       "body_html": "<strong>Singapore</strong><br />February 2, 1994",
+      "region": "international"
+    },
+    {
+      "id": "1994-02-02-jakarta-indonesia",
+      "year": 1994,
+      "sort_date": "1994-02-02",
+      "date_text": "February 2-6, 1994",
+      "place": "Jakarta, Indonesia",
+      "flag": "https://www.worldministries.org/Userfiles/Flags/indonesia.gif",
+      "flag_alt": "Indonesia Flag",
+      "flyer": "",
+      "flyer_alt": "",
+      "body_html": "<strong>Jakarta, Indonesia</strong><br />February 2-6, 1994",
       "region": "international"
     },
     {
@@ -5168,19 +5255,6 @@
       "region": "international"
     },
     {
-      "id": "1992-10-24-mauritius",
-      "year": 1992,
-      "sort_date": "1992-10-24",
-      "date_text": "October 24-26, 1992",
-      "place": "Mauritius",
-      "flag": "https://www.worldministries.org/Userfiles/Flags/mauritius.gif",
-      "flag_alt": "Mauritius Flag",
-      "flyer": "",
-      "flyer_alt": "",
-      "body_html": "<strong>Mauritius</strong><br />October 24-26, 1992",
-      "region": "international"
-    },
-    {
       "id": "1992-10-24-singapore",
       "year": 1992,
       "sort_date": "1992-10-24",
@@ -5191,6 +5265,19 @@
       "flyer": "",
       "flyer_alt": "",
       "body_html": "<strong>Singapore</strong><br />October 24, 1992",
+      "region": "international"
+    },
+    {
+      "id": "1992-10-24-mauritius",
+      "year": 1992,
+      "sort_date": "1992-10-24",
+      "date_text": "October 24-26, 1992",
+      "place": "Mauritius",
+      "flag": "https://www.worldministries.org/Userfiles/Flags/mauritius.gif",
+      "flag_alt": "Mauritius Flag",
+      "flyer": "",
+      "flyer_alt": "",
+      "body_html": "<strong>Mauritius</strong><br />October 24-26, 1992",
       "region": "international"
     },
     {
@@ -5480,19 +5567,6 @@
       "region": "international"
     },
     {
-      "id": "1992-04-25-malaysia",
-      "year": 1992,
-      "sort_date": "1992-04-25",
-      "date_text": "April 25-30, 1992",
-      "place": "Malaysia",
-      "flag": "https://www.worldministries.org/Userfiles/Flags/malaysia.gif",
-      "flag_alt": "Malaysia Flag",
-      "flyer": "",
-      "flyer_alt": "",
-      "body_html": "<strong>Malaysia</strong><br />April 25-30, 1992",
-      "region": "international"
-    },
-    {
       "id": "1992-04-25-singapore",
       "year": 1992,
       "sort_date": "1992-04-25",
@@ -5503,6 +5577,19 @@
       "flyer": "",
       "flyer_alt": "",
       "body_html": "<strong>Singapore</strong><br />April 25, 1992",
+      "region": "international"
+    },
+    {
+      "id": "1992-04-25-malaysia",
+      "year": 1992,
+      "sort_date": "1992-04-25",
+      "date_text": "April 25-30, 1992",
+      "place": "Malaysia",
+      "flag": "https://www.worldministries.org/Userfiles/Flags/malaysia.gif",
+      "flag_alt": "Malaysia Flag",
+      "flyer": "",
+      "flyer_alt": "",
+      "body_html": "<strong>Malaysia</strong><br />April 25-30, 1992",
       "region": "international"
     },
     {
@@ -5559,7 +5646,7 @@
     }
   ],
   "lastManualUpdate": {
-    "at": "2026-09-26T17:21:41Z",
-    "note": "Upsert event evt-000393"
+    "at": "2026-09-30T14:49:02Z",
+    "note": "Upsert KZN Celebration Centre Tongaat events 30 Sep–4 Oct 2026"
   }
 }
