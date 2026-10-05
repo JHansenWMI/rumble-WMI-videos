@@ -45,6 +45,11 @@ OVERRIDES_BY_GUID = {
     "446226758": {
         "pub_date": "Sun, 20 Sep 2026 19:00:00 +0000",
     },
+    # How to Move Mountains. Rumble published 5 Oct 2026.
+    # Publish time is Sunday 4 Oct 2026, 02:00 PDT (09:00 UTC).
+    "447208916": {
+        "pub_date": "Sun, 04 Oct 2026 09:00:00 +0000",
+    },
 }
 
 _FEEDITEM_FIELDS = {
