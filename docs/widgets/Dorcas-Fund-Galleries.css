@@ -1,11 +1,10 @@
 /* Dorcas Fund galleries. Scoped to the git-hosted widget mount.
-   The narrow layout is the one we keep. At a 900px window the live
-   content column is 720px wide and the slide is 540px tall. Wider
-   windows stay that size instead of growing the frame. */
+   The narrow layout is the one we keep. On a wide window the slide
+   stays 653 by 490, about 50px shorter than the old 720 by 540 cap. */
 
 #dorcasFundGalleries .swiper {
   width: 100%;
-  max-width: 720px;
+  max-width: 653px;
   margin: 12px 0 22px 0;
   overflow: hidden;
 }
@@ -13,7 +12,7 @@
 #dorcasFundGalleries .swiper-slide {
   width: 100% !important;
   max-width: none !important;
-  max-height: 540px;
+  max-height: 490px;
   height: auto !important;
   aspect-ratio: 4 / 3;
   background: #000;
