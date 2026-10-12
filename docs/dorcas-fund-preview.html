@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Preview — Dorcas Fund galleries (local)</title>
+    <!--
+      Local check before pasting Dorcas-Fund-Galleries-cms.html into the CMS.
+
+      Double-click Preview-Dorcas-Galleries.command in the repo root, or:
+        cd docs && python3 -m http.server 8765
+        http://127.0.0.1:8765/dorcas-fund-preview.html
+
+      This page loads the same fragment and widget the CMS snippet loads,
+      from this folder instead of GitHub Pages.
+    -->
+    <style>
+      body {
+        font-family: Georgia, "Times New Roman", serif;
+        margin: 24px auto;
+        max-width: 960px;
+        line-height: 1.4;
+      }
+      .preview-banner {
+        background: #f4f0f8;
+        border: 1px solid #cfc4dd;
+        padding: 10px 14px;
+        margin-bottom: 20px;
+        font-family: system-ui, sans-serif;
+        font-size: 14px;
+      }
+      h1 {
+        font-size: 1.6rem;
+        color: #502785;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="preview-banner">
+      Local preview of the Dorcas Fund page body. Same files the CMS snippet
+      will load. This is not the live site.
+    </div>
+    <h1>The Dorcas Fund</h1>
+    <div id="dorcasFundGalleries" data-dorcas-galleries="./dorcas-fund-galleries.html"></div>
+    <script src="./widgets/Dorcas-Fund-Galleries.js"></script>
+  </body>
+</html>

@@ -1,0 +1,99 @@
+/* Dorcas Fund galleries. Scoped to the git-hosted widget mount.
+   The narrow layout is the one we keep. At a 900px window the live
+   content column is 720px wide and the slide is 540px tall. Wider
+   windows stay that size instead of growing the frame. */
+
+#dorcasFundGalleries .swiper {
+  width: 100%;
+  max-width: 720px;
+  margin: 12px 0 22px 0;
+  overflow: hidden;
+}
+
+#dorcasFundGalleries .swiper-slide {
+  width: 100% !important;
+  max-width: none !important;
+  max-height: 540px;
+  height: auto !important;
+  aspect-ratio: 4 / 3;
+  background: #000;
+  overflow: hidden;
+  position: relative;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,.15);
+}
+
+#dorcasFundGalleries .swiper-slide img {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+#dorcasFundGalleries .swiper-button-next,
+#dorcasFundGalleries .swiper-button-prev {
+  width: 44px; height: 44px;
+  background: rgba(0,0,0,.4);
+  border-radius: 50%;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#dorcasFundGalleries .swiper-button-next::after,
+#dorcasFundGalleries .swiper-button-prev::after { font-size: 18px; }
+
+@media (max-width: 480px) {
+  #dorcasFundGalleries .swiper-button-next,
+  #dorcasFundGalleries .swiper-button-prev { width: 36px; height: 36px; }
+  #dorcasFundGalleries .swiper-button-next::after,
+  #dorcasFundGalleries .swiper-button-prev::after { font-size: 16px; }
+}
+
+#dorcasFundGalleries .cgroup {
+  margin: 7px;
+  text-align: left;
+  padding-left: 4px;
+  color: #502785;
+  font-size: 20px;
+  letter-spacing: 2px;
+}
+
+#dorcasFundGalleries .carousel {
+  background-color: transparent;
+  border: none;
+}
+
+#dorcasFundGalleries .swiper button {
+  background: rgba(0, 0, 0, 0.5) !important;
+  color: rgba(255, 255, 255, 0.5) !important;
+  transition: all 0.3s ease !important;
+}
+#dorcasFundGalleries .swiper button:hover {
+  background: rgba(0, 0, 0, 0.9) !important;
+  color: rgba(255, 255, 255, 1) !important;
+}
+
+#dorcasFundGalleries .swiper .slide-counter {
+  position: absolute;
+  bottom: 4px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 12;
+  font-size: 10px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.85);
+  background: rgba(0, 0, 0, 0.45);
+  padding: 1px 6px;
+  border-radius: 9px;
+  line-height: 1.3;
+  pointer-events: none;
+  white-space: nowrap;
+  letter-spacing: 0.3px;
+}
+
+#dorcasFundGalleries .swiper-pagination { display: none !important; }

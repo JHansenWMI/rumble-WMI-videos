@@ -1,0 +1,8 @@
+# Slide order for the Malawi 2026 carousel.
+# One source filename per line. Lines starting with # are ignored.
+# Default folder: ~/dev/facebook-media-archive/trips/joined
+# Rebuild: python3 scripts/build_dorcas_malawi_gallery.py
+2026-09-24-13-51-3.jpg
+2026-09-24-15-06-7.jpg
+2026-09-24-16-40-2.jpg
+2026-09-25-10-44-1.jpg
