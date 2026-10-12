@@ -112,9 +112,20 @@
   function bindSlideVideo(swiper, container, playBtn) {
     if (!container.getAttribute("data-video")) return;
     var resumeAfter = false;
+    var mark = document.createElement("div");
+    mark.className = "video-mark";
+    mark.setAttribute("aria-hidden", "true");
+    container.appendChild(mark);
 
     function activeVideo() {
       return container.querySelector(".swiper-slide-active video");
+    }
+
+    function syncVideoMark() {
+      var video = activeVideo();
+      var playing = !!(video && !video.paused && !video.ended);
+      if (playing) container.classList.add("is-playing-video");
+      else container.classList.remove("is-playing-video");
     }
 
     function pauseVideos() {
@@ -151,9 +162,11 @@
         if (swiper.autoplay && swiper.autoplay.running) resumeAfter = true;
         if (swiper.autoplay) swiper.autoplay.stop();
         startVideo(video);
+        syncVideoMark();
         return;
       }
       pauseVideos();
+      syncVideoMark();
       if (resumeAfter && swiper.autoplay) {
         resumeAfter = false;
         swiper.autoplay.start();
@@ -161,9 +174,13 @@
       }
     });
 
+    container.addEventListener("play", syncVideoMark, true);
+    container.addEventListener("pause", syncVideoMark, true);
+
     container.addEventListener("ended", function (e) {
       if (!e.target || e.target.tagName !== "VIDEO") return;
       if (!e.target.closest(".swiper-slide-active")) return;
+      syncVideoMark();
       if (swiper.isEnd) return;
       swiper.slideNext();
     }, true);

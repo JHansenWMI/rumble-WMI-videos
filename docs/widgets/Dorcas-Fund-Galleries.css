@@ -102,4 +102,36 @@
   letter-spacing: 0.3px;
 }
 
+#dorcasFundGalleries .swiper.is-playing-video .slide-counter {
+  visibility: hidden;
+}
+
+#dorcasFundGalleries .video-mark {
+  display: none;
+  position: absolute;
+  bottom: 4px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 12;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.45);
+  pointer-events: none;
+}
+
+#dorcasFundGalleries .swiper.is-playing-video .video-mark {
+  display: block;
+}
+
+#dorcasFundGalleries .video-mark::after {
+  content: "";
+  position: absolute;
+  left: 6px;
+  top: 4px;
+  border-style: solid;
+  border-width: 4px 0 4px 6px;
+  border-color: transparent transparent transparent rgba(255,255,255,0.9);
+}
+
 #dorcasFundGalleries .swiper-pagination { display: none !important; }
