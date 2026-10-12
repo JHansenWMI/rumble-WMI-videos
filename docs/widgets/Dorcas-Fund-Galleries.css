@@ -113,25 +113,20 @@
   left: 50%;
   transform: translateX(-50%);
   z-index: 12;
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
+  font-size: 10px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.85);
   background: rgba(0, 0, 0, 0.45);
+  padding: 1px 6px;
+  border-radius: 9px;
+  line-height: 1.3;
+  letter-spacing: 0.3px;
   pointer-events: none;
+  white-space: nowrap;
 }
 
 #dorcasFundGalleries .swiper.is-playing-video .video-mark {
   display: block;
-}
-
-#dorcasFundGalleries .video-mark::after {
-  content: "";
-  position: absolute;
-  left: 6px;
-  top: 4px;
-  border-style: solid;
-  border-width: 4px 0 4px 6px;
-  border-color: transparent transparent transparent rgba(255,255,255,0.9);
 }
 
 #dorcasFundGalleries .swiper-pagination { display: none !important; }

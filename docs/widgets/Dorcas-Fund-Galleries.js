@@ -114,6 +114,7 @@
     var resumeAfter = false;
     var mark = document.createElement("div");
     mark.className = "video-mark";
+    mark.textContent = "Video";
     mark.setAttribute("aria-hidden", "true");
     container.appendChild(mark);
 
