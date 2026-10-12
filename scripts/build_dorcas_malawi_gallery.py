@@ -38,9 +38,9 @@ WIDGET_JS = DOCS / "widgets" / "Dorcas-Fund-Galleries.js"
 CMS_SHELL = REPO / "Dorcas-Fund-Galleries-cms.html"
 WMI_PAGE = Path.home() / "dev" / "wmi-web" / "the-dorcas-fund.html"
 
-# Relative to docs/dorcas-fund-galleries.html so the same file works
-# on GitHub Pages and on the local preview server.
-IMAGE_BASE = "dorcas-fund/malawi"
+# Absolute, because the CMS injects this HTML into worldministries.org.
+# A relative path would be requested from the CMS host and 404.
+IMAGE_BASE = "https://jhansenwmi.github.io/rumble-WMI-videos/dorcas-fund/malawi"
 MAX_EDGE = 1400
 JPEG_QUALITY = 82
 START = "<!-- DORCAS_MALAWI_START -->"
