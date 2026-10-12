@@ -10,7 +10,9 @@ Photo list (slide order), one filename per line:
   docs/dorcas-fund/malawi-2026.txt
 
   python3 scripts/build_dorcas_malawi_gallery.py
-  python3 scripts/build_dorcas_malawi_gallery.py --src ~/dev/facebook-media-archive/trips/joined
+  python3 scripts/build_dorcas_malawi_gallery.py --from-folder
+
+Photos are saved at most 600px wide, JPEG quality 70.
 
 --seed recopies the intro and the four existing carousels from
 wmi-web/the-dorcas-fund.html, then writes the Malawi block. Use that only
@@ -41,8 +43,8 @@ WMI_PAGE = Path.home() / "dev" / "wmi-web" / "the-dorcas-fund.html"
 # Absolute, because the CMS injects this HTML into worldministries.org.
 # A relative path would be requested from the CMS host and 404.
 IMAGE_BASE = "https://jhansenwmi.github.io/rumble-WMI-videos/dorcas-fund/malawi"
-MAX_EDGE = 1400
-JPEG_QUALITY = 82
+MAX_WIDTH = 600
+JPEG_QUALITY = 70
 START = "<!-- DORCAS_MALAWI_START -->"
 END = "<!-- DORCAS_MALAWI_END -->"
 DEFAULT_SRC = Path.home() / "dev" / "facebook-media-archive" / "trips" / "joined"
@@ -64,35 +66,53 @@ def read_list(path: Path) -> list[str]:
     return names
 
 
+def folder_names(src: Path) -> list[str]:
+    names = sorted(
+        p.name for p in src.iterdir() if p.is_file() and p.suffix.lower() in {".jpg", ".jpeg"}
+    )
+    if not names:
+        sys.exit(f"No JPGs in {src}")
+    return names
+
+
+def write_list(names: list[str]) -> None:
+    header = (
+        "# Slide order for the Malawi 2026 carousel.\n"
+        "# One source filename per line. Lines starting with # are ignored.\n"
+        "# Rebuild this list from every JPG in the source folder:\n"
+        "#   python3 scripts/build_dorcas_malawi_gallery.py --from-folder\n"
+    )
+    LIST_FILE.write_text(header + "\n".join(names) + "\n", encoding="utf-8")
+
+
+def sequence_name(index: int) -> str:
+    """Web copy name. Sources are left unchanged. Slide 1 is malawi-2026-001.jpg."""
+    return f"malawi-2026-{index:03d}.jpg"
+
+
 def export_jpeg(src: Path, dest: Path) -> None:
     with Image.open(src) as im:
         im = ImageOps.exif_transpose(im)
         if im.mode != "RGB":
             im = im.convert("RGB")
-        im.thumbnail((MAX_EDGE, MAX_EDGE), Image.Resampling.LANCZOS)
+        if im.width > MAX_WIDTH:
+            height = round(im.height * MAX_WIDTH / im.width)
+            im = im.resize((MAX_WIDTH, height), Image.Resampling.LANCZOS)
         im.save(dest, "JPEG", quality=JPEG_QUALITY, optimize=True)
 
 
 def malawi_block(count: int) -> str:
-    slides = []
-    for n in range(1, count + 1):
-        name = f"malawi{n:03d}.jpg"
-        slides.append(
-            '<div class="swiper-slide">'
-            f'<img src="{IMAGE_BASE}/{name}" loading="lazy" '
-            f'alt="Dorcas Fund Malawi 2026 picture {n}" />'
-            "</div>"
-        )
-    inner = "\n".join(slides)
+    # Slides are not listed here. The widget builds malawi-2026-001.jpg
+    # through malawi-2026-NNN.jpg from data-count.
+    sequence = f"{IMAGE_BASE}/malawi-2026-"
     return (
         f"{START}\n"
         "<p>&nbsp;</p>\n"
         '<div class="carousel">\n'
         '<div class="cgroup">Malawi 2026</div>\n'
-        f'<div class="swiper" id="carousel-5" data-count="{count}">\n'
-        '<div class="swiper-wrapper">\n'
-        f"{inner}\n"
-        "</div>\n"
+        f'<div class="swiper" id="carousel-5" data-count="{count}" '
+        f'data-sequence="{sequence}">\n'
+        '<div class="swiper-wrapper"></div>\n'
         '<div class="swiper-button-next"></div>\n'
         '<div class="swiper-button-prev"></div>\n'
         "</div>\n"
@@ -135,7 +155,7 @@ def seed_fragment() -> str:
 
 def clear_old_jpegs() -> None:
     OUT_DIR.mkdir(parents=True, exist_ok=True)
-    for old in OUT_DIR.glob("malawi*.jpg"):
+    for old in OUT_DIR.glob("*.jpg"):
         old.unlink()
 
 
@@ -148,13 +168,22 @@ def main() -> None:
         help="Folder of source JPGs named in the photo list",
     )
     parser.add_argument(
+        "--from-folder",
+        action="store_true",
+        help="Use every JPG in --src, sorted by filename, and rewrite the photo list",
+    )
+    parser.add_argument(
         "--seed",
         action="store_true",
         help="Recopy intro and the four older carousels from wmi-web/the-dorcas-fund.html",
     )
     args = parser.parse_args()
 
-    names = read_list(LIST_FILE)
+    if args.from_folder:
+        names = folder_names(args.src)
+        write_list(names)
+    else:
+        names = read_list(LIST_FILE)
     missing = [name for name in names if not (args.src / name).is_file()]
     if missing:
         sys.exit("Missing source photos:\n" + "\n".join(missing))
@@ -166,9 +195,9 @@ def main() -> None:
 
     clear_old_jpegs()
     for index, name in enumerate(names, start=1):
-        dest = OUT_DIR / f"malawi{index:03d}.jpg"
-        export_jpeg(args.src / name, dest)
-        print(f"{name} -> {dest.name}")
+        dest_name = sequence_name(index)
+        export_jpeg(args.src / name, OUT_DIR / dest_name)
+        print(f"{name} -> {dest_name}")
 
     html = replace_block(html, malawi_block(len(names)))
     FRAGMENT.write_text(html, encoding="utf-8")

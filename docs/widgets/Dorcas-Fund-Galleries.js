@@ -69,7 +69,37 @@
     document.head.appendChild(script);
   }
 
+  function pad3(n) {
+    var s = String(n);
+    while (s.length < 3) s = "0" + s;
+    return s;
+  }
+
+  // data-sequence is a URL prefix. Slides are prefix + 001.jpg, 002.jpg, ...
+  function fillSequences(root) {
+    var nodes = root.querySelectorAll("[data-sequence]");
+    for (var i = 0; i < nodes.length; i++) {
+      var el = nodes[i];
+      var count = parseInt(el.getAttribute("data-count") || "0", 10);
+      var base = el.getAttribute("data-sequence");
+      var wrapper = el.querySelector(".swiper-wrapper");
+      if (!wrapper || !base || !(count > 0) || wrapper.children.length) continue;
+      var html = "";
+      for (var n = 1; n <= count; n++) {
+        html +=
+          '<div class="swiper-slide"><img src="' +
+          base +
+          pad3(n) +
+          '.jpg" loading="lazy" alt="Dorcas Fund Malawi 2026 picture ' +
+          n +
+          '"></div>';
+      }
+      wrapper.innerHTML = html;
+    }
+  }
+
   function initCarousels(root) {
+    fillSequences(root);
     var swipers = {};
     var nodes = root.querySelectorAll(".swiper[id]");
     var config = [];
