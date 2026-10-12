@@ -82,6 +82,8 @@
       var el = nodes[i];
       var count = parseInt(el.getAttribute("data-count") || "0", 10);
       var base = el.getAttribute("data-sequence");
+      var videoAfter = parseInt(el.getAttribute("data-video-after") || "0", 10);
+      var videoSrc = el.getAttribute("data-video") || "";
       var wrapper = el.querySelector(".swiper-wrapper");
       if (!wrapper || !base || !(count > 0) || wrapper.children.length) continue;
       var html = "";
@@ -93,9 +95,78 @@
           '.jpg" loading="lazy" alt="Dorcas Fund Malawi 2026 picture ' +
           n +
           '"></div>';
+        if (videoSrc && n === videoAfter) {
+          html +=
+            '<div class="swiper-slide"><video playsinline preload="auto" controls src="' +
+            videoSrc +
+            '" poster="' +
+            base +
+            pad3(n) +
+            '.jpg"></video></div>';
+        }
       }
       wrapper.innerHTML = html;
     }
+  }
+
+  function bindSlideVideo(swiper, container, playBtn) {
+    if (!container.getAttribute("data-video")) return;
+    var resumeAfter = false;
+
+    function activeVideo() {
+      return container.querySelector(".swiper-slide-active video");
+    }
+
+    function pauseVideos() {
+      var videos = container.querySelectorAll("video");
+      for (var i = 0; i < videos.length; i++) videos[i].pause();
+    }
+
+    function startVideo(video) {
+      if (!video || !video.paused) return;
+      try { video.currentTime = 0; } catch (e) {}
+      var pending = video.play();
+      if (pending && pending.catch) pending.catch(function () {});
+    }
+
+    function videoAt(index) {
+      var slides = container.querySelectorAll(".swiper-wrapper > .swiper-slide");
+      var slide = slides[index];
+      return slide ? slide.querySelector("video") : null;
+    }
+
+    // Play inside the click so the browser allows sound.
+    var nextBtn = container.querySelector(".swiper-button-next");
+    var prevBtn = container.querySelector(".swiper-button-prev");
+    function arm(delta) {
+      startVideo(videoAt(swiper.activeIndex + delta));
+    }
+    if (nextBtn) nextBtn.addEventListener("click", function () { arm(1); }, true);
+    if (prevBtn) prevBtn.addEventListener("click", function () { arm(-1); }, true);
+
+    swiper.on("slideChangeTransitionEnd", function () {
+      var video = activeVideo();
+      if (playBtn) playBtn.style.visibility = video ? "hidden" : "";
+      if (video) {
+        if (swiper.autoplay && swiper.autoplay.running) resumeAfter = true;
+        if (swiper.autoplay) swiper.autoplay.stop();
+        startVideo(video);
+        return;
+      }
+      pauseVideos();
+      if (resumeAfter && swiper.autoplay) {
+        resumeAfter = false;
+        swiper.autoplay.start();
+        if (playBtn) playBtn.innerHTML = "Pause";
+      }
+    });
+
+    container.addEventListener("ended", function (e) {
+      if (!e.target || e.target.tagName !== "VIDEO") return;
+      if (!e.target.closest(".swiper-slide-active")) return;
+      if (swiper.isEnd) return;
+      swiper.slideNext();
+    }, true);
   }
 
   function initCarousels(root) {
@@ -154,7 +225,7 @@
         ? wrapper.querySelectorAll(":scope > .swiper-slide").length
         : 0;
       var marked = parseInt(container.getAttribute("data-count") || "", 10);
-      if (marked > 0) return marked;
+      if (marked > 0) return marked + (container.getAttribute("data-video") ? 1 : 0);
       if (count === 0 && knownTotals[id]) return knownTotals[id];
       return count;
     }
@@ -174,7 +245,7 @@
           slidesPerView: 1,
           spaceBetween: 0,
           loop: false,
-          virtual: true,
+          virtual: !container.getAttribute("data-video"),
           lazy: true,
           watchOverflow: true,
           observer: true,
@@ -212,6 +283,7 @@
         swiper.on("init", updateCounter);
         swiper.on("slideChange", updateCounter);
         setTimeout(updateCounter, 60);
+        bindSlideVideo(swiper, container, s.playBtn);
 
         s.counterEl = counterEl;
         s.totalSlides = slideCount;

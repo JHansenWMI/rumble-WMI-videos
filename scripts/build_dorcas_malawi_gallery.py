@@ -101,17 +101,29 @@ def export_jpeg(src: Path, dest: Path) -> None:
         im.save(dest, "JPEG", quality=JPEG_QUALITY, optimize=True)
 
 
+# Extra slide after this photo number. The file sits next to the JPEGs.
+VIDEO_AFTER = 20
+VIDEO_NAME = "malawi-2026-020-video.mp4"
+
+
 def malawi_block(count: int) -> str:
     # Slides are not listed here. The widget builds malawi-2026-001.jpg
-    # through malawi-2026-NNN.jpg from data-count.
+    # through malawi-2026-NNN.jpg from data-count, and inserts the video
+    # after VIDEO_AFTER when that file is present.
     sequence = f"{IMAGE_BASE}/malawi-2026-"
+    video_attr = ""
+    if (OUT_DIR / VIDEO_NAME).is_file():
+        video_attr = (
+            f' data-video-after="{VIDEO_AFTER}" '
+            f'data-video="{IMAGE_BASE}/{VIDEO_NAME}"'
+        )
     return (
         f"{START}\n"
         "<p>&nbsp;</p>\n"
         '<div class="carousel">\n'
         '<div class="cgroup">Malawi 2026</div>\n'
         f'<div class="swiper" id="carousel-5" data-count="{count}" '
-        f'data-sequence="{sequence}">\n'
+        f'data-sequence="{sequence}"{video_attr}>\n'
         '<div class="swiper-wrapper"></div>\n'
         '<div class="swiper-button-next"></div>\n'
         '<div class="swiper-button-prev"></div>\n'
