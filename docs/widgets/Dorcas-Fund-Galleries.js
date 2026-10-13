@@ -9,7 +9,7 @@
  * docs/dorcas-fund-galleries.html. Photo updates do not need another CMS paste.
  */
 (function () {
-  var GALLERIES_VERSION = "20261012a";
+  var GALLERIES_VERSION = "20261013a";
   var PAGES = "https://jhansenwmi.github.io/rumble-WMI-videos/";
   var DEFAULT_HTML = PAGES + "dorcas-fund-galleries.html?v=" + GALLERIES_VERSION;
   var CSS_ID = "wmi-dorcas-fund-galleries-css";
