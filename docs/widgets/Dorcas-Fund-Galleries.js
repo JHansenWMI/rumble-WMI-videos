@@ -263,6 +263,8 @@
           slidesPerView: 1,
           spaceBetween: 0,
           loop: false,
+          // Rewind wraps the end buttons without duplicating slides. Loop mode breaks the video slide.
+          rewind: true,
           virtual: !container.getAttribute("data-video"),
           lazy: true,
           watchOverflow: true,
@@ -295,11 +297,18 @@
         container.appendChild(counterEl);
 
         var updateCounter = function () {
-          var current = (swiper.realIndex || swiper.activeIndex || 0) + 1;
-          counterEl.textContent = current + " of " + slideCount;
+          var slide = swiper.slides[swiper.activeIndex];
+          var marked = slide && slide.getAttribute("data-swiper-slide-index");
+          var index = swiper.activeIndex || 0;
+          if (marked !== null && marked !== "") {
+            var parsed = parseInt(marked, 10);
+            if (!isNaN(parsed)) index = parsed;
+          }
+          counterEl.textContent = index + 1 + " of " + slideCount;
         };
         swiper.on("init", updateCounter);
         swiper.on("slideChange", updateCounter);
+        swiper.on("slideChangeTransitionEnd", updateCounter);
         setTimeout(updateCounter, 60);
         bindSlideVideo(swiper, container, s.playBtn);
 
