@@ -103,7 +103,7 @@ def export_jpeg(src: Path, dest: Path) -> None:
 
 # Extra slide after this photo number. The file sits next to the JPEGs.
 VIDEO_AFTER = 18
-VIDEO_NAME = "malawi-2026-020-video.mp4"
+VIDEO_NAME = "malawi-2026-018video.mp4"
 
 
 def malawi_block(count: int) -> str:

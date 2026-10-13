@@ -44,7 +44,7 @@ Then commit and push this repo. Reload the live page. GitHub Pages can take abou
 
 ## Video
 
-`VIDEO_AFTER` in the build script is the photo number the video follows. It is **18** (`malawi-2026-018.jpg`). The file is `malawi-2026-020-video.mp4` next to the JPEGs. Arriving on that slide starts playback. When it ends, the gallery moves to the next photo.
+`VIDEO_AFTER` in the build script is the photo number the video follows. It is **18** (`malawi-2026-018.jpg`). The file is `malawi-2026-018video.mp4` next to the JPEGs. Arriving on that slide starts playback. When it ends, the gallery moves to the next photo.
 
 Changing only `VIDEO_AFTER` still requires a publish run so the HTML `data-video-after` updates. That run also rewrites the JPEGs.
 
