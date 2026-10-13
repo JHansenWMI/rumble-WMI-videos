@@ -34,6 +34,13 @@
   object-fit: contain;
 }
 
+/* 140 is a small crop. Cover enlarges it until the slide is full. */
+#dorcasFundGalleries .swiper-slide img[src$="malawi-2026-140.jpg"] {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 #dorcasFundGalleries .swiper-slide video {
   width: 100%;
   height: 100%;
