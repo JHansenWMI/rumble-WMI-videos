@@ -1,11 +1,53 @@
 {
   "title": "International Itinerary",
   "region": "international",
-  "generatedAt": "2026-09-30T17:11:40Z",
+  "generatedAt": "2026-10-21T16:39:00Z",
   "sourceUrl": "https://www.worldministries.org/international-itinerary.aspx",
   "introHtml": "<p>Due to the COVID restrictions which started immediately after I arrived back from Amsterdam, Netherlands, February 2, 2020, my international itinerary already scheduled for the rest of 2020 was cancelled as well as 2021. Only limited national ministry trips were taken.</p>",
-  "eventCount": 395,
+  "eventCount": 396,
   "events": [
+    {
+      "id": "evt-000396",
+      "year": 2026,
+      "sort_date": "2026-10-26",
+      "date_text": "OCTOBER 26-28, 2026",
+      "start_date": "2026-10-26",
+      "end_date": "2026-10-28",
+      "time_text": "",
+      "place": "Gwangju, Korea",
+      "city": "Gwangju",
+      "state": "",
+      "country": "Korea",
+      "event_name": "THE 10TH WORLD HOLY SPIRIT MINISTRY INTERNATIONAL CONFERENCE",
+      "event_type": "conference",
+      "speakers": [
+        "Dr. Jonathan & Dr. Adalia Harder",
+        "Dr. E. J. Buckardt",
+        "Rev. Fred Christian",
+        "and many others"
+      ],
+      "speaker_verb": "speaking",
+      "hosts": [
+        "Dr. Jae Won Kim"
+      ],
+      "venue": "The Lord's First Church",
+      "address_lines": [
+        "JOONGANG-RO 346 BEON-GIL 75 (SONG JUNG DONG)",
+        "GWANGJU-CITY, GYEONGGI-DO, KOREA"
+      ],
+      "flag": "https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/country-flags/skorea.gif",
+      "flag_alt": "Korea",
+      "flyer": "https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/evt-000396.jpg",
+      "flyer_alt": "Gwangju, Korea",
+      "links": [],
+      "body_lines": [
+        "Theme: When the Holy Spirit Comes Upon You... 오직 성령이 너희에게 임하시면 (Acts 1:8)",
+        "https://worldholyspirit.org"
+      ],
+      "region": "international",
+      "flyer_cb": "1792599494",
+      "body_html": "<p><strong><img src=\"https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/evt-000396.jpg\" style=\"width: 200px; height: auto;\" alt=\"Gwangju, Korea\" /><br />Gwangju, Korea<br /></strong>OCTOBER 26-28, 2026<br />THE 10TH WORLD HOLY SPIRIT MINISTRY INTERNATIONAL CONFERENCE<br />Dr. Jonathan &amp; Dr. Adalia Harder, Dr. E. J. Buckardt, Rev. Fred Christian, and many others - Speaking<br />Host: Dr. Jae Won Kim<br />The Lord's First Church<br />JOONGANG-RO 346 BEON-GIL 75 (SONG JUNG DONG)<br />GWANGJU-CITY, GYEONGGI-DO, KOREA<br />Theme: When the Holy Spirit Comes Upon You... 오직 성령이 너희에게 임하시면 (Acts 1:8)<br />https://worldholyspirit.org<br /></p>"
+    },
     {
       "id": "2026-10-25-south-korea",
       "year": 2026,
@@ -5629,7 +5671,7 @@
     }
   ],
   "lastManualUpdate": {
-    "at": "2026-09-30T17:11:40Z",
-    "note": "Restore pre-morning KZN Tongaat Oct 3–4; add sparse Sep 30 + Oct 2"
+    "at": "2026-10-21T16:39:00Z",
+    "note": "Upsert event evt-000396"
   }
 }
