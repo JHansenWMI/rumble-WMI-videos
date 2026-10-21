@@ -1,11 +1,41 @@
 {
   "title": "United States Itinerary",
   "region": "us",
-  "generatedAt": "2026-09-17T22:28:07Z",
+  "generatedAt": "2026-10-21T14:59:03Z",
   "sourceUrl": "https://www.worldministries.org/united-states-itinerary.aspx",
   "introHtml": "",
-  "eventCount": 255,
+  "eventCount": 256,
   "events": [
+    {
+      "id": "evt-000257",
+      "year": 2027,
+      "sort_date": "2027-01-16",
+      "date_text": "Jan 16-26, 2027",
+      "start_date": "2027-01-16",
+      "end_date": "2027-01-26",
+      "time_text": "",
+      "place": "Oahu, Hawaii",
+      "city": "",
+      "state": "Hawaii",
+      "country": "United States",
+      "event_name": "",
+      "event_type": "",
+      "speakers": [
+        "Drs Jonathan & Adalia Hansen"
+      ],
+      "speaker_verb": "ministering",
+      "hosts": [],
+      "venue": "",
+      "address_lines": [],
+      "flag": "https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/state-flags/hawaii.gif",
+      "flag_alt": "Hawaii",
+      "flyer": "",
+      "flyer_alt": "Oahu, Hawaii",
+      "links": [],
+      "body_lines": [],
+      "region": "us",
+      "body_html": "<p><strong>Oahu, Hawaii<br /></strong>Jan 16-26, 2027<br />Drs Jonathan &amp; Adalia Hansen ministering<br /></p>"
+    },
     {
       "id": "evt-000256",
       "year": 2026,
@@ -5471,7 +5501,7 @@
     }
   ],
   "lastManualUpdate": {
-    "at": "2026-09-17T22:28:07Z",
-    "note": "Upsert event evt-000256"
+    "at": "2026-10-21T14:59:03Z",
+    "note": "Upsert event evt-000257"
   }
 }
