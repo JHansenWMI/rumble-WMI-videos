@@ -10,7 +10,7 @@ log() {
 }
 
 # One full scrape at a time (tick vs manual vs overlapping launchd).
-# Lock stays on the Desktop checkout even when Mini publishes from a worktree.
+# Lock stays on this checkout even when publishing from a worktree.
 LOCK_DIR="$HOME_REPO/.publish.lock"
 acquire_publish_lock() {
   if mkdir "$LOCK_DIR" 2>/dev/null; then
@@ -33,8 +33,8 @@ release_publish_lock() {
   rm -rf "$LOCK_DIR"
 }
 
-# Mini publishes from a throwaway worktree at origin/main so itinerary (or any
-# other) WIP in the Desktop checkout cannot block or mix into the feed job.
+# Publish from a throwaway worktree at origin/main so WIP in this checkout
+# cannot block or mix into the feed job.
 USING_WORKTREE=0
 PUBLISH_WORKTREE="${HOME_REPO:h}/rumble-WMI-videos-publish"
 
@@ -169,13 +169,13 @@ enter_publish_worktree() {
     git -C "$HOME_REPO" worktree prune >/dev/null 2>&1 || true
   fi
   if ! git -C "$HOME_REPO" worktree add --detach "$PUBLISH_WORKTREE" origin/main; then
-    log "Could not create publish worktree at $PUBLISH_WORKTREE. Desktop checkout was not changed. Aborting."
+    log "Could not create publish worktree at $PUBLISH_WORKTREE. This checkout was not changed. Aborting."
     exit 1
   fi
   USING_WORKTREE=1
   SCRIPT_DIR="$PUBLISH_WORKTREE"
   cd "$SCRIPT_DIR"
-  log "Publishing from clean origin/main worktree. Desktop checkout left untouched."
+  log "Publishing from clean origin/main worktree. This checkout left untouched."
 }
 
 if [[ "$UNATTENDED_JSON_RECOVERY" == 1 ]]; then

@@ -10,13 +10,9 @@
 # Tripwire change -> same full scrape (publish_rumble_feed.sh).
 # Tripwire fetch/parse failure -> log and skip (do not hammer Rumble).
 #
-# macOS sometimes never returns from open() of rumble_tripwire.py. Launchd
-# will not start the next tick while this one is still running, so one stuck
-# open used to blank the schedule for hours. Each step has a time limit.
-# Hitting the limit is logged, a stack sample is appended to
-# rumble-feed-stuck.log, and the stuck process group is stopped so the next
-# quarter-hour tick can run. The sample is the evidence for the still-open
-# question of why that open never returns.
+# Launchd will not start the next tick while this one is still running.
+# Each step has a time limit. On expiry, append a stack sample to
+# rumble-feed-stuck.log and stop the process group.
 set -euo pipefail
 
 SCRIPT_DIR="${0:A:h}"

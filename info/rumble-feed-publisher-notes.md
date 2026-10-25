@@ -13,7 +13,7 @@ Original notes follow.
 # Rumble feed publishers — what happened, what to do
 
 Written 2026-08-23 for reading in BBEdit (RustDesk scroll is painful).
-Repo: ~/Desktop/rumbleScraper/rumble-WMI-videos
+Repo: ~/dev/rumbleScraper/rumble-WMI-videos
 Nothing in git was reset or pushed while looking at this.
 
 ------------------------------------------------------------
