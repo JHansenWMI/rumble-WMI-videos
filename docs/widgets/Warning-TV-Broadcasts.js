@@ -162,7 +162,11 @@
     var month = match[1];
     var day = parseInt(match[2], 10);
     var year = parseInt(match[3], 10);
-    var d = new Date(month + " " + day + ", " + year);
+    // Noon UTC, like getTVAirDate, so the key does not depend on the
+    // viewer's time zone (local midnight shifted the day outside Pacific).
+    var monthIndex = new Date(month + " 1, 2000").getMonth();
+    if (isNaN(monthIndex)) return null;
+    var d = new Date(Date.UTC(year, monthIndex, day, 12, 0, 0));
     if (isNaN(d.getTime())) return null;
     return dateFmt.format(d);
   }
