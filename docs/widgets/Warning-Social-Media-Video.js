@@ -19,6 +19,9 @@
 
   var CHANNEL_WARNING_TV = "WARNING TV - Jonathan Hansen";
   var CHANNEL_BROADCAST_HISTORY = "WMI TV Broadcast History";
+  // Hidden from this grid (display-only; feed unchanged).
+  var CHANNEL_ORIENTATION = "WMI Orientation Videos";
+  var CHANNEL_ORIENTATION_URL_RE = /\/c\/c-7336441(?:[\/?#]|$)/i;
 
   var dateFmt = new Intl.DateTimeFormat("en-US", {
     timeZone: "America/Los_Angeles",
@@ -132,6 +135,10 @@
     var source = item && item.sourcePage ? String(item.sourcePage) : "";
     var ch = channelNameOf(item);
     if (/\/shorts(\/|$)/i.test(source) && /The Overcoming Women$/i.test(ch)) {
+      return true;
+    }
+    var chUrl = item && item.channelUrl ? String(item.channelUrl).trim() : "";
+    if (CHANNEL_ORIENTATION_URL_RE.test(chUrl) || ch === CHANNEL_ORIENTATION) {
       return true;
     }
     return false;
