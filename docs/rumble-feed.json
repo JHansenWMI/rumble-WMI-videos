@@ -1,9 +1,22 @@
 {
   "title": "Rumble videos",
-  "generatedAt": "Thu, 19 Nov 2026 14:57:03 +0000",
-  "updated": "2026-11-19 06:57:03 PST",
+  "generatedAt": "Fri, 20 Nov 2026 14:07:21 +0000",
+  "updated": "2026-11-20 06:07:21 PST",
   "itemCount": 90,
   "items": [
+    {
+      "title": "The Heresy of Prayer",
+      "link": "https://rumble.com/v7imnx2-the-heresy-of-prayer.html",
+      "pubDate": "Fri, 20 Nov 2026 13:55:30 +0000",
+      "media:content": "https://hugh.cdn.rumble.cloud/video/fwe2/3a/s8/1/w/c/_/f/wc_fB.OvCc-small-The-Heresy-of-Prayer..jpg",
+      "guid": "450897824",
+      "sourcePage": "https://rumble.com/user/DrJonathanHansenWMI/livestreams",
+      "channelName": "WARNING TV - Jonathan Hansen",
+      "channelUrl": "https://rumble.com/c/WarningTVJonathanHansen",
+      "videoId": "v7ggazk",
+      "scheduledTime": "Fri, 20 Nov 2026 14:10:00 +0000",
+      "updated": "2026-11-20 06:07:21 PST"
+    },
     {
       "title": "God’s Conditions for Forgiveness Never Change - Nov 19",
       "link": "https://rumble.com/v7ikt8s-gods-conditions-for-forgiveness-never-change.html",
@@ -1071,18 +1084,6 @@
       "channelUrl": "https://rumble.com/c/WarningTVJonathanHansen",
       "videoId": "v7clxa6",
       "updated": "2026-08-28 15:26:20 PDT"
-    },
-    {
-      "title": "The Power of Persistence in Prayer",
-      "link": "https://rumble.com/v7epi68-the-power-of-persistence-in-prayer.html",
-      "pubDate": "Thu, 27 Aug 2026 15:19:53 +0000",
-      "media:content": "https://hugh.cdn.rumble.cloud/video/fwe2/4d/s8/1/a/j/3/S/aj3SA.OvCc-small-The-Power-of-Persistence-in..jpg",
-      "guid": "444311882",
-      "sourcePage": "https://rumble.com/user/DrJonathanHansenWMI/livestreams",
-      "channelName": "WARNING TV - Jonathan Hansen",
-      "channelUrl": "https://rumble.com/c/WarningTVJonathanHansen",
-      "videoId": "v7cj58q",
-      "updated": "2026-08-27 17:06:04 PDT"
     }
   ]
 }
