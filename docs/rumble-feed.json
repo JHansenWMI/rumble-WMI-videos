@@ -1,9 +1,21 @@
 {
   "title": "Rumble videos",
-  "generatedAt": "Fri, 20 Nov 2026 16:07:20 +0000",
-  "updated": "2026-11-20 08:07:20 PST",
+  "generatedAt": "Fri, 20 Nov 2026 23:52:27 +0000",
+  "updated": "2026-11-20 15:52:27 PST",
   "itemCount": 90,
   "items": [
+    {
+      "title": "Testing",
+      "link": "https://rumble.com/v7inkjm-testing.html",
+      "pubDate": "Fri, 20 Nov 2026 23:49:54 +0000",
+      "media:content": "https://hugh.cdn.rumble.cloud/video/fwe2/ab/s8/6/c/x/j/g/cxjgB.OvCc.jpg",
+      "guid": "450940108",
+      "sourcePage": "https://rumble.com/user/DrJonathanHansenWMI/livestreams",
+      "channelName": "WMI Orientation Videos",
+      "channelUrl": "https://rumble.com/c/c-7336441",
+      "videoId": "v7gh7m4",
+      "updated": "2026-11-20 15:52:27 PST"
+    },
     {
       "title": "The Heresy of Prayer - Nov 20",
       "link": "https://rumble.com/v7imnx2-the-heresy-of-prayer.html",
@@ -1071,18 +1083,6 @@
       "channelUrl": "https://rumble.com/c/WarningTVJonathanHansen",
       "videoId": "v7cn56a",
       "updated": "2026-08-29 12:20:55 PDT"
-    },
-    {
-      "title": "Pastor Hansen prays for the Jesso's to take the territory",
-      "link": "https://rumble.com/shorts/v7esa7o",
-      "pubDate": "Fri, 28 Aug 2026 21:36:37 +0000",
-      "media:content": "https://jhansenwmi.github.io/rumble-WMI-videos/site-thumbs/take-the-territory-16x9.jpg",
-      "guid": "444441534",
-      "sourcePage": "https://rumble.com/user/DrJonathanHansenWMI/shorts",
-      "channelName": "WARNING TV - Jonathan Hansen",
-      "channelUrl": "https://rumble.com/c/WarningTVJonathanHansen",
-      "videoId": "v7clxa6",
-      "updated": "2026-08-28 15:26:20 PDT"
     }
   ]
 }
