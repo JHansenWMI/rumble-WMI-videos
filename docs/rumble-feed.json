@@ -1,9 +1,21 @@
 {
   "title": "Rumble videos",
-  "generatedAt": "Sat, 21 Nov 2026 20:37:26 +0000",
-  "updated": "2026-11-21 12:37:26 PST",
+  "generatedAt": "Sun, 22 Nov 2026 09:07:33 +0000",
+  "updated": "2026-11-22 01:07:33 PST",
   "itemCount": 90,
   "items": [
+    {
+      "title": "Evil Personified Part 1 - Aug 11 - TV20261120",
+      "link": "https://rumble.com/v7ipt02-evil-personified-part-1-aug-11-tv20261120.html",
+      "pubDate": "Sun, 22 Nov 2026 09:00:00 +0000",
+      "media:content": "https://hugh.cdn.rumble.cloud/video/fwe2/f7/s8/1/s/0/I/g/s0IgB.OvCc-small-Evil-Personified-Part-1-Aug..jpg",
+      "guid": "451044380",
+      "sourcePage": "https://rumble.com/user/DrJonathanHansenWMI/videos",
+      "channelName": "WARNING TV - Jonathan Hansen",
+      "channelUrl": "https://rumble.com/c/WarningTVJonathanHansen",
+      "videoId": "v7gjg2k",
+      "updated": "2026-11-22 01:07:33 PST"
+    },
     {
       "title": "Make Your Mark - Nov 21 - Pastor Steve Bessem",
       "link": "https://rumble.com/v7iouh6-make-your-mark-nov-21-pastor-steve-bessem.html",
@@ -1071,18 +1083,6 @@
       "channelUrl": "https://rumble.com/c/WarningTVJonathanHansen",
       "videoId": "v7c5bd8",
       "updated": "2026-08-30 01:05:57 PDT"
-    },
-    {
-      "title": "I Am a Free Man!",
-      "link": "https://rumble.com/v7eti3s-i-am-a-free-man.html",
-      "pubDate": "Sat, 29 Aug 2026 19:05:47 +0000",
-      "media:content": "https://hugh.cdn.rumble.cloud/video/fwe2/8a/s8/1/O/R/K/T/ORKTA.OvCc-small-I-Am-a-Free-Man..jpg",
-      "guid": "444498418",
-      "sourcePage": "https://rumble.com/user/DrJonathanHansenWMI/livestreams",
-      "channelName": "WARNING TV - Jonathan Hansen",
-      "channelUrl": "https://rumble.com/c/WarningTVJonathanHansen",
-      "videoId": "v7cn56a",
-      "updated": "2026-08-29 12:20:55 PDT"
     }
   ]
 }
