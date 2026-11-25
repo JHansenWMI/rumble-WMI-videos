@@ -1,9 +1,21 @@
 {
   "title": "Rumble videos",
-  "generatedAt": "Wed, 25 Nov 2026 09:22:38 +0000",
-  "updated": "2026-11-25 01:22:38 PST",
+  "generatedAt": "Wed, 25 Nov 2026 09:37:35 +0000",
+  "updated": "2026-11-25 01:37:35 PST",
   "itemCount": 90,
   "items": [
+    {
+      "title": "Believers' Rest - Oct 26 - Dr Tobias Nyamwaya",
+      "link": "https://rumble.com/v7ivtwy-believers-rest-oct-26-dr-tobias-nyamwaya.html",
+      "pubDate": "Wed, 25 Nov 2026 09:14:07 +0000",
+      "media:content": "https://hugh.cdn.rumble.cloud/video/fwe2/43/s8/1/Y/C/N/h/YCNhB.OvCc-small-Believers-Rest-Oct-26-Dr-To..jpg",
+      "guid": "451325500",
+      "sourcePage": "https://rumble.com/user/DrJonathanHansenWMI/videos",
+      "channelName": "WARNING TV - Jonathan Hansen",
+      "channelUrl": "https://rumble.com/c/WarningTVJonathanHansen",
+      "videoId": "v7gpgzg",
+      "updated": "2026-11-25 01:37:35 PST"
+    },
     {
       "title": "The Forgotten Faces - Nov 24 2026",
       "link": "https://rumble.com/v7iv5v4-the-forgotten-faces.html",
@@ -1071,18 +1083,6 @@
       "channelUrl": "https://rumble.com/c/TheOvercomingWomen",
       "videoId": "v7cs91y",
       "updated": "2026-11-07 10:37:30 PST"
-    },
-    {
-      "title": "Burundi - Rwanda - Zaire",
-      "link": "https://rumble.com/v7eyipo-burundi-rwanda-zaire.html",
-      "pubDate": "Tue, 01 Sep 2026 22:31:22 +0000",
-      "media:content": "https://hugh.cdn.rumble.cloud/video/fwe2/e2/s8/1/8/0/D/U/80DUA.OvCc-small-Burundi-Rwanda-Zaire..jpg",
-      "guid": "444732486",
-      "sourcePage": "https://rumble.com/user/DrJonathanHansenWMI/videos",
-      "channelName": "WARNING TV - Jonathan Hansen",
-      "channelUrl": "https://rumble.com/c/WarningTVJonathanHansen",
-      "videoId": "v7cs5s6",
-      "updated": "2026-09-01 16:05:56 PDT"
     }
   ]
 }
