@@ -1,9 +1,22 @@
 {
   "title": "Rumble videos",
-  "generatedAt": "Wed, 25 Nov 2026 09:37:35 +0000",
-  "updated": "2026-11-25 01:37:35 PST",
+  "generatedAt": "Thu, 26 Nov 2026 08:52:39 +0000",
+  "updated": "2026-11-26 00:52:39 PST",
   "itemCount": 90,
   "items": [
+    {
+      "title": "How to Overcome the Devil's Temptation - Oct 27 - Rev Seo Gi-Seong",
+      "link": "https://rumble.com/v7ixvku-how-to-overcome-the-devils-temptation-oct-27-rev-seo-gi-seong.html",
+      "pubDate": "Thu, 26 Nov 2026 08:45:07 +0000",
+      "media:content": "https://hugh.cdn.rumble.cloud/video/fwe2/98/s8/1/E/W/-/h/EW-hB.OvCc-small-How-to-Overcome-the-Devils-..jpg",
+      "guid": "451420968",
+      "sourcePage": "https://rumble.com/user/DrJonathanHansenWMI/livestreams",
+      "channelName": "WARNING TV - Jonathan Hansen",
+      "channelUrl": "https://rumble.com/c/WarningTVJonathanHansen",
+      "videoId": "v7grinc",
+      "scheduledTime": "Thu, 26 Nov 2026 09:00:00 +0000",
+      "updated": "2026-11-26 00:52:39 PST"
+    },
     {
       "title": "Believers' Rest - Oct 26 - Dr Tobias Nyamwaya",
       "link": "https://rumble.com/v7ivtwy-believers-rest-oct-26-dr-tobias-nyamwaya.html",
@@ -1071,18 +1084,6 @@
       "channelUrl": "https://rumble.com/c/WarningTVJonathanHansen",
       "videoId": "v7cu9d0",
       "updated": "2026-09-03 00:05:56 PDT"
-    },
-    {
-      "title": "Women in Ministry",
-      "link": "https://rumble.com/v7eylzg-women-in-ministry.html",
-      "pubDate": "Wed, 02 Sep 2026 08:11:12 +0000",
-      "media:content": "https://hugh.cdn.rumble.cloud/video/fwe2/d9/s8/1/m/3/E/U/m3EUA.OvCc-small-Women-in-Ministry..jpg",
-      "guid": "444736726",
-      "sourcePage": "https://rumble.com/user/DrJonathanHansenWMI/livestreams",
-      "channelName": "The Overcoming Women",
-      "channelUrl": "https://rumble.com/c/TheOvercomingWomen",
-      "videoId": "v7cs91y",
-      "updated": "2026-11-07 10:37:30 PST"
     }
   ]
 }
