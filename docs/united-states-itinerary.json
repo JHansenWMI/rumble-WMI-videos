@@ -1,10 +1,10 @@
 {
   "title": "United States Itinerary",
   "region": "us",
-  "generatedAt": "2026-10-21T14:59:03Z",
+  "generatedAt": "2026-11-27T20:36:47Z",
   "sourceUrl": "https://www.worldministries.org/united-states-itinerary.aspx",
   "introHtml": "",
-  "eventCount": 256,
+  "eventCount": 257,
   "events": [
     {
       "id": "evt-000257",
@@ -35,6 +35,40 @@
       "body_lines": [],
       "region": "us",
       "body_html": "<p><strong>Oahu, Hawaii<br /></strong>Jan 16-26, 2027<br />Drs Jonathan &amp; Adalia Hansen ministering<br /></p>"
+    },
+    {
+      "id": "evt-000258",
+      "year": 2026,
+      "sort_date": "2026-11-29",
+      "date_text": "Sun, Nov 29, 2026",
+      "start_date": "2026-11-29",
+      "end_date": "2026-11-29",
+      "time_text": "10:30 AM (Special Sunday Service)",
+      "place": "Bellingham, Washington",
+      "city": "Bellingham",
+      "state": "Washington",
+      "country": "United States",
+      "event_name": "",
+      "event_type": "",
+      "speakers": [
+        "Drs Jonathan & Adalia Hansen"
+      ],
+      "speaker_verb": "speaking",
+      "hosts": [],
+      "venue": "Calvary Worship Center",
+      "address_lines": [
+        "3030 Northwest Avenue",
+        "Bellingham, WA"
+      ],
+      "flag": "https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/state-flags/washington.gif",
+      "flag_alt": "Washington",
+      "flyer": "https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/evt-000258.jpg",
+      "flyer_alt": "Bellingham, Washington",
+      "links": [],
+      "body_lines": [],
+      "region": "us",
+      "body_html": "<p><strong><img src=\"https://jhansenwmi.github.io/rumble-WMI-videos/itinerary-assets/evt-000258.jpg\" style=\"width: 200px; height: auto;\" alt=\"Bellingham, Washington\" /><br />Bellingham, Washington<br /></strong>Sun, Nov 29, 2026 — 10:30 AM (Special Sunday Service)<br />Drs Jonathan &amp; Adalia Hansen - Speaking<br />Calvary Worship Center<br />3030 Northwest Avenue<br />Bellingham, WA<br /></p>",
+      "flyer_cb": "1795811807"
     },
     {
       "id": "evt-000256",
@@ -5501,7 +5535,7 @@
     }
   ],
   "lastManualUpdate": {
-    "at": "2026-10-21T14:59:03Z",
-    "note": "Upsert event evt-000257"
+    "at": "2026-11-27T20:36:47Z",
+    "note": "Upsert event evt-000258"
   }
 }
